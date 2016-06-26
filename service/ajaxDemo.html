@@ -1,0 +1,70 @@
+<?/*php require_once($_SERVER['DOCUMENT_ROOT'].'/tools/mailNotificationInclude.php');*/?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<META HTTP-EQUIV='Content-Type' CONTENT='text/html; charset=UTF-8'>
+	
+	<!-- META http-equiv="refresh" content="5;URL=http://somewhere.com" -->
+	
+	<title>Template Page Title</title>
+	
+	<script type='text/javascript' src='http://code.jquery.com/jquery-2.1.4.js'></script>
+	<!--link rel='stylesheet' type='text/css' href='css/main.css' /-->
+	
+	<style type='text/css'><!--
+	
+		body {
+			color:#4B92D1;
+			font-family:sans-serif;
+		}
+	div{
+		margin-bottom:15px;
+	}
+	.ajaxResult{
+		font-size:14px;
+		color:gray;
+		margin:30px;
+	}
+	--></style>
+	
+</head>
+<body>
+
+	<div>This is the Care Planner 'Hello World' page.</div>
+	<div>The JSON string below was retrieved from the Care Planner 'Hello World' /api/ server...</div>
+	
+</body>
+
+<script type='text/javascript'>
+	/* <![CDATA[ */
+	$(document).ready(function(){
+
+	var url="generateToken";
+var sendObj={};
+
+$.ajax({
+		method: "GET",
+		url: '/api/',
+		data: sendObj,
+		headers: {
+			authorization: 'prevToken.authorizedDomain'+" "+'prevToken.authToken'
+		}
+	})
+	.done(function(result) {
+	
+		$('body').append("<div class='ajaxResult'>"+JSON.stringify(result)+"</div>");
+
+
+	})
+	.fail(function(data, textStatus) {
+	var errorString = "Server Error: " + data.status + " - " + data.statusText + " (" + data.responseText + ")";
+
+	$('body').html(errorString);
+});
+	
+	
+	});
+	/* ]]> */
+</script>
+
+</html>
