@@ -30,7 +30,7 @@
 </head>
 <body>
 
-	<div>This is the Care Planner 'Hello World' page.</div>
+	<div>This comes from <!systemName!>.</div>
 	<div>The JSON string below was retrieved from the Care Planner 'Hello World' /api/ server...</div>
 	
 </body>
@@ -44,7 +44,7 @@ var sendObj={};
 
 $.ajax({
 		method: "GET",
-		url: '/api/',
+		url: '/api/ping',
 		data: sendObj,
 		headers: {
 			authorization: 'prevToken.authorizedDomain'+" "+'prevToken.authToken'

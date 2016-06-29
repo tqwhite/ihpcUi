@@ -98,8 +98,8 @@ var moduleFunction = function() {
 // 			data: {hello:'goodbye'}
 // 		});
 		
-		const tmpPage=qtools.fs.readFileSync('code/service/ajaxDemo.html');
-
+		let tmpPage=qtools.fs.readFileSync('code/service/ajaxDemo.html');
+		tmpPage=tmpPage.toString().replace(/<!systemName!>/, `${config.system.name}/${config.user}${req.path}#${transactionCount}`); 
 
 		
 				res.set('Content-Type', 'text/html');
