@@ -2,7 +2,7 @@
 'use strict';
 const qtoolsGen = require('qtools');
 const qtools = new qtoolsGen(module);
-const	multiIni = require('multi-ini');
+const multiIni = require('multi-ini');
 var express = require('express');
 var app = express();
 var bodyParser = require('body-parser');
@@ -39,8 +39,8 @@ var moduleFunction = function() {
 			result: result
 		});
 	}
-	
-	let transactionCount=0;
+
+	let transactionCount = 0;
 
 	//LOCAL FUNCTIONS ====================================
 
@@ -67,18 +67,18 @@ var moduleFunction = function() {
 				headers[i] = element;
 			}
 		}
-		req.headers=headers;
+		req.headers = headers;
 		next();
 	});
 
 	var router = express.Router();
 	app.use('/', router);
-	
-	
+
+
 	//INITIALIZATION ====================================
-	
-	
-	router.get(/\//, (req, res, next)=>{
+
+
+	router.get(/\//, (req, res, next) => {
 		// 		console.log('access from empty path/get');
 		// 		dumpToConsole(req);
 
@@ -90,55 +90,55 @@ var moduleFunction = function() {
 			connection: 'Close'
 		});
 
-// 		res.json({
-// 			status: `hello from ${config.system.name}/${config.user}${req.path}#${transactionCount}`,
-// 			headers: req.headers,
-// 			body: req.body,
-// 			query: req.query,
-// 			data: {hello:'goodbye'}
-// 		});
-		
-		let tmpPage=qtools.fs.readFileSync('code/service/ajaxDemo.html');
-		tmpPage=tmpPage.toString().replace(/<!systemName!>/, `${config.system.name}/${config.user}${req.path}#${transactionCount}`); 
+		// 		res.json({
+		// 			status: `hello from ${config.system.name}/${config.user}${req.path}#${transactionCount}`,
+		// 			headers: req.headers,
+		// 			body: req.body,
+		// 			query: req.query,
+		// 			data: {hello:'goodbye'}
+		// 		});
 
-		
-				res.set('Content-Type', 'text/html');
+		let tmpPage = qtools.fs.readFileSync('code/service/ajaxDemo.html');
+		tmpPage = tmpPage.toString().replace(/<!systemName!>/, `${config.system.name}/${config.user}${req.path}#${transactionCount}`);
+
+
+		res.set('Content-Type', 'text/html');
 		res.status('200').send(new Buffer(tmpPage));
 	});
 
 	let config;
-//	let basicPingServer;
+	//	let basicPingServer;
 
 	const startSystem = () => {
 		config = multiIni.read(configPath);
-		config.user=process.env.USER;
+		config.user = process.env.USER;
 
-// 		basicPingServer = new basicPingServerGen({
-// 			config: config
-// 		});
+		// 		basicPingServer = new basicPingServerGen({
+		// 			config: config
+		// 		});
 		qtools.message("Node system start");
-		
-// 		setInterval(()=>{
-// 			console.log(`Still running...${new Date()}`);
-// 		}, 3000);
+
+	// 		setInterval(()=>{
+	// 			console.log(`Still running...${new Date()}`);
+	// 		}, 3000);
 	};
 
-// 	const cleanup = () => {
-// 		basicPingServer = null;
-// 		webReport = [{
-// 			err: '',
-// 			result: `flushed at ${Date.now()}`
-// 		}];
-// 	}
-// 
-// 	const restart = () => {
-// 		basicPingServer.shutdown('restart', () => {
-// 			qtools.message("RESTART");
-// 			cleanup();
-// 			startSystem();
-// 		});
-// 
-// 	}
+	// 	const cleanup = () => {
+	// 		basicPingServer = null;
+	// 		webReport = [{
+	// 			err: '',
+	// 			result: `flushed at ${Date.now()}`
+	// 		}];
+	// 	}
+	// 
+	// 	const restart = () => {
+	// 		basicPingServer.shutdown('restart', () => {
+	// 			qtools.message("RESTART");
+	// 			cleanup();
+	// 			startSystem();
+	// 		});
+	// 
+	// 	}
 
 	//START SYSTEM =======================================================
 	startSystem();
