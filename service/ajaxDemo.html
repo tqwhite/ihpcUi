@@ -44,7 +44,7 @@ var sendObj={};
 
 $.ajax({
 		method: "GET",
-		url: '/api/ping',
+		url: '/api/user/users',
 		data: sendObj,
 		headers: {
 			authorization: 'prevToken.authorizedDomain'+" "+'prevToken.authToken'
@@ -52,7 +52,18 @@ $.ajax({
 	})
 	.done(function(result) {
 	
-		$('body').append("<div class='ajaxResult'>"+JSON.stringify(result)+"</div>");
+		var outString='';
+		
+		result.body.map(function(item){
+console.dir({"item":item});
+
+
+			outString+="<tr><td>"+item._id+"</td><td>"+item.name+"</td></tr>";
+		});
+		
+		outString="<div>"+result.status+" names in database</div><table>"+outString+"</table>";;
+	
+		$('body').append("<div class='ajaxResult'>"+outString+"</div>");
 
 
 	})

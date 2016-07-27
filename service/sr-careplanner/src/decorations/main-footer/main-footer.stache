@@ -1,0 +1,11 @@
+
+<!-- decorations/main-footer start -->
+
+    <div style='font-size:10pt;margin-bottom:5px;'>
+    Test Navigation: &nbsp;&nbsp;&nbsp;&nbsp;
+    <a href='/account/register'>register</a>&nbsp;&nbsp;&nbsp;&nbsp;
+    <a href='/account/login'>login</a>&nbsp;&nbsp;&nbsp;&nbsp;
+    <a href='/editor'>editor</a>
+    </div>
+<!-- decorations/main-footer end -->
+

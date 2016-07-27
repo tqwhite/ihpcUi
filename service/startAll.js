@@ -7,6 +7,17 @@ var express = require('express');
 var app = express();
 var bodyParser = require('body-parser');
 
+var fs = require('fs');
+var path = require("path");
+
+var compression = require('./sr-careplanner/node_modules/compression');
+
+var middleware = require("./sr-careplanner/node_modules/done-ssr-middleware");
+
+// var doneServe=require('./sr-careplanner/node_modules/done-serve');
+// doneServe({ path: '/Volumes/qubuntuFileServer/cmerdc/sunrise/sunriseUi/system/code/service/sr-careplanner',
+//  });
+
 //START OF moduleFunction() ============================================================
 
 var moduleFunction = function() {
@@ -59,52 +70,50 @@ var moduleFunction = function() {
 		//	console.log("transaction# " + transactionCount + " =======================\n");
 		next();
 	});
-	app.use((req, res, next) => {
-		const headers = {};
-		for (var i in req.headers) {
-			var element = req.headers[i];
-			if (!(i.match(/^x-/) || i.match(/^host/))) {
-				headers[i] = element;
+
+	app.use(compression());
+
+	app.use(express.static(process.env.sruiProjectPath + 'code/service/sr-careplanner'));
+
+	//DONEJS ====================================
+
+	const startDonejs = function(program) {
+
+		var exec = require("child_process").exec;
+
+		var options = {
+			path: program.path
+		};
+		var system = {
+			config: path.join(program.path, 'package.json') + '!npm',
+			liveReload: true
+		};
+		app.use(middleware(system, options));
+
+		var port = program.port || process.env.PORT || 3030;
+		var server = app.listen(port);
+
+		server.on('error', function(e) {
+			if (e.code === 'EADDRINUSE') {
+				console.error('ERROR: Can not start done-serve on port ' + port +
+					'.\nAnother application is already using it.');
+			} else {
+				console.error(e);
+				console.error(e.stack);
 			}
-		}
-		req.headers = headers;
-		next();
-	});
-
-	var router = express.Router();
-	app.use('/', router);
-
-
-	//INITIALIZATION ====================================
-
-
-	router.get(/\//, (req, res, next) => {
-		// 		console.log('access from empty path/get');
-		// 		dumpToConsole(req);
-
-		res.set({
-			'content-type': 'application/json;charset=ISO-8859-1',
-			messageid: qtools.newGuid(),
-			messagetype: 'RESPONSE',
-			responsesource: 'basicPingServer',
-			connection: 'Close'
 		});
 
-		// 		res.json({
-		// 			status: `hello from ${config.system.name}/${config.user}${req.path}#${transactionCount}`,
-		// 			headers: req.headers,
-		// 			body: req.body,
-		// 			query: req.query,
-		// 			data: {hello:'goodbye'}
-		// 		});
+		server.on('listening', function() {
+			var address = server.address();
+			var url = 'http://' + (address.address === '::' ?
+				'localhost' : address.address) + ':' + address.port;
 
-		let tmpPage = qtools.fs.readFileSync('code/service/ajaxDemo.html');
-		tmpPage = tmpPage.toString().replace(/<!systemName!>/, `${config.system.name}/${config.user}${req.path}#${transactionCount}`);
+			console.log('done-serve starting on ' + url);
+		});
 
+		return server;
 
-		res.set('Content-Type', 'text/html');
-		res.status('200').send(new Buffer(tmpPage));
-	});
+	}
 
 	let config;
 	//	let basicPingServer;
@@ -112,15 +121,32 @@ var moduleFunction = function() {
 	const startSystem = () => {
 		config = multiIni.read(configPath);
 		config.user = process.env.USER;
+		
+		if (config.system.serveBuildBundle.toLowerCase()=='false'){
+			process.env.NODE_ENV='development'; //global sent to done-ssr
+		}
+		else if (config.system.serveBuildBundle.toLowerCase()=='true'){
+			process.env.NODE_ENV='production'; //global sent to done-ssr
+		}
+		else{
+		
+		var message = "config must contain an entry for serveBuildBundle. It must be either true or false.";
 
-		// 		basicPingServer = new basicPingServerGen({
-		// 			config: config
-		// 		});
+		console.log(message);
+		return (message);
+		}
+
+		var program = {
+
+			path: process.env.sruiProjectPath + 'code/service/sr-careplanner',
+			port: config.system.port
+		}
+
+
+
+		startDonejs(program)
 		qtools.message("Node system start");
 
-	// 		setInterval(()=>{
-	// 			console.log(`Still running...${new Date()}`);
-	// 		}, 3000);
 	};
 
 	// 	const cleanup = () => {
@@ -141,13 +167,14 @@ var moduleFunction = function() {
 	// 	}
 
 	//START SYSTEM =======================================================
+
 	startSystem();
 
 	//START SERVER =======================================================
 
-	app.listen(config.system.port);
-
-	qtools.message('Magic happens on port ' + config.system.port);
+	// 	app.listen(config.system.port);
+	// 
+	// 	qtools.message('Magic happens on port ' + config.system.port);
 
 	return this;
 };

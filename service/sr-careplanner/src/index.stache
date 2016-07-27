@@ -1,0 +1,80 @@
+<html>
+  <head>
+  
+  
+
+    <can-import from="sr-careplanner/blaze.min.css" />
+    <can-import from="sr-careplanner/blaze.animations.min.css" />
+    <can-import from="sr-careplanner/font-awesome/css/font-awesome.css" />
+    <can-import from="sr-careplanner/styles.less!" />
+    <can-import from="sr-careplanner/app" export-as="viewModel" />
+
+    <can-import from="sr-careplanner/decorations/main-header/" />
+    <can-import from="sr-careplanner/decorations/main-footer/" />
+    <can-import from="sr-careplanner/plan-editor/" />
+	<can-import from="sr-careplanner/account/login/" />
+	<can-import from="sr-careplanner/account/register/" />
+	
+    <title>{{title}}</title>
+  </head>
+  <body>
+
+    <div id='workingContainer'>
+
+{{#switch page}}          
+	{{#case "account"}}
+
+	  {{#slug}}
+		{{#switch slug}}
+		  {{#case 'register'}}
+				  <account-register/>
+		  {{/case}}
+		  {{#case 'login'}}
+				  <account-login/>
+		  {{/case}}
+		{{/switch}}
+	  {{else}}
+				  <account-login/>
+	  {{/slug}}
+  
+	{{/case}}
+	   
+	{{#case "editor"}}
+    		<main-header/>
+		  <plan-editor/>
+	{{/case}}
+	   
+	{{#case "setup"}}
+	
+	<can-import from="sr-careplanner/setup/" />
+    		<main-header/>
+		  <setup/>
+	{{/case}}
+	   
+	{{#case "admin"}}
+	<can-import from="sr-careplanner/admin/" />
+    		<main-header/>
+		  <admin/>
+	{{/case}}
+	   
+	{{#case "help"}}
+	<can-import from="sr-careplanner/help/" />
+    		<main-header/>
+		  <help/>
+	{{/case}}
+	
+ {{/switch}}   
+    
+
+    <main-footer></main-footer>
+
+    {{#switch env.NODE_ENV}}
+      {{#case "production"}}
+        <script src="{{joinBase 'node_modules/steal/steal.production.js'}}"  main="sr-careplanner/index.stache!done-autorender"></script>
+      {{/case}}
+      {{#default}}
+        <script src="/node_modules/steal/steal.js"></script>
+      {{/default}}
+    {{/switch}}
+  </body>
+</html>

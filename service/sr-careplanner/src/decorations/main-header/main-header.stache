@@ -1,0 +1,13 @@
+
+<!-- decorations/main-header start -->
+<ul id='mainNav' class='c-nav c-nav--inline'>
+  <li class='c-nav__item' ($click)='setNewPage("editor")'>Plan</a></li>
+  <li class='c-nav__item' ($click)='setNewPage("setup")'>Setup</a></li>
+  <li class='c-nav__item' ($click)='setNewPage("account", "login")'>Logout</a></li>
+  <li class='c-nav__item' ($click)='setNewPage("admin")'>Admin</a></li>
+  <li class='c-nav__item c-nav__item--right' ($click)='logout("help")'>Help</li>
+</ul>
+
+
+
+<!-- decorations/main-header end -->

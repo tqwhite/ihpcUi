@@ -1,0 +1,30 @@
+
+<!-- account/login start -->
+  <div style='width:400px;' class="c-alerts__alert c-alerts__alert--primary c-heading c-heading--medium c-heading--medium--center">
+    {{{message}}}
+  </div>
+  
+<div id='controlsWrapper'>
+	<div style='width:50vh;margin-bottom:20px;'>
+	
+				<div class="c-form-element">
+				<div class="c-field-group">
+					<input class="c-field" placeholder="Book Number">
+					<input class="c-field" placeholder="User Name (your choice)">
+					<input class="c-field" placeholder="Password" type="password">
+					<input class="c-field" placeholder="Email Address">
+					<input class="c-field" placeholder="Email Address Confirm">
+				</div>
+			</div>
+			
+	</div>
+
+	<button class="c-button c-button--primary c-button--small" ($click)='setNewPage("editor")'>Login</button>
+
+	<div>
+	<p/>
+	<button class="c-button c-button--primary c-button--xsmall" ($click)='setNewPage("account", "login")'>Login Instead</button>
+	</div>
+</div>
+<!-- account/login end -->
+
