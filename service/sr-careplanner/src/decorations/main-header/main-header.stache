@@ -8,6 +8,5 @@
   <li class='c-nav__item c-nav__item--right' ($click)='logout("help")'>Help</li>
 </ul>
 
-
-
+*{{../session.get('role'}}*
 <!-- decorations/main-header end -->

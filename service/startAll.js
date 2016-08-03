@@ -1,4 +1,7 @@
 #!/usr/local/bin/node
+
+
+
 'use strict';
 const qtoolsGen = require('qtools');
 const qtools = new qtoolsGen(module);
@@ -62,14 +65,14 @@ var moduleFunction = function() {
 	}))
 	app.use(bodyParser.json())
 
-	app.use((req, res, next) => {
-		if (typeof (transactionCount) == 'undefined') {
-			transactionCount = 0;
-		}
-		transactionCount++;
-		//	console.log("transaction# " + transactionCount + " =======================\n");
-		next();
-	});
+	// app.use((req, res, next) => {
+	// 	if (typeof (transactionCount) == 'undefined') {
+	// 		transactionCount = 0;
+	// 	}
+	// 	transactionCount++;
+	// 	//	console.log("transaction# " + transactionCount + " =======================\n");
+	// 	next();
+	// });
 
 	app.use(compression());
 

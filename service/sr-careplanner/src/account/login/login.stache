@@ -3,26 +3,31 @@
   <div class="c-alerts__alert c-alerts__alert--primary c-heading c-heading--medium c-heading--medium--center">
     <div>{{message}}</div><div class='leftMargin'>{{{emotion}}}</div>
   </div>
-  
-<div id='controlsWrapper'>
-	<div style='width:50vh;margin-bottom:20px;'>
+
+<form ($submit)="createSession(%event)" action="">  
+	<div id='controlsWrapper'>
+
+		<div style='width:50vh;margin-bottom:20px;'>
 	
-				<div class="c-form-element">
-				<div class="c-field-group">
-					<input class="c-field" placeholder="User Name">
-					<input class="c-field" placeholder="Password" type="password">
+					<div class="c-form-element">
+					<div class="c-field-group">
+						<input class="c-field" placeholder="User Name" {($value)}="tmpFormSession.user.username" value='{{testUserName}}'>
+						<input class="c-field" placeholder="Password" type="input" value='{{testPassword}}' {($value)}="tmpFormSession.user.password">
+					</div>
 				</div>
-			</div>
 			
-	</div>
+		</div>
 
-	<button class="c-button c-button--primary c-button--small" ($click)='setNewPage("editor")'>Login</button>
+		<button type='submit' class="c-button c-button--primary c-button--small">Login</button>
 
-	<div>
-	<p/>
-	<button class="c-button c-button--primary c-button--xsmall" ($click)='setNewPage("account", "register")'>Register Instead</button>
-	<button class="c-button c-button--primary c-button--xsmall" ($click)='setNewPage("account", "register")'>Forgot Password/User Name</button>
+		<div>
+			<p/>
+			<button class="c-button c-button--primary c-button--xsmall" ($click)='setNewPage("account", "register")'>Register Instead</button>
+			<button class="c-button c-button--primary c-button--xsmall" ($click)='setNewPage("account", "register")'>Forgot Password/User Name</button>
+		</div>
 	</div>
-</div>
+</form>
 <!-- account/login end -->
 
+
+*{{../session.get('role'}}*
