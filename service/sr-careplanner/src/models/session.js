@@ -1,10 +1,11 @@
 import can from 'can';
 import superMap from 'can-connect/can/super-map/';
 import tag from 'can-connect/can/tag/';
-import 'can/map/define/define';
 
 export const Session = can.Map.extend({
-  define: {},
+  define: {
+  marker:{value:Date.now()}
+  },
     get:function(name){
 	  const user=this.attr('0');
   	if (user){

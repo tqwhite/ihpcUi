@@ -6,5 +6,6 @@
 <div>{{testScopeHelper(mess=message)}}</div>
 <div>{{testHelper '©'}} <span id='tqtest'{{testFunctionHelper 'Sunrise River Press'}} /></div>
 
+  <div style='color:gray;font-size:80%;'>*{{../page}}* *{{../session.get('role')}}*</div>
 <!-- decorations/main-footer end -->
 

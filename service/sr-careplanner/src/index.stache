@@ -11,22 +11,56 @@
 
     <can-import from="sr-careplanner/decorations/main-header/" />
     <can-import from="sr-careplanner/decorations/main-footer/" />
-    <can-import from="sr-careplanner/plan-editor/" />
+    <can-import from="sr-careplanner/user/editor/" />
 	<can-import from="sr-careplanner/account/login/" />
-	<can-import from="sr-careplanner/account/register/" />
 	
     <title>{{title}}</title>
   </head>
   <body>
 
     <div id='workingContainer'>
-
-{{#switch page}}          
-	{{#case "account"}}
-
+    
+{{#if session.get('role')}}
+    		<main-header/>
+	{{#switch page}}      
+		{{#case "admin"}}
+	
+		<can-import from="sr-careplanner/user/admin/" />
+			  <user-admin/>
+		{{/case}}
+	   
+		{{#case "editor"}}
+		<can-import from="sr-careplanner/user/editor/" />
+			  <user-editor/>
+		{{/case}}
+	   
+		{{#case "nurse"}}
+		<can-import from="sr-careplanner/user/nurse/" />
+			  <user-nurse/>
+		{{/case}}
+	   
+		{{#case "setup"}}
+		<can-import from="sr-careplanner/setup/" />
+			  <setup/>
+		{{/case}}
+	   
+		{{#case "help"}}
+		<can-import from="sr-careplanner/help/" />
+			  <help/>
+		{{/case}}
+		
+		{{#default}}
+		<can-import from="sr-careplanner/user/nurse/" />
+			  <user-nurse/>
+		{{/default}}
+		
+	 {{/switch}} 
+ 
+{{else}}
 	  {{#slug}}
 		{{#switch slug}}
 		  {{#case 'register'}}
+			<can-import from="sr-careplanner/account/register/" />
 				  <account-register/>
 		  {{/case}}
 		  {{#case 'login'}}
@@ -36,34 +70,7 @@
 	  {{else}}
 				  <account-login/>
 	  {{/slug}}
-  
-	{{/case}}
-	   
-	{{#case "editor"}}
-    		<main-header/>
-		  <plan-editor/>
-	{{/case}}
-	   
-	{{#case "setup"}}
-	
-	<can-import from="sr-careplanner/setup/" />
-    		<main-header/>
-		  <setup/>
-	{{/case}}
-	   
-	{{#case "admin"}}
-	<can-import from="sr-careplanner/admin/" />
-    		<main-header/>
-		  <admin/>
-	{{/case}}
-	   
-	{{#case "help"}}
-	<can-import from="sr-careplanner/help/" />
-    		<main-header/>
-		  <help/>
-	{{/case}}
-	
- {{/switch}}   
+{{/if}}  
     
 
     <main-footer></main-footer>

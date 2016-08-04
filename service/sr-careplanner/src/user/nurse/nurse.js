@@ -1,21 +1,19 @@
 import Component from 'can/component/';
 import Map from 'can/map/';
-import route from "can/route/";
 import 'can/map/define/';
-import './main-header.less!';
-import template from './main-header.stache!';
+import './nurse.less!';
+import template from './nurse.stache!';
 
 export const ViewModel = Map.extend({
   define: {
     message: {
-      value: 'This is the main-header component'
+      value: 'This is the user-nurse component'
     }
   }
 });
 
-
 export default Component.extend({
-  tag: 'main-header',
+  tag: 'user-nurse',
   viewModel: ViewModel,
   template
 });

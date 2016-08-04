@@ -21,10 +21,10 @@ const testModel=Map.extend({
 export const ViewModel = Map.extend({
   define: {
 	testUserName:{
-		value:'JoanPauly',
+		value:'admin',
 	},
 	testPassword:{
-		value:'JoanPauly',
+		value:'admin',
 	},
 	tmpFormSession: {
 		value: function(){
@@ -55,11 +55,11 @@ export const ViewModel = Map.extend({
 
 		var sessionPromise = this.attr("tmpFormSession").save().then((session)=>{
 
-	//		this.attr("tmpFormSession", new Session({user: new User()})); //comment this to avoid clearing the login inputs
+			this.attr("tmpFormSession", new Session({user: new User()})); //comment this to avoid clearing the login inputs
 			this.attr("%root").attr("session", session);
-			this.attr("%root").setNewPage('editor');
 
 		});
+		this.attr("sessionPromise", sessionPromise);
 		
 
 	}

@@ -1,1 +1,1 @@
-<p>{{message}}</p>
+<h2>Personal account controls and profile for {{../session.get('first'}} {{../session.get('last'}}</h2>

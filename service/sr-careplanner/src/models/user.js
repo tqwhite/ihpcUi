@@ -12,7 +12,7 @@ User.List = can.List.extend({
 }, {});
 
 export const userConnection = superMap({
-  url: '/user',
+  url: '/api/user',
   idProp: '_id',
   Map: User,
   List: User.List,

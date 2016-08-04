@@ -1,5 +1,4 @@
 import Map from "can/map/";
-import route from "can/route/";
 import Session from "sr-careplanner/models/session";
 
 const AppViewModel = Map.extend({
@@ -27,15 +26,16 @@ const AppViewModel = Map.extend({
 		  serialize: false
 		}
 	},
-	  setNewPage:function(page, slug){
-		slug=slug?slug:' ';
-		route.attr({page:page, slug:slug});
+	  setNewPage:function(page, slug, subsection){
+		this.attr('page', page);
+		this.attr('slug', slug);
+		this.attr('subsection', subsection);
+	  },
+	  logout:function(){
+		window.location.href='/';
 	  },
 	});
 
-//can.route() gets the Map that is exported from here as default
-route(':page', { page: 'account' });
-route(':page/:slug', { slug: null });
-route(':page/:slug/:action', { slug: null, action: null });
+
 
 export default AppViewModel;
