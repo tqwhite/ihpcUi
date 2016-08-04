@@ -1,0 +1,12 @@
+<div class='demoList'>
+{{#each users.value}}
+<div>
+{{#if debugDataVersion}}
+	debugDataVersion: {{debugDataVersion}}
+{{/if}}
+
+{{#if first}}
+	{{first}} {{last}} role: {{role}}
+{{/if}}
+</div>
+{{/each}}
