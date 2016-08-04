@@ -50,8 +50,30 @@
 		{{/case}}
 		
 		{{#default}}
+
+
+	{{#switch session.get('role')}}      
+		{{#case "admin"}}
+	
+		<can-import from="sr-careplanner/user/admin/" />
+			  <user-admin/>
+		{{/case}}
+	   
+		{{#case "editor"}}
+		<can-import from="sr-careplanner/user/editor/" />
+			  <user-editor/>
+		{{/case}}
+	   
+		{{#case "nurse"}}
 		<can-import from="sr-careplanner/user/nurse/" />
 			  <user-nurse/>
+		{{/case}}
+	{{/switch}}
+
+
+
+
+
 		{{/default}}
 		
 	 {{/switch}} 
