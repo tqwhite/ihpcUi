@@ -1,8 +1,12 @@
 
-<!-- account/login start -->
-  <div class="c-alerts__alert c-alerts__alert--primary c-heading c-heading--medium c-heading--medium--center">
-    <div>{{message}}</div><div class='leftMargin'>{{{emotion}}}</div>
-  </div>
+
+<div class="c-alerts__alert c-alerts__alert--primary c-heading c-heading--medium c-heading--medium--center">
+	{{#if sessionPromise.isRejected}}
+		{{sessionPromise.reason.responseJSON.message}}
+	{{else}}
+		<div>{{message}}</div><div class='leftMargin'>{{{emotion}}}</div>
+	{{/if}}
+</div>
 
 <form ($submit)="createSession(%event)" action="">  
 	<div id='controlsWrapper'>
@@ -26,8 +30,6 @@
 			<button class="c-button c-button--primary c-button--xsmall" ($click)='setNewPage("account", "register")'>Forgot Password/User Name</button>
 		</div>
 	</div>
-</form>
-<!-- account/login end -->
+</form>							
 
 
-*{{../session.get('role'}}*
