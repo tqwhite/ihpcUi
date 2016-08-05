@@ -111,11 +111,11 @@ var moduleFunction = function() {
 			var url = 'http://' + (address.address === '::' ?
 				'localhost' : address.address) + ':' + address.port;
 
-			console.log('done-serve starting on ' + url);
+			qtools.message(`done-serve starting on ${url} \nat ${new Date().toLocaleDateString('en-US', { hour: '2-digit',minute: '2-digit',second: '2-digit' })} `);
 		});
 
 		return server;
-
+ 
 	}
 
 	let config;
@@ -148,7 +148,6 @@ var moduleFunction = function() {
 
 
 		startDonejs(program)
-		qtools.message("Node system start");
 
 	};
 

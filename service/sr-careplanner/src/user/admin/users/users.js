@@ -15,6 +15,9 @@ export const ViewModel = Map.extend({
 			if (list) {
 				return list;
 			}
+console.log("\n=-=============   users  =========================\n");
+
+
 			return User.getList({});
 		}
 	}

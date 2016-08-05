@@ -34,3 +34,5 @@ import 'sr-careplanner/user/nurse/nurse_test';
 import 'sr-careplanner/user/admin/admin_test';
 
 import 'sr-careplanner/user/admin/users/users_test';
+
+import 'sr-careplanner/account/login/permissionMaster/permissionMaster_test';

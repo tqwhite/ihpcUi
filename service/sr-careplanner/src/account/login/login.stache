@@ -1,11 +1,7 @@
 
 
 <div class="c-alerts__alert c-alerts__alert--primary c-heading c-heading--medium c-heading--medium--center">
-	{{#if sessionPromise.isRejected}}
-		{{sessionPromise.reason.responseJSON.message}}
-	{{else}}
-		<div>{{message}}</div><div class='leftMargin'>{{{emotion}}}</div>
-	{{/if}}
+	<div>{{message}}</div><div class='leftMargin'>{{{emotion}}}</div>
 </div>
 
 <form ($submit)="createSession(%event)" action="">  

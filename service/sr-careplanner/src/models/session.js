@@ -8,6 +8,11 @@ export const Session = can.Map.extend({
   },
     get:function(name){
 	  const user=this.attr('0');
+    if (name=='token'){
+    	return {
+    		role:user?user['role']:'emptyToken'
+    	};
+    }
   	if (user){
   		return user[name];
   	}

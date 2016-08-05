@@ -13,11 +13,12 @@
     <can-import from="sr-careplanner/decorations/main-footer/" />
     <can-import from="sr-careplanner/user/editor/" />
 	<can-import from="sr-careplanner/account/login/" />
+	<can-import from="sr-careplanner/account/login/permissionMaster/" />
 	
     <title>{{title}}</title>
   </head>
   <body>
-
+<account-login-permission-master/>
     <div id='workingContainer'>
     
 {{#if session.get('role')}}
