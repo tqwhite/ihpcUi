@@ -15,19 +15,9 @@ export const ViewModel = Map.extend({
 			if (list) {
 				return list;
 			}
-console.log("\n=-=============   users  =========================\n");
-
-
 			return User.getList({});
 		}
 	}
-  },
-  test:function(){
-  const users=this.attr('users');
-console.dir({"users":users});
-
-
-  	return 'hello';
   }
 });
 
