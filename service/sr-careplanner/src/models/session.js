@@ -4,15 +4,11 @@ import tag from 'can-connect/can/tag/';
 
 export const Session = can.Map.extend({
   define: {
-  marker:{value:Date.now()}
   },
     get:function(name){
 	  const user=this.attr('0');
-    if (name=='token'){
-    	return {
-    		role:user?user['role']:'emptyToken'
-    	};
-    }
+
+
   	if (user){
   		return user[name];
   	}

@@ -7,7 +7,8 @@ const AppViewModel = Map.extend({
   	value:function(){
 				//placeholder for two-way binding to the form in login.stache
 				return new Session({});
-		}
+		},
+  	serialize:false //or, function(val, type){ return f(val); }
   },
   systemCompanyName:{
   	value:'Sunrise River Press',

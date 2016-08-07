@@ -10,10 +10,10 @@ import User from "sr-careplanner/models/user";
 export const ViewModel = Map.extend({
   define: {
 	testUserName:{
-		value:'nurse',
+		value:'admin',
 	},
 	testPassword:{
-		value:'nurse',
+		value:'test', //all are the same for now
 	},
 	tmpFormSession: {
 		value: function(){
@@ -52,7 +52,7 @@ export const ViewModel = Map.extend({
 		}
 
 		var sessionPromise = this.attr("tmpFormSession").save()
-			.then(successFunc /*, errorFunc here prevents stache from getting {{sessionPromise.isRejected}}*/)
+			.then(successFunc /*, errorFunc here prevents stache from getting {{#if sessionPromise.isRejected}}*/)
 			.fail(errorFunc);
 		this.attr("sessionPromise", sessionPromise);
 
