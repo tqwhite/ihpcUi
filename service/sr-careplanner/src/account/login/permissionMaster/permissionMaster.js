@@ -23,7 +23,6 @@ export const ViewModel = Map.extend({
 			};
 			options.data = $.param(payload);
 		});
-		
 		$.ajaxSetup({
 			dataFilter: (data, type, c) => {
 				//strip token from inbound and save
