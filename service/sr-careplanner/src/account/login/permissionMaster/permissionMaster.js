@@ -23,12 +23,14 @@ export const ViewModel = Map.extend({
 			};
 			options.data = $.param(payload);
 		});
+		
 		$.ajaxSetup({
 			dataFilter: (data, type, c) => {
 				//strip token from inbound and save
 				const incoming = JSON.parse(data);
 				this.attr('%root').token = incoming.token;
-				return JSON.stringify(incoming.data);
+				//note: each receiving model reshapes this into a donejs compatible list
+				return JSON.stringify(data);
 			}
 		});
 		return '';

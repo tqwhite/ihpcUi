@@ -35,6 +35,9 @@ const AppViewModel = Map.extend({
 	  logout:function(){
 		window.location.href='/';
 	  },
+	  clearConsole:function(){
+	  	console.clear();
+	  }
 	});
 
 

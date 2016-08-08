@@ -27,7 +27,20 @@ export const sessionConnection = superMap({
   idProp: '_id',
   Map: Session,
   List: Session.List,
-  name: 'session'
+  name: 'session',
+
+	parseListProp: "data",
+	parseListData:function(incomingJson){ 
+		const incoming=JSON.parse(incomingJson);
+		return incoming.data;
+	},
+ 	parseInstanceProp: "data",
+	parseInstanceData:function(inJsonItem){ 
+		const incoming=JSON.parse(inJsonItem);
+		return incoming.data;
+	}
+	
+ 
 });
 
 tag('session-model', sessionConnection);

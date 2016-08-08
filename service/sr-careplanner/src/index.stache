@@ -20,7 +20,6 @@
   <body>
 <account-login-permission-master/>
     <div id='workingContainer'>
-    
 {{#if session.get('role')}}
     		<main-header/>
 	{{#switch page}}      
@@ -105,6 +104,6 @@
       {{#default}}
         <script src="/node_modules/steal/steal.js"></script>
       {{/default}}
-    {{/switch}}
+    {{/switch}} 
   </body>
 </html>
