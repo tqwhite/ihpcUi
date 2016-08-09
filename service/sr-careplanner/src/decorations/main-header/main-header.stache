@@ -2,7 +2,7 @@
 <!-- decorations/main-header start -->
 <ul id='mainNav' class='c-nav c-nav--inline'>
   <li class='c-nav__item' ($click)='setNewPage("nurse")'>Student Health Plans</a></li>
-  <li class='c-nav__item' ($click)='setNewPage("admin")'>Admin</a></li>
+  <li class='c-nav__item' ($click)='setNewPage("admin")'>Illegal for Nurses</a></li>
   
 {{#switch ../session.get('role')}}      
 	{{#case "admin"}}

@@ -1,6 +1,5 @@
 import can from 'can';
 import superMap from 'can-connect/can/super-map/';
-import cacheConnection from 'can-connect/data/memory-cache/';
 import tag from 'can-connect/can/tag/';
 import 'can/map/define/define';
 
@@ -12,15 +11,21 @@ User.List = can.List.extend({
 Map: User
 }, {});
 
+import connect from 'can-connect/';
+import 'can-connect/data/memory-cache/';
 
 export const userConnection = superMap({
+	cacheConnection:connect(["data-memory-cache"],{
+	idProp: '_id',
+	name: 'user-cache'
+  }),
+	
 	url: '/api/user',
 	idProp: '_id',
 	Map: User,
 	List: User.List,
 	name: 'user',
 	
-	cacheConnection: cacheConnection,
 
 	parseListProp: "data",
 	parseListData:function(incomingJson){ 

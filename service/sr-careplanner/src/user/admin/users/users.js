@@ -11,14 +11,8 @@ export const ViewModel = Map.extend({
       value: 'This is the user-admin-users component'
     },
 	users: {
-		get: function(list) {
-			if (list) {
-				return list;
-			}
-			list=User.getList({});
-console.dir({"list":list});
-
-
+		get: function() {
+			const list=User.getList({});
 			return list;
 		}
 	}
