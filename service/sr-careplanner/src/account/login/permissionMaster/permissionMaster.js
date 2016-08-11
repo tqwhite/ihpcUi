@@ -13,7 +13,7 @@ export const ViewModel = Map.extend({
 	initAjaxSessionWrapper:function(){
 		$.ajaxPrefilter((options, originalOptions, jqXHR) => {
 			//retrieve and add token to outbound
-			let token = this.attr('%root').token;
+			let token = this.attr('%root').attr('token');  //pass through from inbound routine below
 			options.data = $.param($.extend(originalOptions.data, {
 				token: token
 			}));
@@ -28,7 +28,9 @@ export const ViewModel = Map.extend({
 			dataFilter: (data, type, c) => {
 				//strip token from inbound and save
 				const incoming = JSON.parse(data);
-				this.attr('%root').token = incoming.token;
+				this.attr('%root').attr('token', incoming.token); //pass through to outbound routine above
+				this.attr('%root').attr('expiration', incoming.token.claims.expiration);
+
 				//note: each receiving model reshapes this into a donejs compatible list
 				return JSON.stringify(data);
 			}
