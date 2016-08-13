@@ -10,7 +10,7 @@ import User from "sr-careplanner/models/user";
 export const ViewModel = Map.extend({
   define: {
 	testUserName:{
-		value:'admin',
+		value:'editor',
 	},
 	testPassword:{
 		value:'test', //all are the same for now
@@ -34,18 +34,15 @@ export const ViewModel = Map.extend({
 			ev.preventDefault();
 		}
 
-		var self = this;
-
 		const tmpFormSession=this.attr("tmpFormSession");
 
-		const successFunc=(session)=>{
+		const successFunc=(result)=>{
 
 			this.attr("tmpFormSession", new Session({user: new User()})); //comment this to avoid clearing the login inputs
-			this.attr("%root").attr("session", session);
+			this.attr("%root").attr("session", result);
 
 		};
 		const errorFunc=(err)=>{
-			//return; //not used here but left as an example, tqii
 			this.attr('message', err.responseText);
 			this.attr('emotion', '<span class="fa fa-frown-o fa-2x errorText"/>');
 			
@@ -54,7 +51,8 @@ export const ViewModel = Map.extend({
 		var sessionPromise = this.attr("tmpFormSession").save()
 			.then(successFunc /*, errorFunc here prevents stache from getting {{#if sessionPromise.isRejected}}*/)
 			.fail(errorFunc);
-		this.attr("sessionPromise", sessionPromise);
+			
+		//this.attr("sessionPromise", sessionPromise); //can't figure out why this was in the example
 
 	}
 });

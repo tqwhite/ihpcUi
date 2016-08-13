@@ -6,6 +6,7 @@ export const Session = can.Map.extend({
   define: {
   },
     get:function(name){
+    	//this is mine, not an auto access system function
 	  const user=this.attr('0');
 
 

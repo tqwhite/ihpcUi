@@ -1,3 +1,4 @@
-<img src='/src/images/editorConditions.png'>
+	<!--{{message}}-->
 	
-	<p>{{message}}</p>
+	<can-import from="../../conditions/" />
+	<conditions>

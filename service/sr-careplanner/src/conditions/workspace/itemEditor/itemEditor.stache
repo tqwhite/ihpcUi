@@ -1,0 +1,31 @@
+<!--{{message}}-->
+  
+
+
+
+<div class='o-panel-container'>
+	<nav class="c-nav c-nav--top c-nav--inline">
+		<span class="c-nav__content">Title</span>
+	  </nav>
+	<textarea class="c-field c-editor o-panel o-panel--nav-top" {($value)}="workingCondition.title">
+	</textarea>
+</div>
+<div class='o-panel-container'>
+	<nav class="c-nav c-nav--top c-nav--inline">
+		<span class="c-nav__content">Short Name (no spaces)</span>
+	  </nav>
+	<textarea class="c-field c-editor o-panel o-panel--nav-top"  {($value)}="workingCondition.shortName">
+	</textarea>
+</div>
+
+
+
+
+
+<form ($submit)="createSession(%event)" action="">
+</form>
+
+<button ($click)='testElement("x")'>test</button>
+
+
+

@@ -17,6 +17,7 @@ export const ViewModel = Map.extend({
 			options.data = $.param($.extend(originalOptions.data, {
 				token: token
 			}));
+
 			const payload = {
 				data: originalOptions.data,
 				token: token
@@ -28,8 +29,10 @@ export const ViewModel = Map.extend({
 			dataFilter: (data, type, c) => {
 				//strip token from inbound and save
 				const incoming = JSON.parse(data);
-				this.attr('%root').attr('token', incoming.token); //pass through to outbound routine above
-				this.attr('%root').attr('expiration', incoming.token.claims.expiration);
+				if (!incoming.token.public){
+					this.attr('%root').attr('token', incoming.token); //pass through to outbound routine above
+					this.attr('%root').attr('expiration', incoming.token.claims.expiration);
+				}
 
 				//note: each receiving model reshapes this into a donejs compatible list
 				return JSON.stringify(data);

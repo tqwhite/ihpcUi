@@ -3,18 +3,19 @@ import superMap from 'can-connect/can/super-map/';
 import tag from 'can-connect/can/tag/';
 import 'can/map/define/define';
 
-export const User = can.Map.extend({
-define: {}
+export const Boilerplate = can.Map.extend({
+  define: {}
 });
 
-User.List = can.List.extend({
-Map: User
+Boilerplate.List = can.List.extend({
+  Map: Boilerplate
 }, {});
 
 import connect from 'can-connect/';
 import 'can-connect/data/memory-cache/';
+console.log("model/boilerplate says: change back to localStorage cache");
 
-export const userConnection = superMap({
+export const boilerplateConnection = superMap({
 	cacheConnection:connect(["data-memory-cache"],{
 	idProp: '_id',
 	name: 'user-cache'
@@ -28,19 +29,16 @@ export const userConnection = superMap({
 	},
  	parseInstanceProp: "data",
 	parseInstanceData:function(inDataItem){ 
-console.dir({"inDataItem":inDataItem});
-
-
 		return inDataItem;
 	},
 	
-	url: '/api/user',
-	idProp: '_id',
-	Map: User,
-	List: User.List,
-	name: 'user'
+  url: '/api/boilerplate',
+  idProp: '_id',
+  Map: Boilerplate,
+  List: Boilerplate.List,
+  name: 'boilerplate'
 });
 
-tag('user-model', userConnection);
+tag('boilerplate-model', boilerplateConnection);
 
-export default User;
+export default Boilerplate;

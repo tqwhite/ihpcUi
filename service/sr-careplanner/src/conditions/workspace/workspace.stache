@@ -1,0 +1,31 @@
+<!--{{message}}-->
+
+	<can-import from="sr-careplanner/conditions/workspace/itemEditor/" />
+
+<ul class="c-list">
+{{#each boilerplate.value}}
+
+
+	{{#if debugDataVersion}}
+	<li class="c-list__item--unstyled conditionListStyle">
+		<span style='font-size:70%;color:gray;'>debugDataVersion: {{debugDataVersion}}</span>
+		</li>
+	{{else}}
+
+
+	<li class="c-list__item--unstyled conditionListStyle" id='{{_id}}' ($click)='selectCondition(%element)'>
+		
+	
+	{{#is _id openConditionId}}
+		<conditions-workspace-item-editor {working-condition}="." />
+	{{else}}
+		<span style='font-weight:bold;' >*{{title}}</span>
+	{{/is}}
+	</li>
+
+
+	{{/if}}
+
+{{/each}}
+
+</ul>

@@ -36,3 +36,15 @@ import 'sr-careplanner/user/admin/admin_test';
 import 'sr-careplanner/user/admin/users/users_test';
 
 import 'sr-careplanner/account/login/permissionMaster/permissionMaster_test';
+
+import 'sr-careplanner/conditions/conditions_test';
+
+import 'sr-careplanner/conditions/controls/controls_test';
+
+import 'sr-careplanner/conditions/workspace/workspace_test';
+
+import 'sr-careplanner/boilerplate/itemEditor/itemEditor_test';
+
+import 'sr-careplanner/conditions/itemEditor/itemEditor_test';
+
+import 'sr-careplanner/conditions/workspace/itemEditor/itemEditor_test';

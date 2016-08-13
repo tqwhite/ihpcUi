@@ -1,29 +1,28 @@
 import Component from 'can/component/';
 import Map from 'can/map/';
 import 'can/map/define/';
-import './users.less!';
-import template from './users.stache!';
-import User from "sr-careplanner/models/user";
+import './conditions.less!';
+import template from './conditions.stache!';
+import Boilerplate from "sr-careplanner/models/boilerplate";
 
 export const ViewModel = Map.extend({
   define: {
     message: {
-      value: 'This is the user-admin-users component'
+      value: 'This is the conditions componentxxx'
     },
-	users: {
+    boilerplate: {
 		get: function() {
-			const list=User.getList({});
-console.dir({"listU":list});
-
-
+			const list=Boilerplate.getList({});
 			return list;
 		}
-	}
   }
+  
+  }
+
 });
 
 export default Component.extend({
-  tag: 'user-admin-users',
+  tag: 'conditions',
   viewModel: ViewModel,
   template
 });

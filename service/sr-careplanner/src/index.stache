@@ -18,6 +18,8 @@
     <title>{{title}}</title>
   </head>
   <body>
+  
+
 <account-login-permission-master/>
     <div id='workingContainer'>
 {{#if session.get('role')}}
