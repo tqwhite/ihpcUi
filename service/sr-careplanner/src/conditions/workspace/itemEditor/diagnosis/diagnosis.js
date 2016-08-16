@@ -1,0 +1,28 @@
+import Component from 'can/component/';
+import Map from 'can/map/';
+import 'can/map/define/';
+import './diagnosis.less!';
+import template from './diagnosis.stache!';
+
+export const ViewModel = Map.extend({
+  define: {
+    message: {
+      value: 'This is the conditions-workspace-item-editor-diagnosis component'
+    }
+  },
+  
+  testElement:function(x){
+
+
+  	console.clear();
+console.dir({"x":x});
+	console.dir({"this.attr()":this.attr()});
+  },
+  
+});
+
+export default Component.extend({
+  tag: 'conditions-workspace-item-editor-diagnosis',
+  viewModel: ViewModel,
+  template
+});

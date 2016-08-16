@@ -1,0 +1,32 @@
+<!--{{message}}-->
+<div  style='border-bottom:3pt solid #ddd;'>
+	<div class='o-panel-container'>
+		<nav class="c-nav c-nav--top c-nav--inline">
+			<span class="c-nav__content">Nursing Diagnosis</span>
+		  </nav>
+		<textarea class="c-field c-editor o-panel o-panel--nav-top" {($value)}="nursingDiagnosis">
+		</textarea>
+	</div>
+	<div class='o-panel-container'>
+		<nav class="c-nav c-nav--top c-nav--inline">
+			<span class="c-nav__content">Goals</span>
+		  </nav>
+		<textarea class="c-field c-editor o-panel o-panel--nav-top"  {($value)}="goals">
+		</textarea>
+	</div>
+	<div class='o-panel-container'>
+		<nav class="c-nav c-nav--top c-nav--inline">
+			<span class="c-nav__content">Interventions</span>
+		  </nav>
+		<textarea class="c-field c-editor o-panel o-panel--nav-top"  {($value)}="interventions">
+		</textarea>
+	</div>
+	<div class='o-panel-container'>
+		<nav class="c-nav c-nav--top c-nav--inline">
+			<span class="c-nav__content">Outcomes</span>
+		  </nav>
+		<textarea class="c-field c-editor o-panel o-panel--nav-top"  {($value)}="outcomes">
+		</textarea>
+	</div>
+<button ($click)='testElement("x")' style='margin-left:50px;'>test diag</button>
+</div>

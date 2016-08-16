@@ -14,8 +14,12 @@ export const ViewModel = Map.extend({
       type:'*'
     }
   },
-  selectCondition:function(element){
-	var id=$(element).attr('id');
+  
+  closeCondition:function(event){
+	event.stopPropagation();
+	this.attr('openConditionId', '');
+  },
+  selectCondition:function(id){
 	this.attr('openConditionId', id);
   }
   

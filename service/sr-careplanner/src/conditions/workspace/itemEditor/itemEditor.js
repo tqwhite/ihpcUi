@@ -12,14 +12,29 @@ export const ViewModel = Map.extend({
     },
   workingCondition:{
   	type:'*'
-  }
+  },
+    openDiagnosisId: {
+      value: '9',
+      type:'*'
+    }
   },
   
+  selectDiagnosis:function(element, inx){
+	var id=$(element).attr('id');
+	this.attr('openDiagnosisId', id); //sets a property that shows the correct diagnosis editor
+  },
+  
+  newDiagnosis:function(){
+	console.log("\n=-=============   newDiagnosis  =========================\n");
+  },
   
   testElement:function(x){
   	console.clear();
+  	
 	console.dir({"this.attr()":this.attr()});
-	
+console.dir({"this.attr('workingCondition').attr('diagnoses').attr(openDiagnosisInx)":this.attr('workingCondition').attr('diagnoses').attr(1)});
+
+
   },
   
 
@@ -28,28 +43,23 @@ export const ViewModel = Map.extend({
 export default Component.extend({
   tag: 'conditions-workspace-item-editor',
   viewModel: ViewModel,
-  
   events:{
+  	'input change':function(){
+  		this.save();
+  	},
   	'textarea change':function(){
-  	
-
-console.dir({"this.viewModel.attr('workingCondition')":this.viewModel.attr('workingCondition')});
-
-new Boilerplate(this.viewModel.attr('workingCondition')).save().then(function(result){
-console.dir({"result":result});
-
-
-
-},
-
-function(err){
-console.dir({"err":err});
-
-
-
-});
-
-
+  		this.save();
+  	},
+  save:function(){
+  		console.clear();
+		new Boilerplate(this.viewModel.attr('workingCondition'))
+		.save()
+		.then(function(result){
+				console.dir({"result":result});
+			},
+			function(err){
+				console.dir({"err":err});
+			});
   	}
   
   },

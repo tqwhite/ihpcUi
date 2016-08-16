@@ -17,6 +17,14 @@ export const ViewModel = Map.extend({
 		}
   }
   
+  },
+  clearConsole:function(){
+  	console.clear();
+  },
+  addEmptyCondition:function(){
+  	
+	window.BOILERPLATE=this.attr('boilerplate');
+
   }
 
 });

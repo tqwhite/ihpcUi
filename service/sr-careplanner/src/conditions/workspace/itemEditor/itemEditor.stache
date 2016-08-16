@@ -1,31 +1,36 @@
 <!--{{message}}-->
+
+	<can-import from="sr-careplanner/conditions/workspace/itemEditor/diagnosis/" />
   
-
-
-
-<div class='o-panel-container'>
-	<nav class="c-nav c-nav--top c-nav--inline">
-		<span class="c-nav__content">Title</span>
-	  </nav>
-	<textarea class="c-field c-editor o-panel o-panel--nav-top" {($value)}="workingCondition.title">
-	</textarea>
-</div>
-<div class='o-panel-container'>
-	<nav class="c-nav c-nav--top c-nav--inline">
-		<span class="c-nav__content">Short Name (no spaces)</span>
-	  </nav>
-	<textarea class="c-field c-editor o-panel o-panel--nav-top"  {($value)}="workingCondition.shortName">
-	</textarea>
+<div>
+<span class='fa fa-caret-down' style='margin-left:-20px;' ($click)='closeCondition(%event)'/>
+<input class="c-field title" placeholder="Condition Title" {($value)}="title">
+<input class="c-field shortTitle" placeholder="Short Title (no spaces)" type="input" {($value)}="shortName">
 </div>
 
+<span class="c-button-group">
+{{#each diagnoses}}
+
+  <button class=" {{^is _id openDiagnosisId}}c-button--ghost{{/is}} c-button--small c-button--primary" id='{{_id}}' ($click)='selectDiagnosis(%element, %index)'>{{goals}}</button>
+
+{{/each}}
+  <button class=" c-button--ghost c-button--small c-button--primary" id='{{_id}}' ($click)='newDiagnosis(%element, %index)'>New ND</button>
+
+</span>
+
+
+{{#each diagnoses}}
+	{{#is _id openDiagnosisId}}
+	<conditions-workspace-item-editor-diagnosis {open-Diagnosis-Id}="_id" {parent-model}='./' />
+	{{/is}}
+
+{{/each}}
 
 
 
 
-<form ($submit)="createSession(%event)" action="">
-</form>
 
-<button ($click)='testElement("x")'>test</button>
+<button ($click)='testElement("x")' style='margin-left:50px;'>test cond</button>
 
 
 

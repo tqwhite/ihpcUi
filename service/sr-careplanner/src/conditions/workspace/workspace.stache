@@ -13,13 +13,13 @@
 	{{else}}
 
 
-	<li class="c-list__item--unstyled conditionListStyle" id='{{_id}}' ($click)='selectCondition(%element)'>
+	<li class="c-list__item--unstyled conditionListStyle" id='{{_id}}' ($click)='selectCondition({_id})'>
 		
 	
 	{{#is _id openConditionId}}
 		<conditions-workspace-item-editor {working-condition}="." />
 	{{else}}
-		<span style='font-weight:bold;' >*{{title}}</span>
+		<span class='fa fa-caret-right' style='font-weight:bold;' >{{title}}</span>
 	{{/is}}
 	</li>
 

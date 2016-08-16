@@ -48,3 +48,5 @@ import 'sr-careplanner/boilerplate/itemEditor/itemEditor_test';
 import 'sr-careplanner/conditions/itemEditor/itemEditor_test';
 
 import 'sr-careplanner/conditions/workspace/itemEditor/itemEditor_test';
+
+import 'sr-careplanner/conditions/workspace/itemEditor/diagnosis/diagnosis_test';
