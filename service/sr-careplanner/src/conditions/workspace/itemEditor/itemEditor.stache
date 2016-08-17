@@ -1,13 +1,20 @@
 <!--{{message}}-->
 
 	<can-import from="sr-careplanner/conditions/workspace/itemEditor/diagnosis/" />
-  
+{{#saveError}}<div class="c-alerts__alert c-alerts__alert--error flexRow">
+<div class="fa fa-frown-o fa-4x errorText"/><div class='errorText'>Sorry, there was a server error. Other edits that you saved
+are safe but you should copy this one to enter again later. It's probably worth logging back in to try again but, if it doesn't work, please copy the following and report it to
+tech support: <p/>{{saveError}}</div></div>{{/saveError}}
 <div>
 <span class='fa fa-caret-down' style='margin-left:-20px;' ($click)='closeCondition(%event)'/>
 <input class="c-field title" placeholder="Condition Title" {($value)}="title">
 <input class="c-field shortTitle" placeholder="Short Title (no spaces)" type="input" {($value)}="shortName">
+<div class="c-alerts__alert c-alerts__alert--success overlay {{#saveNotification}}showOverlay{{else}}hideOverlay{{/saveNotification}}">
+    Saving...
+  </div>
 </div>
 
+<div class='buttonContainer'>
 <span class="c-button-group">
 {{#each diagnoses}}
 
@@ -17,7 +24,9 @@
   <button class=" c-button--ghost c-button--small c-button--primary" id='{{_id}}' ($click)='newDiagnosis(%element, %index)'>New ND</button>
 
 </span>
+<button class=" c-button--ghost c-button--small c-button--primary deleteButton" id='{{_id}}' ($click)='deleteCondition(.)'>Delete</button>
 
+</div>
 
 {{#each diagnoses}}
 	{{#is _id openDiagnosisId}}

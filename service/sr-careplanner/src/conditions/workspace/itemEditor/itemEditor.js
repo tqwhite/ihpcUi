@@ -10,6 +10,18 @@ export const ViewModel = Map.extend({
     message: {
       value: 'This is the conditions-workspace-item-editor component'
     },
+	saveNotification:{
+		value:false,
+  		type:'*'
+	},
+	saveNotificationTimeoutId:{
+		value:false,
+  		type:'*'
+	},
+	saveError:{
+		value:'',
+  		type:'*'
+	},
   workingCondition:{
   	type:'*'
   },
@@ -18,6 +30,33 @@ export const ViewModel = Map.extend({
       type:'*'
     }
   },
+  
+  deleteCondition:function(element){
+		if (! window.confirm('Are you sure?')) {
+			return;
+		}
+		this.attr('workingCondition').destroy();
+  },
+  saveCondition:function(){
+  		this.attr('saveNotification', true);
+  		const prevTimeoutId=this.attr('saveNotificationTimeoutId');
+  		if (prevTimeoutId){
+  			clearTimeout(prevTimeoutId);
+  			this.attr('saveNotificationTimeoutId', '')
+  		}
+		new Boilerplate(this.attr('workingCondition'))
+		.save()
+		.then((result)=>{
+				const timeoutId=setTimeout(()=>{
+  					this.attr('saveNotification', false);
+				}, 2000);
+				this.attr('saveNotificationTimeoutId', timeoutId);
+			},
+			(err)=>{
+			this.attr('saveError', JSON.stringify(err))
+				console.dir({"err":err});
+			});
+  	},
   
   selectDiagnosis:function(element, inx){
 	var id=$(element).attr('id');
@@ -30,11 +69,8 @@ export const ViewModel = Map.extend({
   
   testElement:function(x){
   	console.clear();
-  	
-	console.dir({"this.attr()":this.attr()});
-console.dir({"this.attr('workingCondition').attr('diagnoses').attr(openDiagnosisInx)":this.attr('workingCondition').attr('diagnoses').attr(1)});
-
-
+	console.dir({"conditions-workspace-item-editor component.attr()":this.attr()});
+	//this.attr('workingCondition').attr('diagnoses').attr(inx)
   },
   
 
@@ -45,21 +81,10 @@ export default Component.extend({
   viewModel: ViewModel,
   events:{
   	'input change':function(){
-  		this.save();
+  		this.viewModel.saveCondition();
   	},
   	'textarea change':function(){
-  		this.save();
-  	},
-  save:function(){
-  		console.clear();
-		new Boilerplate(this.viewModel.attr('workingCondition'))
-		.save()
-		.then(function(result){
-				console.dir({"result":result});
-			},
-			function(err){
-				console.dir({"err":err});
-			});
+  		this.viewModel.saveCondition();
   	}
   
   },
