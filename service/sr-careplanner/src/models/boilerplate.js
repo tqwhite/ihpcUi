@@ -28,7 +28,11 @@ export const boilerplateConnection = superMap({
 		return incoming.data;
 	},
  	parseInstanceProp: "data",
-	parseInstanceData:function(inDataItem){ 
+	parseInstanceData:function(inDataItem){
+	
+	if (typeof(inDataItem)=='string'){
+		inDataItem=JSON.parse(inDataItem).data[0];
+	}
 		return inDataItem;
 	},
 	

@@ -13,9 +13,6 @@ export const ViewModel = Map.extend({
 	users: {
 		get: function() {
 			const list=User.getList({});
-console.dir({"listU":list});
-
-
 			return list;
 		}
 	}

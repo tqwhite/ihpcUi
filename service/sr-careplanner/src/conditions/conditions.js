@@ -21,10 +21,15 @@ export const ViewModel = Map.extend({
   clearConsole:function(){
   	console.clear();
   },
-  addEmptyCondition:function(){
-  	
-	window.BOILERPLATE=this.attr('boilerplate');
+  
+  reinitializeDb:function(){
+	 $.ajax({
+		url:'/api/boilerplate/reinitialize/'
+	 }).done((err, result)=>{
+		this.attr('%root').setNewPage('nurse');
+		this.attr('%root').setNewPage('editor');
 
+	 });
   }
 
 });

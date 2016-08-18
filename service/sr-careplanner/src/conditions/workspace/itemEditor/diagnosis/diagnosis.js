@@ -12,11 +12,8 @@ export const ViewModel = Map.extend({
   },
   
   testElement:function(x){
-
-
   	console.clear();
-console.dir({"x":x});
-	console.dir({"this.attr()":this.attr()});
+	console.dir({"conditions-workspace-item-editor-diagnosis component.attr()":this.attr()});
   },
   
 });

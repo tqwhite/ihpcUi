@@ -2,6 +2,5 @@
 
 <div class='c-heading c-heading--large'>Click on title below to edit a condition.</div>
 
-  <button class=" {{^is _id openDiagnosisId}}c-button--ghost{{/is}} c-button--small c-button--primary" id='{{_id}}' ($click)='addEmptyCondition()'>New Condition</button>
 
 <button ($click)='clearConsole("x")' style='margin-left:50px;'>clearConsole (controls)</button>

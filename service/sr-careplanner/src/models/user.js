@@ -28,9 +28,6 @@ export const userConnection = superMap({
 	},
  	parseInstanceProp: "data",
 	parseInstanceData:function(inDataItem){ 
-console.dir({"inDataItem":inDataItem});
-
-
 		return inDataItem;
 	},
 	

@@ -22,8 +22,10 @@ export const ViewModel = Map.extend({
 		value:'',
   		type:'*'
 	},
+	tmp:{
+  		type:'*'
+	},
   workingCondition:{
-  	type:'*'
   },
     openDiagnosisId: {
       value: '9',

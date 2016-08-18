@@ -6,33 +6,34 @@
 are safe but you should copy this one to enter again later. It's probably worth logging back in to try again but, if it doesn't work, please copy the following and report it to
 tech support: <p/>{{saveError}}</div></div>{{/saveError}}
 <div>
+
+
 <span class='fa fa-caret-down' style='margin-left:-20px;' ($click)='closeCondition(%event)'/>
 <input class="c-field title" placeholder="Condition Title" {($value)}="title">
+{{#_id}}
 <input class="c-field shortTitle" placeholder="Short Title (no spaces)" type="input" {($value)}="shortName">
+{{/_id}}
 <div class="c-alerts__alert c-alerts__alert--success overlay {{#saveNotification}}showOverlay{{else}}hideOverlay{{/saveNotification}}">
     Saving...
   </div>
 </div>
 
+{{#_id}}
 <div class='buttonContainer'>
-<span class="c-button-group">
-{{#each diagnoses}}
-
-  <button class=" {{^is _id openDiagnosisId}}c-button--ghost{{/is}} c-button--small c-button--primary" id='{{_id}}' ($click)='selectDiagnosis(%element, %index)'>{{goals}}</button>
-
-{{/each}}
-  <button class=" c-button--ghost c-button--small c-button--primary" id='{{_id}}' ($click)='newDiagnosis(%element, %index)'>New ND</button>
-
-</span>
-<button class=" c-button--ghost c-button--small c-button--primary deleteButton" id='{{_id}}' ($click)='deleteCondition(.)'>Delete</button>
-
+	<span class="c-button-group">
+		{{#each diagnoses}}
+			<button class=" {{^is _id openDiagnosisId}}c-button--ghost{{/is}} c-button--small c-button--primary" id='{{_id}}' ($click)='selectDiagnosis(%element, %index)'>{{shortName}}</button>
+		{{/each}}
+	<button class=" c-button--ghost c-button--small c-button--primary" id='{{_id}}' ($click)='newDiagnosis(%element, %index)'>New ND</button>
+	</span>
+	<button class=" c-button--ghost c-button--small c-button--primary deleteButton" id='{{_id}}' ($click)='deleteCondition(.)'>Delete</button>
 </div>
+{{/_id}}
 
 {{#each diagnoses}}
 	{{#is _id openDiagnosisId}}
-	<conditions-workspace-item-editor-diagnosis {open-Diagnosis-Id}="_id" {parent-model}='./' />
+		<conditions-workspace-item-editor-diagnosis {open-Diagnosis-Id}="_id" {parent-model}='./' />
 	{{/is}}
-
 {{/each}}
 
 

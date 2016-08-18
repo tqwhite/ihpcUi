@@ -5,6 +5,7 @@
 
 	<div class='controlsContainer'>
 	
+<button ($click)='reinitializeDb("x")' style='margin-left:50px;'>reinitialize db</button>
 	<conditions-controls>
 
 	</div>
