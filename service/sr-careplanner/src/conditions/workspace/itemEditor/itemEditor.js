@@ -4,6 +4,7 @@ import 'can/map/define/';
 import './itemEditor.less!';
 import template from './itemEditor.stache!';
 import Boilerplate from "sr-careplanner/models/boilerplate";
+import qtools from "node_modules/qtools-minus/";
 
 export const ViewModel = Map.extend({
   define: {
@@ -39,6 +40,16 @@ export const ViewModel = Map.extend({
 		}
 		this.attr('workingCondition').destroy();
   },
+  
+  deleteDiagnosis:function(element){
+// 		if (! window.confirm('Are you sure?')) {
+// 			return;
+// 		}
+		var tmp=this.attr('workingCondition').attr('diagnoses');
+		tmp[element].attr('refId', '');
+		tmp.removeAttr(element);
+		this.saveCondition();
+  },
   saveCondition:function(){
   		this.attr('saveNotification', true);
   		const prevTimeoutId=this.attr('saveNotificationTimeoutId');
@@ -71,7 +82,19 @@ export const ViewModel = Map.extend({
   },
   
   newDiagnosis:function(){
-	console.log("\n=-=============   newDiagnosis  =========================\n");
+  const refId=qtools.newGuid();
+	this.attr('workingCondition').attr('diagnoses').push(
+				{
+					refId:refId,
+					nursingDiagnosis:"",
+					goals:"",
+					interventions:"",
+					outcomes:"",
+					shortName:"new"
+				});
+	this.attr('openDiagnosisId', refId);
+
+
   },
   
   testElement:function(x){

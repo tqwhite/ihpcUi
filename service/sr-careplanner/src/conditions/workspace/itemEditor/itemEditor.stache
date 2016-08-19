@@ -23,7 +23,9 @@ tech support: <p/>{{saveError}}</div></div>{{/saveError}}
 <div class='buttonContainer'>
 	<span class="c-button-group">
 		{{#each diagnoses}}
+		{{#refId}}
 			<button class=" {{^is refId openDiagnosisId}}c-button--ghost{{/is}} c-button--small c-button--primary" id='{{refId}}' ($click)='selectDiagnosis(%element, %index)'>{{shortName}}</button>
+		{{/refId}}
 		{{/each}}
 	<button class=" c-button--ghost c-button--small c-button--primary" id='{{refId}}' ($click)='newDiagnosis(%element, %index)'>New ND</button>
 	</span>
@@ -33,7 +35,7 @@ tech support: <p/>{{saveError}}</div></div>{{/saveError}}
 
 {{#each diagnoses}}
 	{{#is refId openDiagnosisId}}
-		<conditions-workspace-item-editor-diagnosis {open-Diagnosis-Id}="refId" {parent-model}='./' />
+		<conditions-workspace-item-editor-diagnosis {open-Diagnosis-Id}="refId" {working-diagnosis}='.' />
 	{{/is}}
 {{/each}}
 

@@ -1,6 +1,8 @@
 <!--{{message}}-->
 
-<div class='c-heading c-heading--large'>Click on title below to edit a condition.</div>
+<div class='c-heading c-heading--small'>Click on title below to edit a condition.</div>
 
 
-<button ($click)='clearConsole("x")' style='margin-left:50px;'>clearConsole (controls)</button>
+	
+<button ($click)='reinitializeDb("x")' style='margin-left:50px;'>reinitialize db</button>
+<button ($click)='clearConsole()' style='margin-left:50px;'>clearConsole (controls)</button>

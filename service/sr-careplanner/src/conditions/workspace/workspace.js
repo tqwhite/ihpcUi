@@ -35,19 +35,6 @@ export const ViewModel = Map.extend({
   	}
     }
   },
-    finishNewCondition:{
-    	value:function(newId){
-
-  	console.clear();
-console.log("newId="+newId);
-
-
-	console.dir({"finishNewCondition.conditions-workspace.attr()":this.attr()});
-
-return {a:'a'}
-    	}
-    
-    },
   
   closeCondition:function(event){
 	event.stopPropagation();
