@@ -10,7 +10,8 @@
 	
 	{{#newConditionFlag}}
 		{{#newCondition}}
-			<conditions-workspace-item-editor {working-condition}="newCondition" />
+
+			<conditions-workspace-item-editor {working-condition}="newCondition" {(new-condition-flag)}="newConditionFlag" {(open-condition-id)}="openConditionId" />
 		{{/newCondition}}
 	{{/newConditionFlag}}
 	
@@ -25,13 +26,13 @@
 	{{else}}
 
 
-	<li class="c-list__item--unstyled conditionListStyle" id='{{_id}}' ($click)='selectCondition({_id})'>
+	<li class="c-list__item--unstyled conditionListStyle" id='{{refId}}' ($click)='selectCondition({refId})'>
 		
 	
-	{{#is _id openConditionId}}
+	{{#is refId openConditionId}}
 		<conditions-workspace-item-editor {working-condition}="." />
 	{{else}}
-		<span class='fa fa-caret-right' style='font-weight:bold;' >{{title}} <span style='font-size:70%;color:gray;'>ID={{_id}}</span></span>
+		<span class='fa fa-caret-right' style='font-weight:bold;' >{{title}}</span>
 	{{/is}}
 	</li>
 

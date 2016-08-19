@@ -1,5 +1,13 @@
 <!--{{message}}-->
 <div  style='border-bottom:3pt solid #ddd;'>
+<div class="c-form-element">
+  <span class="c-label">Short Name </span>
+<input class="c-field shortTitle" placeholder="(spaces allowed)" type="input" {($value)}="shortName">
+<input class="c-field title" type='text' {($value)}="refId">
+</div>
+
+
+
 	<div class='o-panel-container'>
 		<nav class="c-nav c-nav--top c-nav--inline">
 			<span class="c-nav__content">Nursing Diagnosis</span>

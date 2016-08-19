@@ -1,5 +1,6 @@
 import Map from "can/map/";
 import Session from "sr-careplanner/models/session";
+import qtools from "node_modules/qtools-minus/"; //I do not understand why I have to put node_modules here but not on can/map
 
 const AppViewModel = Map.extend({
 	define: {
@@ -51,6 +52,9 @@ const AppViewModel = Map.extend({
 		expiration:{
 			value: '',
 			serialize:false
+		},
+		newGuid:{
+		
 		}
 	},
 	setNewPage: function(page, slug, subsection) {

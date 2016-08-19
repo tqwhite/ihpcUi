@@ -3,6 +3,7 @@ import Map from 'can/map/';
 import 'can/map/define/';
 import './workspace.less!';
 import template from './workspace.stache!';
+import qtools from "node_modules/qtools-minus/";
 
 export const ViewModel = Map.extend({
   define: {
@@ -10,16 +11,23 @@ export const ViewModel = Map.extend({
       value: 'This is the conditions-workspace component'
     },
     openConditionId: {
-      value: '9',
-      type:'*'
+      value: '',
+      type:'string',
+      set:function(value){   
+		return value;
+      }
     },
     newConditionFlag: {
       value: false,
-      type:'boolean'
+      type:'boolean',
+      set:function(value){
+		return value;
+      }
     },
     newCondition: {
     value:function(){
     return {
+    	refId:qtools.newGuid(),
   		title:'test',
   		shortName:'ND1',
   		diagnoses:[]
@@ -27,6 +35,19 @@ export const ViewModel = Map.extend({
   	}
     }
   },
+    finishNewCondition:{
+    	value:function(newId){
+
+  	console.clear();
+console.log("newId="+newId);
+
+
+	console.dir({"finishNewCondition.conditions-workspace.attr()":this.attr()});
+
+return {a:'a'}
+    	}
+    
+    },
   
   closeCondition:function(event){
 	event.stopPropagation();
