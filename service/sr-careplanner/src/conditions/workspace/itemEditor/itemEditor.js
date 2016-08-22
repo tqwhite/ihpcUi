@@ -90,7 +90,7 @@ export const ViewModel = Map.extend({
 					goals:"",
 					interventions:"",
 					outcomes:"",
-					shortName:"new"
+					shortName:""
 				});
 	this.attr('openDiagnosisId', refId);
 

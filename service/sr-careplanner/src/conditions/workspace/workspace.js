@@ -28,8 +28,8 @@ export const ViewModel = Map.extend({
     value:function(){
     return {
     	refId:qtools.newGuid(),
-  		title:'test',
-  		shortName:'ND1',
+  		title:'',
+  		shortName:'',
   		diagnoses:[]
   	}
   	}
