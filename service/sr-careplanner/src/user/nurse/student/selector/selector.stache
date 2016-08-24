@@ -1,0 +1,24 @@
+<!--{{message}}-->
+
+
+{{#showSelector}}
+
+
+<ul id='studentSelector' class="c-menu c-menu--high a-menu">
+  {{#each students.value}}
+    <li class="c-menu__item a-menu--slow" ($click)='chooseStudent(%index, .)'>{{last}}, {{first}}</li>
+{{/each}}
+</ul>
+
+{{else}}
+
+<button class="c-button c-button--ghost c-button--medium" ($click)='displaySelector(true)'>
+	{{#workingStudent.first}}
+		{{workingStudent.first}} {{workingStudent.last}}
+	{{else}}
+		Select Student 
+	{{/workingStudent.first}}
+</button>
+{{/showSelector}}
+
+<div><button ($click)='testElement("x")' style='margin-left:50px;'>test selector</button></div>

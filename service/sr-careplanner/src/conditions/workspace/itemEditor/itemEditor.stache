@@ -8,7 +8,7 @@ tech support: <p/>{{saveError}}</div></div>{{/saveError}}
 <div>
 
 
-<span class='fa fa-caret-down' style='margin-left:-20px;' ($click)='closeCondition(%event)'/>
+<span class='fa fa-caret-down closeSpot' ($click)='closeCondition(%event)'/>
 <input class="c-field title" placeholder="Condition Title" {($value)}="title">
 <input class="c-field title" type='hidden' {($value)}="refId">
 {{#refId}}

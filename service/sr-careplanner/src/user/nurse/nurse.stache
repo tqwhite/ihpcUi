@@ -1,5 +1,27 @@
-<p>{{message}}</p>
+<!--{{message}}-->
 
-	<img src='/src/images/studentCollapsed.png'><br/>
+	<can-import from="sr-careplanner/user/nurse/student/summary/" />
+	<can-import from="sr-careplanner/user/nurse/student/editor/" />
+	<can-import from="sr-careplanner/user/nurse/student/selector/" />
+	<can-import from="sr-careplanner/user/nurse/plan/editor/" />
+<div class='controls'>
+<div class='studentSelector'><user-nurse-student-selector parent-vm='{.}' /></div>
+</div>
 
-	<img src='/src/images/planConditions.png'>
+
+{{#showStudentEditor}}
+<user-nurse-student-editor parent-vm='{.}' />
+{{/showStudentEditor}}
+
+{{^showStudentEditor}}
+<user-nurse-student-summary parent-vm='{.}' />
+{{/showStudentEditor}}
+
+
+<user-nurse-plan-editor />
+
+
+
+
+
+<button ($click)='testElement("x")' style='margin-left:50px;'>test nurse</button>

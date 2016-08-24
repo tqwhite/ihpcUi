@@ -50,3 +50,13 @@ import 'sr-careplanner/conditions/itemEditor/itemEditor_test';
 import 'sr-careplanner/conditions/workspace/itemEditor/itemEditor_test';
 
 import 'sr-careplanner/conditions/workspace/itemEditor/diagnosis/diagnosis_test';
+
+import 'sr-careplanner/nurse/student/summary/summary_test';
+
+import 'sr-careplanner/user/nurse/student/summary/summary_test';
+
+import 'sr-careplanner/user/nurse/student/editor/editor_test';
+
+import 'sr-careplanner/user/nurse/plan/editor/editor_test';
+
+import 'sr-careplanner/user/nurse/student/selector/selector_test';

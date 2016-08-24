@@ -1,0 +1,33 @@
+<!--{{message}}-->
+<div class='container'>
+<div class='fa fa-caret-down closeSpot' style='margin-left:-20px;' ($click)='showSummary(%event)'/>
+<div class='segment'>
+<div class='title'>
+Student Info
+</div>
+<div class='entry'>
+{{../workingStudent.first}} {{../workingStudent.last}}
+</div>
+</div>
+<hr/>
+
+<div class='segment'>
+<div class='title'>
+Health Info
+</div>
+<div class='entry'>
+{{../workingStudent.first}} {{../workingStudent.last}}
+</div>
+</div>
+<hr/>
+
+<div class='segment'>
+<div class='title'>
+Parent/Guardians
+</div>
+<div class='entry'>
+{{../workingStudent.first}} {{../workingStudent.last}}
+</div>
+</div>
+
+</div>

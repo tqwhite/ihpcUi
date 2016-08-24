@@ -1,0 +1,9 @@
+{{message}}
+<div class='container'>
+<div class='fa fa-caret-down closeSpot' ($click)='hideSummary(%event)'/>
+
+<span class='name'>
+{{../workingStudent.first}} {{../workingStudent.last}}
+</span>
+
+</div>
