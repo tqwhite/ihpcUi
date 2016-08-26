@@ -1,24 +1,32 @@
 <!--{{message}}-->
 
-
 {{#showSelector}}
 
+	<ul id='studentSelector' class="c-menu c-menu--high a-menu">
 
-<ul id='studentSelector' class="c-menu c-menu--high a-menu">
-  {{#each students.value}}
-    <li class="c-menu__item a-menu--slow" ($click)='chooseStudent(%index, .)'>{{last}}, {{first}}</li>
-{{/each}}
-</ul>
+		{{#each students.value}}
 
-{{else}}
+			{{#debugDataVersion}}
+				<li class="c-menu__item a-menu--slow" style='font-size:70%;color:gray;'>debugDataVersion: {{debugDataVersion}}</li>
+			{{/debugDataVersion}}
 
-<button class="c-button c-button--ghost c-button--medium" ($click)='displaySelector(true)'>
-	{{#workingStudent.first}}
-		{{workingStudent.first}} {{workingStudent.last}}
-	{{else}}
-		Select Student 
-	{{/workingStudent.first}}
-</button>
+				<li class="c-menu__item a-menu--slow" ($click)='chooseStudent(%index, .)'>{{last}}, {{first}}</li>
+
+		{{/each}}
+		
+				<li class="c-menu__item a-menu--slow" ($click)='createNewStudent(%index, ../)'>New Student</li>
+
+
+	</ul>
+
 {{/showSelector}}
 
-<div><button ($click)='testElement("x")' style='margin-left:50px;'>test selector</button></div>
+{{^showSelector}}
+	<button class="c-button c-button--ghost c-button--medium" ($click)='displaySelector(true)'>
+		{{#../workingStudent}}
+			{{first}} {{last}}
+		{{else}}
+			Select Student 
+		{{/../workingStudent}}
+	</button>
+{{/showSelector}}

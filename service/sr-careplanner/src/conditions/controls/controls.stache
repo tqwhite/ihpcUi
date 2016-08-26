@@ -6,4 +6,4 @@ Entered info saved when changed after tab or click.</div>
 
 	
 <button ($click)='reinitializeDb("x")' style='margin-left:50px;'>reinitialize db</button>
-<button ($click)='clearConsole()' style='margin-left:50px;'>clearConsole (controls)</button>
+<button ($click)='clearConsole()' style='margin-left:50px;'>clearConsole</button>

@@ -64,11 +64,7 @@ export const ViewModel = Map.extend({
   					this.attr('saveNotification', false);
 				}, 2000);
 				this.attr('saveNotificationTimeoutId', timeoutId);
-				if (this.attr('newConditionFlag')){
-					var id=result.attr('refId');
-					this.attr('openConditionId', id);
-					this.attr('newConditionFlag', false); //when this was before set id, set id did not get back to the parent vm. bug.
-				}
+				if (this.attr('newConditionFlag')){}
 			},
 			(err)=>{
 			this.attr('saveError', JSON.stringify(err))

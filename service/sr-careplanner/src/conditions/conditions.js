@@ -26,8 +26,8 @@ export const ViewModel = Map.extend({
 	 $.ajax({
 		url:'/api/boilerplate/reinitialize/'
 	 }).done((err, result)=>{
-		this.attr('%root').setNewPage('nurse');
-		this.attr('%root').setNewPage('editor');
+		this.attr('%root').setNewPage('xxx');
+		this.attr('%root').setNewPage('editor'); //trigger reload
 
 	 });
   }

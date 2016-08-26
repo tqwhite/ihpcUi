@@ -1,0 +1,4 @@
+<div class="c-alerts__alert c-alerts__alert--error flexRow">
+<div class="fa fa-frown-o fa-4x errorText"/><div class='errorText'>Sorry, there was a server error. Other edits that you saved
+are safe but you should copy this one to enter again later. It's probably worth logging back in to try again but, if it doesn't work, please copy the following and report it to
+tech support: <p/>{{saveError}}</div></div>

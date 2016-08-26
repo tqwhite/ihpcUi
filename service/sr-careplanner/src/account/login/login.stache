@@ -28,4 +28,5 @@
 	</div>
 </form>							
 
+<button ($click)='clearConsole()' style='margin-left:50px;'>clearConsole</button>
 

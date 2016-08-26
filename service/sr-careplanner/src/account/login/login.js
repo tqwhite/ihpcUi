@@ -10,7 +10,7 @@ import User from "sr-careplanner/models/user";
 export const ViewModel = Map.extend({
   define: {
 	testUserName:{
-		value:'nurse',
+		value:'admin',
 	},
 	testPassword:{
 		value:'test', //all are the same for now
@@ -37,7 +37,7 @@ export const ViewModel = Map.extend({
 		const tmpFormSession=this.attr("tmpFormSession");
 
 		const successFunc=(result)=>{
-
+console.clear();
 			this.attr("tmpFormSession", new Session({user: new User()})); //comment this to avoid clearing the login inputs
 			this.attr("%root").attr("session", result);
 

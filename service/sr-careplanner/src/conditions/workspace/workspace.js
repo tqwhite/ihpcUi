@@ -50,24 +50,6 @@ export const ViewModel = Map.extend({
   addEmptyCondition:function(){
   	
   	this.attr('newConditionFlag', true);
-  	
-//   	const newCond=new can.Map({
-//   		title:'',
-//   		shortName:'ND1',
-//   		diagnoses:[
-//   			{
-//   				nursingDiagnosis:'',
-//   				goals:'',
-//   				interventions:'',
-//   				outcomes:''
-//   			}
-//   		]
-//   	});
-//   	
-// console.dir({"newCond":newCond});
-// 
-// 
-//   	this.attr('newCondition', newCond);
 
   },
   

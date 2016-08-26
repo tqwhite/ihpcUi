@@ -60,3 +60,5 @@ import 'sr-careplanner/user/nurse/student/editor/editor_test';
 import 'sr-careplanner/user/nurse/plan/editor/editor_test';
 
 import 'sr-careplanner/user/nurse/student/selector/selector_test';
+
+import 'sr-careplanner/decorations/server-error/server-error_test';

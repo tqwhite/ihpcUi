@@ -1,33 +1,57 @@
 <!--{{message}}-->
+
+{{#saveError}}
+<can-import from="sr-careplanner/decorations/server-error/" />
+<decorations-server-error />
+{{/saveError}}
+
 <div class='container'>
+
+<div class="c-toast c-toast--success overlay {{#saveNotification}}showOverlay{{else}}hideOverlay{{/saveNotification}}">
+    Saving...
+  </div>
+  
 <div class='fa fa-caret-down closeSpot' style='margin-left:-20px;' ($click)='showSummary(%event)'/>
-<div class='segment'>
-<div class='title'>
-Student Info
-</div>
-<div class='entry'>
-{{../workingStudent.first}} {{../workingStudent.last}}
-</div>
-</div>
-<hr/>
 
-<div class='segment'>
-<div class='title'>
-Health Info
-</div>
-<div class='entry'>
-{{../workingStudent.first}} {{../workingStudent.last}}
-</div>
-</div>
-<hr/>
 
-<div class='segment'>
-<div class='title'>
-Parent/Guardians
-</div>
-<div class='entry'>
-{{../workingStudent.first}} {{../workingStudent.last}}
-</div>
-</div>
+			<div class='segment'>
+			<div class='title'>
+			Student Info
+			</div>
+			<div class='entry'>
 
+			<input style='width:50%;' class="c-field title" placeholder="First Name" {($value)}="first"><br/>
+
+			<input style='width:50%;' class="c-field title" placeholder="Last Name" {($value)}="last">
+
+
+  
+			</div>
+			</div>
+			<hr/>
+
+			<div class='segment'>
+			<div class='title'>
+			Health Info
+			</div>
+			<div class='entry'>
+			{{first}} {{last}}
+			</div>
+			</div>
+			<hr/>
+
+			<div class='segment'>
+			<div class='title'>
+			Parent/Guardians
+			</div>
+			<div class='entry'>
+			{{first}} {{last}}
+			</div>
+			</div>
+
+
+{{^../openStudentRefId}}
+(no student selected)
+{{/../openStudentRefId}}
+<button ($click)='testElement("x")' style='margin-left:50px;'>test student editor</button>
 </div>
