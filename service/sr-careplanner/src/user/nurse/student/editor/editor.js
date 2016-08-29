@@ -30,7 +30,7 @@ export const ViewModel = Map.extend({
 		},
 	},
 	saveObject: function() {
-		
+
 		this.attr('saveNotification', true);
 		const prevTimeoutId = this.attr('saveNotificationTimeoutId');
 		if (prevTimeoutId) {
@@ -60,9 +60,11 @@ export const ViewModel = Map.extend({
 				}, 2000);
 				
 				this.attr('saveNotificationTimeoutId', timeoutId);
-				this.attr('parentVm').attr('newStudentFlag', false);
+		//		this.attr('parentVm').attr('newStudentFlag', false);
 				this.attr('parentVm').attr('openStudentRefId', student.attr('refId'));
-
+				this.attr('parentVm').attr('openStudentNameString', student.attr('last')+', '+student.attr('first'));
+				this.attr('student', student);
+				this.attr('annotation', '');
 			},
 				(err) => {
 					this.attr('saveError', JSON.stringify(err))

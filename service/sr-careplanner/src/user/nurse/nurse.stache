@@ -29,7 +29,13 @@
 
 	
 		{{^showStudentEditor}}
-			<user-nurse-student-summary student='{.}' />
+				{{#if students.isResolved}}
+					{{#each students.value}}
+						{{#eq openStudentRefId refId}}
+							<user-nurse-student-summary student='{.}' />
+						{{/eq}}
+					{{/each}}
+				{{/if}}
 		{{/showStudentEditor}}
 
 

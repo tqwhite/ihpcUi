@@ -23,10 +23,10 @@
 
 {{^showSelector}}
 	<button class="c-button c-button--ghost c-button--medium" ($click)='displaySelector(true)'>
-		{{#../workingStudent}}
-			{{first}} {{last}}
+		{{#../openStudentNameString}}
+			{{openStudentNameString}}
 		{{else}}
 			Select Student 
-		{{/../workingStudent}}
+		{{/../openStudentNameString}}
 	</button>
 {{/showSelector}}

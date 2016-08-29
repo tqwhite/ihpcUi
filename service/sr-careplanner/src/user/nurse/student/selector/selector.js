@@ -16,9 +16,10 @@ export const ViewModel = Map.extend({
 	displaySelector: function(control) {
 		this.attr('showSelector', control);
 	},
-	chooseStudent: function(inx, element) {
+	chooseStudent: function(inx, student) {
 		this.attr('parentVm').attr('newStudentFlag', false);
-		this.attr('parentVm').attr('openStudentRefId', element.attr('refId'));
+		this.attr('parentVm').attr('openStudentRefId', student.attr('refId'));
+		this.attr('parentVm').attr('openStudentNameString', student.attr('last')+', '+student.attr('first'));
 	},
 
 });

@@ -30,16 +30,14 @@ export const ViewModel = Map.extend({
 				return value;
 			}
 		},
-		newStudent: {
-			value: function() {
-				return {
-					refId: qtools.newGuid(),
-					first: '',
-					last: ''
-				}
-			}
-		},
 		openStudentRefId: {
+			value: '',
+			type: 'string',
+			set: function(value) {
+				return value;
+		}
+		},
+		openStudentNameString: {
 			value: '',
 			type: 'string',
 			set: function(value) {
@@ -49,8 +47,6 @@ export const ViewModel = Map.extend({
 	},
 
 	createNewStudent: function() {
-
-	
 		this.attr('showStudentEditor', true);
 		this.attr('newStudentFlag', true);
 
@@ -58,6 +54,7 @@ export const ViewModel = Map.extend({
 
 	showSummary: function() {
 		this.attr('showStudentEditor', false);
+		this.attr('newStudentFlag', false);
 	},
 
 	hideSummary: function() {

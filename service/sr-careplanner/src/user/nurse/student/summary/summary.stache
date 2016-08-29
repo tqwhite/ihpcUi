@@ -3,7 +3,8 @@
 <div class='fa fa-caret-left closeSpot' ($click)='hideSummary(%event)'/>
 
 <span class='name'>
-{{../workingStudent.first}} {{../workingStudent.last}}
+{{student.first}} {{student.last}}
 </span>
 
 </div>
+<button ($click)='testElement("x")' style='margin-left:50px;'>test summary</button>
