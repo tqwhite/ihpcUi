@@ -24,11 +24,11 @@ export const ViewModel = Map.extend({
 			value: true
 		},
 		newStudentFlag: {
-		  value: false,
-		  type:'boolean',
-		  set:function(value){
-			return value;
-		  }
+			value: false,
+			type: 'boolean',
+			set: function(value) {
+				return value;
+			}
 		},
 		newStudent: {
 			value: function() {
@@ -39,26 +39,20 @@ export const ViewModel = Map.extend({
 				}
 			}
 		},
-    openStudentRefId: {
-      value: '',
-      type:'string',
-      set:function(value){   
-		return value;
-      }
-    },
-		newStudentFlag: {
-		  value: false,
-		  type:'boolean',
-		  set:function(value){
-			return value;
-		  }
+		openStudentRefId: {
+			value: '',
+			type: 'string',
+			set: function(value) {
+				return value;
+			}
 		}
 	},
 
 	createNewStudent: function() {
 
-		this.attr('workingStudent', new Student({refId:qtoolsNewGuid()}));
+	
 		this.attr('showStudentEditor', true);
+		this.attr('newStudentFlag', true);
 
 	},
 

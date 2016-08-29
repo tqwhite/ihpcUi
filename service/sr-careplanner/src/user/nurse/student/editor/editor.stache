@@ -16,13 +16,13 @@
 
 			<div class='segment'>
 			<div class='title'>
-			Student Info
+			Student Info {{annotation}}
 			</div>
 			<div class='entry'>
 
-			<input style='width:50%;' class="c-field title" placeholder="First Name" {($value)}="first"><br/>
+			<input style='width:50%;' class="c-field title" placeholder="First Name" {($value)}="student.first"><br/>
 
-			<input style='width:50%;' class="c-field title" placeholder="Last Name" {($value)}="last">
+			<input style='width:50%;' class="c-field title" placeholder="Last Name" {($value)}="student.last">
 
 
   

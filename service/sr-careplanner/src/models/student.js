@@ -4,7 +4,11 @@ import tag from 'can-connect/can/tag/';
 import 'can/map/define/define';
 
 export const Student = can.Map.extend({
-  define: {}
+  define: {},
+	init: function (initData) {
+		//console.dir({"initData":initData});
+	}
+	
 });
 
 Student.List = can.List.extend({

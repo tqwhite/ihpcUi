@@ -4,6 +4,7 @@ import 'can/map/define/';
 import './editor.less!';
 import template from './editor.stache!';
 import Student from "sr-careplanner/models/student";
+import qtools from "node_modules/qtools-minus/";
 
 export const ViewModel = Map.extend({
 	define: {
@@ -23,11 +24,13 @@ export const ViewModel = Map.extend({
 			type: '*'
 		},
 		student: {
-			value: 'set by caller',
-			type: '*'
+			value: Student,
+			type: '*',
+			note:'bitballs called for type:Student but that causes error'
 		},
 	},
 	saveObject: function() {
+		
 		this.attr('saveNotification', true);
 		const prevTimeoutId = this.attr('saveNotificationTimeoutId');
 		if (prevTimeoutId) {
@@ -36,13 +39,29 @@ export const ViewModel = Map.extend({
 		}
 
 
-		new Student(this.attr('student'))
-			.save()
-			.then((result) => {
+		var student=this.attr('student');
+		var promise;
+		var self=this;
+		
+		if (student.isNew()){
+			student.attr('refId', qtools.newGuid());
+			promise = student.save().then(function(){
+				self.attr("student", new Student());
+			});
+		}
+		else{
+			promise=student.save();
+		}
+		
+			promise
+			.then(() => {
 				const timeoutId = setTimeout(() => {
 					this.attr('saveNotification', false);
 				}, 2000);
+				
 				this.attr('saveNotificationTimeoutId', timeoutId);
+				this.attr('parentVm').attr('newStudentFlag', false);
+				this.attr('parentVm').attr('openStudentRefId', student.attr('refId'));
 
 			},
 				(err) => {

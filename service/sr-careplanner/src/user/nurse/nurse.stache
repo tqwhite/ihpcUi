@@ -12,16 +12,18 @@
 <button ($click)='clearConsole()' style='margin-left:50px;'>clearConsole</button>
 
 		{{#showStudentEditor}}
-			{{#if students.isResolved}}
-				{{#each students.value}}
-					{{#eq . workingStudent}}
-							<user-nurse-student-editor student='{.}' />
-					{{/eq}}
-				{{/each}}
-			{{/if}}
+			{{^newStudentFlag}}
+				{{#if students.isResolved}}
+					{{#each students.value}}
+						{{#eq openStudentRefId refId}}
+								<user-nurse-student-editor student='{.}' parent-vm='{../../}' />
+						{{/eq}}
+					{{/each}}
+				{{/if}}
+			{{/#newStudentFlag}}
 				
 			{{#newStudentFlag}}
-					<user-nurse-student-editor student='workingStudent' />
+					<user-nurse-student-editor annotation="Creating New" parent-vm='{../}' />
 			{{/#newStudentFlag}}
 		{{/showStudentEditor}}
 

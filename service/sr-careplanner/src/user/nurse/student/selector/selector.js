@@ -17,8 +17,7 @@ export const ViewModel = Map.extend({
 		this.attr('showSelector', control);
 	},
 	chooseStudent: function(inx, element) {
-		this.attr('showSelector', '');
-		this.attr('parentVm').attr('workingStudent', element);
+		this.attr('parentVm').attr('newStudentFlag', false);
 		this.attr('parentVm').attr('openStudentRefId', element.attr('refId'));
 	},
 
@@ -27,5 +26,11 @@ export const ViewModel = Map.extend({
 export default Component.extend({
 	tag: 'user-nurse-student-selector',
 	viewModel: ViewModel,
+	events: {
+		'li click': function() {
+			this.viewModel.displaySelector(false);
+		}
+
+	},
 	template
 });

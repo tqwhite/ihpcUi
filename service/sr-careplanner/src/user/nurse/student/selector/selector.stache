@@ -14,7 +14,7 @@
 
 		{{/each}}
 		
-				<li class="c-menu__item a-menu--slow" ($click)='createNewStudent(%index, ../)'>New Student</li>
+				<li class="c-menu__item a-menu--slow" ($click)='../createNewStudent(%index, ../)'>New Student</li>
 
 
 	</ul>
