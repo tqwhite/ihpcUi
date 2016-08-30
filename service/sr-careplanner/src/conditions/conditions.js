@@ -8,7 +8,7 @@ import Boilerplate from "sr-careplanner/models/boilerplate";
 export const ViewModel = Map.extend({
   define: {
     message: {
-      value: 'This is the conditions componentxxx'
+      value: 'This is the conditions component'
     },
     boilerplate: {
 		get: function() {

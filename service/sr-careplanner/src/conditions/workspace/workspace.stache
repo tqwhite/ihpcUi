@@ -1,45 +1,43 @@
 <!--{{message}}-->
+<can-import from="sr-careplanner/conditions/workspace/itemEditor/" />
 
-	<can-import from="sr-careplanner/conditions/workspace/itemEditor/" />
 <div>
-<button class=" {{^is _id openDiagnosisId}}c-button--ghost{{/is}} c-button--small c-button--primary"  ($click)='addEmptyCondition("x")'>New Condition</button>
+	<button class=" {{^is _id openDiagnosisId}}c-button--ghost{{/is}} c-button--small c-button--primary" tabindex='-1' ($click)='createNewCondition("x")'>
+		New Condition
+	</button>
 </div>
+
 <ul class="c-list">
 
+	{{#each boilerplate.value}}
+		{{#if debugDataVersion}}
+			<li class="c-list__item--unstyled conditionListStyle">
+				<span style='font-size:70%;color:gray;'>debugDataVersion: {{debugDataVersion}}</span>
+			</li>
+		{{else}}
 		
-	
+			<li class="c-list__item--unstyled conditionListStyle" id='{{refId}}' ($click)='selectCondition({refId})'>
+				{{#shouldShowEditor .}}
+					<conditions-workspace-item-editor boilerplate="{../}" parent-vm='{../.}' />
+				{{/shouldShowEditor}}
+				
+				{{#showShowSummary .}}
+					<span class='fa fa-caret-right' style='' ><span class='sansSerif listTitle'>{{title}}</span></span>
+				{{/showShowSummary}}
+				
+			</li>
+			
+		{{/if}}
+
+	{{/each}}
+
 	{{#newConditionFlag}}
-		{{#newCondition}}
-
-			<conditions-workspace-item-editor {working-condition}="newCondition" {(new-condition-flag)}="newConditionFlag" {(open-condition-id)}="openConditionId" />
-		{{/newCondition}}
-	{{/newConditionFlag}}
-	
-	
-{{#each boilerplate.value}}
-
-
-	{{#if debugDataVersion}}
-	<li class="c-list__item--unstyled conditionListStyle">
-		<span style='font-size:70%;color:gray;'>debugDataVersion: {{debugDataVersion}}</span>
+		<li class="c-list__item--unstyled conditionListStyle">
+				<conditions-workspace-item-editor parent-vm='{../.}' />
 		</li>
-	{{else}}
-
-
-	<li class="c-list__item--unstyled conditionListStyle" id='{{refId}}' ($click)='selectCondition({refId})'>
-		
-	
-	{{#is refId openConditionId}}
-		<conditions-workspace-item-editor {working-condition}="." />
-	{{else}}
-		<span class='fa fa-caret-right' style='' ><span class='sansSerif listTitle'>{{title}}</span></span>
-	{{/is}}
-	</li>
-
-
-	{{/if}}
-
-{{/each}}
+	{{/newConditionFlag}}
 
 </ul>
-<button ($click)='testElement("x")' style='margin-left:50px;'>test ws</button>
+
+
+<button ($click)='testElement("x")' style='margin-left:50px;' tabindex='-1'>test ws</button>

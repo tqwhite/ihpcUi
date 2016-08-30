@@ -11,24 +11,15 @@ export const ViewModel = Map.extend({
 		message: {
 			value: 'This is the user-nurse component'
 		},
-		workingStudent: {
-			value: ''
-		},
 		students: {
 			get: function() {
 				const list = Student.getList({});
 				return list;
 			}
 		},
+		
 		showStudentEditor: {
 			value: true
-		},
-		newStudentFlag: {
-			value: false,
-			type: 'boolean',
-			set: function(value) {
-				return value;
-			}
 		},
 		openStudentRefId: {
 			value: '',
@@ -36,6 +27,13 @@ export const ViewModel = Map.extend({
 			set: function(value) {
 				return value;
 		}
+		},
+		newStudentFlag: {
+			value: false,
+			type: 'boolean',
+			set: function(value) {
+				return value;
+			}
 		},
 		openStudentNameString: {
 			value: '',

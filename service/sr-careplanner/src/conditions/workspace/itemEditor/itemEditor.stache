@@ -1,41 +1,38 @@
 <!--{{message}}-->
-
-	<can-import from="sr-careplanner/conditions/workspace/itemEditor/diagnosis/" />
+<can-import from="sr-careplanner/conditions/workspace/itemEditor/diagnosis/" />
 
 {{#saveError}}
-<can-import from="sr-careplanner/decorations/server-error/" />
-<decorations-server-error />
+	<can-import from="sr-careplanner/decorations/server-error/" />
+	<decorations-server-error />
 {{/saveError}}
 
 <div>
-
-
-<span class='fa fa-caret-down closeSpot' ($click)='closeCondition(%event)'/>
-<input class="c-field title" placeholder="Condition Title" {($value)}="title">
-<input class="c-field title" type='hidden' {($value)}="refId">
-{{#refId}}
-<input class="c-field shortTitle" placeholder="Short Title (no spaces)" type="input" {($value)}="shortName">
-{{/refId}}
-<div class="c-toast c-toast--success overlay {{#saveNotification}}showOverlay{{else}}hideOverlay{{/saveNotification}}">
-    Saving...
-  </div>
+	<span class='fa fa-caret-down closeSpot' ($click)='closeCondition(%event)'/>
+	
+	<input class="c-field title" placeholder="Condition Title" {($value)}="boilerplate.title">
+	<input class="c-field shortTitle" placeholder="Short Title (no spaces)" type="input" {($value)}="boilerplate.shortName">
+	<input class="c-field title" type='hidden' {($value)}="boilerplate.refId">
+	
+	<div class="c-toast c-toast--success overlay {{#saveNotification}}showOverlay{{else}}hideOverlay{{/saveNotification}}">
+		Saving...
+	</div>
 </div>
 
-{{#refId}}
 <div class='buttonContainer'>
 	<span class="c-button-group">
-		{{#each diagnoses}}
-		{{#shortName}}
-			<button class=" {{^is refId openDiagnosisId}}c-button--ghost{{/is}} c-button--small c-button--primary" id='{{refId}}' ($click)='selectDiagnosis(%element, %index)'>{{shortName}}</button>
-		{{/shortName}}
+		{{#each boilerplate.diagnoses}}
+			<button class=" {{^is refId openDiagnosisId}}c-button--ghost{{/is}} c-button--small c-button--primary" id='{{refId}}' ($click)='selectDiagnosis(%element, %index)' tabindex='-1'>{{shortName}}</button>
 		{{/each}}
-	<button class=" c-button--ghost c-button--small c-button--primary" id='{{refId}}' ($click)='newDiagnosis(%element, %index)'>New ND</button>
+		<button class=" c-button--ghost c-button--small c-button--primary" id='{{refId}}' ($click)='newDiagnosis(%element, %index)' tabindex='-1'>
+			New ND
+		</button>
 	</span>
-	<button class=" c-button--ghost c-button--small c-button--primary deleteButton" id='{{refId}}' ($click)='deleteCondition(.)'>Delete</button>
+	<button class=" c-button--ghost c-button--small c-button--primary deleteButton" id='{{refId}}' ($click)='deleteCondition(.)' tabindex='-1'>
+		Delete
+	</button>
 </div>
-{{/refId}}
 
-{{#each diagnoses}}
+{{#each boilerplate.diagnoses}}
 	{{#is refId openDiagnosisId}}
 		<conditions-workspace-item-editor-diagnosis {open-Diagnosis-Id}="refId" {working-diagnosis}='.' />
 	{{/is}}
@@ -45,7 +42,7 @@
 
 
 
-<button ($click)='testElement("x")' style='margin-left:50px;'>test itemEditor</button>
+<button ($click)='testElement("x")' style='margin-left:50px;' tabindex='-1'>test itemEditor</button>
 
 
 

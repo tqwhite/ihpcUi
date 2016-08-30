@@ -11,47 +11,42 @@
     Saving...
   </div>
   
-<div class='fa fa-caret-down closeSpot' style='margin-left:-20px;' ($click)='showSummary(%event)'/>
+<div class='fa fa-caret-down closeSpot' style='margin-left:-20px;' ($click)='showSummary(%event)' tabindex='-1'/>
 
 
-			<div class='segment'>
-			<div class='title'>
+	<div class='segment'>
+		<div class='title'>
 			Student Info {{annotation}}
-			</div>
-			<div class='entry'>
-
+		</div>
+		<div class='entry'>
 			<input style='width:50%;' class="c-field title" placeholder="First Name" {($value)}="student.first"><br/>
-
 			<input style='width:50%;' class="c-field title" placeholder="Last Name" {($value)}="student.last">
+		</div>
+	</div>
+	<hr/>
 
-
-  
-			</div>
-			</div>
-			<hr/>
-
-			<div class='segment'>
-			<div class='title'>
+	<div class='segment'>
+		<div class='title'>
 			Health Info
-			</div>
-			<div class='entry'>
+		</div>
+		<div class='entry'>
 			{{first}} {{last}}
-			</div>
-			</div>
-			<hr/>
+		</div>
+	</div>
+	<hr/>
 
-			<div class='segment'>
-			<div class='title'>
+	<div class='segment'>
+		<div class='title'>
 			Parent/Guardians
-			</div>
-			<div class='entry'>
+		</div>
+		<div class='entry'>
 			{{first}} {{last}}
-			</div>
-			</div>
+		</div>
+	</div>
 
 
 {{^../openStudentRefId}}
 (no student selected)
 {{/../openStudentRefId}}
-<button ($click)='testElement("x")' style='margin-left:50px;'>test student editor</button>
+<button ($click)='testElement("x")' style='margin-left:50px;' tabindex='-1'>test student editor</button>
 </div>

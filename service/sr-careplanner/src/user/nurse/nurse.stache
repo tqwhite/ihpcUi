@@ -8,8 +8,8 @@
 <div class='studentSelector'><user-nurse-student-selector parent-vm='{.}' /></div>
 </div>
 
-<button ($click)='reinitializeDb("x")' style='margin-left:50px;'>reinitialize db</button>
-<button ($click)='clearConsole()' style='margin-left:50px;'>clearConsole</button>
+<button ($click)='reinitializeDb("x")' style='margin-left:50px;' tabindex='-1'>reinitialize db</button>
+<button ($click)='clearConsole()' style='margin-left:50px;' tabindex='-1'>clearConsole</button>
 
 		{{#showStudentEditor}}
 			{{^newStudentFlag}}
@@ -39,10 +39,13 @@
 		{{/showStudentEditor}}
 
 
+
+
+
 <user-nurse-plan-editor />
 
 
 
 
 
-<button ($click)='testElement("x")' style='margin-left:50px;'>test nurse</button>
+<button ($click)='testElement("x")' style='margin-left:50px;' tabindex='-1'>test nurse</button>

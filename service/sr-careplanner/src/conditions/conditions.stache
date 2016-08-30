@@ -10,5 +10,5 @@
 	</div>
 	
 	<div class='workspaceContainer'>
-	<conditions-workspace>
+	<conditions-workspace boilerplate='{boilerplate}' parent-vm='{.}'>
 	</div>
