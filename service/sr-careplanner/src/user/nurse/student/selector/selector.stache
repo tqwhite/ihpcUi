@@ -22,7 +22,16 @@
 {{/showSelector}}
 
 {{^showSelector}}
-	<button class="c-button c-button--ghost c-button--medium" ($click)='displaySelector(true)'>
+	<button id='selectStudent' class="c-button  c-button--medium
+	
+		{{#../openStudentNameString}}
+			c-button--ghost
+		{{else}}
+			c-button--primary 
+		{{/../openStudentNameString}}
+	
+	
+	" ($click)='displaySelector(true)'>
 		{{#../openStudentNameString}}
 			{{openStudentNameString}}
 		{{else}}
