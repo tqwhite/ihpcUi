@@ -3,6 +3,27 @@ user-nurse-student-editor {
 	position:relative;
 }
 
+
+user-nurse-student-editor .overlay{
+	padding:.9em 3em .9em 1em;
+	height:50px;
+	width:100px;
+	font-size:12pt;
+	background:rgba(102, 187, 106, .5);
+	margin:0px 0px;
+	position:absolute;
+	top:5px;
+	right:5px;
+}
+
+user-nurse-student-editor .showOverlay{
+display:block;
+}
+
+user-nurse-student-editor .hideOverlay{
+display:none;
+}
+
 user-nurse-student-editor .container{
 	border:1pt solid gray;
 	margin:3vh 3vw;
@@ -22,26 +43,140 @@ user-nurse-student-editor div.container div.segment div.title{
 }
 
 user-nurse-student-editor div.container div.segment div.entry{
+	display:-webkit-flex;
+	display:flex;
+	justify-content:space-around; /*flex-start, flex-end, center, space-between, space-around, stretch*/
+	-webkit-justify-content:space-around;
+	flex-wrap:wrap; /*nowrap | wrap | wrap-reverse*/
+	-webkit-flex-wrap:wrap;
+}
+
+
+user-nurse-student-editor .halfBlock{
+width:40vw;
+min-width:300px;
+}
+
+user-nurse-student-editor .wideBlock{
+width:80vw;
+min-width:300px;
+}
+
+user-nurse-student-editor .inlineSet input{
+
+	min-width:100px;
+
+}
+user-nurse-student-editor .inlineSet span{
+
+	min-width:100px;
 
 }
 
 
-user-nurse-student-editor .overlay{
-padding:.9em 3em .9em 1em;
-height:50px;
-width:100px;
-font-size:12pt;
-background:rgba(102, 187, 106, .5);
-margin:0px 0px;
-position:absolute;
-top:5px;
-right:5px;
+@media (min-width: 600px) {
+
+user-nurse-student-editor .inlineSet input{
+
+	width:100px;
+
+}
+user-nurse-student-editor .inlineSet span{
+
+	width:100px;
+
+}
 }
 
-user-nurse-student-editor .showOverlay{
-display:block;
+user-nurse-student-editor  .inlineSet{
+
+	display:-webkit-flex;
+	display:flex;
+	justify-content:space-around; /*flex-start, flex-end, center, space-between, space-around, stretch*/
+	-webkit-justify-content:space-around;
+  -webkit-align-items: stretch;
+  align-items: stretch;
+	
+	flex-wrap:wrap; /*nowrap | wrap | wrap-reverse*/
+	-webkit-flex-wrap:wrap;
+
+	width:100%;
 }
 
-user-nurse-student-editor .hideOverlay{
-display:none;
+user-nurse-student-editor div.container div.segment div.entry div.inputBlock{
+border-right:1px solid #adadad;
+border-bottom:1px solid #adadad;
+}
+
+
+user-nurse-student-editor div.container div.segment input.c-field.c-field--xsmall{
+border-top:1px solid #adadad;
+border-left:1px solid #adadad;
+border-right:none;
+border-bottom:none;
+border-radius: 0px;
+}
+
+user-nurse-student-editor div.labeledInput{
+
+	display:-webkit-flex;
+	display:flex;
+	
+	flex-direction:row;
+	-webkit-flex-direction: row;
+	
+	/* between items in main direction */
+	justify-content:space-between; /*flex-start, flex-end, center, space-between, space-around, stretch*/
+	-webkit-justify-content:space-between;
+	
+	/* between rows or columns */
+	align-content:space-between; /*flex-start, flex-end, center, space-between, space-around, stretch*/
+	-webkit-align-content:space-between;
+	
+	align-items:center; /*flex-start, flex-end, center, baseline, stretch*/
+	-webkit-align-items:center;
+	
+	justify-content:space-between; /*flex-start, flex-end, center, space-between, space-around*/
+	-webkit-justify-content:space-between;
+	
+	flex-wrap:wrap; /*nowrap | wrap | wrap-reverse*/
+	-webkit-flex-wrap:wrap;
+	
+
+}
+
+user-nurse-student-editor div.labeledInput div.input{
+display:inline;
+width:30vw;
+min-width:225px;
+
+}
+
+user-nurse-student-editor div.labeledInput input.c-field.c-field--xsmall{
+display:inline;
+width:30vw;
+min-width:225px;
+
+}
+
+
+
+
+
+
+
+
+user-nurse-student-editor div.container div.segment div.specialBlock{
+	display:-webkit-flex;
+	display:flex;
+	flex-direction:column;
+	-webkit-flex-direction: column;
+	justify-content:stretch; /*flex-start, flex-end, center, space-between, space-around, stretch*/
+	-webkit-justify-content:stretch;
+	flex-wrap:wrap; /*nowrap | wrap | wrap-reverse*/
+	-webkit-flex-wrap:wrap;
+	align-items:center; /*flex-start, flex-end, center, baseline, stretch*/
+	-webkit-align-items:center;
+	
+	width:100%;
 }

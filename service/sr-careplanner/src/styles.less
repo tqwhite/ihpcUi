@@ -28,6 +28,34 @@ a:hover{
 	color:rgba(100%,30%,80%,1 );
 }
 
+input{
+	font-weight:bold;
+}
+
+@placeHolderTrans: .4;
+::placeholder{
+color:rgba(66, 165, 245, @placeHolderTrans);
+}
+::-moz-placeholder{
+color:rgba(66, 165, 245, @placeHolderTrans);
+}
+:-moz-placeholder{
+color:rgba(66, 165, 245, @placeHolderTrans);
+}
+::-webkit-input-placeholder{
+color:rgba(66, 165, 245, @placeHolderTrans);
+}
+:-ms-input-placeholder{
+color:rgba(66, 165, 245, @placeHolderTrans);
+}
+::-ms-input-placeholder{
+color:rgba(66, 165, 245, @placeHolderTrans);
+}
+
+.lightLabel{
+color:rgba(66, 165, 245, .7);
+}
+
 .c-heading--medium--center{
 text-align:center;
 vertical-align:middle;
