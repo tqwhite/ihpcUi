@@ -1,0 +1,9 @@
+<!--{{message}}-->
+
+	<can-import from="sr-careplanner/user/nurse/plan/control/selector/" />
+
+				{{#if planRootVm.openStudentRefId}}
+<div style='position:absolute;right:20vh;'>	
+	<user-nurse-plan-control-selector plan-root-vm='{planRootVm}' />
+</div>
+{{/if}}

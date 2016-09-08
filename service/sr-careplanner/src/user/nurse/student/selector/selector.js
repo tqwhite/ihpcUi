@@ -15,11 +15,14 @@ export const ViewModel = Map.extend({
 	},
 	displaySelector: function(control) {
 		this.attr('showSelector', control);
+		this.attr('parentVm').attr('workingPlan', '');
 	},
 	chooseStudent: function(inx, student) {
 		this.attr('parentVm').attr('newStudentFlag', false);
 		this.attr('parentVm').attr('openStudentRefId', student.attr('refId'));
 		this.attr('parentVm').attr('openStudentNameString', student.attr('last')+', '+student.attr('first'));
+
+
 	},
 
 });

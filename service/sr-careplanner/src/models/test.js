@@ -13,3 +13,5 @@ import 'sr-careplanner/models/condition_test';
 import 'sr-careplanner/models/boilerplate_test';
 
 import 'sr-careplanner/models/student_test';
+
+import 'sr-careplanner/models/plan_test';

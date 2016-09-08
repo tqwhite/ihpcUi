@@ -1,2 +1,23 @@
-<p>{{message}}</p>
+<!--{{message}}-->
 
+	{{#workingPlan}}
+
+
+
+			{{#each conditions}}
+				<div class='c-heading c-heading--large title'>{{title}}</div>
+				{{#each diagnoses}}
+				<div class='diagnosis'>
+	<div><b>sourceDiagnosisRefId</b><br/><textarea style='height:50px;width:80vw;'>{{sourceDiagnosisRefId}}</textarea></div>
+	<div><b>assessment</b><br/><textarea style='height:50px;width:80vw;'>{{assessment}}</textarea></div>
+	<div><b>nursingDiagnosis</b><br/><textarea style='height:50px;width:80vw;'>{{nursingDiagnosis}}</textarea></div>
+	<div><b>interventions</b><br/><textarea style='height:50px;width:80vw;'>{{interventions}}</textarea></div>
+	<div><b>outcomes</b><br/><textarea style='height:50px;width:80vw;'>{{outcomes}}</textarea></div>
+	<div><b>shortName</b><br/><textarea style='height:50px;width:80vw;'>{{shortName}}</textarea></div>
+				</div>
+
+
+				{{/each}}
+			{{/each}}
+
+	{{/workingPlan}}

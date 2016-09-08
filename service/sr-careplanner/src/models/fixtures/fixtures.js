@@ -13,3 +13,5 @@ import 'sr-careplanner/models/fixtures/condition';
 import 'sr-careplanner/models/fixtures/boilerplate';
 
 import 'sr-careplanner/models/fixtures/student';
+
+import 'sr-careplanner/models/fixtures/plan';

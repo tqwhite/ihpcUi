@@ -22,7 +22,7 @@
 {{/showSelector}}
 
 {{^showSelector}}
-	<button id='selectStudent' class="c-button  c-button--medium
+	<button class="c-button  c-button--medium openSelectButton
 	
 		{{#../openStudentNameString}}
 			c-button--ghost

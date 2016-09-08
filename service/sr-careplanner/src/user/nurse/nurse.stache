@@ -3,13 +3,15 @@
 	<can-import from="sr-careplanner/user/nurse/student/summary/" />
 	<can-import from="sr-careplanner/user/nurse/student/editor/" />
 	<can-import from="sr-careplanner/user/nurse/student/selector/" />
-	<can-import from="sr-careplanner/user/nurse/plan/editor/" />
+	<can-import from="sr-careplanner/user/nurse/plan/" />
 <div class='controls'>
-<div class='studentSelector'><user-nurse-student-selector parent-vm='{.}' /></div>
+	<button ($click)='reinitializeDb("x")' style='position:absolute;top:5px;left:50px;' tabindex='-1'>reinitialize student db</button>
+	<button ($click)='clearConsole()' style='position:absolute;top:5px;left:200px;' tabindex='-1'>clearConsole</button>
+	<button ($click)='testElement("x")' style='position:absolute;top:5px;left:350px;' tabindex='-1'>test nurse</button>
+
+	<div class='studentSelector'><user-nurse-student-selector parent-vm='{.}' /></div>
 </div>
 
-<button ($click)='reinitializeDb("x")' style='margin-left:50px;' tabindex='-1'>reinitialize db</button>
-<button ($click)='clearConsole()' style='margin-left:50px;' tabindex='-1'>clearConsole</button>
 
 		{{#showStudentEditor}}
 			{{^newStudentFlag}}
@@ -41,11 +43,11 @@
 
 
 
-
-<user-nurse-plan-editor />
-
-
-
+{{#openStudentRefId}}
+<user-nurse-plan plan-root-vm='{../}' />
+{{/openStudentRefId}}
 
 
-<button ($click)='testElement("x")' style='margin-left:50px;' tabindex='-1'>test nurse</button>
+
+
+

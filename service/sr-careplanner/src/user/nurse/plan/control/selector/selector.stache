@@ -1,0 +1,38 @@
+<!--{{message}}-->
+
+{{#showSelector}}
+
+	<ul id='planSelector' class="c-menu c-menu--high a-menu planSelector">
+
+		{{#each planRootVm.plans.value}}
+
+				<li class="c-menu__item a-menu--slow" ($click)='choosePlan(%index, .)'>{{createdAt}}</li>
+
+		{{/each}}
+		
+				<li class="c-menu__item a-menu--slow" ($click)='../createNewPlan(%index, ../)'>New Plan</li>
+
+
+	</ul>
+
+{{/showSelector}}
+
+{{^showSelector}}
+	<button id='selectPlan' class="c-button  c-button--medium openSelectButton
+	
+		{{#../openPlanNameString}}
+			c-button--ghost
+		{{else}}
+			c-button--primary 
+		{{/../openPlanNameString}}
+	
+	
+	" ($click)='displaySelector(true)'>
+		{{#../openPlanNameString}}
+			{{openPlanNameString}}
+		{{else}}
+			Select Student 
+		{{/../openPlanNameString}}
+	</button>
+{{/showSelector}}
+	

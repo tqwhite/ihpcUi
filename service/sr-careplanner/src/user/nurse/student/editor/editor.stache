@@ -81,22 +81,22 @@
 
 					<div class='entry' style='width:70%;padding:20px;'>
 						<div>
-							  <label class="c-label lightLabel">
-								<input type="checkbox">
-								Individual Education Plan
-							  </label>
-							  <label class="c-label lightLabel">
-								<input type="checkbox">
-								Emergency Evacuation Plan
-							  </label>
+								  <label class="c-label {{#if student.iep}}darkLabel{{else}}lightLabel{{/if}}">
+									<input type="checkbox" {($checked)}="student.iep">
+									Individual Education Plan
+								  </label>
+								  <label class="c-label {{#if student.eep}}darkLabel{{else}}lightLabel{{/if}}">
+									<input type="checkbox" {($checked)}="student.eep">
+									Emergency Evacuation Plan
+								  </label>
 						</div>
 						<div>
-								  <label class="c-label lightLabel">
-									<input type="checkbox">
+								  <label class="c-label {{#if student.504plan}}darkLabel{{else}}lightLabel{{/if}}">
+									<input type="checkbox" {($checked)}="student.504plan">
 									504 Plan
 								  </label>
-								  <label class="c-label lightLabel">
-									<input type="checkbox">
+								  <label class="c-label {{#if student.eap}}darkLabel{{else}}lightLabel{{/if}}">
+									<input type="checkbox" {($checked)}="student.eap">
 									Emergency Action Plan
 								  </label>
 						</div>
@@ -123,7 +123,7 @@
 						<input style='flex-grow:1;' class="c-field c-field--xsmall" type="text"  placeholder="state code" {($value)}="student.gOneState" />
 						<input style='flex-grow:2;' class="c-field c-field--xsmall" type="text"  placeholder="zip" {($value)}="student.gOneZip" />
 					</div>
-					<input class="c-field c-field--xsmall" type="tel"  placeholder="Phone" {($value)}="student.phone" />
+					<input class="c-field c-field--xsmall" type="tel"  placeholder="Phone" {($value)}="student.gOnePhoneMain" />
 
 			</div>
 		
@@ -143,7 +143,7 @@
 						<input style='flex-grow:1;' class="c-field c-field--xsmall" type="text"  placeholder="state code" {($value)}="student.gTwoState" />
 						<input style='flex-grow:2;' class="c-field c-field--xsmall" type="text"  placeholder="zip" {($value)}="student.gTwoZip" />
 					</div>
-					<input class="c-field c-field--xsmall" type="tel"  placeholder="Phone" {($value)}="student.phone" />
+					<input class="c-field c-field--xsmall" type="tel"  placeholder="Phone" {($value)}="student.gTwoPhoneMain" />
 
 			</div>
 		</div>

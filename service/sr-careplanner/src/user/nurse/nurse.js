@@ -4,6 +4,7 @@ import 'can/map/define/';
 import './nurse.less!';
 import template from './nurse.stache!';
 import Student from "sr-careplanner/models/student";
+import Plan from "sr-careplanner/models/plan";
 import qtools from "node_modules/qtools-minus/";
 
 export const ViewModel = Map.extend({
@@ -17,9 +18,15 @@ export const ViewModel = Map.extend({
 				return list;
 			}
 		},
+		plans: {
+			get: function() {
+				const list = Plan.getList({studentRefId:this.attr('openStudentRefId')});
+				return list;
+			}
+		},
 		
 		showStudentEditor: {
-			value: true
+			value: false
 		},
 		openStudentRefId: {
 			value: '',
@@ -41,6 +48,10 @@ export const ViewModel = Map.extend({
 			set: function(value) {
 				return value;
 			}
+		},
+		workingPlan:{
+			value:Plan,
+			type:'*'
 		}
 	},
 
@@ -61,7 +72,9 @@ export const ViewModel = Map.extend({
 
 	testElement: function(x) {
 		console.dir({
-			"user-nurse": this.attr()
+			"user-nurse": this.attr(),
+			"students": this.attr('students'),
+			"plans": this.attr('plans'),
 		});
 	},
 

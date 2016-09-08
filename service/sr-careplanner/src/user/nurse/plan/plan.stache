@@ -1,0 +1,20 @@
+<!--{{message}}-->
+
+	<can-import from="sr-careplanner/user/nurse/plan/control/" />
+	<can-import from="sr-careplanner/user/nurse/plan/editor/" />
+	<can-import from="sr-careplanner/user/nurse/plan/shopper/" />
+	<can-import from="sr-careplanner/user/nurse/plan/display/" />
+
+
+<div class='container'>
+<div style=''>	
+	<user-nurse-plan-control plan-root-vm='{planRootVm}' />
+	</div>
+
+<div style=''>
+
+	<user-nurse-plan-editor />
+	<user-nurse-plan-shopper />
+	<user-nurse-plan-display />
+</div>
+</div>
