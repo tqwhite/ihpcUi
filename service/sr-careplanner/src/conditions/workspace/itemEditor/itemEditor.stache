@@ -21,7 +21,14 @@
 <div class='buttonContainer'>
 	<span class="c-button-group">
 		{{#each boilerplate.diagnoses}}
-			<button class=" {{^is refId openDiagnosisId}}c-button--ghost{{/is}} c-button--small c-button--primary" id='{{refId}}' ($click)='selectDiagnosis(%element, %index)' tabindex='-1'>{{shortName}}</button>
+			<button class=" {{^is refId openDiagnosisId}}c-button--ghost{{/is}} c-button--small c-button--primary" id='{{refId}}' ($click)='selectDiagnosis(%element, %index)' tabindex='-1'>
+			
+			{{#includeByDefault}}
+			*
+			
+			{{/includeByDefault}}
+			
+			{{shortName}}</button>
 		{{/each}}
 		<button class=" c-button--ghost c-button--small c-button--primary" id='{{refId}}' ($click)='newDiagnosis(%element, %index)' tabindex='-1'>
 			New ND
