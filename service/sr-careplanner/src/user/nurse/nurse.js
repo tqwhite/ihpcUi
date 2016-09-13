@@ -72,6 +72,8 @@ export const ViewModel = Map.extend({
 	},
 
 	pickRecent: function(plansMap) {
+		//note: this creates a persistent object because .then doesn't run when a student is
+		//loaded a second time. May need to revise once 'new plan' is created.
 		let chosen;
 
 		if (!this.attr('refIdPlanList')) {

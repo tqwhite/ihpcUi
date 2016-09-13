@@ -1,7 +1,7 @@
 <!--{{message}}-->
 
 {{#showSelector}}
-HELLO
+
 	<ul id='planSelector' class="c-menu c-menu--high a-menu planSelector">
 
 		{{#each planRootVm.plans.value}}

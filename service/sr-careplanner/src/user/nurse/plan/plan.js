@@ -9,7 +9,13 @@ export const ViewModel = Map.extend({
     message: {
       value: 'This is the user-nurse-plan component'
     }
-  }
+  },
+
+	testElement: function(x) {
+		console.dir({
+			"user-nurse-plan": this.attr()
+		});
+	}
 });
 
 export default Component.extend({
