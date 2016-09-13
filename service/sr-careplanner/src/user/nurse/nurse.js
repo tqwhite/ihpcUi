@@ -27,6 +27,10 @@ export const ViewModel = Map.extend({
 				return list;
 			}
 		},
+		
+		planRefIdStudentMapList:{
+			value:{}
+		},
 
 		showStudentEditor: {
 			value: false
@@ -56,15 +60,15 @@ export const ViewModel = Map.extend({
 			value: Plan,
 			type: '*'
 		},
-		latestRefId: {
+		latestPlanRefid: {
 			value: 'hello',
 			get: function() {
 
-				const refIdPlanList = this.attr('refIdPlanList');
+				const planRefIdStudentMapList = this.attr('planRefIdStudentMapList');
 				const openStudentRefId = this.attr('openStudentRefId');
 
-				if (refIdPlanList) {
-					return refIdPlanList.attr(openStudentRefId);
+				if (planRefIdStudentMapList) {
+					return planRefIdStudentMapList.attr(openStudentRefId);
 				}
 				return '';
 			}
@@ -76,17 +80,14 @@ export const ViewModel = Map.extend({
 		//loaded a second time. May need to revise once 'new plan' is created.
 		let chosen;
 
-		if (!this.attr('refIdPlanList')) {
-			this.attr('refIdPlanList', {})
-		}
 		plansMap.then((result) => {
 			result.each((item) => {
 				chosen = item.attr('refId');
 			});
 		if (chosen) {
-			const refIdPlanList = this.attr('refIdPlanList');
+			const planRefIdStudentMapList = this.attr('planRefIdStudentMapList');
 			const openStudentRefId = this.attr('openStudentRefId');
-			refIdPlanList.attr(openStudentRefId, chosen);
+			planRefIdStudentMapList.attr(openStudentRefId, chosen);
 		}
 		});
 

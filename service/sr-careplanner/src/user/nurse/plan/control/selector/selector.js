@@ -5,32 +5,35 @@ import './selector.less!';
 import template from './selector.stache!';
 
 export const ViewModel = Map.extend({
-  define: {
-    message: {
-      value: 'This is the user-nurse-plan-control-selector component'
-    },
+	define: {
+		message: {
+			value: 'This is the user-nurse-plan-control-selector component'
+		},
 		showSelector: {
 			value: true
 		}
-  },
-  updateRefIdPlanList:function(newRefId){
-		const openStudentRefId=this.attr('planRootVm').attr('openStudentRefId')
-		const  refIdPlanList=this.attr('planRootVm').attr('refIdPlanList');
-		refIdPlanList.attr(openStudentRefId, newRefId); //the magic of two way binding
-  },
+	},
+	updatePlanRefIdStudentMapList: function(newRefId) {
+		const openStudentRefId = this.attr('planRootVm').attr('openStudentRefId')
+		const planRefIdStudentMapList = this.attr('planRootVm').attr('planRefIdStudentMapList');
+		planRefIdStudentMapList.attr(openStudentRefId, newRefId); //the magic of two way binding
+	},
 	displaySelector: function(control) {
 		this.attr('showSelector', control);
-		this.updateRefIdPlanList('');
+		this.updatePlanRefIdStudentMapList('');
 		this.attr('planRootVm').attr('workingPlan', '');
 	},
 	choosePlan: function(inx, element) {
-		//note: student/selector clears workingPlan when activated
+		
+		//these two lines are not used so far. may remove. Presently workingPlan is doing their work.
 		this.attr('planRootVm').attr('newPlanFlag', false);
 		this.attr('planRootVm').attr('openPlanRefId', element.attr('refId'));
-		this.attr('planRootVm').attr('openPlanNameString', element.attr('createdAt'));
 		
-		this.updateRefIdPlanList(element.attr('refId')); //should flow through to latestRefId when it's accessed
+		//note: student/selector clears workingPlan when activated
 		this.attr('planRootVm').attr('workingPlan', element);
+
+		this.updatePlanRefIdStudentMapList(element.attr('refId')); //should
+		this.attr('planRootVm').attr('openPlanNameString', element.attr('createdAt')); //flow through to latestPlanRefid when it's accessed
 		this.attr('showSelector', false);
 	},
 
@@ -43,7 +46,7 @@ export const ViewModel = Map.extend({
 });
 
 export default Component.extend({
-  tag: 'user-nurse-plan-control-selector',
-  viewModel: ViewModel,
-  template
+	tag: 'user-nurse-plan-control-selector',
+	viewModel: ViewModel,
+	template
 });

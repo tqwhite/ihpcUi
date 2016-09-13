@@ -6,9 +6,9 @@
 
 		{{#each planRootVm.plans.value}}
 
-				<li class="c-menu__item a-menu--slow" ($click)='choosePlan(%index, .)'>{{createdAt}} {{latestRefId}}
+				<li class="c-menu__item a-menu--slow" ($click)='choosePlan(%index, .)'>{{createdAt}} {{latestPlanRefid}}
 				
-				{{#is latestRefId refId}}{{choosePlan(%index, .)}}{{/is}}
+				{{#is latestPlanRefid refId}}{{choosePlan(%index, .)}}{{/is}}
 </li>
 
 		{{/each}}
