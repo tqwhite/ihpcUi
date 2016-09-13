@@ -5,15 +5,6 @@ import './selector.less!';
 import template from './selector.stache!';
 
 export const ViewModel = Map.extend({
-init:function(a, b){
-
-console.dir({"a":a});
-console.dir({"b":b});
-
-
-
-
-},
   define: {
     message: {
       value: 'This is the user-nurse-plan-control-selector component'
@@ -24,7 +15,13 @@ console.dir({"b":b});
   },
 	displaySelector: function(control) {
 		this.attr('showSelector', control);
-		this.attr('parentVm').attr('workingPlan', '');
+		const openStudentRefId=this.attr('planRootVm').attr('openStudentRefId')
+
+		const  refIdPlanList=this.attr('planRootVm').attr('refIdPlanList');
+
+		refIdPlanList.attr(openStudentRefId, '');
+
+		this.attr('planRootVm').attr('workingPlan', '');
 	},
 	choosePlan: function(inx, element) {
 		//note: student/selector clears workingPlan when activated
@@ -34,10 +31,6 @@ console.dir({"b":b});
 		
 		this.attr('planRootVm').attr('workingPlan', element);
 		this.attr('showSelector', false);
-	},
-	
-	pickRecent:function(){
-	
 	},
 
 	testElement: function(x) {

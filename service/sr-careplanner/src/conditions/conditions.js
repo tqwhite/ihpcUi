@@ -20,19 +20,8 @@ export const ViewModel = Map.extend({
   },
   clearConsole:function(){
   	console.clear();
-  },
-  
-  reinitializeDb:function(){
-	 $.ajax({
-		url:'/api/boilerplate/reinitialize/'
-	 }).done((err, result)=>{
-		this.attr('%root').setNewPage('xxx');
-		this.attr('%root').setNewPage('editor'); //trigger reload
-
-	 });
-  }
-
-});
+  	}
+  });
 
 export default Component.extend({
   tag: 'conditions',

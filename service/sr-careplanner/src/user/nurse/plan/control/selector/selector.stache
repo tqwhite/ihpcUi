@@ -1,12 +1,15 @@
 <!--{{message}}-->
 
 {{#showSelector}}
-
+HELLO
 	<ul id='planSelector' class="c-menu c-menu--high a-menu planSelector">
 
 		{{#each planRootVm.plans.value}}
 
-				<li class="c-menu__item a-menu--slow" ($click)='choosePlan(%index, .)'>{{createdAt}}</li>
+				<li class="c-menu__item a-menu--slow" ($click)='choosePlan(%index, .)'>{{createdAt}} {{latestRefId}}
+				
+				{{#is latestRefId refId}}{{choosePlan(%index, .)}}{{/is}}
+</li>
 
 		{{/each}}
 		
@@ -14,7 +17,6 @@
 
 
 	</ul>
-
 {{/showSelector}}
 
 {{^showSelector}}

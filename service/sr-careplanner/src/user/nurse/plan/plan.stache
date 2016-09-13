@@ -7,6 +7,8 @@
 
 
 <div class='container'>
+
+	<button ($click)='testElement("x")' style='margin-left:20px;' tabindex='-1'>test plan</button>
 <div style=''>	
 	<user-nurse-plan-control plan-root-vm='{planRootVm}' />
 	</div>

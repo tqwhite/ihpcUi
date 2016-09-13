@@ -20,11 +20,14 @@ export const ViewModel = Map.extend({
 		},
 		plans: {
 			get: function() {
-				const list = Plan.getList({studentRefId:this.attr('openStudentRefId')});
+				const list = Plan.getList({
+					studentRefId: this.attr('openStudentRefId')
+				});
+				this.pickRecent(list);
 				return list;
 			}
 		},
-		
+
 		showStudentEditor: {
 			value: false
 		},
@@ -33,7 +36,7 @@ export const ViewModel = Map.extend({
 			type: 'string',
 			set: function(value) {
 				return value;
-		}
+			}
 		},
 		newStudentFlag: {
 			value: false,
@@ -49,10 +52,42 @@ export const ViewModel = Map.extend({
 				return value;
 			}
 		},
-		workingPlan:{
-			value:Plan,
-			type:'*'
+		workingPlan: {
+			value: Plan,
+			type: '*'
+		},
+		latestRefId: {
+			value: 'hello',
+			get: function() {
+
+				const refIdPlanList = this.attr('refIdPlanList');
+				const openStudentRefId = this.attr('openStudentRefId');
+
+				if (refIdPlanList) {
+					return refIdPlanList.attr(openStudentRefId);
+				}
+				return '';
+			}
 		}
+	},
+
+	pickRecent: function(plansMap) {
+		let chosen;
+
+		if (!this.attr('refIdPlanList')) {
+			this.attr('refIdPlanList', {})
+		}
+		plansMap.then((result) => {
+			result.each((item) => {
+				chosen = item.attr('refId');
+			});
+		if (chosen) {
+			const refIdPlanList = this.attr('refIdPlanList');
+			const openStudentRefId = this.attr('openStudentRefId');
+			refIdPlanList.attr(openStudentRefId, chosen);
+		}
+		});
+
 	},
 
 	createNewStudent: function() {
@@ -78,14 +113,44 @@ export const ViewModel = Map.extend({
 		});
 	},
 
-	reinitializeDb: function() {
-		$.ajax({
-			url: '/api/student/reinitialize/'
-		}).done((err, result) => {
-			this.attr('%root').setNewPage('xxx');
-			this.attr('%root').setNewPage('nurse'); //trigger reload
 
-		});
+
+
+
+
+
+
+	reinitializeDb: function(database) {
+		const initializers = {
+			student: () => {
+				$.ajax({
+					url: '/api/student/reinitialize/'
+				}).done((err, result) => {
+					this.attr('%root').setNewPage('xxx');
+					this.attr('%root').setNewPage('nurse'); //trigger reload
+
+				});
+			},
+			boilerplate: () => {
+				$.ajax({
+					url: '/api/boilerplate/reinitialize/'
+				}).done((err, result) => {
+
+				});
+			},
+			plan: () => {
+				$.ajax({
+					url: '/api/plan/reinitialize/'
+				}).done((err, result) => {
+					this.attr('%root').setNewPage('xxx');
+					this.attr('%root').setNewPage('nurse'); //trigger reload
+
+				});
+			},
+		}
+
+		initializers[database]();
+
 	},
 });
 
