@@ -107,7 +107,6 @@ export const ViewModel = Map.extend({
 	},
 
 	testElement: function(x) {
-		console.clear();
 		console.dir({
 			"conditions-workspace-item-editor component.attr()": this.attr()
 		});

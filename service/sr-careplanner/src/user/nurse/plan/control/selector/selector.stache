@@ -20,16 +20,18 @@
 {{/showSelector}}
 
 {{^showSelector}}
-	<button id='selectPlan' class="c-button  c-button--medium openSelectButton
+	<button id='selectPlan' 
+		class="
+			c-button  c-button--medium openSelectButton
+			{{#../openPlanNameString}}
+				c-button--ghost
+			{{else}}
+				c-button--primary 
+			{{/../openPlanNameString}}
+		" 
+		($click)='displaySelector(true)'
+	>
 	
-		{{#../openPlanNameString}}
-			c-button--ghost
-		{{else}}
-			c-button--primary 
-		{{/../openPlanNameString}}
-	
-	
-	" ($click)='displaySelector(true)'>
 		{{#../openPlanNameString}}
 			{{openPlanNameString}}
 		{{else}}

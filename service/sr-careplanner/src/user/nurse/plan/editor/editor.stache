@@ -1,23 +1,18 @@
 <!--{{message}}-->
 
+{{#saveError}}
+	<can-import from="sr-careplanner/decorations/server-error/" />
+	<decorations-server-error />
+{{/saveError}}
+
+	<can-import from="sr-careplanner/user/nurse/plan/editor/condition/" />
 	{{#workingPlan}}
 
 
-
+																																													
 			{{#each conditions}}
-				<div class='c-heading c-heading--large title'>{{title}}</div>
-				{{#each diagnoses}}
-				<div class='diagnosis'>
-	<div class='shortName'>{{shortName}}</div>
-	<div class='editable'><b>sourceDiagnosisRefId</b><br/><textarea style='height:50px;width:80vw;'>{{sourceDiagnosisRefId}}</textarea></div>
-	<div class='editable'><b>assessment</b><br/><textarea style='height:50px;width:80vw;'>{{assessment}}</textarea></div>
-	<div class='editable'><b>nursingDiagnosis</b><br/><textarea style='height:50px;width:80vw;'>{{nursingDiagnosis}}</textarea></div>
-	<div class='editable'><b>interventions</b><br/><textarea style='height:50px;width:80vw;'>{{interventions}}</textarea></div>
-	<div class='editable'><b>outcomes</b><br/><textarea style='height:50px;width:80vw;'>{{outcomes}}</textarea></div>
-				</div>
-
-
-				{{/each}}
+				<user-nurse-plan-editor-condition plan-root-vm='{planRootVm}' index='%index' {condition}='{.}' {diagnoses}='{./diagnoses}'  />
+				
 			{{/each}}
 
 	{{/workingPlan}}

@@ -86,3 +86,7 @@ import 'sr-careplanner/user/nurse/plan/plan_test';
 import 'sr-careplanner/nurse/plan/editor/condition/condition_test';
 
 import 'sr-careplanner/nurse/plan/editor/condition/diagnosis/diagnosis_test';
+
+import 'sr-careplanner/user/nurse/plan/editor/condition/condition_test';
+
+import 'sr-careplanner/user/nurse/plan/editor/condition/diagnosis/diagnosis_test';

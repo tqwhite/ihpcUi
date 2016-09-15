@@ -1,0 +1,59 @@
+<!--{{message}}-->
+<button ($click)='testElement("x")' style='margin-left:20px;' tabindex='-1'>test condition</button>
+
+
+
+	<can-import from="sr-careplanner/user/nurse/plan/editor/condition/diagnosis/" />
+	
+<div>
+	<div class="c-toast c-toast--success overlay {{#saveNotification}}showOverlay{{else}}hideOverlay{{/saveNotification}}">
+		Saving...
+	</div>
+</div>
+
+	{{#showEditView}}
+		<div class='editView'>
+			<div>
+			<span class='fa fa-caret-down closeSpot' ($click)='toggleEditView()'/> 
+			<input class="c-field title deleteButton" placeholder="Condition Title" {($value)}="condition.title"> <button class=" c-button--ghost c-button--small c-button--primary deleteButton" id='{{refId}}' ($click)='deleteCondition(.)' tabindex='-1'>
+				Delete Condition
+			</button><br/>
+		
+		{{#showNdSelector}}
+		<div class='buttonContainer' style='width:250px;'>
+			<div class="c-menu c-menu--high" style='margin-left:100px;;'>
+			  <div class="c-menu__item c-menu__item--divider">Library NDs</div>
+
+				{{#each condition.diagnoses}}
+					<label class="c-menu__item c-choice">
+					<input type="checkbox"> {{shortName}}
+					</label>
+				{{/each}}
+				  <div class="c-menu__item c-menu__item--divider">Custom NDs</div>
+
+				{{#each condition.diagnoses}}
+					<label class="c-menu__item c-choice">
+					<input type="checkbox"> Custom {{shortName}}
+					</label>
+				{{/each}}
+			</div>
+		{{/showNdSelector}}
+		{{^showNdSelector}}
+			<button class=" c-button--ghost c-button--small c-button--primary" id='{{refId}}' ($click)='activateNdSelector()' tabindex='-1'>
+				Select ND(s) (demo)
+			</button>
+		{{/showNdSelector}}
+			
+		</div>
+			
+			
+			{{#each condition.diagnoses}}
+				<user-nurse-plan-editor-condition-diagnosis plan-root-vm='{planRootVm}' {diagnosis}='.' index='{%index}' count='{diagnoses.length}'  />
+			{{/each}}
+		</div>
+		</div>
+	{{/showEditView}}
+	
+	{{^showEditView}}
+	<span class='fa fa-caret-right closeSpot' ($click)='toggleEditView()'/> <span class='listTitle'>{{condition.title}}</span>
+	{{/showEditView}}
