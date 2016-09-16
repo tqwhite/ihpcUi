@@ -10,7 +10,7 @@ export const ViewModel = Map.extend({
       value: 'This is the user-nurse-plan-editor-condition component'
     },
     showEditView:{
-    	value:true
+    	value:false
     },
     showNdSelector:{
     	value:false

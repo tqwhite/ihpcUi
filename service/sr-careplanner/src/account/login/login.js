@@ -10,10 +10,13 @@ import User from "sr-careplanner/models/user";
 export const ViewModel = Map.extend({
   define: {
 	testUserName:{
-		value:'admin',
+		value:'',
 	},
 	testPassword:{
-		value:'test', //all are the same for now
+		value:'', //all are the same for now
+	},
+	readyIndicator:{
+		value:'true', //all are the same for now
 	},
 	tmpFormSession: {
 		value: function(){

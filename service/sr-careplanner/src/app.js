@@ -53,8 +53,10 @@ const AppViewModel = Map.extend({
 			value: '',
 			serialize:false
 		},
-		newGuid:{
-		
+		browserLoaded:{
+			get:function(){
+				return window.location.href.match(/\w/);
+			}
 		}
 	},
 	setNewPage: function(page, slug, subsection) {
