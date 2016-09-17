@@ -69,6 +69,9 @@ const AppViewModel = Map.extend({
 	},
 	clearConsole: function() {
 		console.clear();
+	},
+	activateModal:function(callback){
+		$('body').one('click', callback);
 	}
 });
 

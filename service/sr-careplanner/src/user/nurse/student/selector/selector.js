@@ -13,15 +13,19 @@ export const ViewModel = Map.extend({
 			value: ''
 		}
 	},
-	displaySelector: function(control) {
-		this.attr('showSelector', control);
-		this.attr('parentVm').attr('workingPlan', '');
+	displaySelector: function(event) {
+		event.stopPropagation();
+		this.attr('%root').activateModal(() => {
+			this.attr('showSelector', false);
+		});
+		
+		this.attr('showSelector', true);
+//		this.attr('parentVm').attr('workingPlan', '');
 	},
 	chooseStudent: function(inx, student) {
 		this.attr('parentVm').attr('newStudentFlag', false);
 		this.attr('parentVm').attr('openStudentRefId', student.attr('refId'));
 		this.attr('parentVm').attr('openStudentNameString', student.attr('last')+', '+student.attr('first'));
-
 
 	},
 

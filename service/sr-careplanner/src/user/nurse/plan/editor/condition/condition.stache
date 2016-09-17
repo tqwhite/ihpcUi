@@ -45,7 +45,7 @@
 		</div>
 		{{/showNdSelector}}
 		{{^showNdSelector}}
-			<button class=" c-button--ghost c-button--small c-button--primary" id='{{refId}}' ($click)='activateNdSelector()' tabindex='-1'>
+			<button class=" c-button--ghost c-button--small c-button--primary" id='{{refId}}' ($click)='activateNdSelector(%event)' tabindex='-1'>
 				Select ND(s) (demo)
 			</button>
 		{{/showNdSelector}}

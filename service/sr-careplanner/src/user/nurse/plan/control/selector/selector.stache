@@ -29,7 +29,7 @@
 				c-button--primary 
 			{{/../openPlanNameString}}
 		" 
-		($click)='displaySelector(true)'
+		($click)='displaySelector(%event)'
 	>
 	
 		{{#../openPlanNameString}}

@@ -18,10 +18,15 @@ export const ViewModel = Map.extend({
 		const planRefIdStudentMapList = this.attr('planRootVm').attr('planRefIdStudentMapList');
 		planRefIdStudentMapList.attr(openStudentRefId, newRefId); //the magic of two way binding
 	},
-	displaySelector: function(control) {
-		this.attr('showSelector', control);
-		this.updatePlanRefIdStudentMapList('');
-		this.attr('planRootVm').attr('workingPlan', '');
+	displaySelector: function(event) {
+		event.stopPropagation();
+		this.attr('%root').activateModal(() => {
+			this.attr('showSelector', false);
+		});
+		
+		this.attr('showSelector', true);
+ 		this.updatePlanRefIdStudentMapList('');
+// 		this.attr('planRootVm').attr('workingPlan', '');
 	},
 	choosePlan: function(inx, element) {
 		
