@@ -29,14 +29,6 @@ export const ViewModel = Map.extend({
 			note:'bitballs called for type:Student but that causes error'
 		},
 	},
-
-	createNewCondition: function() {
-	
-	//NOT IN USE YET!!
-	
-		this.attr('newConditionFlag', true);
-		this.attr('openConditionId', '');
-	},
 	
 	saveObject: function() {
 

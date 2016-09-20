@@ -23,12 +23,24 @@ export const ViewModel = Map.extend({
 				const list = Plan.getList({
 					studentRefId: this.attr('openStudentRefId')
 				});
-				this.pickRecent(list);
+				this.capturePlanDetails(list);
 				return list;
 			}
 		},
 		
+		workingPlan:{
+			value:Plan,
+			set:function(value){
+				value.attr('studentRefId', this.attr('openStudentRefId'));
+				return value;
+			}
+		},
+		
 		planRefIdStudentMapList:{
+			value:{}
+		},
+		
+		hasPlansStudentMapList:{
 			value:{}
 		},
 
@@ -56,9 +68,45 @@ export const ViewModel = Map.extend({
 				return value;
 			}
 		},
-		workingPlan: {
-			value: Plan,
-			type: '*'
+		blankPlan:{
+			get:function(){
+				const refId = qtools.newGuid();
+				const newPlan={
+					refId:refId,
+					conditions:[]
+				};
+				return new Plan(newPlan);
+			}
+		},
+		blankCondition:{
+			get:function(){
+				const refId = qtools.newGuid();
+				const refId2 = qtools.newGuid();
+				//const newDiagnosis=this.attr('blankDiagnosis');
+				const newCondition = {
+					refId: refId,
+					sourceConditionRefId: null,
+					title: '',
+					diagnoses: [this.attr('blankDiagnosis')]
+				};
+		
+				return newCondition;
+			}
+		},
+		blankDiagnosis:{
+			get:function(){
+				const refId = qtools.newGuid();
+				const newDiagnosis={
+						refId: refId,
+						sourceDiagnosisRefId: null,
+						assessment: '',
+						nursingDiagnosis: '',
+						interventions: '',
+						outcomes: '',
+						shortName: ''
+					};
+				return newDiagnosis;
+			}
 		},
 		latestPlanRefid: {
 			value: 'hello',
@@ -72,14 +120,26 @@ export const ViewModel = Map.extend({
 				}
 				return '';
 			}
+		},
+		openStudentHasPlans: {
+			value: 'hello',
+			get: function() {
+
+				const hasPlansStudentMapList = this.attr('hasPlansStudentMapList');
+				const openStudentRefId = this.attr('openStudentRefId');
+
+				if (hasPlansStudentMapList) {
+					return hasPlansStudentMapList.attr(openStudentRefId);
+				}
+				return '';
+			}
 		}
 	},
 
-	pickRecent: function(plansMap) {
+	capturePlanDetails: function(plansMap) {
 		//note: this creates a persistent object because .then doesn't run when a student is
 		//loaded a second time. May need to revise once 'new plan' is created.
 		let chosen;
-
 		plansMap.then((result) => {
 			result.each((item) => {
 				chosen = item.attr('refId');
@@ -88,6 +148,8 @@ export const ViewModel = Map.extend({
 			const planRefIdStudentMapList = this.attr('planRefIdStudentMapList');
 			const openStudentRefId = this.attr('openStudentRefId');
 			planRefIdStudentMapList.attr(openStudentRefId, chosen);
+			const hasPlansStudentMapList=this.attr('hasPlansStudentMapList');
+			hasPlansStudentMapList.attr(openStudentRefId, true);
 		}
 		});
 
@@ -96,6 +158,9 @@ export const ViewModel = Map.extend({
 	createNewStudent: function() {
 		this.attr('showStudentEditor', true);
 		this.attr('newStudentFlag', true);
+		this.attr('workingPlan', {});
+		this.attr('openStudentRefId', '');
+
 
 	},
 

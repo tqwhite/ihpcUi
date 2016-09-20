@@ -26,8 +26,9 @@ export const ViewModel = Map.extend({
 		var promise;
 		var self = this;
 
+
 		if (saveObj.isNew()) {
-			saveObj.attr('refId', qtools.newGuid());
+		//	saveObj.attr('refId', qtools.newGuid()); //the plan is generated with a refId and wired in at creation, don't need this
 			promise = saveObj.save().then(function() {
 				self.attr("saveObj", new Plan());
 			});
@@ -46,6 +47,10 @@ export const ViewModel = Map.extend({
 				this.attr('planRootVm').attr('workingPlan', saveObj);
 				this.attr('planRootVm').attr('openPlanRefId', saveObj.attr('refId'));
 				this.attr('planRootVm').attr('openPlanNameString', saveObj.attr('createdAt'));
+				
+				if (this.attr('planRootVm').attr('newPlanFlag')){
+					this.attr('planRootVm').attr('newPlanFlag', false);
+				}
 			},
 				(err) => {
 					this.attr('saveError', JSON.stringify(err))
@@ -56,22 +61,7 @@ export const ViewModel = Map.extend({
 	},
 
 	newCondition: function() {
-		const refId = qtools.newGuid();
-		const refId2 = qtools.newGuid();
-		const newCondition = {
-			refId: refId,
-			sourceConditionRefId: null,
-			title: '',
-			diagnoses: [{
-				refId: refId2,
-				sourceDiagnosisRefId: null,
-				assessment: '',
-				nursingDiagnosis: '',
-				interventions: '',
-				outcomes: '',
-				shortName: ''
-			}]
-		};
+		const newCondition = this.attr('planRootVm').attr('blankCondition');
 		const planList = this.attr('planRootVm').attr('workingPlan');
 		planList.attr('conditions').push(newCondition)
 
@@ -87,18 +77,7 @@ export const ViewModel = Map.extend({
 	},
 
 	createDiagnosis: function(index) {
-		const refId = qtools.newGuid();
-		const newDiagnosis={
-				refId: refId,
-				sourceDiagnosisRefId: null,
-				assessment: '',
-				nursingDiagnosis: '',
-				interventions: '',
-				outcomes: '',
-				shortName: ''
-			};
-		
-		
+		const newDiagnosis=this.attr('planRootVm').attr('blankDiagnosis')
 		const planList = this.attr('planRootVm').attr('workingPlan');
 		planList.attr('conditions').attr(0).attr('diagnoses').push(newDiagnosis);
 	},

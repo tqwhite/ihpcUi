@@ -15,7 +15,7 @@
 			<div>
 			<span class='fa fa-caret-down closeSpot' ($click)='toggleEditView()'/> 
 			<input class="c-field title deleteButton" placeholder="Condition Title" {($value)}="condition.title"> 
-			<button class=" c-button--ghost c-button--small c-button--primary deleteButton" id='{{refId}}' ($click)='deleteCondition({{index}})' tabindex='-1'>
+			<button class="c-button c-button--ghost c-button--xsmall c-button--primary deleteButton" id='{{refId}}' ($click)='deleteCondition({{index}})' tabindex='-1'>
 				Delete Condition
 			</button><br/>
 		
@@ -45,8 +45,8 @@
 		</div>
 		{{/showNdSelector}}
 		{{^showNdSelector}}
-			<button class=" c-button--ghost c-button--small c-button--primary" id='{{refId}}' ($click)='activateNdSelector(%event)' tabindex='-1'>
-				Select ND(s) (demo)
+			<button class="c-button c-button--ghost c-button--xsmall c-button--primary" id='{{refId}}' ($click)='activateNdSelector(%event)' tabindex='-1'>
+				Select ND(s)
 			</button>
 		{{/showNdSelector}}
 			

@@ -6,6 +6,7 @@
 	<can-import from="sr-careplanner/user/nurse/plan/display/" />
 
 
+{{#openStudentRefId}}
 <div class='container'>
 
 <div style=''>	
@@ -19,3 +20,4 @@
 	<user-nurse-plan-display />
 </div>
 </div>
+{{/openStudentRefId}}
