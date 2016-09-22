@@ -1,6 +1,6 @@
 <!--{{message}}-->
 
-{{#showSelector}}
+{{#showMenu}}
 
 	<ul id='studentSelector' class="c-menu c-menu--high a-menu">
 
@@ -10,18 +10,18 @@
 				<li class="c-menu__item a-menu--slow" style='font-size:70%;color:gray;'>debugDataVersion: {{debugDataVersion}}</li>
 			{{/debugDataVersion}}
 
-				<li class="c-menu__item a-menu--slow" ($click)='chooseStudent(%index, .)'>{{last}}, {{first}}</li>
+				<li class="c-menu__item a-menu--slow" ($click)='chooseStudent(.)'>{{last}}, {{first}}</li>
 
 		{{/each}}
 		
-				<li class="c-menu__item a-menu--slow" ($click)='../createNewStudent(%index, ../)'>New Student</li>
+				<li class="c-menu__item a-menu--slow" ($click)='createNewStudent()'>New Student</li>
 
 
 	</ul>
 
-{{/showSelector}}
+{{/showMenu}}
 
-{{^showSelector}}
+{{^showMenu}}
 	<button class="c-button  c-button--medium openSelectButton
 	
 		{{#../openStudentNameString}}
@@ -31,11 +31,11 @@
 		{{/../openStudentNameString}}
 	
 	
-	" ($click)='displaySelector(%event)'>
+	" ($click)='activateMenu(%event)'>
 		{{#../openStudentNameString}}
 			{{openStudentNameString}}
 		{{else}}
 			Select Student 
 		{{/../openStudentNameString}}
 	</button>
-{{/showSelector}}
+{{/showMenu}}

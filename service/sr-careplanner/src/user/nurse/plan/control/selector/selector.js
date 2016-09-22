@@ -14,53 +14,51 @@ export const ViewModel = Map.extend({
 		}
 	},
 	
-	updatePlanRefIdStudentMapList: function(newRefId) {
+	notes:[
+		"openStudentHasPlans sits in /nurse. It is a virtual property, ie, calculated from other things."
+	],
+	
+	updateStaticPlanDetails: function(newRefId) {
 		const openStudentRefId = this.attr('planRootVm').attr('openStudentRefId')
+		
 		const planRefIdStudentMapList = this.attr('planRootVm').attr('planRefIdStudentMapList');
-		planRefIdStudentMapList.attr(openStudentRefId, newRefId); //the magic of two way binding
+		planRefIdStudentMapList.attr(openStudentRefId, newRefId);
+		
 		const hasPlansStudentMapList = this.attr('planRootVm').attr('hasPlansStudentMapList');
-		hasPlansStudentMapList.attr(openStudentRefId, true); //the magic of two way binding
+		hasPlansStudentMapList.attr(openStudentRefId, true);
 	},
 	
-	displaySelector: function(event) {
+	menuIsVisible:function(visibility){
+		setTimeout(()=>{this.attr('showPlanSelector', visibility);}, 100);
+	},
+	
+	activateMenu: function(event) {
 		event.stopPropagation();
 		this.attr('%root').activateModal(() => {
-			this.attr('showPlanSelector', '');
+			this.attr('showPlanSelector', false);
 		});
- 		setTimeout(()=>{this.attr('showPlanSelector', true);}, 100);
- 		this.updatePlanRefIdStudentMapList('');
-	},
-	choosePlan: function(inx, element) {
-		//these two lines are not used so far. may remove. Presently workingPlan is doing their work.
-		this.attr('planRootVm').attr('newPlanFlag', false);
-		this.attr('planRootVm').attr('openPlanRefId', element.attr('refId'));
-		
-		//note: student/selector clears workingPlan when activated
-		this.attr('planRootVm').attr('workingPlan', element);
-
-		this.updatePlanRefIdStudentMapList(element.attr('refId')); //should
-		this.attr('planRootVm').attr('openPlanNameString', element.attr('createdAt')); //flow through to latestPlanRefid when it's accessed
-
-		this.closeSelector();
+		this.menuIsVisible(true);
+ 		this.updateStaticPlanDetails('');
 	},
 	
-	closeSelector:function(){
-		setTimeout(()=>{this.attr('showPlanSelector', '');}, 100);
+	choosePlan: function(inx, element) {
+		this.updateStaticPlanDetails(element.attr('refId'));
+		
+		this.attr('planRootVm').attr('workingPlan', element);
+		this.attr('planRootVm').attr('openPlanNameString', element.attr('createdAt')); //flow through to latestPlanRefid when it's accessed
+
+		this.menuIsVisible(false);
 	},
 	
 	createNewPlan:function(){
+		
 		const newPlan=this.attr('planRootVm').attr('blankPlan');
-
+		this.updateStaticPlanDetails(newPlan.refId);
 		this.attr('planRootVm').attr('workingPlan', newPlan);
-
-console.log("newPlan.refId="+newPlan.refId);
-
-
-		this.updatePlanRefIdStudentMapList(newPlan.refId); //should
-		this.attr('planRootVm').attr('newPlanFlag', true);
+		
 		this.attr('planRootVm').attr('openPlanNameString', new Date().toString()); //flow through to latestPlanRefid when it's accessed
 		
-		//this.closeSelector();
+		//this.menuIsVisible(); //Once new plan is created, it gets chosen automatically, choosePlan() closes menu
 	},
 	
 	testElement: function(x) {

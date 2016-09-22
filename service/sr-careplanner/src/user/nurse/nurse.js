@@ -31,7 +31,7 @@ export const ViewModel = Map.extend({
 		workingPlan:{
 			value:Plan,
 			set:function(value){
-				value.attr('studentRefId', this.attr('openStudentRefId'));
+				value.attr('studentRefId', this.attr('openStudentRefId')); //used by api to create access record
 				return value;
 			}
 		},
@@ -135,6 +135,11 @@ export const ViewModel = Map.extend({
 			}
 		}
 	},
+	
+	
+	
+	
+	
 
 	capturePlanDetails: function(plansMap) {
 		//note: this creates a persistent object because .then doesn't run when a student is
@@ -152,15 +157,6 @@ export const ViewModel = Map.extend({
 			hasPlansStudentMapList.attr(openStudentRefId, true);
 		}
 		});
-
-	},
-
-	createNewStudent: function() {
-		this.attr('showStudentEditor', true);
-		this.attr('newStudentFlag', true);
-		this.attr('workingPlan', {});
-		this.attr('openStudentRefId', '');
-
 
 	},
 

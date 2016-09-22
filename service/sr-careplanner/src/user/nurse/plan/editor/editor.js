@@ -5,12 +5,23 @@ import './editor.less!';
 import template from './editor.stache!';
 import Plan from "sr-careplanner/models/plan";
 import qtools from "node_modules/qtools-minus/";
+import Boilerplate from "sr-careplanner/models/boilerplate";
 
 export const ViewModel = Map.extend({
 	define: {
 		message: {
 			value: 'This is the user-nurse-plan-editor component'
-		}
+		},
+    boilerplates: {
+		get: function() {
+			const list=Boilerplate.getList({});
+			return list;
+		},
+	showConditionSelector:{
+		value:false,
+		type:'*'
+	}
+  }
 	},
 	saveObject: function() {
 
@@ -45,12 +56,8 @@ export const ViewModel = Map.extend({
 				this.attr('saveNotificationTimeoutId', timeoutId);
 				//		this.attr('planRootVm').attr('newsaveObjFlag', false);
 				this.attr('planRootVm').attr('workingPlan', saveObj);
-				this.attr('planRootVm').attr('openPlanRefId', saveObj.attr('refId'));
 				this.attr('planRootVm').attr('openPlanNameString', saveObj.attr('createdAt'));
-				
-				if (this.attr('planRootVm').attr('newPlanFlag')){
-					this.attr('planRootVm').attr('newPlanFlag', false);
-				}
+
 			},
 				(err) => {
 					this.attr('saveError', JSON.stringify(err))
@@ -59,12 +66,37 @@ export const ViewModel = Map.extend({
 					});
 				});
 	},
+	
+	showConditionTool:function(event){
+		event.stopPropagation();
+		this.attr('%root').activateModal(() => {
+			this.attr('showConditionSelector', false);
+		});
+		this.attr('showConditionSelector', true);
+	},
 
-	newCondition: function() {
-		const newCondition = this.attr('planRootVm').attr('blankCondition');
+	newCondition: function(boilerplateItem) {
+
+
+		let newCondition = this.attr('planRootVm').attr('blankCondition');
+		if (boilerplateItem){
+			newCondition=this.addBoilerPlate(newCondition, boilerplateItem);
+		}
 		const planList = this.attr('planRootVm').attr('workingPlan');
-		planList.attr('conditions').push(newCondition)
-
+		planList.attr('conditions').unshift(newCondition)
+		this.attr('showConditionSelector', false);
+		if (boilerplateItem){
+			this.saveObject();
+		}
+	},
+	
+	addBoilerPlate:function(newCondition, boilerplateItem){
+		['shortName', 'title'].map((item)=>{
+			newCondition[item]=boilerplateItem[item];
+		});
+			newCondition.sourceConditionRefId=boilerplateItem.refId;
+		
+		return newCondition;
 	},
 
 	deleteCondition: function(index) {

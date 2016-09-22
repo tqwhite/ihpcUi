@@ -1,0 +1,27 @@
+<!--{{message}}-->
+
+
+<div class='columns'>			
+{{#if boilerplates.isResolved}}
+	{{#each boilerplates.value}}
+	
+	{{#if alreadyInPlan(.)}}
+		<div class='condition' ($mouseover)='showDetail(%element)' ($mouseleave)='hideDetail(%element)'>
+			<div class='inactive'>{{shortName}}</div>
+			<div class="detail">Already in Plan</div>
+		</div>
+	{{else}}
+		<div class='condition' ($mouseover)='showDetail(%element)' ($mouseleave)='hideDetail(%element)'>
+			<div class='active' ($click)='../newCondition(.)'>{{shortName}}</div>
+			<div class="detail">{{title}}</div>
+		</div>
+	{{/if}}
+	{{/each}}
+{{/if}}
+
+<button style='margin-top:15px;' class="c-button c-button--ghost c-button--xsmall c-button--primary deleteButton" ($click)='../newCondition()' tabindex='-1'>
+	Create Custom Condition
+</button>
+	</div>
+	
+	

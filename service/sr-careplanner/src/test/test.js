@@ -90,3 +90,7 @@ import 'sr-careplanner/nurse/plan/editor/condition/diagnosis/diagnosis_test';
 import 'sr-careplanner/user/nurse/plan/editor/condition/condition_test';
 
 import 'sr-careplanner/user/nurse/plan/editor/condition/diagnosis/diagnosis_test';
+
+import 'sr-careplanner/user/nurse/student/editor/boilerplate/boilerplate_test';
+
+import 'sr-careplanner/user/nurse/plan/editor/boilerplate/boilerplate_test';

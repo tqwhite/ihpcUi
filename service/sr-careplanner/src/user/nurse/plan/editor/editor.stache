@@ -1,19 +1,31 @@
 <!--{{message}}-->
-
-
 {{#saveError}}
 	<can-import from="sr-careplanner/decorations/server-error/" />
 	<decorations-server-error />
 {{/saveError}}
 
+	<can-import from="sr-careplanner/user/nurse/plan/editor/boilerplate/" />
 	<can-import from="sr-careplanner/user/nurse/plan/editor/condition/" />
 	
 	{{#workingPlan}}
-			<button class="c-button c-button--ghost c-button--xsmall c-button--primary deleteButton" ($click)='newCondition()' tabindex='-1'>
-				Add Condition
-			</button>
+	
+		
+
+
+
+			{{#showConditionSelector}}
 			
-																																											
+			<user-nurse-plan-editor-boilerplate plan-root-vm='{planRootVm}' boilerplates='{boilerplates}'  />
+			{{/showConditionSelector}}
+			
+			{{^showConditionSelector}}
+				<button style='margin-top:15px;' class="c-button c-button--ghost c-button--xsmall c-button--primary deleteButton" ($click)='showConditionTool(%event)' tabindex='-1'>
+					Add Condition
+				</button>																																				
+
+			
+			{{/showConditionSelector}}
+							
 			{{#each conditions}}
 				<user-nurse-plan-editor-condition plan-root-vm='{planRootVm}' index='%index' {condition}='{.}' {diagnoses}='{./diagnoses}'  />
 			{{/each}}
