@@ -8,10 +8,6 @@
 	<can-import from="sr-careplanner/user/nurse/plan/editor/condition/" />
 	
 	{{#workingPlan}}
-	
-		
-
-
 
 			{{#showConditionSelector}}
 			
@@ -27,6 +23,6 @@
 			{{/showConditionSelector}}
 							
 			{{#each conditions}}
-				<user-nurse-plan-editor-condition plan-root-vm='{planRootVm}' index='%index' {condition}='{.}' {diagnoses}='{./diagnoses}'  />
+				<user-nurse-plan-editor-condition  boilerplate-diagnoses='{getBoilerplateDiagnoses(.)}' plan-root-vm='{planRootVm}' index='%index' {condition}='{.}' {diagnoses}='{./diagnoses}'  />
 			{{/each}}
 	{{/workingPlan}}

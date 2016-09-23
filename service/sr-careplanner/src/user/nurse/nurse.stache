@@ -1,5 +1,5 @@
 <!--{{message}}-->
-
+{{boilerplates}}
 	<can-import from="sr-careplanner/user/nurse/student/summary/" />
 	<can-import from="sr-careplanner/user/nurse/student/editor/" />
 	<can-import from="sr-careplanner/user/nurse/student/selector/" />

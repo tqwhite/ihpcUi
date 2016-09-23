@@ -5,12 +5,20 @@ import './nurse.less!';
 import template from './nurse.stache!';
 import Student from "sr-careplanner/models/student";
 import Plan from "sr-careplanner/models/plan";
+import Boilerplate from "sr-careplanner/models/boilerplate";
 import qtools from "node_modules/qtools-minus/";
 
 export const ViewModel = Map.extend({
 	define: {
 		message: {
 			value: 'This is the user-nurse component'
+		},
+		boilerplates: {
+			get: function() {
+				const list = Boilerplate.getList({});
+				this.boilerplateGetStaticInfo(list);
+				return list;
+			}
 		},
 		students: {
 			get: function() {
@@ -133,11 +141,30 @@ export const ViewModel = Map.extend({
 				}
 				return '';
 			}
+		},
+		
+		boilerplateRefIdLookupObject:{
+			value:'',
+			type:'*'
+		
 		}
 	},
 	
 	
-	
+	boilerplateGetStaticInfo:function(boilerplates){
+		if(this.attr('boilerplateRefIdLookupObject')!==''){
+			return;
+		}
+		
+		let boilerplateRefIdLookupObject={};
+		boilerplates.then((result)=>{
+			result.each((item)=>{
+				boilerplateRefIdLookupObject[item.refId]=item;
+			});
+			
+			this.attr('boilerplateRefIdLookupObject', boilerplateRefIdLookupObject);
+		});
+	},
 	
 	
 

@@ -28,6 +28,22 @@ export const ViewModel = Map.extend({
 		});
 		this.attr('showNdSelector', true);
 	},
+	
+	alreadyInPlan:function(condition){
+	return false;
+		if (typeof(this.conditionRefIdList)=='undefined'){
+			this.generateConditionRefIdList();
+		}
+		
+		const refId=condition.refId;
+
+		if (this.conditionRefIdList.indexOf(refId)>-1){
+			return true
+		}
+		else{
+			return false
+		}
+	},
 
 	testElement: function(x) {
 		console.dir({

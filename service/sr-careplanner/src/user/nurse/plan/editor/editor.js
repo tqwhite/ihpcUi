@@ -5,23 +5,24 @@ import './editor.less!';
 import template from './editor.stache!';
 import Plan from "sr-careplanner/models/plan";
 import qtools from "node_modules/qtools-minus/";
-import Boilerplate from "sr-careplanner/models/boilerplate";
 
 export const ViewModel = Map.extend({
 	define: {
 		message: {
 			value: 'This is the user-nurse-plan-editor component'
 		},
-    boilerplates: {
-		get: function() {
-			const list=Boilerplate.getList({});
-			return list;
+		showConditionSelector: {
+			value: false,
+			type: '*'
 		},
-	showConditionSelector:{
-		value:false,
-		type:'*'
-	}
-  }
+		saveNotification: {
+			value: false,
+			type: '*'
+		},
+		saveNotificationTimeoutId: {
+			value: false,
+			type: '*'
+		},
 	},
 	saveObject: function() {
 
@@ -32,14 +33,12 @@ export const ViewModel = Map.extend({
 			this.attr('saveNotificationTimeoutId', '')
 		}
 
-
 		var saveObj = this.attr('planRootVm').attr('workingPlan');
 		var promise;
 		var self = this;
 
-
 		if (saveObj.isNew()) {
-		//	saveObj.attr('refId', qtools.newGuid()); //the plan is generated with a refId and wired in at creation, don't need this
+			//	saveObj.attr('refId', qtools.newGuid()); //the plan is generated with a refId and wired in at creation, don't need this
 			promise = saveObj.save().then(function() {
 				self.attr("saveObj", new Plan());
 			});
@@ -66,8 +65,8 @@ export const ViewModel = Map.extend({
 					});
 				});
 	},
-	
-	showConditionTool:function(event){
+
+	showConditionTool: function(event) {
 		event.stopPropagation();
 		this.attr('%root').activateModal(() => {
 			this.attr('showConditionSelector', false);
@@ -75,28 +74,65 @@ export const ViewModel = Map.extend({
 		this.attr('showConditionSelector', true);
 	},
 
-	newCondition: function(boilerplateItem) {
-
-
+	addNewCondition: function(boilerplateCondition) {
 		let newCondition = this.attr('planRootVm').attr('blankCondition');
-		if (boilerplateItem){
-			newCondition=this.addBoilerPlate(newCondition, boilerplateItem);
+		if (boilerplateCondition) {
+			newCondition = this.addBoilerPlateCondition(newCondition, boilerplateCondition);
 		}
 		const planList = this.attr('planRootVm').attr('workingPlan');
 		planList.attr('conditions').unshift(newCondition)
 		this.attr('showConditionSelector', false);
-		if (boilerplateItem){
+		if (boilerplateCondition) {
 			this.saveObject();
 		}
 	},
-	
-	addBoilerPlate:function(newCondition, boilerplateItem){
-		['shortName', 'title'].map((item)=>{
-			newCondition[item]=boilerplateItem[item];
-		});
-			newCondition.sourceConditionRefId=boilerplateItem.refId;
+
+	addDiagnosis: function(boilerplateDiagnosis) {
+		let newDiagnosis = this.attr('planRootVm').attr('blankDiagnosis')
+		if (boilerplateDiagnosis) {
+			newDiagnosis = this.addBoilerPlateDiagnosis(newDiagnosis, boilerplateDiagnosis);
+		}
+		const planList = this.attr('planRootVm').attr('workingPlan');
 		
+		
+		planList.attr('conditions').attr(0).attr('diagnoses').unshift(newDiagnosis);
+		if (boilerplateDiagnosis) {
+			this.saveObject();
+		}
+	},
+
+	getBoilerplateDiagnoses: function(condition) {
+		const sourceConditionRefId = condition.attr('sourceConditionRefId');
+		
+		if (!sourceConditionRefId){
+			return;
+		}
+		
+		const boilerplateRefIdLookupObject=this.attr('planRootVm').attr('boilerplateRefIdLookupObject');
+		const boilerplaceCondition=boilerplateRefIdLookupObject[sourceConditionRefId];
+		if (boilerplaceCondition.diagnoses){
+			return boilerplaceCondition.diagnoses;
+		}
+		
+		return;
+	},
+
+	addBoilerPlateCondition: function(newCondition, boilerplateItem) {
+		['shortName', 'title'].map((item) => {
+			newCondition[item] = boilerplateItem[item];
+		});
+		newCondition.sourceConditionRefId = boilerplateItem.refId;
+
 		return newCondition;
+	},
+
+	addBoilerPlateDiagnosis: function(newDiagnosis, boilerplateItem) {
+		['nursingDiagnosis', 'interventions', 'outcomes', 'shortName'].map((item) => {
+			newDiagnosis[item] = boilerplateItem[item];
+		});
+		newDiagnosis.sourceConditionRefId = boilerplateItem.refId;
+
+		return newDiagnosis;
 	},
 
 	deleteCondition: function(index) {
@@ -106,12 +142,6 @@ export const ViewModel = Map.extend({
 		const planList = this.attr('planRootVm').attr('workingPlan');
 		planList.attr('conditions').removeAttr(index)
 		this.saveObject();
-	},
-
-	createDiagnosis: function(index) {
-		const newDiagnosis=this.attr('planRootVm').attr('blankDiagnosis')
-		const planList = this.attr('planRootVm').attr('workingPlan');
-		planList.attr('conditions').attr(0).attr('diagnoses').push(newDiagnosis);
 	},
 
 	deleteDiagnosis: function(index) {
