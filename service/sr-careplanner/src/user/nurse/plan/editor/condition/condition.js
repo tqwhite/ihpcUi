@@ -29,20 +29,26 @@ export const ViewModel = Map.extend({
 		this.attr('showNdSelector', true);
 	},
 	
-	alreadyInPlan:function(condition){
-	return false;
-		if (typeof(this.conditionRefIdList)=='undefined'){
-			this.generateConditionRefIdList();
-		}
-		
-		const refId=condition.refId;
+	alreadyInPlan:function(diagnosis){
+		const condition=this.attr('condition');
+		let foundIt=false;
+		console.dir({"condition":condition});
+		condition.diagnoses.each((item)=>{
+			if (item.sourceDiagnosisRefId==diagnosis.refId){
+console.log("item.sourceDiagnosisRefId="+item.sourceDiagnosisRefId);
+console.log("diagnosis.refId="+diagnosis.refId);
 
-		if (this.conditionRefIdList.indexOf(refId)>-1){
-			return true
-		}
-		else{
-			return false
-		}
+
+
+
+				foundIt=true;
+			}
+		
+		});
+console.log("foundIt="+foundIt);
+
+
+		return foundIt;
 	},
 
 	testElement: function(x) {

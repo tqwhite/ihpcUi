@@ -1,9 +1,8 @@
 <!--{{message}}-->
 <button ($click)='testElement("x")' style='margin-left:20px;' tabindex='-1'>test user-nurse-plan-editor-condition</button>
 
-
 	<can-import from="sr-careplanner/user/nurse/plan/editor/condition/diagnosis/" />
-	
+
 <div>
 	<div class="c-toast c-toast--success overlay {{#saveNotification}}showOverlay{{else}}hideOverlay{{/saveNotification}}">
 		Saving...
@@ -18,56 +17,43 @@
 			<button class="c-button c-button--ghost c-button--xsmall c-button--primary deleteButton" id='{{refId}}' ($click)='deleteCondition({{index}})' tabindex='-1'>
 				Delete Condition
 			</button><br/>
-		
-		{{#showNdSelector}}
-		<div class='buttonContainer'>
-		
-		
-		
-<div class='columns'>			
-		{{#each boilerplateDiagnoses}}
-			{{#if alreadyInPlan(.)}}
-				<div class='condition' ($mouseover)='showDetail(%element)' ($mouseleave)='hideDetail(%element)'>
-					<div class='inactive'>{{shortName}}</div>
-					<div class="detail">Already in Plan</div>
+
+			{{#showNdSelector}}
+				<div class='buttonContainer'>
+
+					<div class='columns'>
+							{{#each boilerplateDiagnoses}}
+								{{#if alreadyInPlan(.)}}
+									<div class='condition' ($mouseover)='showDetail(%element)' ($mouseleave)='hideDetail(%element)'>
+										<div class='inactive'>*{{shortName}}</div>
+									</div>
+								{{else}}
+											<div class="  diagnosisButton  active" tabindex='-1'>
+												<div class='active'  ($click)='../addDiagnosis(.)'>{{shortName}}</div>
+											</div>
+								{{/if}}
+							{{/each}}
+							<div class='detail'>* means Already in Plan</div>
+							<button class="c-button  c-button--ghost c-button--xsmall c-button--primary " ($click)='addDiagnosis()' tabindex='-1'>
+								New Custom ND
+							</button>
+					</div>
+
 				</div>
-			{{else}}
-				
-						<div class="  diagnosisButton  active" tabindex='-1'>
-							<div class='active'  ($click)='../addDiagnosis(.)'>{{shortName}}</div>
-						</div>
-				
-				
-			{{/if}}
-		{{/each}}
-
-
-	
-
-					<button style='margin-top:15px;' class="c-button  c-button--ghost c-button--xsmall c-button--primary " ($click)='addDiagnosis()' tabindex='-1'>
-						New Custom ND
-					</button>
-</div>
-	
-
-			</div>
+			{{/showNdSelector}}
+			{{^showNdSelector}}
+				<button class="c-button c-button--ghost c-button--xsmall c-button--primary" id='{{refId}}' ($click)='activateNdSelector(%event)' tabindex='-1'>
+					Select ND(s)
+				</button>
+			{{/showNdSelector}}
+			
 		</div>
-		{{/showNdSelector}}
-		{{^showNdSelector}}
-			<button class="c-button c-button--ghost c-button--xsmall c-button--primary" id='{{refId}}' ($click)='activateNdSelector(%event)' tabindex='-1'>
-				Select ND(s)
-			</button>
-		{{/showNdSelector}}
-			
-			
-			
+
 			{{#each condition.diagnoses}}
 				<user-nurse-plan-editor-condition-diagnosis plan-root-vm='{planRootVm}' {diagnosis}='.' index='{%index}' count='{diagnoses.length}'  />
 			{{/each}}
-		</div>
-		</div>
 	{{/showEditView}}
-	
+
 	{{^showEditView}}
-	<span class='fa fa-caret-right closeSpot' ($click)='toggleEditView()'/> <span class='listTitle'>{{condition.title}}</span>
+		<span class='fa fa-caret-right closeSpot' ($click)='toggleEditView()'/> <span class='listTitle'>{{condition.title}}</span>
 	{{/showEditView}}
