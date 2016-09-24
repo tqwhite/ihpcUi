@@ -78,6 +78,7 @@ export const ViewModel = Map.extend({
 		let newCondition = this.attr('planRootVm').attr('blankCondition');
 		if (boilerplateCondition) {
 			newCondition = this.addBoilerPlateCondition(newCondition, boilerplateCondition);
+			newCondition = this.addDefaultDiagnoses(newCondition, boilerplateCondition);
 		}
 		const planList = this.attr('planRootVm').attr('workingPlan');
 		planList.attr('conditions').unshift(newCondition)
@@ -85,6 +86,24 @@ export const ViewModel = Map.extend({
 		if (boilerplateCondition) {
 			this.saveObject();
 		}
+	},
+	
+	addDefaultDiagnoses:function(newCondition, boilerplateCondition){
+
+		const boilerplateDiagnoses=boilerplateCondition.attr('diagnoses');
+		let newDiagnosis;
+
+		for (var i=0, len=boilerplateDiagnoses.length; i<len; i++){
+			var element=boilerplateDiagnoses[i];
+			if (element.attr('includeByDefault')){
+				newDiagnosis = this.attr('planRootVm').attr('blankDiagnosis')
+				newDiagnosis = this.addBoilerPlateDiagnosis(newDiagnosis, element);
+				newCondition.diagnoses.unshift(newDiagnosis);
+			}
+		}
+
+		return newCondition;
+		
 	},
 
 	addDiagnosis: function(boilerplateDiagnosis) {
@@ -130,7 +149,7 @@ export const ViewModel = Map.extend({
 		['nursingDiagnosis', 'interventions', 'outcomes', 'shortName'].map((item) => {
 			newDiagnosis[item] = boilerplateItem[item];
 		});
-		newDiagnosis.sourceConditionRefId = boilerplateItem.refId;
+		newDiagnosis.sourceDiagnosisRefId = boilerplateItem.refId;
 
 		return newDiagnosis;
 	},
