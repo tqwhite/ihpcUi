@@ -39,7 +39,9 @@ export const ViewModel = Map.extend({
 	},
 
 	showDetail: function(element) {
-		$(element).css('border', '1pt solid gray').find('.detail').show();
+		const mainElement=$(element);
+		window.AAA=mainElement;
+		mainElement.css('border', '1pt solid gray').find('.detail').show();
 	},
 
 	hideDetail: function(element) {

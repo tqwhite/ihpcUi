@@ -63,8 +63,6 @@ import 'sr-careplanner/user/nurse/student/selector/selector_test';
 
 import 'sr-careplanner/decorations/server-error/server-error_test';
 
-import 'sr-careplanner/nurse/plan/shopper/shopper_test';
-
 import 'sr-careplanner/nurse/plan/display/display_test';
 
 import 'sr-careplanner/nurse/plan/selector/selector_test';
@@ -72,8 +70,6 @@ import 'sr-careplanner/nurse/plan/selector/selector_test';
 import 'sr-careplanner/nurse/plan/control/control_test';
 
 import 'sr-careplanner/nurse/plan/control/selector/selector_test';
-
-import 'sr-careplanner/user/nurse/plan/shopper/shopper_test';
 
 import 'sr-careplanner/user/nurse/plan/display/display_test';
 

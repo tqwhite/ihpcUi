@@ -1,48 +1,48 @@
 <!--{{message}}-->
-{{boilerplates}}
+<span style='display:none;float;right;'>{{boilerplates}}</span>
 	<can-import from="sr-careplanner/user/nurse/student/summary/" />
 	<can-import from="sr-careplanner/user/nurse/student/editor/" />
 	<can-import from="sr-careplanner/user/nurse/student/selector/" />
 	<can-import from="sr-careplanner/user/nurse/plan/" />
 <div class='controls'>
-<div style='position:absolute;top:5px;left:50px;'>
-	<button ($click)='reinitializeDb("student")' style='' tabindex='-1'>reinitialize student db</button>
-	<button ($click)='reinitializeDb("boilerplate")' style='margin-left:20px;' tabindex='-1'>reinitialize boilerplate db</button>
-	<button ($click)='reinitializeDb("plan")' style='margin-left:20px;' tabindex='-1'>reinitialize plan db</button>
+	<div style='position:absolute;top:5px;left:50px;'>
+		<button ($click)='reinitializeDb("student")' style='' tabindex='-1'>reinitialize student db</button>
+		<button ($click)='reinitializeDb("boilerplate")' style='margin-left:20px;' tabindex='-1'>reinitialize boilerplate db</button>
+		<button ($click)='reinitializeDb("plan")' style='margin-left:20px;' tabindex='-1'>reinitialize plan db</button>
 
-	<button ($click)='clearConsole()' style='margin-left:20px;' tabindex='-1'>clearConsole</button>
-	<button ($click)='testElement("x")' style='margin-left:20px;' tabindex='-1'>test nurse</button>
-</div>
+		<button ($click)='clearConsole()' style='margin-left:20px;' tabindex='-1'>clearConsole</button>
+		<button ($click)='testElement("x")' style='margin-left:20px;' tabindex='-1'>test nurse</button>
+	</div>
 	<div class='studentSelector'><user-nurse-student-selector parent-vm='{.}' /></div>
 </div>
 
 
-		{{#showStudentEditor}}
-			{{^newStudentFlag}}
-				{{#if students.isResolved}}
-					{{#each students.value}}
-						{{#eq openStudentRefId refId}}
-								<user-nurse-student-editor student='{.}' parent-vm='{../../}' />
-						{{/eq}}
-					{{/each}}
-				{{/if}}
-			{{/#newStudentFlag}}
-				
-			{{#newStudentFlag}}
-					<user-nurse-student-editor annotation="Creating New" parent-vm='{../}' />
-			{{/#newStudentFlag}}
-		{{/showStudentEditor}}
+{{#showStudentEditor}}
+	{{^newStudentFlag}}
+		{{#if students.isResolved}}
+			{{#each students.value}}
+				{{#eq openStudentRefId refId}}
+						<user-nurse-student-editor student='{.}' parent-vm='{../../}' />
+				{{/eq}}
+			{{/each}}
+		{{/if}}
+	{{/#newStudentFlag}}
+		
+	{{#newStudentFlag}}
+			<user-nurse-student-editor annotation="Creating New" parent-vm='{../}' />
+	{{/#newStudentFlag}}
+{{/showStudentEditor}}
 
-	
-		{{^showStudentEditor}}
-				{{#if students.isResolved}}
-					{{#each students.value}}
-						{{#eq openStudentRefId refId}}
-							<user-nurse-student-summary student='{.}' />
-						{{/eq}}
-					{{/each}}
-				{{/if}}
-		{{/showStudentEditor}}
+
+{{^showStudentEditor}}
+		{{#if students.isResolved}}
+			{{#each students.value}}
+				{{#eq openStudentRefId refId}}
+					<user-nurse-student-summary student='{.}' />
+				{{/eq}}
+			{{/each}}
+		{{/if}}
+{{/showStudentEditor}}
 
 
 

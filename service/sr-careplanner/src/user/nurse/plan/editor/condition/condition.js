@@ -18,7 +18,9 @@ export const ViewModel = Map.extend({
 	},
 
 	toggleEditView: function() {
-		this.attr('showEditView', !this.attr('showEditView'));
+		const showEditView=this.attr('showEditView');
+		this.attr('editorCloseSpotState', showEditView);
+		this.attr('showEditView', !showEditView);
 	},
 
 	activateNdSelector: function(event) {
@@ -32,25 +34,48 @@ export const ViewModel = Map.extend({
 	alreadyInPlan:function(diagnosis){
 		const condition=this.attr('condition');
 		let foundIt=false;
-		console.dir({"condition":condition});
 		condition.diagnoses.each((item)=>{
 			if (item.sourceDiagnosisRefId==diagnosis.refId){
-console.log("item.sourceDiagnosisRefId="+item.sourceDiagnosisRefId);
-console.log("diagnosis.refId="+diagnosis.refId);
-
-
-
-
 				foundIt=true;
 			}
 		
 		});
-console.log("foundIt="+foundIt);
-
-
 		return foundIt;
 	},
+	
+	collectChildComponents:function(childType, childVm){
+		if (typeof(this[childType])=='undefined'){
+			this[childType]=[];
+		}
+		this[childType].push(childVm);
+	},
+	
+	changeDiagnosesView:function(){
+		let allSummary=false;
+		const conditionList=this.childComponentLists['diagnosis'];
+		for (var i=0, len=conditionList.length; i<len; i++){
+			allSummary=allSummary || conditionList[i].attr('showDiagnosisEditor')
+		}
+		for (var i=0, len=conditionList.length; i<len; i++){
+				conditionList[i].attr('showDiagnosisEditor', !allSummary)
+		}
+	},
 
+
+	showDetail: function(element) {
+		$(element).css('border', '1pt solid gray');
+	},
+
+	hideDetail: function(element) {
+		$(element).css('border', 'none');
+
+	},
+	
+	collectChildComponents:function(childType, childVm){
+		this.childComponentLists=this.childComponentLists || {};
+		this.childComponentLists[childType]=this.childComponentLists[childType] || [];
+		this.childComponentLists[childType].push(childVm);
+	},
 	testElement: function(x) {
 		console.dir({
 			"user-nurse-plan-editor-condition": this.attr()

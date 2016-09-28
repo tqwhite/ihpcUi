@@ -23,6 +23,17 @@ export const ViewModel = Map.extend({
 			value: false,
 			type: '*'
 		},
+		closeSpotState:{
+			value:false,
+			set:function(value){
+				if (!value){
+					return value;
+				}
+				else{
+					return this.allConditionsAreSummary();
+				}
+			}
+		}
 	},
 	saveObject: function() {
 
@@ -81,7 +92,7 @@ export const ViewModel = Map.extend({
 			newCondition = this.addDefaultDiagnoses(newCondition, boilerplateCondition);
 		}
 		const planList = this.attr('planRootVm').attr('workingPlan');
-		planList.attr('conditions').unshift(newCondition)
+		planList.attr('conditions').push(newCondition)
 		this.attr('showConditionSelector', false);
 		if (boilerplateCondition) {
 			this.saveObject();
@@ -89,7 +100,6 @@ export const ViewModel = Map.extend({
 	},
 	
 	addDefaultDiagnoses:function(newCondition, boilerplateCondition){
-
 		const boilerplateDiagnoses=boilerplateCondition.attr('diagnoses');
 		let newDiagnosis;
 
@@ -98,7 +108,7 @@ export const ViewModel = Map.extend({
 			if (element.attr('includeByDefault')){
 				newDiagnosis = this.attr('planRootVm').attr('blankDiagnosis')
 				newDiagnosis = this.addBoilerPlateDiagnosis(newDiagnosis, element);
-				newCondition.diagnoses.unshift(newDiagnosis);
+				newCondition.diagnoses.push(newDiagnosis);
 			}
 		}
 
@@ -106,7 +116,7 @@ export const ViewModel = Map.extend({
 		
 	},
 
-	addDiagnosis: function(boilerplateDiagnosis) {
+	addDiagnosis: function(condition, boilerplateDiagnosis) {
 		let newDiagnosis = this.attr('planRootVm').attr('blankDiagnosis')
 		if (boilerplateDiagnosis) {
 			newDiagnosis = this.addBoilerPlateDiagnosis(newDiagnosis, boilerplateDiagnosis);
@@ -114,7 +124,7 @@ export const ViewModel = Map.extend({
 		const planList = this.attr('planRootVm').attr('workingPlan');
 		
 		
-		planList.attr('conditions').attr(0).attr('diagnoses').unshift(newDiagnosis);
+		condition.attr('diagnoses').push(newDiagnosis);
 		if (boilerplateDiagnosis) {
 			this.saveObject();
 		}
@@ -163,15 +173,39 @@ export const ViewModel = Map.extend({
 		this.saveObject();
 	},
 
-	deleteDiagnosis: function(index) {
+	deleteDiagnosis: function(index, condition) {
 		// 		if (! window.confirm('Are you sure?')) {
 		// 			return;
 		// 		}
 		const planList = this.attr('planRootVm').attr('workingPlan');
-		planList.attr('conditions').attr(0).attr('diagnoses').removeAttr(index)
+		condition.attr('diagnoses').removeAttr(index)
 		this.saveObject()
 	},
-
+	
+	allConditionsAreSummary:function(){
+		let allSummary=false;
+		const childList=this.childComponentLists['user-nurse-plan-editor-condition'];
+		for (var i=0, len=childList.length; i<len; i++){
+			allSummary=allSummary || childList[i].attr('showEditView');
+		}
+		return allSummary;
+	},
+	
+	changeConditionsView:function(){
+		//sets all to summary if any are not summary, all to open otherwise
+		const childList=this.childComponentLists['user-nurse-plan-editor-condition'];
+		let allSummary=this.allConditionsAreSummary();
+		this.attr('closeSpotState', allSummary);
+		for (var i=0, len=childList.length; i<len; i++){
+				childList[i].attr('showEditView', !allSummary)
+		}
+	},
+	
+	collectChildComponents:function(childType, childVm){
+		this.childComponentLists=this.childComponentLists || {};
+		this.childComponentLists[childType]=this.childComponentLists[childType] || [];
+		this.childComponentLists[childType].push(childVm);
+	},
 	testElement: function(x) {
 		console.dir({
 			"user-nurse-plan-editor": this.attr()

@@ -8,12 +8,25 @@ export const ViewModel = Map.extend({
   define: {
     message: {
       value: 'This is the user-nurse-plan-editor-condition-diagnosis component'
+    },
+    
+    showDiagnosisEditor:{
+		value:false,
+    	get:function(value){
+    		if (this.attr('diagnosis').attr('shortName')){
+    			return value;
+    		}
+    		else{
+    		this.attr('showDiagnosisEditor', true);
+    		return true;
+    		}
+    	}
     }
   },
-  
-  notLast:function(){
-  	return this.attr('index')!=(this.attr('count')-1);
-  },
+
+	toggleEditView: function() {
+		this.attr('showDiagnosisEditor', !this.attr('showDiagnosisEditor'));
+	},
 
 	testElement: function(x) {
 		console.dir({

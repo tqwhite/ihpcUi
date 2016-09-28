@@ -2,7 +2,6 @@
 
 	<can-import from="sr-careplanner/user/nurse/plan/control/" />
 	<can-import from="sr-careplanner/user/nurse/plan/editor/" />
-	<can-import from="sr-careplanner/user/nurse/plan/shopper/" />
 	<can-import from="sr-careplanner/user/nurse/plan/display/" />
 
 
@@ -16,7 +15,6 @@
 <div style=''>
 
 	<user-nurse-plan-editor plan-root-vm='{planRootVm}' />
-	<user-nurse-plan-shopper />
 	<user-nurse-plan-display />
 </div>
 </div>

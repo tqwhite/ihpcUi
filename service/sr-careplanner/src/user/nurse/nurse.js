@@ -95,7 +95,7 @@ export const ViewModel = Map.extend({
 					refId: refId,
 					sourceConditionRefId: null,
 					title: '',
-					diagnoses: [this.attr('blankDiagnosis')]
+					diagnoses: []
 				};
 		
 				return newCondition;
