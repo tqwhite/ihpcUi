@@ -26,12 +26,8 @@
     		<main-header/>
 	{{#switch page}}      
 		{{#case "admin"}}
-	<!--
 		<can-import from="sr-careplanner/user/admin/" />
-			  <user-admin/> -->
-			  
-		<can-import from="sr-careplanner/user/nurse/" />
-			  <user-nurse/>
+			  <user-admin/>
 		{{/case}}
 	   
 		{{#case "editor"}}
@@ -59,13 +55,8 @@
 
 	{{#switch session.get('role')}}      
 		{{#case "admin"}}
-	
-	<!--
 		<can-import from="sr-careplanner/user/admin/" />
-			  <user-admin/> -->
-			  
-		<can-import from="sr-careplanner/user/nurse/" />
-			  <user-nurse/>
+			  <user-admin/>
 		{{/case}}
 	   
 		{{#case "editor"}}

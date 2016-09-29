@@ -15,6 +15,7 @@ Include in Preliminary: <input type="checkbox" {($checked)}="workingDiagnosis.in
 
 
 
+
 	<div class='o-panel-container'>
 		<nav class="c-nav c-nav--top c-nav--inline">
 			<span class="c-nav__content">Nursing Diagnosis</span>
@@ -34,6 +35,13 @@ Include in Preliminary: <input type="checkbox" {($checked)}="workingDiagnosis.in
 			<span class="c-nav__content">Outcomes</span>
 		  </nav>
 		<textarea class="c-field c-editor o-panel o-panel--nav-top"  {($value)}="workingDiagnosis.outcomes">
+		</textarea>
+	</div>
+	<div class='o-panel-container'>
+		<nav class="c-nav c-nav--top c-nav--inline">
+			<span class="c-nav__content">Assessment Data (optional)</span>
+		  </nav>
+		<textarea class="c-field c-editor o-panel o-panel--nav-top" {($value)}="workingDiagnosis.assessmentData">
 		</textarea>
 	</div>
 <button ($click)='testElement("x")' style='margin-left:50px;' tabindex='-1'>test diag</button>

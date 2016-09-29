@@ -23,6 +23,13 @@
 
 	<div class='o-panel-container'>
 		<nav class="c-nav c-nav--top c-nav--inline">
+			<span class="c-nav__content">Assessment Data</span>
+		  </nav>
+		<textarea class="c-field c-editor o-panel o-panel--nav-top" {($value)}="diagnosis.assessmentData">
+		</textarea>
+	</div>
+	<div class='o-panel-container'>
+		<nav class="c-nav c-nav--top c-nav--inline">
 			<span class="c-nav__content">Nursing Diagnosis</span>
 		  </nav>
 		<textarea class="c-field c-editor o-panel o-panel--nav-top" {($value)}="diagnosis.nursingDiagnosis">

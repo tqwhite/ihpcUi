@@ -6,12 +6,14 @@
 		{{#each boilerplates.value}}
 	
 		{{#if alreadyInPlan(.)}}
-			<div class='condition' ($mouseover)='showDetail(%element)' ($mouseleave)='hideDetail(%element)'>
+			<!-- div class='condition' ($mouseover)='showDetail(%element)' ($mouseleave)='hideDetail(%element)'-->
+			<div class='condition'>
 				<div class='inactive'>{{shortName}}</div>
 				<div class="detail">Already in Plan</div>
 			</div>
 		{{else}}
-			<div class='condition' ($mouseover)='showDetail(%element)' ($mouseleave)='hideDetail(%element)'>
+			<!--div class='condition' ($mouseover)='showDetail(%element)' ($mouseleave)='hideDetail(%element)'-->
+			<div class='condition'>
 				<div class='active' ($click)='../addNewCondition(.)'>{{shortName}}</div>
 				<div class="detail">{{title}}</div>
 			</div>

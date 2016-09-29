@@ -1,5 +1,16 @@
 <div class='demoList'>
 
+
+		<can-import from="sr-careplanner/user/admin/users/selector/" />
+			  <user-admin-users-selector/>
+
+		<can-import from="sr-careplanner/user/admin/users/editor/" />
+			  <user-admin-users-editor/>
+
+
+
+
+
 {{#each users.value}}
 <div>
 {{#if debugDataVersion}}

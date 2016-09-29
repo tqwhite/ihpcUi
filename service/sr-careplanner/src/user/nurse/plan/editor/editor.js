@@ -156,7 +156,7 @@ export const ViewModel = Map.extend({
 	},
 
 	addBoilerPlateDiagnosis: function(newDiagnosis, boilerplateItem) {
-		['nursingDiagnosis', 'interventions', 'outcomes', 'shortName'].map((item) => {
+		['nursingDiagnosis', 'interventions', 'outcomes', 'shortName', 'assessmentData'].map((item) => {
 			newDiagnosis[item] = boilerplateItem[item];
 		});
 		newDiagnosis.sourceDiagnosisRefId = boilerplateItem.refId;
