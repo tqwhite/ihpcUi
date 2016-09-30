@@ -76,7 +76,9 @@ export const ViewModel = Map.extend({
 		this.childComponentLists[childType]=this.childComponentLists[childType] || [];
 		this.childComponentLists[childType].push(childVm);
 	},
-	testElement: function(x) {
+	testElement: function() {
+		window['user-nurse-plan-editor-condition']=this;
+		console.log('added: window['+"'"+'user-nurse-plan-editor-condition'+"'"+']');
 		console.dir({
 			"user-nurse-plan-editor-condition": this.attr()
 		});

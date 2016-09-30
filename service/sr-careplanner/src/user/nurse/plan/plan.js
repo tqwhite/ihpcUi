@@ -11,7 +11,9 @@ export const ViewModel = Map.extend({
     }
   },
 
-	testElement: function(x) {
+	testElement: function() {
+		window['user-nurse-plan']=this;
+		console.log('added: window['+"'"+'user-nurse-plan'+"'"+']');
 		console.dir({
 			"user-nurse-plan": this.attr()
 		});

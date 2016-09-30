@@ -1,24 +1,21 @@
-<div class='demoList'>
+<button ($click)='testElement("x")' style='margin-left:20px;' tabindex='-1'>test user-admin-users</button>
 
 
-		<can-import from="sr-careplanner/user/admin/users/selector/" />
+
+<div class='container'>
+		<can-import from="sr-careplanner/user/admin/users/selector/" 
+			users='{users}' 
+			usersRootVm='{.}'
+			($inserted)="collectChildComponents('userSelector', %viewModel))"
+		/>
 			  <user-admin-users-selector/>
 
 		<can-import from="sr-careplanner/user/admin/users/editor/" />
 			  <user-admin-users-editor/>
 
-
-
-
-
-{{#each users.value}}
-<div>
-{{#if debugDataVersion}}
-	debugDataVersion: {{debugDataVersion}}
-{{/if}}
-
-{{#if first}}
-	{{first}} {{last}} role: {{role}}
-{{/if}}
 </div>
-{{/each}}
+
+
+<div class='demoList'>
+
+</div>

@@ -28,7 +28,9 @@ export const ViewModel = Map.extend({
 		this.attr('showDiagnosisEditor', !this.attr('showDiagnosisEditor'));
 	},
 
-	testElement: function(x) {
+	testElement: function() {
+		window['user-nurse-plan-editor-condition-diagnosis']=this;
+		console.log('added: window['+"'"+'user-nurse-plan-editor-condition-diagnosis'+"'"+']');
 		console.dir({
 			"user-nurse-plan-editor-condition-diagnosis": this.attr()
 		});

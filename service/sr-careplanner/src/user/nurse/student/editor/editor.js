@@ -75,7 +75,9 @@ export const ViewModel = Map.extend({
 				});
 	},
 
-	testElement: function(x) {
+	testElement: function() {
+		window['user-nurse-student-editor']=this;
+		console.log('added: window['+"'"+'user-nurse-student-editor'+"'"+']');
 		console.dir({
 			"user-nurse-student-editor": this.attr()
 		});

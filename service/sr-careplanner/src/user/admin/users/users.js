@@ -16,7 +16,23 @@ export const ViewModel = Map.extend({
 			return list;
 		}
 	}
-  }
+  },
+	
+	collectChildComponents:function(childType, childVm){
+console.log("\n=-=============   collectChildComponents  =========================\n");
+
+
+		this.childComponentLists=this.childComponentLists || {};
+		this.childComponentLists[childType]=this.childComponentLists[childType] || [];
+		this.childComponentLists[childType].push(childVm);
+	},
+	testElement: function() {
+		window['user-admin-users']=this;
+		console.log('added: window['+"'"+'user-admin-users'+"'"+']');
+		console.dir({
+			"user-admin-users": this.attr()
+		});
+	}
 });
 
 export default Component.extend({

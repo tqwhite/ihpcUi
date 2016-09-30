@@ -16,7 +16,7 @@ export const ViewModel = Map.extend({
 		boilerplates: {
 			get: function() {
 				const list = Boilerplate.getList({});
-				this.boilerplateGetStaticInfo(list);
+				this.boilerplateGetStaticInfo(list); //this operates the promise
 				return list;
 			}
 		},
@@ -152,16 +152,15 @@ export const ViewModel = Map.extend({
 	
 	
 	boilerplateGetStaticInfo:function(boilerplates){
-		if(this.attr('boilerplateRefIdLookupObject')!==''){
-			return;
-		}
+// 		if(this.attr('boilerplateRefIdLookupObject')!==''){
+// 			return;
+// 		}
 		
 		let boilerplateRefIdLookupObject={};
 		boilerplates.then((result)=>{
 			result.each((item)=>{
 				boilerplateRefIdLookupObject[item.refId]=item;
 			});
-			
 			this.attr('boilerplateRefIdLookupObject', boilerplateRefIdLookupObject);
 		});
 	},
@@ -197,6 +196,8 @@ export const ViewModel = Map.extend({
 	},
 
 	testElement: function(x) {
+		window['user-nurse']=this;
+		console.log('added: window['+"'"+'user-nurse'+"'"+']');
 		console.dir({
 			"user-nurse": this.attr(),
 			"students": this.attr('students'),
