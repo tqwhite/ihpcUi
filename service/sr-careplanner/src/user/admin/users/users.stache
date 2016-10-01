@@ -3,15 +3,19 @@
 
 
 <div class='container'>
-		<can-import from="sr-careplanner/user/admin/users/selector/" 
-			users='{users}' 
-			usersRootVm='{.}'
-			($inserted)="collectChildComponents('userSelector', %viewModel))"
-		/>
-			  <user-admin-users-selector/>
+		<can-import from="sr-careplanner/user/admin/users/selector/" />
+			  <user-admin-users-selector
+				users='{users}' 
+				users-root-vm='{.}'
+				($inserted)="collectChildComponents('user-admin-users-selector', %viewModel))"
+			  />
 
 		<can-import from="sr-careplanner/user/admin/users/editor/" />
-			  <user-admin-users-editor/>
+			  <user-admin-users-editor
+				working-user='{workingUser}' 
+				users-root-vm='{.}'
+				($inserted)="collectChildComponents('user-admin-users-editor', %viewModel))"
+			  />
 
 </div>
 

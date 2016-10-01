@@ -1,0 +1,7 @@
+<!--{{message}}--><button ($click)='testElement("x")' style='margin-left:20px;' tabindex='-1'>test user-admin-users-editor</button>
+
+<div class='container'>
+<p>{{workingUser.first}}</p>
+<input class="c-field title deleteButton" placeholder="Condition Title" {($value)}="workingUser.first"/> 
+
+</div>

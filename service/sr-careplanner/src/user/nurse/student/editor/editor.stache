@@ -1,4 +1,6 @@
 <!--{{message}}-->
+<button ($click)='testElement("x")' style='margin-left:20px;' tabindex='-1'>test user-nurse-student-editor</button>
+
 
 {{#saveError}}
 <can-import from="sr-careplanner/decorations/server-error/" />

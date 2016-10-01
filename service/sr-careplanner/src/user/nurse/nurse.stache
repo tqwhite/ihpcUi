@@ -13,7 +13,12 @@
 		<button ($click)='clearConsole()' style='margin-left:20px;' tabindex='-1'>clearConsole</button>
 		<button ($click)='testElement("x")' style='margin-left:20px;' tabindex='-1'>test nurse</button>
 	</div>
-	<div class='studentSelector'><user-nurse-student-selector parent-vm='{.}' /></div>
+	<div class='studentSelector'>
+		<user-nurse-student-selector 
+			parent-vm='{.}' 
+				($inserted)="collectChildComponents('user-nurse-student-selector', %viewModel))"
+		/>
+	</div>
 </div>
 
 
@@ -22,14 +27,22 @@
 		{{#if students.isResolved}}
 			{{#each students.value}}
 				{{#eq openStudentRefId refId}}
-						<user-nurse-student-editor student='{.}' parent-vm='{../../}' />
+						<user-nurse-student-editor 
+						student='{.}' 
+						parent-vm='{../../}' 
+						($inserted)="collectChildComponents('user-nurse-student-editor', %viewModel))"
+					/>
 				{{/eq}}
 			{{/each}}
 		{{/if}}
 	{{/#newStudentFlag}}
 		
 	{{#newStudentFlag}}
-			<user-nurse-student-editor annotation="Creating New" parent-vm='{../}' />
+			<user-nurse-student-editor 
+				annotation="Creating New" 
+				parent-vm='{../}' 
+				($inserted)="collectChildComponents('user-nurse-student-editor', %viewModel))"
+			/>
 	{{/#newStudentFlag}}
 {{/showStudentEditor}}
 
@@ -38,7 +51,10 @@
 		{{#if students.isResolved}}
 			{{#each students.value}}
 				{{#eq openStudentRefId refId}}
-					<user-nurse-student-summary student='{.}' />
+					<user-nurse-student-summary 
+						student='{.}' 
+						($inserted)="collectChildComponents('user-nurse-student-summary', %viewModel))"
+					/>
 				{{/eq}}
 			{{/each}}
 		{{/if}}
@@ -48,7 +64,10 @@
 
 
 {{#openStudentRefId}}
-<user-nurse-plan plan-root-vm='{../}' />
+	<user-nurse-plan 
+		plan-root-vm='{../}' 
+		($inserted)="collectChildComponents('user-nurse-plan', %viewModel))"
+	/>
 {{/openStudentRefId}}
 
 

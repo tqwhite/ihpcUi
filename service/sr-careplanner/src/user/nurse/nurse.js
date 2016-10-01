@@ -195,6 +195,12 @@ export const ViewModel = Map.extend({
 		this.attr('showStudentEditor', true);
 	},
 
+
+	collectChildComponents: function(childType, childVm) {
+		this.childComponentLists = this.childComponentLists || {};
+		this.childComponentLists[childType] = this.childComponentLists[childType] || [];
+		this.childComponentLists[childType].push(childVm);
+	},
 	testElement: function(x) {
 		window['user-nurse']=this;
 		console.log('added: window['+"'"+'user-nurse'+"'"+']');
@@ -202,6 +208,7 @@ export const ViewModel = Map.extend({
 			"user-nurse": this.attr(),
 			"students": this.attr('students'),
 			"plans": this.attr('plans'),
+			'childComponentLists':this.childComponentLists
 		});
 	},
 

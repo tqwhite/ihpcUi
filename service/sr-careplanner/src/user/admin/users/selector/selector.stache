@@ -1,0 +1,13 @@
+<!--{{message}}--><button ($click)='testElement("x")' style='margin-left:20px;' tabindex='-1'>test user-admin-users-selector</button>
+
+
+<div class='container'>
+
+{{#each users.value}}
+<div class='userItem' ($click)='chooseUser({.})'>
+{{#if first}}
+	{{first}} {{last}} role: {{role}}
+{{/if}}
+
+</div>
+{{/each}}
