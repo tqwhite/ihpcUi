@@ -13,6 +13,7 @@
 		<can-import from="sr-careplanner/user/admin/users/editor/" />
 			  <user-admin-users-editor
 				working-user='{workingUser}' 
+				undo-user='{workingUser}' 
 				users-root-vm='{.}'
 				($inserted)="collectChildComponents('user-admin-users-editor', %viewModel))"
 			  />

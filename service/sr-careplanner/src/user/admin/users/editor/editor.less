@@ -2,8 +2,38 @@ user-admin-users-editor {
 	display: block;
 }
 
-user-admin-users-editor .container{
+user-admin-users-editor div.container{
 	min-height:40vh;
 	width:40vw;
 	border:1pt solid green;
+/* distribute vertically */	
+display: -webkit-flex;
+display: flex;
+-webkit-flex-direction: column;
+flex-direction: column;
+-webkit-justify-content: space-between;
+justify-content: space-between;
+}
+
+user-admin-users-editor .status{
+	position:absolute;
+	top:2px;
+	right:2px;
+	background:rgba(239, 79, 82, .5);
+}
+
+user-admin-users-editor .editorRow{
+}
+user-admin-users-editor .editorRow .c-field{
+display:inline;
+width:50%;
+}
+user-admin-users-editor .editorRow .c-choice{
+display:inline;
+margin-left:30px;
+}
+
+
+user-admin-users-editor .showOverlay{
+display:block;
 }

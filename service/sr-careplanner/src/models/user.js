@@ -4,7 +4,19 @@ import tag from 'can-connect/can/tag/';
 import 'can/map/define/define';
 
 export const User = can.Map.extend({
-define: {}
+define: {},
+errorList:function(userObj){
+
+this.removeAttr('pwhash');
+
+if (this.attr('first').match(/err/)){
+	return [{msg:"contains the string 'err'"}];;
+}
+return;
+
+
+}
+
 });
 
 User.List = can.List.extend({

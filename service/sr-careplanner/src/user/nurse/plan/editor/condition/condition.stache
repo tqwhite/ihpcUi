@@ -2,11 +2,13 @@
 
 	<can-import from="sr-careplanner/user/nurse/plan/editor/condition/diagnosis/" />
 
-<div>
-	<div class="c-toast c-toast--success overlay {{#saveNotification}}showOverlay{{else}}hideOverlay{{/saveNotification}}">
+
+{{#saveNotification}}
+	<div class="c-toast notificationToast save success ">
 		Saving...
 	</div>
-</div>
+{{/saveNotification}}
+
 
 	{{#showEditView}}
 		<div class='editView'>
