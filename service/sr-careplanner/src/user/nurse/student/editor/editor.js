@@ -32,47 +32,42 @@ export const ViewModel = Map.extend({
 	
 	saveObject: function() {
 
+
+		var student=this.attr('student'); //this should probably be renamed workingStudent to match the pattern elsewhere
+		
+		//validation goes here, with a return;
+		
 		this.attr('saveNotification', true);
 		const prevTimeoutId = this.attr('saveNotificationTimeoutId');
 		if (prevTimeoutId) {
 			clearTimeout(prevTimeoutId);
 			this.attr('saveNotificationTimeoutId', '')
 		}
-
-
-		var student=this.attr('student');
-		var promise;
-		var self=this;
 		
 		if (student.isNew()){
 			student.attr('refId', qtools.newGuid());
-			promise = student.save().then(function(){
-				self.attr("student", new Student());
-			});
-		}
-		else{
-			promise=student.save();
+			this.attr('parentVm').attr('openStudentRefId', student.attr('refId'));
+			this.attr('annotation', '');
 		}
 		
-			promise
-			.then(() => {
-				const timeoutId = setTimeout(() => {
-					this.attr('saveNotification', false);
-				}, 2000);
+		var	promise=student
+			.save()
+			.then(
+				() => {
+					const timeoutId = setTimeout(() => {
+						this.attr('saveNotification', false);
+					}, 2000);
+					this.attr('saveNotificationTimeoutId', timeoutId);
 				
-				this.attr('saveNotificationTimeoutId', timeoutId);
-		//		this.attr('parentVm').attr('newStudentFlag', false);
-				this.attr('student', student);
-				this.attr('annotation', '');
-				this.attr('parentVm').attr('openStudentRefId', student.attr('refId'));
-				this.attr('parentVm').attr('openStudentNameString', student.attr('last')+', '+student.attr('first'));
-			},
+					this.attr('parentVm').attr('openStudentNameString', student.attr('last')+', '+student.attr('first'));
+				},
 				(err) => {
 					this.attr('saveError', JSON.stringify(err))
 					console.dir({
 						"err": err
 					});
-				});
+				}
+			);
 	},
 
 	testElement: function() {
