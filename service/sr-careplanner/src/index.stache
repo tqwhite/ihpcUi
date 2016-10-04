@@ -1,7 +1,5 @@
 <html>
   <head>
-  
-  
 
     <can-import from="sr-careplanner/blaze.min.css" />
     <can-import from="sr-careplanner/blaze.animations.min.css" />
@@ -18,6 +16,8 @@
     <title>{{title}}</title>
   </head>
   <body>
+  
+
   
 
 <account-login-permission-master/>
@@ -96,6 +96,19 @@
     
 
     <main-footer></main-footer>
+
+{{#if session.get('role')}}
+ 	<div style='position:absolute;bottom:85px;left:50px;'>
+ 	
+
+		<button ($click)='reinitializeDb("student")' style='' tabindex='-1'>reinitialize student db</button>
+		<button ($click)='reinitializeDb("boilerplate")' style='margin-left:20px;' tabindex='-1'>reinitialize boilerplate db</button>
+		<button ($click)='reinitializeDb("plan")' style='margin-left:20px;' tabindex='-1'>reinitialize plan db</button>
+		<button ($click)='reinitializeDb("user")' style='margin-left:20px;' tabindex='-1'>reinitialize user db</button>
+
+		<button ($click)='clearConsole()' style='margin-left:20px;' tabindex='-1'>clearConsole</button>
+	</div> 
+{{/if}}	
 
     {{#switch env.NODE_ENV}}
       {{#case "production"}}

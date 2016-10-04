@@ -13,6 +13,7 @@ export const ViewModel = Map.extend({
 
 	chooseUser:function(user){
 		this.attr('usersRootVm').attr('workingUser', user);
+		this.attr('usersRootVm').attr('showEditor', true);
 
 	},
 	testElement: function() {
@@ -21,6 +22,15 @@ export const ViewModel = Map.extend({
 		console.dir({
 			"user-admin-users-selector": this.attr()
 		});
+this.attr('users').then((item)=>{
+console.dir({"item":item});
+
+
+});
+
+
+
+
 	}
 });
 

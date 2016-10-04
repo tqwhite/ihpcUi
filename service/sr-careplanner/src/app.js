@@ -72,7 +72,51 @@ const AppViewModel = Map.extend({
 	},
 	activateModal:function(callback){
 		$('body').one('click', callback);
-	}
+	},
+	reinitializeDb: function(database) {
+		const currPage=this.attr('page');
+		const initializers = {
+			student: () => {
+				$.ajax({
+					url: '/api/student/reinitialize/'
+				}).done((err, result) => {
+					this.setNewPage('xxx');
+					this.setNewPage(currPage); //trigger reload
+
+				});
+			},
+			boilerplate: () => {
+				$.ajax({
+					url: '/api/boilerplate/reinitialize/'
+				}).done((err, result) => {
+					this.setNewPage('xxx');
+					this.setNewPage(currPage); //trigger reload
+
+				});
+			},
+			plan: () => {
+				$.ajax({
+					url: '/api/plan/reinitialize/'
+				}).done((err, result) => {
+					this.setNewPage('xxx');
+					this.setNewPage(currPage); //trigger reload
+
+				});
+			},
+			user: () => {
+				$.ajax({
+					url: '/api/user/reinitialize/'
+				}).done((err, result) => {
+					this.setNewPage('xxx');
+					this.setNewPage(currPage); //trigger reload
+
+				});
+			},
+		}
+
+		initializers[database]();
+
+	},
 });
 
 

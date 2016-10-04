@@ -5,14 +5,32 @@ import 'can/map/define/define';
 
 export const User = can.Map.extend({
 define: {},
-errorList:function(userObj){
-
+validate:function(fieldName){
 this.removeAttr('pwhash');
+let name;
+const errorList=[];
 
-if (this.attr('first').match(/err/)){
-	return [{msg:"contains the string 'err'"}];;
+const checkValidation=(fieldName)=>{
+	switch(fieldName){
+		case 'first':
+		case 'last':
+		case 'username':
+			if (!this.attr(fieldName) || !this.attr(fieldName).length){
+				errorList.push({fieldName:fieldName, msg:fieldName+" cannot be empty"});
+			}
+		break;
+	}
 }
-return;
+
+if (fieldName){
+checkValidation(fieldName);
+}
+else{
+['first', 'last', 'username'].map(checkValidation);
+}
+
+
+return errorList;
 
 
 }
@@ -39,7 +57,10 @@ export const userConnection = superMap({
 		return incoming.data;
 	},
  	parseInstanceProp: "data",
-	parseInstanceData:function(inDataItem){ 
+	parseInstanceData: function(inDataItem) {
+		if (typeof (inDataItem) == 'string') {
+			inDataItem = JSON.parse(inDataItem).data[0];
+		}
 		return inDataItem;
 	},
 	

@@ -1,12 +1,12 @@
 <!--{{message}}--><button ($click)='testElement("x")' style='margin-left:20px;' tabindex='-1'>test user-admin-users-editor</button>
 
-{{#currentError}}
+{{#errorList}}
 	<div class="c-toast notificationToast save error ">
-		{{#each currentError.errorList}}
+		{{#each errorList.user}}
 			{{msg}}<br/>
 		{{/each}}
 	</div>
-{{/currentError}}
+{{/errorList}}
 
 {{#saveNotification}}
 	<div class="c-toast notificationToast save success ">
@@ -17,18 +17,20 @@
 
 <div class='container'>
 
-<div><input class="c-field" placeholder="First Name" {($value)}="workingUser.first"/> </div>
-<div><input class="c-field" placeholder="Last Name" {($value)}="workingUser.last"/> </div>
+{{#showEditor}}
+<div><input class="c-field" placeholder="First Name" {($value)}="workingUser.first" fieldName='first'/> </div>
+<div><input class="c-field" placeholder="Last Name" {($value)}="workingUser.last" fieldName='last'/> </div>
 
 <div class='editorRow'>
 
-<input class="c-field" placeholder="User Name" {($value)}="workingUser.username"/> 
+<input class="c-field" placeholder="User Name" {($value)}="workingUser.username fieldName='username'"/> 
 <label class="c-choice">
-  <input type="checkbox" {($value)}="workingUser.isActive"> Is Active
+  <input type="checkbox" {($checked)}="workingUser.isActive" fieldName='isActive'> Is Active
 </label>
 </div>
-<div><input class="c-field" placeholder="Password" {($value)}="workingUser.password"/> </div>
+<div><input class="c-field" placeholder="Password" {($value)}="workingUser.password" fieldName='password'/> </div>
 
-<div><input class="c-field" placeholder="Role" {($value)}="workingUser.role"/> </div>
+<div><input class="c-field" placeholder="Role" {($value)}="workingUser.role" fieldName='role'/> </div>
 
+{{/showEditor}}
 </div>

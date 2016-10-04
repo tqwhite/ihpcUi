@@ -16,6 +16,23 @@ export const ViewModel = Map.extend({
 				return list;
 			},
 		},
+		workingUser: {
+			value: User,
+			type: '*',
+			set: function(value) {
+				//value.attr('studentRefId', this.attr('openStudentRefId')); //used by api to create access record
+				return value;
+			}
+		},
+		showEditor:{
+			value:false
+		}
+	},
+	
+	createNew:function(){
+		this.childComponentLists['user-admin-users-editor'][0].attr('workingUser', new User({}));
+		
+		this.attr('showEditor', true);
 	},
 
 	collectChildComponents: function(childType, childVm) {

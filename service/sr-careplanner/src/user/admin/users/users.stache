@@ -1,7 +1,11 @@
 <button ($click)='testElement("x")' style='margin-left:20px;' tabindex='-1'>test user-admin-users</button>
+		<button ($click)='reinitializeDb("user")' style='margin-left:20px;' tabindex='-1'>reinitialize user db</button>
 
-
-
+<div class='controls'>
+<button class="c-button c-button--ghost c-button--xsmall c-button--primary deleteButton showConditionButton" ($click)='createNew(%event)' tabindex='-1'>
+	Add User
+</button>
+</div>
 <div class='container'>
 		<can-import from="sr-careplanner/user/admin/users/selector/" />
 			  <user-admin-users-selector

@@ -4,17 +4,18 @@ import 'can/map/define/';
 import './editor.less!';
 import template from './editor.stache!';
 import User from "sr-careplanner/models/user";
+import qtools from "node_modules/qtools-minus/";
 
 export const ViewModel = Map.extend({
   define: {
     message: {
       value: 'This is the user-admin-users-editor component'
     },
+		errorList:{
+			set:function(value){
 
-		workingUser: {
-			value: User,
-			set: function(value) {
-				//value.attr('studentRefId', this.attr('openStudentRefId')); //used by api to create access record
+
+
 				return value;
 			}
 		},
@@ -41,21 +42,11 @@ export const ViewModel = Map.extend({
 		this.saveObject();
   	},
   	
-	saveObject: function() {
+  	saveObject:function(){
+
+		var saveObj=this.attr('workingUser'); //this should probably be renamed workingsaveObj to match the pattern elsewhere
 
 		
-		var saveObj = this.attr('usersRootVm').attr('workingUser');
-		var self = this;
-
-		if (saveObj.isNew()) {
-			//	saveObj.attr('refId', qtools.newGuid());
-		}
-		
-		const errorList=saveObj.errorList()
-		if (errorList){
-			return errorList;
-		}
-
 		this.attr('saveNotification', true);
 		const prevTimeoutId = this.attr('saveNotificationTimeoutId');
 		if (prevTimeoutId) {
@@ -63,26 +54,26 @@ export const ViewModel = Map.extend({
 			this.attr('saveNotificationTimeoutId', '')
 		}
 		
-		var promise = saveObj.save();
-			
-		promise
-			.then(() => {
-				const timeoutId = setTimeout(() => {
-					this.attr('saveNotification', false);
-				}, 2000);
-
-				this.attr('saveNotificationTimeoutId', timeoutId);
-				//		this.attr('planRootVm').attr('newsaveObjFlag', false);
-				this.attr('usersRootVm').attr('workingUser', saveObj);
-				//	this.attr('planRootVm').attr('openPlanNameString', saveObj.attr('createdAt'));
-
-			},
+		if (saveObj.isNew()){
+			saveObj.attr('refId', qtools.newGuid());
+		}
+		var	promise=saveObj
+			.save()
+			.then(
+				() => {
+					const timeoutId = setTimeout(() => {
+						this.attr('saveNotification', false);
+					}, 2000);
+					this.attr('saveNotificationTimeoutId', timeoutId);
+				
+				},
 				(err) => {
 					this.attr('saveError', JSON.stringify(err))
 					console.dir({
 						"err": err
 					});
-				});
+				}
+			);
 	},
 
 	testElement: function() {
@@ -91,19 +82,54 @@ export const ViewModel = Map.extend({
 		console.dir({
 			"user-admin-users-editor": this.attr()
 		});
+	},
+	
+	clearEntryError:function(){
+			const prevErrorList=this.attr('errorList');
+			const prevDomObj=prevErrorList?prevErrorList.attr('domObj'):'';
+			if (prevDomObj){
+				setTimeout(()=>{
+				prevDomObj.removeClass('error').removeClass('incomplete');
+				}, 10);
+			}
+			this.attr('errorList', '');
+	},
+	
+	showEntryError:function(domObj, errorList){
+				setTimeout(()=>{
+				domObj.addClass('error');
+					domObj.focus();
+				}, 100);
+				this.attr('errorList', {user:errorList, domObj:domObj});
+	
+	},
+	
+	showIncompleteStatus:function(domObj, errorList){
+				this.attr('errorList', {user:[{msg:'form incomplete, not saved'}], domObj:domObj});
 	}
 });
 
 const changeHandler=function(domObj, event) {
-			const errorList=this.viewModel.saveObject();
-			if (errorList){
-				$(event).addClass('error');
-				this.viewModel.attr('currentError', {errorList:errorList, domObj:domObj});
+				
+			this.viewModel.clearEntryError();
+
+			const fieldName=domObj.attr('fieldName');
+			const saveObj=this.viewModel.attr('workingUser');
+			
+			let errorList=saveObj.validate(fieldName);
+			if (errorList.length){
+				this.viewModel.showEntryError(domObj, errorList);
+				return;
 			}
-			else{
-				$(event).removeClass('error');
-				this.viewModel.attr('currentError', '');
+					
+			errorList=saveObj.validate();
+			if (errorList.length){
+				this.viewModel.showIncompleteStatus(domObj, errorList);
+				return;
 			}
+			
+			this.viewModel.saveObject();
+			
 		};
 
 export default Component.extend({

@@ -214,43 +214,6 @@ export const ViewModel = Map.extend({
 
 
 
-
-
-
-
-
-	reinitializeDb: function(database) {
-		const initializers = {
-			student: () => {
-				$.ajax({
-					url: '/api/student/reinitialize/'
-				}).done((err, result) => {
-					this.attr('%root').setNewPage('xxx');
-					this.attr('%root').setNewPage('nurse'); //trigger reload
-
-				});
-			},
-			boilerplate: () => {
-				$.ajax({
-					url: '/api/boilerplate/reinitialize/'
-				}).done((err, result) => {
-
-				});
-			},
-			plan: () => {
-				$.ajax({
-					url: '/api/plan/reinitialize/'
-				}).done((err, result) => {
-					this.attr('%root').setNewPage('xxx');
-					this.attr('%root').setNewPage('nurse'); //trigger reload
-
-				});
-			},
-		}
-
-		initializers[database]();
-
-	},
 });
 
 export default Component.extend({

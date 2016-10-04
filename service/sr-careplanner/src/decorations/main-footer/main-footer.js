@@ -26,6 +26,8 @@ can.stache.registerHelper('testHelper', function(name, options){
 //options is documented https://canjs.com/docs/can.stache.helperOptions.html
 //if name is not specified in the call, name gets the options
 //this works as {{testHelper 'tq'}}
+//note: options.scope.attr() does not work. It must have a property name.
+//however, it refers to the viewModel.
 	return `${name} ${new Date().getUTCFullYear()}`;
 });
 

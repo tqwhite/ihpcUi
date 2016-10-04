@@ -5,14 +5,7 @@
 	<can-import from="sr-careplanner/user/nurse/student/selector/" />
 	<can-import from="sr-careplanner/user/nurse/plan/" />
 <div class='controls'>
-	<div style='position:absolute;top:5px;left:50px;'>
-		<button ($click)='reinitializeDb("student")' style='' tabindex='-1'>reinitialize student db</button>
-		<button ($click)='reinitializeDb("boilerplate")' style='margin-left:20px;' tabindex='-1'>reinitialize boilerplate db</button>
-		<button ($click)='reinitializeDb("plan")' style='margin-left:20px;' tabindex='-1'>reinitialize plan db</button>
 
-		<button ($click)='clearConsole()' style='margin-left:20px;' tabindex='-1'>clearConsole</button>
-		<button ($click)='testElement("x")' style='margin-left:20px;' tabindex='-1'>test nurse</button>
-	</div>
 	<div class='studentSelector'>
 		<user-nurse-student-selector 
 			parent-vm='{.}' 
