@@ -12,12 +12,6 @@ export const ViewModel = Map.extend({
       value: 'This is the user-admin-users-editor component'
     },
 		errorList:{
-			set:function(value){
-
-
-
-				return value;
-			}
 		},
 
 		undoUser: {

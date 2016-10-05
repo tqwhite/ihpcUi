@@ -28,7 +28,7 @@
   <input type="checkbox" {($checked)}="workingUser.isActive" fieldName='isActive'> Is Active
 </label>
 </div>
-<div><input class="c-field" placeholder="Password" {($value)}="workingUser.password" fieldName='password'/> </div>
+<div><input class="c-field" placeholder="Password (empty means no change)" {($value)}="workingUser.password" fieldName='password'/> </div>
 
 <div><input class="c-field" placeholder="Role" {($value)}="workingUser.role" fieldName='role'/> </div>
 
