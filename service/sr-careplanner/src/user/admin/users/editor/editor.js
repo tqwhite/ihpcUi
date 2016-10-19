@@ -33,10 +33,10 @@ export const ViewModel = Map.extend({
 		this.undoFieldList.map((item)=>{
 			workingUser.attr(item, undoUser[item]);
 		});
-		this.saveObject();
+		changeHandler.bind({viewModel:this})();
   	},
   	
-  	saveObject:function(){
+  	saveObject:function(domObj){
 
 		var saveObj=this.attr('workingUser'); //this should probably be renamed workingsaveObj to match the pattern elsewhere
 
@@ -62,6 +62,11 @@ export const ViewModel = Map.extend({
 				
 				},
 				(err) => {
+				this.attr('errorList', {user:[{
+							fieldName: 'server',
+							msg: err.responseText
+						}], domObj:domObj});
+
 					this.attr('saveError', JSON.stringify(err))
 					console.dir({
 						"err": err
@@ -99,7 +104,7 @@ export const ViewModel = Map.extend({
 	},
 	
 	showIncompleteStatus:function(domObj, errorList){
-				this.attr('errorList', {user:[{msg:'form incomplete, not saved'}], domObj:domObj});
+				this.attr('errorList', {user:[{msg:'Not saved. All Fields are Required'}], domObj:domObj});
 	}
 });
 
@@ -122,7 +127,7 @@ const changeHandler=function(domObj, event) {
 				return;
 			}
 			
-			this.viewModel.saveObject();
+			this.viewModel.saveObject(domObj);
 			
 		};
 

@@ -31,6 +31,7 @@ export const ViewModel = Map.extend({
 	
 	createNew:function(){
 		this.childComponentLists['user-admin-users-editor'][0].attr('workingUser', new User({}));
+		this.childComponentLists['user-admin-users-editor'][0].attr('errorList', '');
 		
 		this.attr('showEditor', true);
 	},

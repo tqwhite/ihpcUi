@@ -6,12 +6,15 @@ import 'can/map/define/define';
 export const User = can.Map.extend({
 	define: {},
 	validate: function(fieldName) {
-		this.removeAttr('pwhash');
 		let name;
 		const errorList = [];
 
 		const checkValidation = (fieldName) => {
 			switch (fieldName) {
+				case 'password':
+					if (this.attr('pwhash')){
+						break;
+					}
 				case 'first':
 				case 'last':
 				case 'username':

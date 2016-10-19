@@ -1,5 +1,5 @@
-<!--{{message}}--><button ($click)='testElement("x")' style='margin-left:20px;' tabindex='-1'>test user-admin-users-editor</button>
-
+<!--{{message}}-->
+<button ($click)='applyUndo("x")' style='margin-left:20px;' tabindex='-1'>REVERT</button>
 {{#errorList}}
 	<div class="c-toast notificationToast save error ">
 		{{#each errorList.user}}
@@ -13,7 +13,6 @@
 		Saving...
 	</div>
 {{/saveNotification}}
-<button ($click)='applyUndo("x")' style='margin-left:20px;' tabindex='-1'>REVERT</button>
 
 <div class='container'>
 
@@ -22,15 +21,27 @@
 <div><input class="c-field" placeholder="Last Name" {($value)}="workingUser.last" fieldName='last'/> </div>
 
 <div class='editorRow'>
-
-<input class="c-field" placeholder="User Name" {($value)}="workingUser.username fieldName='username'"/> 
-<label class="c-choice">
-  <input type="checkbox" {($checked)}="workingUser.isActive" fieldName='isActive'> Is Active
-</label>
+	<input class="c-field" placeholder="User Name" {($value)}="workingUser.username fieldName='username'"/> 
+	<label class="c-choice">
+	  <input type="checkbox" {($checked)}="workingUser.isActive" fieldName='isActive'> Is Active
+	</label>
 </div>
+
 <div><input class="c-field" placeholder="Password (empty means no change)" {($value)}="workingUser.password" fieldName='password'/> </div>
 
-<div><input class="c-field" placeholder="Role" {($value)}="workingUser.role" fieldName='role'/> </div>
 
+<div class='editorRow'>
+<span style='margin-right:-20px;'>Choose Role:</span>
+<label class="c-choice">
+	<input type='radio' can-value='workingUser.role' value='nurse'/> Nurse
+</label>
+<label class="c-choice">
+	<input type='radio' can-value='workingUser.role' value='editor'/> Editor
+</label>
+<label class="c-choice">
+	<input type='radio' can-value='workingUser.role' value='admin'/> Admin
+</label>
+</div>
+ 
 {{/showEditor}}
 </div>

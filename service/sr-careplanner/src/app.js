@@ -4,6 +4,11 @@ import qtools from "node_modules/qtools-minus/"; //I do not understand why I hav
 
 const AppViewModel = Map.extend({
 	define: {
+		richTextExperiment:{
+			value:'',
+			note:'any value turns on the experiment',
+			note2:'*everything* associated with this experiment has this attribute, richTextExperiment'
+		},
 		session: {
 			value: function() {
 				//placeholder for two-way binding to the form in login.stache

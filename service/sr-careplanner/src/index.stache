@@ -98,7 +98,7 @@
     <main-footer></main-footer>
 
 {{#if session.get('role')}}
- 	<div style='position:absolute;bottom:85px;left:50px;'>
+ 	<div style='position:static;bottom:15px;left:50px;'>
  	
 
 		<button ($click)='reinitializeDb("student")' style='' tabindex='-1'>reinitialize student db</button>

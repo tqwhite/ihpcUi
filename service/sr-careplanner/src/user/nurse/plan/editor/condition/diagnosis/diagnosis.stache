@@ -20,6 +20,37 @@
 
 	</div>
 
+{{#richTextExperiment}}
+	<div class='o-panel-container'>
+		<nav class="c-nav c-nav--top c-nav--inline">
+			<span class="c-nav__content">Assessment Data</span>
+		  </nav>
+		<div class="richText" {($value)}="diagnosis.assessmentData">
+		</div>
+	</div>
+	<div class='o-panel-container'>
+		<nav class="c-nav c-nav--top c-nav--inline">
+			<span class="c-nav__content">Nursing Diagnosis</span>
+		  </nav>
+		<div class="richText" {($value)}="diagnosis.nursingDiagnosis">
+		</div>
+	</div>
+	<div class='o-panel-container'>
+		<nav class="c-nav c-nav--top c-nav--inline">
+			<span class="c-nav__content">Interventions</span>
+		  </nav>
+		<div class="richText"  {($value)}="diagnosis.interventions">
+		</div>
+	</div>
+	<div class='o-panel-container'>
+		<nav class="c-nav c-nav--top c-nav--inline">
+			<span class="c-nav__content">Outcomes</span>
+		  </nav>
+		<div class="richText"  {($value)}="diagnosis.outcomes">
+		</div>
+	</div>
+{{/richTextExperiment}}
+{{^richTextExperiment}}
 
 	<div class='o-panel-container'>
 		<nav class="c-nav c-nav--top c-nav--inline">
@@ -49,6 +80,8 @@
 		<textarea class="c-field c-editor o-panel o-panel--nav-top"  {($value)}="diagnosis.outcomes">
 		</textarea>
 	</div>
+	
+{{/richTextExperiment}}
 
 {{/showDiagnosisEditor}}
 
