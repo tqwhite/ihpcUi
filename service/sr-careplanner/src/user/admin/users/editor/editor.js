@@ -62,12 +62,13 @@ export const ViewModel = Map.extend({
 				
 				},
 				(err) => {
-				this.attr('errorList', {user:[{
-							fieldName: 'server',
-							msg: err.responseText
-						}], domObj:domObj});
+				this.attr('saveNotification', false);
+				const errorObj=JSON.parse(err.responseText);
 
-					this.attr('saveError', JSON.stringify(err))
+				this.attr('errorList', {user:[errorObj], domObj:domObj});
+
+
+				//	this.attr('saveError', JSON.stringify(err))
 					console.dir({
 						"err": err
 					});
@@ -104,7 +105,7 @@ export const ViewModel = Map.extend({
 	},
 	
 	showIncompleteStatus:function(domObj, errorList){
-				this.attr('errorList', {user:[{msg:'Not saved. All Fields are Required'}], domObj:domObj});
+				this.attr('errorList', {user:[{errorText:'Not saved. All Fields are Required'}], domObj:domObj});
 	}
 });
 
@@ -126,6 +127,8 @@ const changeHandler=function(domObj, event) {
 				this.viewModel.showIncompleteStatus(domObj, errorList);
 				return;
 			}
+
+
 			
 			this.viewModel.saveObject(domObj);
 			

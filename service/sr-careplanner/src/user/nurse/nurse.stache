@@ -1,4 +1,6 @@
-<!--{{message}}-->
+<!--{{message}}--><button ($click)='testElement("x")' style='margin-left:20px;' tabindex='-1'>test user-nurse</button>
+
+
 <span style='display:none;float;right;'>{{boilerplates}}</span>
 	<can-import from="sr-careplanner/user/nurse/student/summary/" />
 	<can-import from="sr-careplanner/user/nurse/student/editor/" />
@@ -11,10 +13,24 @@
 			parent-vm='{.}' 
 				($inserted)="collectChildComponents('user-nurse-student-selector', %viewModel))"
 		/>
+		
+	<div class='modeControl'>
+	{{#openStudentRefId}}
+	{{#is currentTool 'viewer'}}
+		<div class='c-button  c-button--xsmall c-button--primary modeButton' ($click)='setTool("editor")'>Editor</div>
+		<div class='c-button  c-button--xsmall c-button--primary modeButton inactive'>Viewer</div>
+	{{/is}}
+	{{#is currentTool 'editor'}}
+		<div class='c-button  c-button--xsmall c-button--primary modeButton inactive' >Editor</div>
+		<div class='c-button  c-button--xsmall c-button--primary modeButton'($click)='setTool("viewer")'>Viewer</div>
+	{{/is}}
+	{{/openStudentRefId}}
 	</div>
+	</div>
+
 </div>
 
-
+{{#is currentTool 'editor'}}
 {{#showStudentEditor}}
 	{{^newStudentFlag}}
 		{{#if students.isResolved}}
@@ -63,7 +79,18 @@
 	/>
 {{/openStudentRefId}}
 
+{{/is}}
 
+{{#is currentTool 'viewer'}}
 
+	<can-import from="sr-careplanner/user/nurse/viewer/" />
+	<user-nurse-viewer
+		students='{students}'
+		plan='{workingPlan}'
+		current-student='{currentStudent}'
+		parent-vm='{.}' 
+		($inserted)="collectChildComponents('user-nurse-viewer', %viewModel))"
+	/>
+{{/is}}
 
 

@@ -35,7 +35,7 @@ export const ViewModel = Map.extend({
 				return list;
 			}
 		},
-		
+
 		workingPlan:{
 			value:Plan,
 			set:function(value){
@@ -43,11 +43,11 @@ export const ViewModel = Map.extend({
 				return value;
 			}
 		},
-		
+
 		planRefIdStudentMapList:{
 			value:{}
 		},
-		
+
 		hasPlansStudentMapList:{
 			value:{}
 		},
@@ -55,10 +55,29 @@ export const ViewModel = Map.extend({
 		showStudentEditor: {
 			value: false
 		},
+		currentStudent:{
+			value:'',
+			note:'this is set as a consequences of setting openStudentRefId because of the history of student/selector'
+		},
 		openStudentRefId: {
 			value: '',
 			type: 'string',
 			set: function(value) {
+
+			let currentStudent;
+
+			this.attr('students').then((students)=>{
+
+			for (var i=0, len=students.length; i<len; i++){
+				var item=students[i];
+						const refId=item.attr('refId');
+						if (refId==value){
+							this.attr('currentStudent', item);
+						}
+			}
+
+			});
+
 				return value;
 			}
 		},
@@ -97,7 +116,7 @@ export const ViewModel = Map.extend({
 					title: '',
 					diagnoses: []
 				};
-		
+
 				return newCondition;
 			}
 		},
@@ -142,20 +161,24 @@ export const ViewModel = Map.extend({
 				return '';
 			}
 		},
-		
+
 		boilerplateRefIdLookupObject:{
 			value:'',
 			type:'*'
-		
+
+		},
+
+		currentTool:{
+			value:'editor',
+			serialize:false
 		}
 	},
-	
-	
+
 	boilerplateGetStaticInfo:function(boilerplates){
 // 		if(this.attr('boilerplateRefIdLookupObject')!==''){
 // 			return;
 // 		}
-		
+
 		let boilerplateRefIdLookupObject={};
 		boilerplates.then((result)=>{
 			result.each((item)=>{
@@ -164,8 +187,6 @@ export const ViewModel = Map.extend({
 			this.attr('boilerplateRefIdLookupObject', boilerplateRefIdLookupObject);
 		});
 	},
-	
-	
 
 	capturePlanDetails: function(plansMap) {
 		//note: this creates a persistent object because .then doesn't run when a student is
@@ -195,6 +216,9 @@ export const ViewModel = Map.extend({
 		this.attr('showStudentEditor', true);
 	},
 
+	setTool:function(newToolName){
+		this.attr('currentTool', newToolName);
+	},
 
 	collectChildComponents: function(childType, childVm) {
 		this.childComponentLists = this.childComponentLists || {};
@@ -211,8 +235,6 @@ export const ViewModel = Map.extend({
 			'childComponentLists':this.childComponentLists
 		});
 	},
-
-
 
 });
 

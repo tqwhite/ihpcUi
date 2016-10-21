@@ -4,7 +4,7 @@ user-nurse {
 }
 
 user-nurse .controls{
-height:50px;
+height:75px;
 }
 
 user-nurse .studentSelector{
@@ -12,6 +12,27 @@ position:absolute;
 right:20vh;
 }
 
+user-nurse .modeControl{
+margin-top:5px;
+	display:-webkit-flex;
+	display:flex;
+	-webkit-justify-content:center;
+	justify-content:center;
+	-webkit-align-items:center;
+	align-items:center;
+	flex-direction:row;
+	-webkit-flex-direction: row;
+
+}
+
+
+html body div#workingContainer user-nurse div.controls div.studentSelector div.modeControl div.c-button.c-button--xsmall.c-button--primary.modeButton{
+margin:0px 5px;
+}
+html body div#workingContainer user-nurse div.controls div.studentSelector div.modeControl div.c-button.c-button--xsmall.c-button--primary.modeButton.inactive{
+background:rgba(70%,70%,70%, 5);
+cursor:auto;
+}
 
 
 

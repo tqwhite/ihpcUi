@@ -1,0 +1,16 @@
+<!--{{message}}-->
+
+	<b>NAME: {{currentStudent.first}} {{currentStudent.last}}</b><br/><br/>
+		
+	{{#each plan.conditions}}
+	<br/><br/><br/>
+		<b>{{title}}</b><br/>
+		{{#each diagnoses}}
+			{{shortName}}<br/>
+			{{{nl2br assessmentData}}}<br/>
+			{{{nl2br nursingDiagnosis}}}<br/>
+			{{{nl2br interventions}}}<br/>
+			{{{nl2br outcomes}}}<br/>
+		{{/each}}
+		<p/>
+	{{/each}}		

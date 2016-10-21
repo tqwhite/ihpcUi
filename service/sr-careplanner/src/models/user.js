@@ -19,9 +19,10 @@ export const User = can.Map.extend({
 				case 'last':
 				case 'username':
 					if (!this.attr(fieldName) || !this.attr(fieldName).length) {
+
 						errorList.push({
 							fieldName: fieldName,
-							msg: fieldName + " cannot be empty"
+							errorText: fieldName + " cannot be empty"
 						});
 					}
 					break;
@@ -33,8 +34,6 @@ export const User = can.Map.extend({
 		} else {
 			['first', 'last', 'username'].map(checkValidation);
 		}
-
-
 		return errorList;
 
 

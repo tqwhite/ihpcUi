@@ -98,3 +98,5 @@ import 'sr-careplanner/user/admin/users/selector/selector_test';
 import 'sr-careplanner/user/admin/users/editor/editor_test';
 
 import 'sr-careplanner/user/admin/users/selectorX/selectorX_test';
+
+import 'sr-careplanner/user/nurse/viewer/viewer_test';

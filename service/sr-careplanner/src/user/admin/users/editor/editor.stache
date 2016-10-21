@@ -3,7 +3,7 @@
 {{#errorList}}
 	<div class="c-toast notificationToast save error ">
 		{{#each errorList.user}}
-			{{msg}}<br/>
+			{{errorText}}<br/>
 		{{/each}}
 	</div>
 {{/errorList}}

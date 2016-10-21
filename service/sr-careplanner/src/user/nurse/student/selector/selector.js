@@ -25,6 +25,9 @@ export const ViewModel = Map.extend({
 	},
 	chooseStudent: function(student) {
 		this.attr('showMenu', false);
+
+		this.attr('parentVm').setTool('editor')
+
 		
 		this.attr('parentVm').attr('newStudentFlag', false);
 		this.attr('parentVm').attr('openStudentRefId', student.attr('refId'));

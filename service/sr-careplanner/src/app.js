@@ -7,7 +7,8 @@ const AppViewModel = Map.extend({
 		richTextExperiment:{
 			value:'',
 			note:'any value turns on the experiment',
-			note2:'*everything* associated with this experiment has this attribute, richTextExperiment'
+			note2:'*everything* associated with this experiment has this attribute, richTextExperiment',
+			serialize: false
 		},
 		session: {
 			value: function() {
