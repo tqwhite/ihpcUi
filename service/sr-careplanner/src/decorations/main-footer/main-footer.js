@@ -23,11 +23,13 @@ export const ViewModel = Map.extend({
 
 
 can.stache.registerHelper('testHelper', function(name, options){
-//options is documented https://canjs.com/docs/can.stache.helperOptions.html
-//if name is not specified in the call, name gets the options
-//this works as {{testHelper 'tq'}}
-//note: options.scope.attr() does not work. It must have a property name.
-//however, it refers to the viewModel.
+	//options is documented https://canjs.com/docs/can.stache.helperOptions.html
+	//if name is not specified in the call, name gets the options
+	//this works as {{testHelper 'tq'}} or {{testHelper attrName}} 
+	//or {{{genHtml data}}} if the result should not be escaped
+	//note: options.scope.attr() does not work. It must have a property name.
+	//however, it refers to the viewModel.
+	//eg, options.scope.attr('message')
 	return `${name} ${new Date().getUTCFullYear()}`;
 });
 
