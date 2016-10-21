@@ -41,11 +41,17 @@ can.stache.registerHelper('nl2br', function(mapElement, options) {
 
 	const student = options.scope.attr('currentStudent');
 
-inData=inData.replace(/\n/g, "<br/>")
-			.replace(/the student/ig, '<!first!>')
-			.replace(/ /g, '&nbsp;')
-			.replace(/\t/g, '&nbsp;&nbsp;&nbsp;&nbsp;');
-
+	inData = inData
+		.replace(/on\w*=/ig, 'oneventnotallowed=')
+		.replace(/javascript/ig, 'javascriptnotallowed')
+		.replace(/<script(.*?)>/ig, '&lt;scriptnotallowed$1&gt;')
+		.replace(/<\/script(.*?)>/ig, '&lt;/scriptnotallowed$1&gt;')
+		.replace(/the student/ig, '<!first!>')
+		.replace(/(\n)(?![^<]*>|[^<>]*<\/)/g, "<br/>")
+		.replace(/( )(?![^<]*>|[^<>]*<\/)/g, '&nbsp;')
+		.replace(/\t/g, '&nbsp;&nbsp;&nbsp;&nbsp;');
+		//thanks Jerry for the &nbsp; substitution strategy
+		//http://stackoverflow.com/questions/18621568/regex-replace-text-outside-html-tags
 
 	if (typeof (inData) == 'string') {
 		inData = qtools.templateReplace({
