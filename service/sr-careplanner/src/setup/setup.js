@@ -14,33 +14,83 @@ export const ViewModel = Map.extend({
 			value: 'dictionary'
 		},
 		loginUser: {
-			note: 'set by userPromise, accessed by various setup editors.'
-		},
-
-		userPromise: {
 			get: function() {
 				const session = this.attr('%root').attr('session');
-				const userPromise = User.get({
+				const loginUser = User.get({
 					_id: session.attr('0')._id
 				})
-					.then((item) => {
-						this.attr('loginUser', item.attr());
-					});
-
-				return userPromise;
-
+				return loginUser;
 			},
-			set: function(value) {
-				return value;
-			}
-
 		},
 	},
-	saveObject: function(domObj) {
 
-		var loginUser = this.attr('loginUser');
+	setSubsection: function(subsection) {
+		this.attr('subsection', subsection);
+	},
 
-		var saveObj = new User(loginUser);
+	clearEntryError: function() {
+		const prevErrorList = this.attr('errorList');
+		const prevDomObj = prevErrorList ? prevErrorList.attr('domObj') : '';
+		if (prevDomObj) {
+			setTimeout(() => {
+				prevDomObj.removeClass('error').removeClass('incomplete');
+			}, 10);
+		}
+		this.attr('errorList', '');
+	},
+
+	showEntryError: function(domObj, errorList) {
+		setTimeout(() => {
+			domObj.addClass('error');
+			domObj.focus();
+		}, 100);
+		this.attr('errorList', {
+			user: errorList,
+			domObj: domObj
+		});
+
+	},
+
+	showIncompleteStatus: function(domObj, errorList) {
+		this.attr('errorList', {
+			user: [{
+				errorText: 'Not saved. All Fields are Required'
+			}],
+			domObj: domObj
+		});
+	},
+
+	dataChangeHandler: function(args) {
+		const {stacheObject, dataDomObj, saveObjectType, formContainerDomObj} = args;
+
+		const utilityBase = this;
+		const saveObject = stacheObject.viewModel.saveObject;
+		const localVm = stacheObject.viewModel;
+
+		var outObj = {};
+		formContainerDomObj.find('input', 'textarea').each((inx, item) => {
+			outObj[$(item).attr('fieldName')] = $(item).val();
+		});
+
+		var saveObj = new saveObjectType(outObj);
+
+		utilityBase.clearEntryError();
+		const fieldName = dataDomObj.attr('fieldName');
+		let errorList = saveObj.validate(fieldName);
+		if (errorList.length) {
+			utilityBase.showEntryError(dataDomObj, errorList);
+			return;
+		}
+		errorList = saveObj.validate();
+		if (errorList.length) {
+			utilityBase.showIncompleteStatus(dataDomObj, errorList);
+			return;
+		}
+		utilityBase.saveObject(saveObj, dataDomObj);
+
+	},
+	saveObject: function(saveObj, domObj, event) {
+		//var saveObj = new User(loginUser);
 
 		this.attr('saveNotification', true);
 		const prevTimeoutId = this.attr('saveNotificationTimeoutId');
@@ -48,7 +98,7 @@ export const ViewModel = Map.extend({
 			clearTimeout(prevTimeoutId);
 			this.attr('saveNotificationTimeoutId', '')
 		}
-		
+
 		var promise = saveObj
 			.save()
 			.then(
@@ -75,11 +125,6 @@ export const ViewModel = Map.extend({
 					});
 				}
 		);
-	},
-
-
-	setSubsection: function(subsection) {
-		this.attr('subsection', subsection);
 	},
 
 	collectChildComponents: function(childType, childVm) {

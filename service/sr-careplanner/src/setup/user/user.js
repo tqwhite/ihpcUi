@@ -6,11 +6,11 @@ import template from './user.stache!';
 import User from "sr-careplanner/models/user";
 
 export const ViewModel = Map.extend({
-  define: {
-    message: {
-      value: 'This is the setup-user component'
-    }
-  },
+	define: {
+		message: {
+			value: 'This is the setup-user component'
+		}
+	},
 	collectChildComponents: function(childType, childVm) {
 		this.childComponentLists = this.childComponentLists || {};
 		this.childComponentLists[childType] = this.childComponentLists[childType] || [];
@@ -22,22 +22,29 @@ export const ViewModel = Map.extend({
 		console.dir({
 			"setup-user": this.attr(),
 			"loginUser": this.attr('loginUser'),
-			'childComponentLists':this.childComponentLists
+			'childComponentLists': this.childComponentLists
 		});
 	}
 });
 
-export default Component.extend({
-  tag: 'setup-user',
-  viewModel: ViewModel,
-  template,
-	events: {
-		'input change': function() {
-			this.viewModel.setupRootVm.saveObject();
+const localDataChangeHandler = function(domObj, event) {
+	this.viewModel.attr('setupRootVm').dataChangeHandler({
+		stacheObject: this,
+		dataDomObj: domObj,
+		saveObjectType: User,
+		mapDomContainer: function(domObj) {
+			return domObj.parent().parent().parent();
 		},
-		'textarea change': function() {
-			this.viewModel.setupRootVm.saveObject();
-		}
+		formContainerDomObj: domObj.parent().parent().parent()
+	})
+};
 
+export default Component.extend({
+	tag: 'setup-user',
+	viewModel: ViewModel,
+	template,
+	events: {
+		'input change': localDataChangeHandler,
+		'textarea change': localDataChangeHandler
 	}
 });
