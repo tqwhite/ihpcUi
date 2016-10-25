@@ -1,1 +1,36 @@
-<h2>Personal account controls and profile for {{../session.get('first'}} {{../session.get('last'}}</h2>
+<!--{{message}}--><button ($click)='testElement("x")' style='margin-left:20px;' tabindex='-1'>test setup</button>
+
+
+
+<ul id='adminNav' class='c-nav c-nav--inline'>
+  <li style='width:75px;display:inline-block;'>&nbsp;</li>
+<li class='c-nav__item' ($click)='setSubsection("user")'>Manage User Profile</a></li>
+<li class='c-nav__item' ($click)='setSubsection("plan")'>Manage Plan Reports</a></li>
+<li class='c-nav__item' ($click)='setSubsection("dictionary")'>Manage Dictionary</a></li>
+</ul>
+
+{{#switch subsection}}
+{{#case "user"}}
+		<can-import from="sr-careplanner/setup/user/" />
+			  <setup-user
+				setup-root-vm='{.}'
+				login-user='{loginUser}'
+				($inserted)="collectChildComponents('setup-user', %viewModel))"
+				/>
+	{{/case}}
+{{#case "plan"}}
+		<can-import from="sr-careplanner/setup/plan/" />
+			  <setup-plan
+				setup-root-vm='{.}'
+				($inserted)="collectChildComponents('setup-plan', %viewModel))"
+				/>
+	{{/case}}
+{{#case "dictionary"}}
+		<can-import from="sr-careplanner/setup/dictionary/" />
+			  <setup-dictionary
+				setup-root-vm='{.}'
+				($inserted)="collectChildComponents('setup-dictionary', %viewModel))"
+				/>
+	{{/case}}
+{{/switch}}
+

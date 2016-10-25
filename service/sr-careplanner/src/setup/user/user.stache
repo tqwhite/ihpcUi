@@ -1,0 +1,34 @@
+<!--{{message}}-->
+
+
+{{#errorList}}
+	<div class="c-toast notificationToast save error ">
+		{{#each errorList.user}}
+			{{errorText}}<br/>
+		{{/each}}
+	</div>
+{{/errorList}}
+
+{{#saveNotification}}
+	<div class="c-toast notificationToast save success ">
+		Saving...
+	</div>
+{{/saveNotification}}
+
+<div class='container'>
+
+{{#if setupRootVm.userPromise.isResolved}}
+	<div><input class="c-field" placeholder="First Name" {($value)}="setupRootVm.loginUser.first" fieldName='first'/> </div>
+	<div><input class="c-field" placeholder="Last Name" {($value)}="setupRootVm.loginUser.last" fieldName='last'/> </div>
+
+	<div class='editorRow'>
+		<input class="c-field" placeholder="User Name" {($value)}="setupRootVm.loginUser.username fieldName='username'"/> 
+	</div>
+
+	<div><input class="c-field" placeholder="Password (empty means no change)" {($value)}="setupRootVm.loginUser.password" fieldName='password'/> </div>
+
+
+		<input type='hidden' class="c-field" placeholder="User Name" {($value)}="setupRootVm.loginUser._id fieldName='_id'"/> 
+
+{{/if}}
+</div>

@@ -42,7 +42,9 @@
 	   
 		{{#case "setup"}}
 		<can-import from="sr-careplanner/setup/" />
-			  <setup/>
+			  <setup
+			  	session='{session}'
+			  />
 		{{/case}}
 	   
 		{{#case "help"}}
@@ -59,8 +61,8 @@
 		<can-import from="sr-careplanner/user/admin/" />
 			  <user-admin/>
 		-->
-		<can-import from="sr-careplanner/user/nurse/" />
-			  <user-nurse/>
+		<can-import from="sr-careplanner/setup/" />
+			  <setup/>
 		{{/case}}
 	   
 		{{#case "editor"}}

@@ -1,4 +1,5 @@
 <!--{{message}}-->
+
 <button ($click)='applyUndo("x")' style='margin-left:20px;' tabindex='-1'>REVERT</button>
 {{#errorList}}
 	<div class="c-toast notificationToast save error ">

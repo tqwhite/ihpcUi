@@ -1,9 +1,11 @@
+<!--{{message}}-->
+
 <ul id='adminNav' class='c-nav c-nav--inline'>
   <li style='width:75px;display:inline-block;'>&nbsp;</li>
 <li class='c-nav__item' ($click)='setSubsection("users")'>Manage Users</a></li>
 <li class='c-nav__item' ($click)='setSubsection("tokens")'>Manage Store Tokens</a></li>
 </ul>
-*{{subsection}}*
+
 {{#switch subsection}}
 {{#case "users"}}
 		<can-import from="sr-careplanner/user/admin/users/" />
