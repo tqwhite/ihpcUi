@@ -1,9 +1,37 @@
 import Map from "can/map/";
 import Session from "sr-careplanner/models/session";
 import qtools from "node_modules/qtools-minus/"; //I do not understand why I have to put node_modules here but not on can/map
+import User from "sr-careplanner/models/user";
 
 const AppViewModel = Map.extend({
 	define: {
+		loginUser: {
+			get: function() {
+				const session = this.attr('session');
+				const loginUser = User.get({
+					_id: session.attr('0')._id
+				})
+
+				loginUser.then((item) => {
+
+					const dictionary = item.attr('dictionary');
+					if (dictionary.length === 0) {
+						dictionary.push({
+							pattern: 'writtenby',
+							replacement: 'Written By'
+						});
+						dictionary.push({
+							pattern: 'district',
+							replacement: 'District'
+						});
+						item.save();
+					}
+
+				});
+
+				return loginUser;
+			},
+		},
 		richTextExperiment:{
 			value:'',
 			note:'any value turns on the experiment',

@@ -13,30 +13,6 @@ export const ViewModel = Map.extend({
 		subsection: {
 			value: 'dictionary'
 		},
-		loginUser: {
-			get: function() {
-				const session = this.attr('%root').attr('session');
-				const loginUser = User.get({
-					_id: session.attr('0')._id
-				})
-				
-				
-		loginUser.then((item)=>{
-
-		const dictionary=item.attr('dictionary');
-	if (dictionary.length===0){
-		dictionary.push({pattern:'writtenby',replacement:'Written By'});
-		dictionary.push({pattern:'district',replacement:'District'}); 
-	}
-
-});
-
-	
-				
-				
-				return loginUser;
-			},
-		},
 	},
 
 	setSubsection: function(subsection) {
@@ -82,10 +58,9 @@ export const ViewModel = Map.extend({
 		const saveObject = stacheObject.viewModel.saveObject;
 		const localVm = stacheObject.viewModel;
 
+		const promise = this.attr('%root').attr('loginUser');
 
-		const promise=this.attr('loginUser');
-
-		promise.then( (item)=>{
+		promise.then((item) => {
 			var outObj = item.attr();
 			var saveObj = new saveObjectType(outObj);
 
@@ -134,7 +109,6 @@ export const ViewModel = Map.extend({
 						domObj: domObj
 					});
 
-
 					//	this.attr('saveError', JSON.stringify(err))
 					console.dir({
 						"err": err
@@ -155,9 +129,11 @@ export const ViewModel = Map.extend({
 			"setup": this.attr(),
 			'childComponentLists': this.childComponentLists
 		});
-		
-		this.attr('loginUser').then((item)=>{
-			console.dir({"item":item.attr()});
+
+		this.attr('loginUser').then((item) => {
+			console.dir({
+				"item": item.attr()
+			});
 		});
 	}
 });
