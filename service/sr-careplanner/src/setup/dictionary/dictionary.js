@@ -3,6 +3,7 @@ import Map from 'can/map/';
 import 'can/map/define/';
 import './dictionary.less!';
 import template from './dictionary.stache!';
+import User from "sr-careplanner/models/user";
 
 export const ViewModel = Map.extend({
   define: {
@@ -26,8 +27,22 @@ export const ViewModel = Map.extend({
 	}
 });
 
+
+const localDataChangeHandler = function(domObj, event) {
+	this.viewModel.attr('setupRootVm').dataChangeHandler({
+		stacheObject: this,
+		dataDomObj: domObj,
+		saveObjectType: User,
+		formContainerDomObj: domObj.parent().parent().parent()
+	})
+};
+
 export default Component.extend({
   tag: 'setup-dictionary',
   viewModel: ViewModel,
-  template
+  template,
+	events: {
+		'input change': localDataChangeHandler,
+		'textarea change': localDataChangeHandler
+	}
 });

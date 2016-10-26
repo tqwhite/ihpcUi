@@ -17,8 +17,8 @@
 
 <div class='container'>
 
-{{#if setupRootVm.loginUser.isResolved}}
-{{#with setupRootVm.loginUser.value}}
+{{#if loginUser.isResolved}}
+{{#with loginUser.value}}
 	<div><input class="c-field" placeholder="First Name" {($value)}="first" fieldName='first'/> </div>
 	<div><input class="c-field" placeholder="Last Name" {($value)}="last" fieldName='last'/> </div>
 

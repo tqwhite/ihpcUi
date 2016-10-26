@@ -19,6 +19,21 @@ export const ViewModel = Map.extend({
 				const loginUser = User.get({
 					_id: session.attr('0')._id
 				})
+				
+				
+		loginUser.then((item)=>{
+
+		const dictionary=item.attr('dictionary');
+	if (dictionary.length===0){
+		dictionary.push({pattern:'writtenby',replacement:'Written By'});
+		dictionary.push({pattern:'district',replacement:'District'}); 
+	}
+
+});
+
+	
+				
+				
 				return loginUser;
 			},
 		},
@@ -67,26 +82,27 @@ export const ViewModel = Map.extend({
 		const saveObject = stacheObject.viewModel.saveObject;
 		const localVm = stacheObject.viewModel;
 
-		var outObj = {};
-		formContainerDomObj.find('input', 'textarea').each((inx, item) => {
-			outObj[$(item).attr('fieldName')] = $(item).val();
+
+		const promise=this.attr('loginUser');
+
+		promise.then( (item)=>{
+			var outObj = item.attr();
+			var saveObj = new saveObjectType(outObj);
+
+			utilityBase.clearEntryError();
+			const fieldName = dataDomObj.attr('fieldName');
+			let errorList = saveObj.validate(fieldName);
+			if (errorList.length) {
+				utilityBase.showEntryError(dataDomObj, errorList);
+				return;
+			}
+			errorList = saveObj.validate();
+			if (errorList.length) {
+				utilityBase.showIncompleteStatus(dataDomObj, errorList);
+				return;
+			}
+			utilityBase.saveObject(saveObj, dataDomObj);
 		});
-
-		var saveObj = new saveObjectType(outObj);
-
-		utilityBase.clearEntryError();
-		const fieldName = dataDomObj.attr('fieldName');
-		let errorList = saveObj.validate(fieldName);
-		if (errorList.length) {
-			utilityBase.showEntryError(dataDomObj, errorList);
-			return;
-		}
-		errorList = saveObj.validate();
-		if (errorList.length) {
-			utilityBase.showIncompleteStatus(dataDomObj, errorList);
-			return;
-		}
-		utilityBase.saveObject(saveObj, dataDomObj);
 
 	},
 	saveObject: function(saveObj, domObj, event) {
@@ -138,6 +154,10 @@ export const ViewModel = Map.extend({
 		console.dir({
 			"setup": this.attr(),
 			'childComponentLists': this.childComponentLists
+		});
+		
+		this.attr('loginUser').then((item)=>{
+			console.dir({"item":item.attr()});
 		});
 	}
 });

@@ -32,9 +32,6 @@ const localDataChangeHandler = function(domObj, event) {
 		stacheObject: this,
 		dataDomObj: domObj,
 		saveObjectType: User,
-		mapDomContainer: function(domObj) {
-			return domObj.parent().parent().parent();
-		},
 		formContainerDomObj: domObj.parent().parent().parent()
 	})
 };

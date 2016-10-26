@@ -1,1 +1,55 @@
-<p>{{message}}</p>
+<!--{{message}}-->
+
+{{#errorList}}
+	<div class="c-toast notificationToast save error ">
+		{{#each errorList.user}}
+			{{errorText}}<br/>
+		{{/each}}
+	</div>
+{{/errorList}}
+
+{{#saveNotification}}
+	<div class="c-toast notificationToast save success ">
+		Saving...
+	</div>
+{{/saveNotification}}
+
+
+<div class='container'>
+
+{{#if loginUser.isResolved}}
+{{#with loginUser.value}}
+	<div><input type='hidden' class="c-field" placeholder="First Name" {($value)}="first" fieldName='first'/> </div>
+	<div><input type='hidden' class="c-field" placeholder="Last Name" {($value)}="last" fieldName='last'/> </div>
+
+	<div class='editorRow'>
+		<input type='hidden' class="c-field" placeholder="User Name" {($value)}="username" fieldName='username'/> 
+	</div>
+
+	<div><input type='hidden' class="c-field" placeholder="Password (empty means no change)" {($value)}="password" fieldName='password'/> </div>
+
+
+		<input type='hidden' class="c-field" placeholder="User Name" {($value)}="_id" fieldName='_id'/> 
+		
+
+		<table>
+			{{#each dictionary}}
+			<tr>
+				<td>
+					<input type='hidden' class="c-field" {($value)}="mandatory" fieldName='mandatory'/>
+
+					{{#if mandatory}}
+						<div class='c-field'>{{pattern}}</div>
+					{{else}}
+						<input class="c-field" placeholder="Pattern (replacable text)" {($value)}="pattern" fieldName='pattern'/>
+					{{/if}}
+				</td>
+				<td>
+					<input class="c-field" placeholder="Replacement (goes into output)" {($value)}="replacement" fieldName='replacement'/><br/>
+				</td>
+			</tr>
+			{{/each}}
+		</table>
+{{/with}}
+{{/if}}
+</div>
