@@ -20,7 +20,15 @@
   <li class='c-nav__item' ($click)='logout()'>Logout</a></li>
   
   <li class='c-nav__item c-nav__item--right' ($click)='setNewPage("help")'>Help</li>
-  <li class='c-nav__item c-nav__item--right' ($click)='setNewPage("setup")'><span style='font-weight:bold;'>Hello {{../session.get('first'}} <span class='fa fa-caret-down'/></li>
+  <li class='c-nav__item c-nav__item--right' ($click)='setNewPage("setup")'><span style='font-weight:bold;'>Hello 
+  
+  {{#if loginUser.isResolved}}
+  {{#with loginUser.value}}
+  	{{first}}
+  	{{/with}}
+  {{/if}}
+  
+  <span class='fa fa-caret-down'/></li>
 </ul>
 
 <!-- decorations/main-header end -->
