@@ -26,6 +26,24 @@ export const User = can.Map.extend({
 						});
 					}
 					break;
+				case 'emailAddress':
+					if (!this.attr(fieldName) || !this.attr(fieldName).length) {
+
+						errorList.push({
+							fieldName: fieldName,
+							errorText: fieldName + " cannot be empty"
+						});
+					}
+					if (!this.attr(fieldName) || !this.attr(fieldName).match(/@/)) {
+
+						errorList.push({
+							fieldName: fieldName,
+							errorText: fieldName + " must be a valid email address"
+						});
+					}
+					
+					
+					break;
 			}
 		}
 

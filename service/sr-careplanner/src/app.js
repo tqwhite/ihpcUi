@@ -13,7 +13,7 @@ const AppViewModel = Map.extend({
 				})
 
 				loginUser.then((item) => {
-
+window.AAA=item;
 					const dictionary = item.attr('dictionary');
 					if (dictionary.length === 0) {
 						dictionary.push({

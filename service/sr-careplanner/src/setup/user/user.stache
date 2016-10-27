@@ -19,17 +19,18 @@
 
 {{#if loginUser.isResolved}}
 {{#with loginUser.value}}
-	<div><input class="c-field" placeholder="First Name" {($value)}="first" fieldName='first'/> </div>
-	<div><input class="c-field" placeholder="Last Name" {($value)}="last" fieldName='last'/> </div>
+	<div class='editorRow'><input class="c-field" placeholder="First Name" {($value)}="first" fieldName='first'/> <input class="c-field" placeholder="Last Name" {($value)}="last" fieldName='last'/> </div>
 
-	<div class='editorRow'>
+	<div>
+		<input class="c-field" placeholder="Email Address" {($value)}="emailAddress" fieldName='emailAddress'/> 
+	</div>
+	<div>
 		<input class="c-field" placeholder="User Name" {($value)}="username" fieldName='username'/> 
 	</div>
 
 	<div><input class="c-field" placeholder="Password (empty means no change)" {($value)}="password" fieldName='password'/> </div>
 
 
-		<input type='hidden' class="c-field" placeholder="User Name" {($value)}="_id" fieldName='_id'/> 
 {{/with}}
 {{/if}}
 </div>

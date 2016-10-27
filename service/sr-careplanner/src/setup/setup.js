@@ -59,8 +59,37 @@ export const ViewModel = Map.extend({
 		const localVm = stacheObject.viewModel;
 
 		const promise = this.attr('%root').attr('loginUser');
+		const hackeryDataFromDom = {};
+		let omittedFieldList='';
+
+
+		formContainerDomObj.find('input', 'textarea').each((inx, item) => {
+			const itemDomObj = $(item);
+			const value = itemDomObj.val();
+			const fieldName = itemDomObj.attr('fieldName');
+			
+			if (['first', 'last', 'username', 'password', 'emailAddress'].indexOf(fieldName) > -1) {
+				hackeryDataFromDom[fieldName] = value;
+			}
+			else{
+				//log missing properties that are not part of the dictionary array 
+				//(those get taken care of by two-way binding in setup/user/user.stache)
+				if (['mandatory', 'pattern', 'replacement', '-id'].indexOf(fieldName) == -1){
+					omittedFieldList+=`${fieldName}, `;
+				}
+			}
+		})
+			
+		if (omittedFieldList){
+			console.log(`POSSIBLE ERROR: setup/setup.js did not save: ${omittedFieldList.replace(/, $/, '')}`);
+		}
 
 		promise.then((item) => {
+			for (var name in hackeryDataFromDom) {
+				item.attr(name, hackeryDataFromDom[name]);
+				delete hackeryDataFromDom[name];
+			}
+
 			var outObj = item.attr();
 			var saveObj = new saveObjectType(outObj);
 
@@ -76,6 +105,7 @@ export const ViewModel = Map.extend({
 				utilityBase.showIncompleteStatus(dataDomObj, errorList);
 				return;
 			}
+
 			utilityBase.saveObject(saveObj, dataDomObj);
 		});
 

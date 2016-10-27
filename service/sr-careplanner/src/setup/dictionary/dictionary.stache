@@ -19,18 +19,6 @@
 
 {{#if loginUser.isResolved}}
 {{#with loginUser.value}}
-	<div><input type='hidden' class="c-field" placeholder="First Name" {($value)}="first" fieldName='first'/> </div>
-	<div><input type='hidden' class="c-field" placeholder="Last Name" {($value)}="last" fieldName='last'/> </div>
-
-	<div class='editorRow'>
-		<input type='hidden' class="c-field" placeholder="User Name" {($value)}="username" fieldName='username'/> 
-	</div>
-
-	<div><input type='hidden' class="c-field" placeholder="Password (empty means no change)" {($value)}="password" fieldName='password'/> </div>
-
-
-		<input type='hidden' class="c-field" placeholder="User Name" {($value)}="_id" fieldName='_id'/> 
-		
 
 		<table>
 			{{#each dictionary}}
