@@ -110,7 +110,7 @@ export const ViewModel = Map.extend({
 		});
 
 	},
-	saveObject: function(saveObj, domObj, event) {
+	saveObject: function(saveObj, domObj) {
 		//var saveObj = new User(loginUser);
 
 		this.attr('saveNotification', true);
@@ -123,12 +123,12 @@ export const ViewModel = Map.extend({
 		var promise = saveObj
 			.save()
 			.then(
-				() => {
+				(item) => {
 					const timeoutId = setTimeout(() => {
 						this.attr('saveNotification', false);
 					}, 2000);
 					this.attr('saveNotificationTimeoutId', timeoutId);
-
+					this.attr('%root').attr('loginUserDataOnly', item.attr());
 				},
 				(err) => {
 					this.attr('saveNotification', false);

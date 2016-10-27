@@ -29,6 +29,9 @@ export const ViewModel = Map.extend({
 });
 
 can.stache.registerHelper('nl2br', function(mapElement, options) {
+
+
+
 	//options is documented https://canjs.com/docs/can.stache.helperOptions.html
 	//if name is not specified in the call, name gets the options
 	//this works as {{testHelper 'tq'}} or {{testHelper attrName}} 
@@ -37,10 +40,18 @@ can.stache.registerHelper('nl2br', function(mapElement, options) {
 	//however, it refers to the viewModel.
 	//eg, options.scope.attr('message')
 
-	let inData = mapElement();
+	let inData = mapElement(); //this is a peculiarity of the stache/donejs helper thing
+
 
 	const student = options.scope.attr('currentStudent');
-
+	const rawDictionary = options.scope.attr('%root').attr('loginUserDataOnly').dictionary;
+	let dictionary={};
+	
+	for (var i in rawDictionary){
+		const element=rawDictionary[i];
+		dictionary[element.pattern]=element.replacement;
+	}
+	
 	inData = inData
 		.replace(/on\w*=/ig, 'oneventnotallowed=')
 		.replace(/javascript/ig, 'javascriptnotallowed')
@@ -57,6 +68,12 @@ can.stache.registerHelper('nl2br', function(mapElement, options) {
 		inData = qtools.templateReplace({
 			template: inData,
 			replaceObject: student,
+			leaveUnmatchedTagsIntact: true
+		}
+		);
+		inData = qtools.templateReplace({
+			template: inData,
+			replaceObject: dictionary,
 			leaveUnmatchedTagsIntact: false
 		}
 		);

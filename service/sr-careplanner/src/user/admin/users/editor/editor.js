@@ -54,7 +54,7 @@ export const ViewModel = Map.extend({
 		var	promise=saveObj
 			.save()
 			.then(
-				() => {
+				(item) => {
 					const timeoutId = setTimeout(() => {
 						this.attr('saveNotification', false);
 					}, 2000);
