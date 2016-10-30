@@ -8,6 +8,11 @@
 	<can-import from="sr-careplanner/user/nurse/plan/" />
 <div class='controls'>
 
+	{{#browserLoaded}}	
+		<script type='text/javascript' src='node_modules/pdfmake/build/pdfmake.js'></script>
+		<script src='node_modules/pdfmake/build/vfs_fonts.js'></script>
+	{{/browserLoaded}}
+	
 	<div class='studentSelector'>
 		<user-nurse-student-selector 
 			parent-vm='{.}' 

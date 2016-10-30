@@ -1,0 +1,101 @@
+{
+  "_args": [
+    [
+      "blaze",
+      "/Volumes/qubuntuFileServer/cmerdc/sunrise/sunriseUi/system/code/service/sr-careplanner"
+    ]
+  ],
+  "_from": "blaze@latest",
+  "_id": "blaze@2.8.0",
+  "_inCache": true,
+  "_installable": true,
+  "_location": "/blaze",
+  "_nodeVersion": "6.3.0",
+  "_npmOperationalInternal": {
+    "host": "packages-16-east.internal.npmjs.com",
+    "tmp": "tmp/blaze-2.8.0.tgz_1468421309999_0.13226755429059267"
+  },
+  "_npmUser": {
+    "email": "gregory.pratt@me.com",
+    "name": "grumpywizards"
+  },
+  "_npmVersion": "3.8.3",
+  "_phantomChildren": {},
+  "_requested": {
+    "name": "blaze",
+    "raw": "blaze",
+    "rawSpec": "",
+    "scope": null,
+    "spec": "latest",
+    "type": "tag"
+  },
+  "_requiredBy": [
+    "#USER"
+  ],
+  "_resolved": "https://registry.npmjs.org/blaze/-/blaze-2.8.0.tgz",
+  "_shasum": "4e85fd6e60b1d3e8fe396efbb01ad785bc8919f0",
+  "_shrinkwrap": null,
+  "_spec": "blaze",
+  "_where": "/Volumes/qubuntuFileServer/cmerdc/sunrise/sunriseUi/system/code/service/sr-careplanner",
+  "author": {
+    "name": "Gregory Pratt"
+  },
+  "bugs": {
+    "url": "https://github.com/BlazeCSS/blaze/issues"
+  },
+  "dependencies": {},
+  "description": "Open Source CSS Framework",
+  "devDependencies": {
+    "gulp": "~3.9.1",
+    "gulp-cssnano": "~2.1.2",
+    "gulp-rename": "~1.2.2",
+    "gulp-sass": "~2.3.2",
+    "gulp-size": "^2.1.0",
+    "np": "^2.5.0",
+    "run-sequence": "^1.2.1"
+  },
+  "directories": {},
+  "dist": {
+    "shasum": "4e85fd6e60b1d3e8fe396efbb01ad785bc8919f0",
+    "tarball": "https://registry.npmjs.org/blaze/-/blaze-2.8.0.tgz"
+  },
+  "files": [
+    "dist",
+    "scss"
+  ],
+  "gitHead": "c791fe80469ae1598b4e66d29ebde6174b0cdad3",
+  "homepage": "http://blazecss.com",
+  "keywords": [
+    "html5",
+    "sass",
+    "scss",
+    "css",
+    "bem",
+    "itcss",
+    "bemit",
+    "ui",
+    "ux",
+    "framework",
+    "components"
+  ],
+  "license": "MIT",
+  "main": "dist/blaze.min.css",
+  "maintainers": [
+    {
+      "email": "gregory.pratt@me.com",
+      "name": "grumpywizards"
+    }
+  ],
+  "name": "blaze",
+  "optionalDependencies": {},
+  "readme": "ERROR: No README data found!",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BlazeCSS/blaze.git"
+  },
+  "scripts": {
+    "build": "gulp",
+    "test": "percy snapshot demo"
+  },
+  "version": "2.8.0"
+}

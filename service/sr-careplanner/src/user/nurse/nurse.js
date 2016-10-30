@@ -7,6 +7,7 @@ import Student from "sr-careplanner/models/student";
 import Plan from "sr-careplanner/models/plan";
 import Boilerplate from "sr-careplanner/models/boilerplate";
 import qtools from "node_modules/qtools-minus/";
+import formatPlanPdf from "node_modules/format-plan-pdf/";
 
 export const ViewModel = Map.extend({
 	define: {

@@ -4,12 +4,31 @@ import 'can/map/define/';
 import './viewer.less!';
 import template from './viewer.stache!';
 import qtools from "node_modules/qtools-minus/";
+import formatPlanPdf from "node_modules/format-plan-pdf/";
 
 export const ViewModel = Map.extend({
 	define: {
 		message: {
 			value: 'This is the user-nurse-viewer component'
 		},
+	},
+
+	getPdfDataUrl: function() {
+
+		var planFormatter = new formatPlanPdf({
+			pdfMake: pdfMake,
+			student: this.attr('currentStudent').attr(),
+			plan: this.attr('plan').attr()
+		});
+
+		planFormatter.getDataUrl((dataUrl) => {
+console.log("dataUrl="+dataUrl);
+
+
+			this.attr('dataUrl', dataUrl);
+		});
+
+
 	},
 
 	collectChildComponents: function(childType, childVm) {
@@ -45,13 +64,13 @@ can.stache.registerHelper('nl2br', function(mapElement, options) {
 
 	const student = options.scope.attr('currentStudent');
 	const rawDictionary = options.scope.attr('%root').attr('loginUserDataOnly').dictionary;
-	let dictionary={};
-	
-	for (var i in rawDictionary){
-		const element=rawDictionary[i];
-		dictionary[element.pattern]=element.replacement;
+	let dictionary = {};
+
+	for (var i in rawDictionary) {
+		const element = rawDictionary[i];
+		dictionary[element.pattern] = element.replacement;
 	}
-	
+
 	inData = inData
 		.replace(/on\w*=/ig, 'oneventnotallowed=')
 		.replace(/javascript/ig, 'javascriptnotallowed')
