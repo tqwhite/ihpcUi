@@ -3,6 +3,7 @@ import Map from 'can/map/';
 import 'can/map/define/';
 import './selector.less!';
 import template from './selector.stache!';
+import qtools from "node_modules/qtools-minus/";
 
 export const ViewModel = Map.extend({
 	define: {
@@ -17,6 +18,13 @@ export const ViewModel = Map.extend({
 	notes:[
 		"openStudentHasPlans sits in /nurse. It is a virtual property, ie, calculated from other things."
 	],
+	
+	formatDate:function(inData){
+
+	const result=qtools.getDateString('dd_MMM_yyyy', new Date(inData));
+
+		return result
+	},
 	
 	updateStaticPlanDetails: function(newRefId) {
 		const openStudentRefId = this.attr('planRootVm').attr('openStudentRefId')
