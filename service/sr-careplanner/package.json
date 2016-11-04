@@ -56,7 +56,8 @@
     "jquery": "~2.2.1",
     "pdfmake": "^0.1.18",
     "steal": "^0.16.0",
-    "tinymce": "^4.4.3"
+    "tinymce": "^4.4.3",
+    "blaze": "^2.8.0"
   },
   "devDependencies": {
     "can-fixture": "^0.1.2",
@@ -66,6 +67,7 @@
     "funcunit": "~3.0.0",
     "steal-qunit": "^0.1.1",
     "steal-tools": "^0.16.0",
-    "testee": "^0.2.4"
+    "testee": "^0.2.4",
+    "blaze": "^2.8.0"
   }
 }

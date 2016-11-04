@@ -96,6 +96,13 @@ export const ViewModel = Map.extend({
 				return value;
 			}
 		},
+		openPlanNameString:{
+			value:'',
+			get:function(value){
+				return value?qtools.getDateString('dd_MMM_yyyy', new Date(value)):''
+			}
+		},
+    	
 		blankPlan:{
 			get:function(){
 				const refId = qtools.newGuid();

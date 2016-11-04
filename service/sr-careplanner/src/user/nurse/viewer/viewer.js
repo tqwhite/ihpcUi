@@ -5,6 +5,11 @@ import './viewer.less!';
 import template from './viewer.stache!';
 import qtools from "node_modules/qtools-minus/";
 import formatPlanPdf from "node_modules/format-plan-pdf/";
+import pdfLibrary from "node_modules/format-plan-pdf/node_modules/pdf-library/";
+import buildHeaderSection from "node_modules/format-plan-pdf/node_modules/build-header-section/";
+import buildStudentSection from "node_modules/format-plan-pdf/node_modules/build-student-section/";
+import buildInfoSection from "node_modules/format-plan-pdf/node_modules/build-info-section/";
+import buildPlanSection from "node_modules/format-plan-pdf/node_modules/build-plan-section/";
 
 export const ViewModel = Map.extend({
 	define: {
@@ -15,16 +20,20 @@ export const ViewModel = Map.extend({
 
 	getPdfDataUrl: function() {
 
+
 		var planFormatter = new formatPlanPdf({
+			qtools: qtools,pdfLibrary:pdfLibrary,
+			buildHeaderSection:buildHeaderSection,
+			buildStudentSection:buildStudentSection,
+			buildInfoSection:buildInfoSection,
+			buildPlanSection:buildPlanSection,
 			pdfMake: pdfMake,
 			student: this.attr('currentStudent').attr(),
-			plan: this.attr('plan').attr()
+			plan: this.attr('plan').attr(),
+			dictionary:this.attr('%root').attr('loginUserDataOnly').dictionary
 		});
 
 		planFormatter.getDataUrl((dataUrl) => {
-console.log("dataUrl="+dataUrl);
-
-
 			this.attr('dataUrl', dataUrl);
 		});
 
