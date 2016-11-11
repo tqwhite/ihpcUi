@@ -4,6 +4,7 @@ import 'can/map/define/';
 import './viewer.less!';
 import template from './viewer.stache!';
 import qtools from "node_modules/qtools-minus/";
+
 import formatPlanPdf from "node_modules/format-plan-pdf/";
 import pdfLibrary from "node_modules/format-plan-pdf/node_modules/pdf-library/";
 import buildHeaderSection from "node_modules/format-plan-pdf/node_modules/build-header-section/";
@@ -17,7 +18,7 @@ export const ViewModel = Map.extend({
 			value: 'This is the user-nurse-viewer component'
 		},
 	},
-
+	
 	getPdfDataUrl: function() {
 
 
@@ -33,11 +34,15 @@ export const ViewModel = Map.extend({
 			dictionary:this.attr('%root').attr('loginUserDataOnly').dictionary
 		});
 
-		planFormatter.getDataUrl((dataUrl) => {
+		planFormatter.getDataUrl((dataUrl, downloadFunction) => {
 			this.attr('dataUrl', dataUrl);
+			this.attr('downloadReady', true);
+			this.downloadFunction=downloadFunction;
 		});
-
-
+	},
+	
+	runDownloadFunction:function(){
+		this.downloadFunction();
 	},
 
 	collectChildComponents: function(childType, childVm) {

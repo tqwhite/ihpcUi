@@ -1,14 +1,13 @@
 <!--{{message}}-->
-
-	<b>NAME: {{currentStudent.first}} {{currentStudent.last}}</b><br/><br/>
-	{{#if currentStudent}}
+{{#if currentStudent}}
 		{{getPdfDataUrl}}
 	{{/if}}
 	
 	<div id='iframeContainer'>
+	{{#downloadReady}}
+	<div class='c-button  c-button--xsmall c-button--primary' ($click)='runDownloadFunction()'>Download</div>
+	<div class='downloadWarning'>Do not use the download function in the viewer. Only use this button.</div>
+	{{/downloadReady}}
 	<iframe src='{{dataUrl}}' class='pdfFrame'/>		
 	</div>
-	
-	
-	
 	

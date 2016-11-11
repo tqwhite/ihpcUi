@@ -39,10 +39,7 @@ export const ViewModel = Map.extend({
 
 		workingPlan:{
 			value:Plan,
-			set:function(value){
-				value.attr('studentRefId', this.attr('openStudentRefId')); //used by api to create access record
-				return value;
-			}
+			type:'*'
 		},
 
 		planRefIdStudentMapList:{

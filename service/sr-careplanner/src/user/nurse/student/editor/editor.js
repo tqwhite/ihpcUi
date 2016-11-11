@@ -30,6 +30,56 @@ export const ViewModel = Map.extend({
 		},
 	},
 	
+	fillTestData:function(){
+		const testStudent={
+"first":"Demo",
+"last":"Dolly",
+"gTwoPhoneMain":"888-888-8888",
+"gTwoPhoneAlt":"666-666-6666",
+"gTwoZip":"00000",
+"gTwoState":"ST",
+"gTwoCity":"City",
+"gTwoStreet2":"",
+"gTwoStreet1":"1111 Street Blvd",
+"gTwoName":"Daddy Father",
+"gTwoRelationship":"father",
+"gOnePhoneMain":"999-999-9999",
+"gOnePhoneAlt":"888-888-8888",
+"gOneZip":"99999",
+"gOneState":"ST",
+"gOneCity":"City",
+"gOneStreet2":"Apt 000",
+"gOneStreet1":"999 Street St",
+"gOneName":"Momma Mother",
+"gOneRelationship":"mother",
+"eap":true,
+"504plan":false,
+"eep":false,
+"iep":true,
+"IDC9CM":"410 Acute myocardial infarction",
+"hcTwoEmailAdr":"js@example.com",
+"hcTwoPhone":"111-111-1111",
+"hcTwoName":"Dr Jones",
+"hcOneEmailAdr":"ds@example.com",
+"hcOnePhone":"000-000-0000",
+"hcOneName":"Dr Smith",
+"teacher":"Ms Teacher",
+"school":"Zaphod Junior High",
+"idNumber":"9999999",
+"gender":"female",
+"birthday":"12/25/89",
+"phone":"555-555-5555",
+"zip":"00000",
+"state":"ST",
+"city":"City",
+"street2":"",
+"street1":"0000 Street Dr",
+"middle":"Z",
+"refId":qtools.newGuid()
+}
+this.attr('student', new Student(testStudent));
+	},
+	
 	saveObject: function() {
 
 

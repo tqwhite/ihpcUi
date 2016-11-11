@@ -92,7 +92,12 @@ const AppViewModel = Map.extend({
 		browserLoaded:{
 			get:function(){
 				return window.location.href.match(/\w/);
-			}
+			},
+			serialize:false
+		},
+		pdfmakePresent:{
+			value:true,
+			serialize:false
 		}
 	},
 	setNewPage: function(page, slug, subsection) {

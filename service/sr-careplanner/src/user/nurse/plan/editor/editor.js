@@ -36,6 +36,7 @@ export const ViewModel = Map.extend({
 		}
 	},
 	saveObject: function() {
+		var saveObj = this.attr('planRootVm').attr('workingPlan');
 
 		this.attr('saveNotification', true);
 		const prevTimeoutId = this.attr('saveNotificationTimeoutId');
@@ -44,20 +45,16 @@ export const ViewModel = Map.extend({
 			this.attr('saveNotificationTimeoutId', '')
 		}
 
-		var saveObj = this.attr('planRootVm').attr('workingPlan');
-		var promise;
-		var self = this;
-
 		if (saveObj.isNew()) {
-			//	saveObj.attr('refId', qtools.newGuid()); //the plan is generated with a refId and wired in at creation, don't need this
-			promise = saveObj.save().then(function() {
-				self.attr("saveObj", new Plan());
-			});
-		} else {
-			promise = saveObj.save();
-		}
 
-		promise
+			saveObj.attr('studentRefId', this.attr('planRootVm').attr('openStudentRefId'));
+
+			//	saveObj.attr('refId', qtools.newGuid()); //the plan is generated with a refId and wired in at creation, don't need this
+	;
+		} 
+		
+		var promise=saveObj
+			.save()
 			.then(() => {
 				const timeoutId = setTimeout(() => {
 					this.attr('saveNotification', false);
