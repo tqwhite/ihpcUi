@@ -96,7 +96,9 @@
 		  {{/case}}
 		{{/switch}}
 	  {{else}}
-				  <account-login/>
+		<!--		  <account-login/> -->
+			<can-import from="sr-careplanner/account/register/" />
+				  <account-register/>
 	  {{/slug}}
 {{/if}}  
     

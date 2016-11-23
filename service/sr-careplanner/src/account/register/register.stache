@@ -1,26 +1,47 @@
 
+
 <!-- account/login start -->
   <div style='width:400px;' class="c-alerts__alert c-alerts__alert--primary c-heading c-heading--medium c-heading--medium--center">
     {{{message}}}
   </div>
-  
+{{#errorList}}
+	<div class="c-toast notificationToast save error " style='position:relative;height:auto;'>
+		{{#each errorList.user}}
+			{{errorText}}<br/>
+		{{/each}}
+	</div>
+{{/errorList}}
+
+{{#saveNotification}}
+	<div class="c-toast notificationToast save success " style='position:relative;'>
+		Saving...
+	</div>
+{{/saveNotification}}
 <div id='controlsWrapper'>
 	<div style='width:50vh;margin-bottom:20px;'>
 	
 				<div class="c-form-element">
 				<div class="c-field-group">
-					<input class="c-field" placeholder="Book Number">
-					<input class="c-field" placeholder="User Name (your choice)">
-					<input class="c-field" placeholder="Password" type="password">
-					<input class="c-field" placeholder="Email Address">
-					<input class="c-field" placeholder="Email Address Confirm">
+					<input class="c-field" placeholder="Book Number" {($value)}="newUser.bookNumber" fieldName='bookNumber'>
+					<input class="c-field" placeholder="First Name" {($value)}="newUser.first" fieldName='first'>
+					<input class="c-field" placeholder="Last Name" {($value)}="newUser.last" fieldName='last'>
+					<input class="c-field" placeholder="User Name (Your Choice, No Spaces)" {($value)}="newUser.username" fieldName='username'>
+					<input class="c-field" placeholder="Password" type="password" {($value)}="newUser.password" fieldName='password'>
+					<input class="c-field" placeholder="Email Address" {($value)}="newUser.emailAddress" fieldName='emailAddress'>
+					<input class="c-field" placeholder="Repeat Email Address to Confirm" {($value)}="newUser.confirmEmail"  fieldName='confirmEmail'>
+
 				</div>
 			</div>
 			
 	</div>
+  
+	{{#browserLoaded}}
+	<button class="c-button c-button--primary c-button--small" id="registerButton">Register</button>
 
-	<button class="c-button c-button--primary c-button--small" ($click)='setNewPage("editor")'>Login</button>
-
+	{{/browserLoaded}}
+	{{^browserLoaded}}
+	<span class="fa fa-spinner fa-spin basicBlue"/>
+	{{/browserLoaded}}
 	<div>
 	<p/>
 	<button class="c-button c-button--primary c-button--xsmall" ($click)='setNewPage("account", "login")'>Login Instead</button>

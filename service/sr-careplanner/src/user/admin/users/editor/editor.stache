@@ -23,7 +23,7 @@
 <div><input class="c-field" placeholder="Last Name" {($value)}="workingUser.emailAddress" fieldName='emailAddress'/> </div>
 
 <div class='editorRow'>
-	<input class="c-field" placeholder="User Name" {($value)}="workingUser.username fieldName='username'"/> 
+	<input class="c-field" placeholder="User Name" {($value)}="workingUser.username" fieldName='username'/> 
 	<label class="c-choice">
 	  <input type="checkbox" {($checked)}="workingUser.isActive" fieldName='isActive'> Is Active
 	</label>

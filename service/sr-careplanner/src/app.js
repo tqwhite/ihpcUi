@@ -104,6 +104,8 @@ const AppViewModel = Map.extend({
 		this.attr('page', page);
 		this.attr('slug', slug);
 		this.attr('subsection', subsection);
+console.clear();console.log('in app.js');
+
 	},
 	logout: function() {
 		window.location.href = '/';

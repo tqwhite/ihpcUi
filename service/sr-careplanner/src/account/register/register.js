@@ -3,17 +3,121 @@ import Map from 'can/map/';
 import 'can/map/define/';
 import './register.less!';
 import template from './register.stache!';
+import Register from "sr-careplanner/models/register";
+import qtools from "node_modules/qtools-minus/";
 
 export const ViewModel = Map.extend({
   define: {
     message: {
       value: 'Care Planner Registration'
-    }
-  }
+    },
+		newUser: {
+			value: Register,
+			type: '*',
+			set: function(value) {
+				//value.attr('studentRefId', this.attr('openStudentRefId')); //used by api to create access record
+				return new Register({
+					bookNumber:'W7D42J',
+					first:'firstTest',
+					last:'lastTest',
+					username:'userTest',
+					password:'test',
+					emailAddress:'test@test.com',
+					confirmEmail:'test@test.com',
+				
+				});
+			}
+		}
+  },
+	
+	clearEntryError:function(){
+			const prevErrorList=this.attr('errorList');
+			const prevDomObj=prevErrorList?prevErrorList.attr('domObj'):'';
+			if (prevDomObj){
+				setTimeout(()=>{
+				prevDomObj.removeClass('error').removeClass('incomplete');
+				}, 10);
+			}
+			this.attr('errorList', '');
+	},
+	
+	showEntryError:function(domObj, errorList){
+				setTimeout(()=>{
+				domObj.addClass('error');
+					domObj.focus();
+				}, 100);
+				this.attr('errorList', {user:errorList, domObj:domObj});
+	
+	},
+  	
+  	saveObject:function(domObj){
+
+		var saveObj=this.attr('newUser'); //this should probably be renamed workingsaveObj to match the pattern elsewhere
+		saveObj.attr('role', 'nurse');
+		saveObj.attr('isActive', true);
+		
+		this.attr('saveNotification', true);
+		const prevTimeoutId = this.attr('saveNotificationTimeoutId');
+		if (prevTimeoutId) {
+			clearTimeout(prevTimeoutId);
+			this.attr('saveNotificationTimeoutId', '')
+		}
+		
+		if (saveObj.isNew()){
+			saveObj.attr('refId', qtools.newGuid());
+		}
+		var	promise=saveObj
+			.save()
+			.then(
+				(item) => {
+					const timeoutId = setTimeout(() => {
+						this.attr('saveNotification', false);
+					}, 2000);
+					this.attr('saveNotificationTimeoutId', timeoutId);
+				
+				},
+				(err) => {
+				this.attr('saveNotification', false);
+				const errorObj=JSON.parse(err.responseText);
+
+				this.attr('errorList', {user:[errorObj], domObj:domObj});
+
+
+				//	this.attr('saveError', JSON.stringify(err))
+					console.dir({
+						"err": err
+					});
+				}
+			);
+	},
+
 });
+
+
+const changeHandler=function(domObj, event) {
+				
+			this.viewModel.clearEntryError();
+
+			const saveObj=this.viewModel.attr('newUser');
+			
+			let errorList=saveObj.validate();
+			if (errorList.length){
+				this.viewModel.showEntryError(domObj, errorList);
+				return;
+			}
+
+
+			
+			this.viewModel.saveObject(domObj);
+			
+		};
 
 export default Component.extend({
   tag: 'account-register',
   viewModel: ViewModel,
-  template
+  template,
+	events: {
+		'#registerButton click': changeHandler
+
+	},
 });
