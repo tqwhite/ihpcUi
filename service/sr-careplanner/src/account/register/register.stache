@@ -13,8 +13,8 @@
 {{/errorList}}
 
 {{#saveNotification}}
-	<div class="c-toast notificationToast save success " style='position:relative;'>
-		Saving...
+	<div class="c-toast notificationToast save success " style='position:relative;height:auto;'>
+		{{{saveMessage}}}
 	</div>
 {{/saveNotification}}
 <div id='controlsWrapper'>

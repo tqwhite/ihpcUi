@@ -9,9 +9,6 @@ import User from "sr-careplanner/models/user";
 
 export const ViewModel = Map.extend({
   define: {
-	testUserName:{
-		value:'',
-	},
 	testPassword:{
 		value:'', //all are the same for now
 	},

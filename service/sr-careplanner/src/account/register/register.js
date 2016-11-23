@@ -27,6 +27,9 @@ export const ViewModel = Map.extend({
 				
 				});
 			}
+		},
+		saveMessage:{
+			value:'Saving...'
 		}
   },
 	
@@ -70,10 +73,12 @@ export const ViewModel = Map.extend({
 			.save()
 			.then(
 				(item) => {
-					const timeoutId = setTimeout(() => {
-						this.attr('saveNotification', false);
-					}, 2000);
-					this.attr('saveNotificationTimeoutId', timeoutId);
+					this.attr('saveNotification', true);
+					this.attr('saveMessage', "It worked!<br/>1) We sent an email confirmation message. Please remember to check spam if it does not show up soon.<br/>2) You can use your account now.");
+				setTimeout(()=>{
+					this.attr('%root').attr('newlyRegisteredUserName', item.username);
+					this.attr('%root').setNewPage('', 'login');newlyRegisteredUserName
+				}, 1000);
 				
 				},
 				(err) => {
@@ -105,9 +110,6 @@ const changeHandler=function(domObj, event) {
 				this.viewModel.showEntryError(domObj, errorList);
 				return;
 			}
-
-
-			
 			this.viewModel.saveObject(domObj);
 			
 		};

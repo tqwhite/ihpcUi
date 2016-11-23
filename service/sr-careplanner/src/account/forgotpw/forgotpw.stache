@@ -1,0 +1,13 @@
+
+
+<div class="c-alerts__alert c-alerts__alert--primary c-heading c-heading--medium c-heading--medium--center">
+	<div>{{message}}</div><div class='leftMargin'>{{{emotion}}}</div>
+</div>
+
+For the moment, if you need to reset<br/>
+your password, call TQ. He's the programmer<br/>
+and will be happy to help. 708-763-0100<br/>
+If you send text before you call, he'll<br/>
+help you 24/7 - well, maybe 19/7. <span class="fa fa-smile-o fa-1x" style='display:inline;'/>
+
+

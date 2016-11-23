@@ -98,7 +98,10 @@ const AppViewModel = Map.extend({
 		pdfmakePresent:{
 			value:true,
 			serialize:false
-		}
+		},
+		newlyRegisteredUserName:{
+			value:'',
+		},
 	},
 	setNewPage: function(page, slug, subsection) {
 		this.attr('page', page);

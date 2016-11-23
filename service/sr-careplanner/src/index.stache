@@ -94,11 +94,13 @@
 		  {{#case 'login'}}
 				  <account-login/>
 		  {{/case}}
+		  {{#case 'forgotpw'}}
+				<can-import from="sr-careplanner/account/forgotpw/" />
+				  <account-forgotpw/>
+		  {{/case}}
 		{{/switch}}
 	  {{else}}
-		<!--		  <account-login/> -->
-			<can-import from="sr-careplanner/account/register/" />
-				  <account-register/>
+		<account-login/>
 	  {{/slug}}
 {{/if}}  
     

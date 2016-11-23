@@ -8,10 +8,6 @@ export const Register = can.Map.extend({
 	validate: function(fieldName) {
 		let name;
 		const errorList = [];
-
-console.log("\n=-=============   validate  =========================\n");
-
-
 		const checkValidation = (fieldName) => {
 			switch (fieldName) {
 				case 'bookNumber':
