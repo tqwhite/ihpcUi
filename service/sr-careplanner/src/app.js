@@ -1,7 +1,9 @@
 import Map from "can/map/";
 import Session from "sr-careplanner/models/session";
 import qtools from "node_modules/qtools-minus/"; //I do not understand why I have to put node_modules here but not on can/map
+
 import User from "sr-careplanner/models/user";
+import ConfirmEmail from "sr-careplanner/models/confirm-email";
 
 const AppViewModel = Map.extend({
 	define: {
@@ -13,7 +15,7 @@ const AppViewModel = Map.extend({
 				})
 
 				loginUser.then((item) => {
-				
+
 					this.attr('loginUserDataOnly', item.attr());
 
 					const dictionary = item.attr('dictionary');
@@ -34,10 +36,10 @@ const AppViewModel = Map.extend({
 				return loginUser;
 			},
 		},
-		richTextExperiment:{
-			value:'',
-			note:'any value turns on the experiment',
-			note2:'*everything* associated with this experiment has this attribute, richTextExperiment',
+		richTextExperiment: {
+			value: '',
+			note: 'any value turns on the experiment',
+			note2: '*everything* associated with this experiment has this attribute, richTextExperiment',
 			serialize: false
 		},
 		session: {
@@ -45,13 +47,26 @@ const AppViewModel = Map.extend({
 				//placeholder for two-way binding to the form in login.stache
 				return new Session({});
 			},
+			set: function(value) {
+				if (value.attr(0)) {
+					if (!value.attr(0).emailConfirmationDate) {
+						this.attr('unconfirmedEmailAddress', value.attr(0).emailAddress);
+
+					}
+				}
+				return value;
+			},
 			serialize: false //or, function(val, type){ return f(val); }
+		},
+		unconfirmedEmailAddress:{
+			value:'',
+			serialize:false
 		},
 		token: {
 			value: {},
 			serialize: false,
-			type:'*',
-			set:function(value){
+			type: '*',
+			set: function(value) {
 				//someday, reinitialize session activity timeout here
 				return value;
 
@@ -85,30 +100,40 @@ const AppViewModel = Map.extend({
 			value: '',
 			serialize: false,
 		},
-		expiration:{
+		expiration: {
 			value: '',
-			serialize:false
+			serialize: false
 		},
-		browserLoaded:{
-			get:function(){
+		browserLoaded: {
+			get: function() {
 				return window.location.href.match(/\w/);
 			},
-			serialize:false
+			serialize: false
 		},
-		pdfmakePresent:{
-			value:true,
-			serialize:false
+		pdfmakePresent: {
+			value: true,
+			serialize: false
 		},
-		newlyRegisteredUserName:{
-			value:'',
+		newlyRegisteredUserName: {
+			value: '',
+			serialize: false,
 		},
+		loginUserDataOnly: {
+			serialize: false
+		},
+		confirmEmailMessage: {
+			value: '',
+			serialize: false,
+		},
+		confirmEmailStatus: {
+			value: '',
+			serialize: false,
+		}
 	},
 	setNewPage: function(page, slug, subsection) {
 		this.attr('page', page);
 		this.attr('slug', slug);
 		this.attr('subsection', subsection);
-console.clear();console.log('in app.js');
-
 	},
 	logout: function() {
 		window.location.href = '/';
@@ -116,11 +141,11 @@ console.clear();console.log('in app.js');
 	clearConsole: function() {
 		console.clear();
 	},
-	activateModal:function(callback){
+	activateModal: function(callback) {
 		$('body').one('click', callback);
 	},
 	reinitializeDb: function(database) {
-		const currPage=this.attr('page');
+		const currPage = this.attr('page');
 		const initializers = {
 			student: () => {
 				$.ajax({
@@ -163,7 +188,48 @@ console.clear();console.log('in app.js');
 		initializers[database]();
 
 	},
+	testElement: function() {
+		window['AppViewModel'] = this;
+		console.log('added: window[' + "'" + 'AppViewModel' + "'" + ']');
+		console.dir({
+			"AppViewModel": this.attr()
+		});
+	},
 });
 
+let alreadyBeenHere = false;
+can.stache.registerHelper('confirmEmail', function(options) {
+	if (!process.browser || alreadyBeenHere) {
+		return;
+	}
 
+	alreadyBeenHere = true;
+
+	if (window && window.location && window.location.pathname) {
+		const confirmInfo = window.location.pathname.match(/\/confirmEmail\/(\w+)/);
+
+
+		if (confirmInfo) {
+			options.scope.attr('confirmEmailMessage', "Attempting to confirm email address");
+			options.scope.attr('confirmEmailStatus', "incomplete");
+			const confirmEmail = new ConfirmEmail({
+				data: {
+					confirmationKey: confirmInfo[1]
+				}
+			});
+
+			confirmEmail.save((result) => {
+				if (result.attr('0').attr('message')) {
+					options.scope.attr('confirmEmailMessage', result.attr('0').attr('message'));
+					options.scope.attr('confirmEmailStatus', "success");
+				}
+			}, (err) => {
+				options.scope.attr('confirmEmailMessage', err.responseJSON.errorText);
+				options.scope.attr('confirmEmailStatus', "error");
+
+			});
+		}
+	}
+
+});
 export default AppViewModel;

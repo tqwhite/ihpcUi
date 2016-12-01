@@ -37,10 +37,10 @@ export const ViewModel = Map.extend({
 		const tmpFormSession=this.attr("tmpFormSession");
 
 		const successFunc=(result)=>{
-console.clear();console.log('in login.js');
+
 			this.attr("tmpFormSession", new Session({user: new User()})); //comment this to avoid clearing the login inputs
 			this.attr("%root").attr("session", result);
-
+			this.attr("%root").attr("confirmEmailMessage", '');
 		};
 		const errorFunc=(err)=>{
 			this.attr('message', err.responseText);

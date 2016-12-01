@@ -5,12 +5,12 @@ import './viewer.less!';
 import template from './viewer.stache!';
 import qtools from "node_modules/qtools-minus/";
 
-import formatPlanPdf from "node_modules/format-plan-pdf/";
-import pdfLibrary from "node_modules/format-plan-pdf/node_modules/pdf-library/";
-import buildHeaderSection from "node_modules/format-plan-pdf/node_modules/build-header-section/";
-import buildStudentSection from "node_modules/format-plan-pdf/node_modules/build-student-section/";
-import buildInfoSection from "node_modules/format-plan-pdf/node_modules/build-info-section/";
-import buildPlanSection from "node_modules/format-plan-pdf/node_modules/build-plan-section/";
+import formatPlanPdf from "node_modules/format-plan-pdf/format-plan-pdf";
+import pdfLibrary from "node_modules/format-plan-pdf/node_modules/pdf-library/pdf-library";
+import buildHeaderSection from "node_modules/format-plan-pdf/node_modules/build-header-section/build-header-section";
+import buildStudentSection from "node_modules/format-plan-pdf/node_modules/build-student-section/build-student-section";
+import buildInfoSection from "node_modules/format-plan-pdf/node_modules/build-info-section/build-info-section";
+import buildPlanSection from "node_modules/format-plan-pdf/node_modules/build-plan-section/build-plan-section";
 
 export const ViewModel = Map.extend({
 	define: {

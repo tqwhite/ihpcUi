@@ -1,6 +1,5 @@
 import Component from 'can/component/';
 import Map from 'can/map/';
-import route from "can/route/";
 import 'can/map/define/';
 import './main-header.less!';
 import template from './main-header.stache!';

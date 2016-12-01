@@ -132,14 +132,42 @@ margin-top:5px;
 
     background: rgba(239, 79, 82, .5) none repeat scroll 0 0;
     }
+    
+.subsectionSelected{
+	font-weight:bold;
+	text-decoration:underline;
+}
+
+.confirmEmailStatusContainer{
+	position:absolute;
+	top:0px;
+	left:0px;
+	width:100vw;
+	height:50px;
+	text-align:center;
+
+	display:-webkit-flex;
+	display:flex;
+	-webkit-justify-content:center;
+	justify-content:center;
+	-webkit-align-items:center;
+	align-items:center;
+	flex-direction:row;
+	-webkit-flex-direction: row;
+}
+
+.confirmEmailMessage{
+	width:100%;
+	color:@basicBlue;
+	font-weight:normal;
+}
+    
 .error{
 	background:rgba(239, 79, 82, .5)
 }
 .incomplete{
 	background:rgba(255, 152, 0, .5)
 }
-
-.subsectionSelected{
-	font-weight:bold;
-	text-decoration:underline;
+.success{
+    background: rgba(102, 187, 106, 0.5) none repeat scroll 0 0;
 }
