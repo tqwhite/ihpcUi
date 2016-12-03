@@ -17,19 +17,40 @@
   </head>
   <body>
   
-
+{{simpleRoute}}
 {{confirmEmail}}
 {{#confirmEmailMessage}}
 <div class='confirmEmailStatusContainer {{confirmEmailStatus}}'> <div class='confirmEmailMessage'>{{confirmEmailMessage}}</div></div>
 {{/confirmEmailMessage}}
 
+
+			
 <account-login-permission-master/>
     <div id='workingContainer'>
 {{#if session.get('role')}}
-    		<main-header/>
-    		{{#unconfirmedEmailAddress}}
-    		<div style='background:red;height:15px;width:100%;font-size:8pt;text-align:center;color:white;'>Email address ({{unconfirmedEmailAddress}}) has not been confirmed. Click HERE to resend confirmation email (or check spam filter).</div>
-    		{{/unconfirmedEmailAddress}}
+    <main-header/>
+    		
+	{{#unconfirmedEmailAddress}}
+	<div class='unconfirmedEmailAddressNotification'>Email address ({{unconfirmedEmailAddress}}) has not been confirmed. Click <span class='resend' ($click)='resendConfirmation()'>HERE</span> to resend confirmation email (or check your spam filter).</div>
+	{{/unconfirmedEmailAddress}}
+
+	{{#showResendNotification}}
+	<div class='c-overlay showResendNotificationContainer' style=''>
+	
+		<div class='showResendNotificationMessage'>
+		<div>Confirmation Email Message Sent to:<br/><br/>
+		<div style='margin-left:20px;font-weight:normal;'>{{unconfirmedEmailAddress}}</div>
+		<br/>
+		Please remember to check your spam mailbox.<br/><br/>
+		<div style='font-size:80%;'>(If your mail program supports it, you can search for<br/><br/>
+		<div style='margin-left:20px;font-weight:normal;'>{{systemProdName}} Confirmation Request</div><br/>
+		in the mail subject.)</div>
+		<div>
+		</div>
+	
+	</div>
+	{{/showResendNotification}}
+
 	{{#switch page}}      
 		{{#case "admin"}}
 		<can-import from="sr-careplanner/user/admin/" />
@@ -100,9 +121,9 @@
 		  {{#case 'login'}}
 				  <account-login/>
 		  {{/case}}
-		  {{#case 'forgotpw'}}
-				<can-import from="sr-careplanner/account/forgotpw/" />
-				  <account-forgotpw/>
+		  {{#case 'forgot-password'}}
+				<can-import from="sr-careplanner/account/forgot-password/" />
+				  <account-forgot-password/>
 		  {{/case}}
 		{{/switch}}
 	  {{else}}

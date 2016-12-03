@@ -106,3 +106,7 @@ import 'sr-careplanner/setup/user/user_test';
 import 'sr-careplanner/setup/plan/plan_test';
 
 import 'sr-careplanner/setup/dictionary/dictionary_test';
+
+import 'sr-careplanner/account/change-password/change-password_test';
+
+import 'sr-careplanner/account/forgot-password/forgot-password_test';

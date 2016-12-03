@@ -1,19 +1,19 @@
 import Component from 'can/component/';
 import Map from 'can/map/';
 import 'can/map/define/';
-import './forgotpw.less!';
-import template from './forgotpw.stache!';
+import './forgot-password.less!';
+import template from './forgot-password.stache!';
 
 export const ViewModel = Map.extend({
   define: {
     message: {
-      value: 'Forgot Password!'
+      value: 'This is the account-forgot-password component'
     }
   }
 });
 
 export default Component.extend({
-  tag: 'account-forgotpw',
+  tag: 'account-forgot-password',
   viewModel: ViewModel,
   template
 });

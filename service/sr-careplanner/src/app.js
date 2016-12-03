@@ -4,6 +4,9 @@ import qtools from "node_modules/qtools-minus/"; //I do not understand why I hav
 
 import User from "sr-careplanner/models/user";
 import ConfirmEmail from "sr-careplanner/models/confirm-email";
+import ResendEmail from "sr-careplanner/models/resend-email";
+import ForgotPassword from "sr-careplanner/models/forgot-password";
+
 
 const AppViewModel = Map.extend({
 	define: {
@@ -58,9 +61,9 @@ const AppViewModel = Map.extend({
 			},
 			serialize: false //or, function(val, type){ return f(val); }
 		},
-		unconfirmedEmailAddress:{
-			value:'',
-			serialize:false
+		unconfirmedEmailAddress: {
+			value: '',
+			serialize: false
 		},
 		token: {
 			value: {},
@@ -128,7 +131,10 @@ const AppViewModel = Map.extend({
 		confirmEmailStatus: {
 			value: '',
 			serialize: false,
-		}
+		},
+		showResendNotification:{
+			serialize:false
+			}
 	},
 	setNewPage: function(page, slug, subsection) {
 		this.attr('page', page);
@@ -188,6 +194,33 @@ const AppViewModel = Map.extend({
 		initializers[database]();
 
 	},
+
+	resendConfirmation: function() {
+		console.log("\n=-=============   resendConfirmation  =========================\n");
+
+		const resend = new ResendEmail({
+			refId: this.session.attr(0).refId
+		});
+
+	this.attr('showResendNotification', true);
+	
+	resend.save((result)=>{
+	
+		setTimeout(()=>{
+		$('.showResendNotificationContainer').fadeOut(1000, ()=>{
+		this.attr('showResendNotification', '');
+		$('.unconfirmedEmailAddressNotification').animate({opacity: 0.4});
+		});
+	}, 3000);
+	},
+	(err)=>{
+	
+console.dir({"err":err});
+
+
+	})
+
+	},
 	testElement: function() {
 		window['AppViewModel'] = this;
 		console.log('added: window[' + "'" + 'AppViewModel' + "'" + ']');
@@ -195,6 +228,21 @@ const AppViewModel = Map.extend({
 			"AppViewModel": this.attr()
 		});
 	},
+});
+
+can.stache.registerHelper('simpleRoute', function(options) {
+	if (!process.browser) {
+		return;
+	}
+	const routingBits = window.location.href.match(/\/(\w+)\/(\w+)$/);
+	if (!routingBits || typeof (routingBits[1]) == 'undefined') {
+		return;
+	}
+	switch (routingBits[1]) {
+		case 'changeEmail':
+			options.scope.attr('page', 'change-email');
+			break;
+	}
 });
 
 let alreadyBeenHere = false;

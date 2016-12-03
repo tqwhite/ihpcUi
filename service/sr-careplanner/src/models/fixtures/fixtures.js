@@ -15,3 +15,5 @@ import 'sr-careplanner/models/fixtures/boilerplate';
 import 'sr-careplanner/models/fixtures/student';
 
 import 'sr-careplanner/models/fixtures/plan';
+
+import 'sr-careplanner/models/fixtures/change-password';

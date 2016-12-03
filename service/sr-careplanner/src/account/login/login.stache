@@ -29,7 +29,7 @@
 			<div>
 				<p/>
 				<button class="c-button c-button--primary c-button--xsmall" ($click)='setNewPage("account", "register")'>Register Instead</button>
-				<button class="c-button c-button--primary c-button--xsmall" ($click)='setNewPage("account", "forgotpw")'>Forgot Password/User Name</button>
+				<button class="c-button c-button--primary c-button--xsmall" ($click)='setNewPage("account", "forgot-password")'>Forgot Password/User Name</button>
 			</div>
 		</div>
 	{{/browserLoaded}}
