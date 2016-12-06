@@ -17,13 +17,13 @@ export const ViewModel = Map.extend({
 			set: function(value) {
 				//value.attr('studentRefId', this.attr('openStudentRefId')); //used by api to create access record
 				return new Register({
-					bookNumber:'W7D42J',
-					first:'firstTest',
+					bookNumber:'xxxxxx',
+					first:'xxxxxx',
 					last:'lastTest',
-					username:'userTest',
+					username:'xxxxxx',
 					password:'test',
-					emailAddress:'test@test.com',
-					confirmEmail:'test@test.com',
+					emailAddress:'tq@genericwhite.com',
+					confirmEmail:'tq@genericwhite.com',
 				
 				});
 			}
@@ -78,7 +78,7 @@ export const ViewModel = Map.extend({
 				setTimeout(()=>{
 					this.attr('%root').attr('newlyRegisteredUserName', item.username);
 					this.attr('%root').setNewPage('', 'login');newlyRegisteredUserName
-				}, 1000);
+				}, 4000);
 				
 				},
 				(err) => {

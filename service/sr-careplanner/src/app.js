@@ -5,7 +5,6 @@ import qtools from "node_modules/qtools-minus/"; //I do not understand why I hav
 import User from "sr-careplanner/models/user";
 import ConfirmEmail from "sr-careplanner/models/confirm-email";
 import ResendEmail from "sr-careplanner/models/resend-email";
-import ForgotPassword from "sr-careplanner/models/forgot-password";
 
 
 const AppViewModel = Map.extend({
@@ -196,10 +195,9 @@ const AppViewModel = Map.extend({
 	},
 
 	resendConfirmation: function() {
-		console.log("\n=-=============   resendConfirmation  =========================\n");
 
 		const resend = new ResendEmail({
-			refId: this.session.attr(0).refId
+			username: this.session.attr(0).username
 		});
 
 	this.attr('showResendNotification', true);
@@ -214,10 +212,7 @@ const AppViewModel = Map.extend({
 	}, 3000);
 	},
 	(err)=>{
-	
-console.dir({"err":err});
-
-
+		console.dir({"err":err});
 	})
 
 	},
@@ -231,16 +226,28 @@ console.dir({"err":err});
 });
 
 can.stache.registerHelper('simpleRoute', function(options) {
+console.log("\n=-=============   simpleRoute  =========================\n");
+
+
 	if (!process.browser) {
 		return;
 	}
-	const routingBits = window.location.href.match(/\/(\w+)\/(\w+)$/);
+	const routingBits = window.location.href.match(/\/(\w+)\/*(\w*)#*!*$/);
+console.log("window.location.href="+window.location.href);
+
+
+console.dir({"routingBits":routingBits});
 	if (!routingBits || typeof (routingBits[1]) == 'undefined') {
 		return;
 	}
+
+
 	switch (routingBits[1]) {
-		case 'changeEmail':
-			options.scope.attr('page', 'change-email');
+		case 'forgotPassword':
+console.log("\n=-=============   forgotPassword  =========================\n");
+
+
+			this.setNewPage('', 'forgot-password');
 			break;
 	}
 });

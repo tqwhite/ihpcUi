@@ -10,12 +10,12 @@ export const ForgotPassword = can.Map.extend({
 		const errorList = [];
 		const checkValidation = (fieldName) => {
 			switch (fieldName) {
-				case 'XXX':
-					if (!this.attr(fieldName) || this.attr(fieldName).length!=6) {
+				case 'forgotPasswordInfo':
+					if (!this.attr(fieldName)) {
 
 						errorList.push({
 							fieldName: fieldName,
-							errorText: fieldName + " is exactly six characters long"
+							errorText: "We can't do anything unless you enter a value."
 						});
 					}
 					
@@ -26,7 +26,7 @@ export const ForgotPassword = can.Map.extend({
 		if (fieldName) {
 			checkValidation(fieldName);
 		} else {
-			['AAA'].map(checkValidation);
+			['forgotPasswordInfo'].map(checkValidation);
 		}
 		return errorList;
 
