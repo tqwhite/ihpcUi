@@ -10,12 +10,19 @@ export const ChangePassword = can.Map.extend({
 		const errorList = [];
 		const checkValidation = (fieldName) => {
 			switch (fieldName) {
-				case 'XXX':
-					if (!this.attr(fieldName) || this.attr(fieldName).length!=6) {
+				case 'newPassword':
+					if (!this.attr(fieldName) || this.attr(fieldName).length<6) {
 
 						errorList.push({
 							fieldName: fieldName,
-							errorText: fieldName + " is exactly six characters long"
+							errorText: fieldName + " has to be at least six characters long"
+						});
+					}
+					if (this.attr(fieldName)!=this.attr('newConfirmPassword')) {
+
+						errorList.push({
+							fieldName: fieldName,
+							errorText: fieldName + " does not match the confirmation field"
 						});
 					}
 					
@@ -26,7 +33,7 @@ export const ChangePassword = can.Map.extend({
 		if (fieldName) {
 			checkValidation(fieldName);
 		} else {
-			['AAA'].map(checkValidation);
+			['newPassword'].map(checkValidation);
 		}
 		return errorList;
 

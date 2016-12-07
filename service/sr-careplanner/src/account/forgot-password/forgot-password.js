@@ -15,9 +15,7 @@ export const ViewModel = Map.extend({
 			serialize: false
 		}
 	},
-	findErrors:function(saveObj, domObj){
-	
-
+	findErrors: function(saveObj, domObj) {
 		let errorList = saveObj.validate();
 		if (errorList.length) {
 			setTimeout(() => {
@@ -37,8 +35,8 @@ export const ViewModel = Map.extend({
 		var saveObj = new ForgotPassword({
 			forgotPasswordInfo: this.attr('forgotPasswordInfo')
 		});
-		
-		if (this.findErrors(saveObj, domObj)){
+
+		if (this.findErrors(saveObj, domObj)) {
 			return;
 		}
 
@@ -53,11 +51,11 @@ export const ViewModel = Map.extend({
 			.then(
 				(item) => {
 					this.attr('saveNotification', true);
-					this.attr('saveMessage', "It worked!<br/>1) We sent an email confirmation message. Please remember to check spam if it does not show up soon.<br/>2) You can use your account now.");
+					this.attr('saveMessage', "It worked! We found an email address resembling <span style='color:black;'>"+item.obscureEmail+"</span><br/>1) We sent an email message containing a link that will help you change your password to something you know. Please remember to check spam if it does not show up soon.<br/>2) The link it contains only lasts fifteen minutes (for security reasons) so don't dawdle.");
 					setTimeout(() => {
 						this.attr('%root').attr('newlyRegisteredUserName', item.username);
-						this.attr('%root').setNewPage('', 'login');newlyRegisteredUserName
-					}, 4000);
+						this.attr('%root').setNewPage('', 'login');
+					}, 6000);
 
 				},
 				(err) => {

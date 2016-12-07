@@ -133,6 +133,9 @@ const AppViewModel = Map.extend({
 		},
 		showResendNotification:{
 			serialize:false
+			},
+		changePasswordKey:{
+			serialize:false
 			}
 	},
 	setNewPage: function(page, slug, subsection) {
@@ -226,28 +229,22 @@ const AppViewModel = Map.extend({
 });
 
 can.stache.registerHelper('simpleRoute', function(options) {
-console.log("\n=-=============   simpleRoute  =========================\n");
-
 
 	if (!process.browser) {
 		return;
 	}
-	const routingBits = window.location.href.match(/\/(\w+)\/*(\w*)#*!*$/);
-console.log("window.location.href="+window.location.href);
+	const routingBits = window.location.pathname.match(/^\/(\w+)\/*(\w*)\/*#*!*$/);
 
-
-console.dir({"routingBits":routingBits});
 	if (!routingBits || typeof (routingBits[1]) == 'undefined') {
 		return;
 	}
-
-
 	switch (routingBits[1]) {
 		case 'forgotPassword':
-console.log("\n=-=============   forgotPassword  =========================\n");
-
-
 			this.setNewPage('', 'forgot-password');
+			break;
+		case 'changePassword':
+			this.attr('changePasswordKey', routingBits[2]);
+			this.setNewPage('', 'change-password');
 			break;
 	}
 });

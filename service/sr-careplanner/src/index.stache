@@ -125,6 +125,10 @@
 				<can-import from="sr-careplanner/account/forgot-password/" />
 				  <account-forgot-password/>
 		  {{/case}}
+		  {{#case 'change-password'}}
+				<can-import from="sr-careplanner/account/change-password/" />
+				<account-change-password/>
+		  {{/case}}
 		{{/switch}}
 	  {{else}}
 		<account-login/>
