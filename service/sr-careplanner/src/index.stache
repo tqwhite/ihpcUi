@@ -43,7 +43,7 @@
 		<br/>
 		Please remember to check your spam mailbox.<br/><br/>
 		<div style='font-size:80%;'>(If your mail program supports it, you can search for<br/><br/>
-		<div style='margin-left:20px;font-weight:normal;'>{{systemProdName}} Confirmation Request</div><br/>
+		<div style='margin-left:20px;font-weight:normal;'>{{systemProdName}} Email Address Confirmation Request</div><br/>
 		in the mail subject.)</div>
 		<div>
 		</div>
