@@ -2,6 +2,7 @@ body {
   font-family: "Helvetica Neue-Light","Helvetica Neue Light","Helvetica Neue",Helvetica,Arial,"Lucida Grande",sans-serif;
   font-weight: 300;
   color:rgb(0, 80, 177);
+  position:relative;
 }
 
 hr {
@@ -220,4 +221,67 @@ min-height:60vh;
 	align-items:center;
 	flex-direction:row;
 	-webkit-flex-direction: row;
+}
+
+
+
+.centerVertical{
+	display:-webkit-flex;
+	display:flex;
+	
+	flex-direction:column;
+	-webkit-flex-direction: column;
+	
+	/* between items in main direction */
+	justify-content:center; /*flex-start, flex-end, center, space-between, space-around, stretch*/
+	-webkit-justify-content:center;
+	
+	/* between rows or columns */
+	align-content:center; /*flex-start, flex-end, center, space-between, space-around, stretch*/
+	-webkit-align-content:center;
+	
+	align-items:center; /*flex-start, flex-end, center, baseline, stretch*/
+	-webkit-align-items:center;
+	
+	justify-content:flex-end; /*flex-start, flex-end, center, space-between, space-around*/
+	-webkit-justify-content:flex-end;
+	
+	flex-wrap:wrap; /*nowrap | wrap | wrap-reverse*/
+	-webkit-flex-wrap:wrap;
+	}
+
+.centerHorizontal{
+	display:-webkit-flex;
+	display:flex;
+	
+	flex-direction:row;
+	-webkit-flex-direction: row;
+	
+	/* between items in main direction */
+	justify-content:center; /*flex-start, flex-end, center, space-between, space-around, stretch*/
+	-webkit-justify-content:center;
+	
+	/* between rows or columns */
+	align-content:center; /*flex-start, flex-end, center, space-between, space-around, stretch*/
+	-webkit-align-content:center;
+	
+	align-items:center; /*flex-start, flex-end, center, baseline, stretch*/
+	-webkit-align-items:center;
+	
+	justify-content:space-between; /*flex-start, flex-end, center, space-between, space-around*/
+	-webkit-justify-content:space-around;
+	
+	flex-wrap:wrap; /*nowrap | wrap | wrap-reverse*/
+	-webkit-flex-wrap:wrap;
+	
+}
+
+
+
+.flexItem{
+/*order: 1; (2, 3, 4, ... )*/
+flex-grow: 1;  /*2, 3, 4, ...*/
+flex-shrink: 1;  /*2, 3, 4, ...*/
+flex-basis:auto; /* percent, dimension, ... */
+align-self:auto; /*same as but overrides align items above*/
 }

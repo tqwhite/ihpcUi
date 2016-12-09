@@ -9,11 +9,13 @@
 	<li class='c-nav__item ' ($click)='setSubsection("user")'>Manage User Profile</a></li>
 {{/is}}
 
+<!--
 {{#is subsection 'plan'}}
 <li class='c-nav__item subsectionSelected'>Manage Plan Reports</a></li>
 {{else}}
 <li class='c-nav__item' ($click)='setSubsection("plan")'>Manage Plan Reports</a></li>
 {{/is}}
+-->
 
 {{#is subsection 'dictionary'}}
 <li class='c-nav__item subsectionSelected'>Manage Dictionary</a></li>

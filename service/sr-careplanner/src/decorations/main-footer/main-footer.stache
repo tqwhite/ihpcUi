@@ -9,3 +9,9 @@
   <div style='color:gray;font-size:80%;'>*page: {{../page}}* *role: {{../session.get('role')}}* *expiration: {{../expiration}}*</div>
 <!-- decorations/main-footer end -->
 
+
+{{#loginUserDataOnly}}
+<div class='buttonContainer'>
+<button type='submit' class="c-button c-button--primary c-button--small" ($click)='activateSendFeedback()'>Send Feedback</button>
+</div>
+{{/loginUserDataOnly}}

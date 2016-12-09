@@ -17,3 +17,7 @@ import 'sr-careplanner/models/fixtures/student';
 import 'sr-careplanner/models/fixtures/plan';
 
 import 'sr-careplanner/models/fixtures/change-password';
+
+import 'sr-careplanner/models/fixtures/feedbackSupport';
+
+import 'sr-careplanner/models/fixtures/feedback-support';

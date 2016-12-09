@@ -17,3 +17,7 @@ import 'sr-careplanner/models/student_test';
 import 'sr-careplanner/models/plan_test';
 
 import 'sr-careplanner/models/change-password_test';
+
+import 'sr-careplanner/models/feedbackSupport_test';
+
+import 'sr-careplanner/models/feedback-support_test';

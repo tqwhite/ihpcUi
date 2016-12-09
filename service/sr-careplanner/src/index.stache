@@ -22,8 +22,6 @@
 {{#confirmEmailMessage}}
 <div class='confirmEmailStatusContainer {{confirmEmailStatus}}'> <div class='confirmEmailMessage'>{{confirmEmailMessage}}</div></div>
 {{/confirmEmailMessage}}
-
-
 			
 <account-login-permission-master/>
     <div id='workingContainer'>
@@ -137,7 +135,6 @@
     
 
     <main-footer></main-footer>
-<button ($click)='testElement("x")' style='margin-left:20px;' tabindex='-1'>test AppViewModel</button>
 
 
 {{#is session.get('username') 'tqwhite'}}
@@ -152,6 +149,41 @@
 		<button ($click)='clearConsole()' style='margin-left:20px;' tabindex='-1'>clearConsole</button>
 	</div> 
 {{/is}}	
+
+{{#showSendFeedback}}
+  
+<div class='centerVertical' style='position:absolute;top:0px;left:0px;width:100%;height:100vh;background:rgba(0,0,0,.7);padding:5vh 15vw;'>
+
+				<div style='background:white;width:50vw;margin-bottom:20px;padding:20px;font-size:80%;'>
+
+	{{^feedbackResult}}
+				Please be as specific as you can. If you are making a bug report or a complaint about
+				the program, please tell us exactly what you did, ie, the sequence that lead to the 
+				problem, what you saw and what you would prefer.<br/><br/>
+				If you are suggesting a feature, please be as thorough as you can.<br/><br/>
+				In either case, or if you are just saying Hi, please know that we are very
+				grateful for your feedback.<br/><br/>The {{systemProdName}} Team
+	{{/feedbackResult}}
+	
+	{{#feedbackResult}}
+		{{{feedbackResult}}}
+	{{/feedbackResult}}
+				</div>
+
+
+				<div  style='width:50vw;position:relative'>
+
+					<textarea id='feedbackEntry' class="c-field c-editor" style='height:30vh;' {($value)}="feedbackMessage" placeholder="Tell us what you think" ></textarea>
+
+					<div class='buttonContainer centerHorizontal' style='margin-top:15px;'>
+						<button  class="c-button c-button--primary c-button--small" ($click)='cancelSendFeedback()'>Cancel</button>
+						<button class="c-button c-button--primary c-button--small" ($click)='sendFeedbackMessage()'>Send</button>
+					</div>
+
+				</div>
+
+</div>
+{{/showSendFeedback}}
 
     {{#switch env.NODE_ENV}}
       {{#case "production"}}

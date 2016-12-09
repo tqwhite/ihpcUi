@@ -5,7 +5,7 @@ import qtools from "node_modules/qtools-minus/"; //I do not understand why I hav
 import User from "sr-careplanner/models/user";
 import ConfirmEmail from "sr-careplanner/models/confirm-email";
 import ResendEmail from "sr-careplanner/models/resend-email";
-
+import FeedBackSupport from "sr-careplanner/models/feedback-support";
 
 const AppViewModel = Map.extend({
 	define: {
@@ -79,7 +79,7 @@ const AppViewModel = Map.extend({
 			serialize: false
 		},
 		systemProdName: {
-			value: 'Care Planner',
+			value: 'IHP Creator',
 			serialize: false
 		},
 		message: {
@@ -136,7 +136,23 @@ const AppViewModel = Map.extend({
 			},
 		changePasswordKey:{
 			serialize:false
-			}
+			},
+		showSendFeedback:{
+			value:'',
+			serialize:false
+		},
+		feedbackMessage:{
+			value:'',
+			serialize:false
+		},
+		feedbackResult:{
+			value:'',
+			serialize:false
+		},
+		supportEmail:{
+			value:'tqwhite@erdc.k12.mn.us',
+			serialize:false
+		}
 	},
 	setNewPage: function(page, slug, subsection) {
 		this.attr('page', page);
@@ -197,6 +213,11 @@ const AppViewModel = Map.extend({
 
 	},
 
+
+
+
+
+
 	resendConfirmation: function() {
 
 		const resend = new ResendEmail({
@@ -217,6 +238,87 @@ const AppViewModel = Map.extend({
 	(err)=>{
 		console.dir({"err":err});
 	})
+
+	},
+	
+	cancelSendFeedback:function(){
+		this.attr('showSendFeedback', '');
+	},
+	
+	findErrorsSpecial: function(saveObj, domObj) {
+		let errorList = saveObj.validate();
+console.dir({"errorList":errorList});
+
+
+		if (errorList.length) {
+			setTimeout(() => {
+				domObj.addClass('error');
+				domObj.focus();
+			}, 100);
+			this.attr('feedbackResult', errorList[0].errorText);
+			return true;
+		}
+		return false;
+	},
+	
+	sendFeedbackMessage:function(){
+		var userData=this.attr('loginUserDataOnly');
+		var saveObj = new FeedBackSupport({
+			feedbackMessage: this.attr('feedbackMessage'),
+			user:userData
+		});
+
+		if (this.findErrorsSpecial(saveObj)) {
+			return;
+		}
+
+		
+		this.attr('feedbackResult', "Sending...");
+
+		var promise = saveObj
+			.save()
+			.then(
+				(item) => {
+
+
+					this.attr('feedbackResult', "It worked! Thank you for your feedback");
+					setTimeout(() => {
+						this.attr('feedbackMessage', '');
+						this.attr('showSendFeedback', '');
+						this.attr('feedbackResult', '');
+					}, 4000);
+
+				},
+				(err) => {
+					const errorObj = JSON.parse(err.responseText);
+
+					this.attr('errorList', {
+						user: [errorObj],
+						domObj: {}
+					});
+					
+					this.attr('feedbackResult', "Mighty Sorry. Something has gone wrong. Please Cancel and try again some other time. Or, send email to "+this.attr('supportEmail')+"<div style='font-size:80%;width:80%;margin-top:10px;'>It would be cool if you pasted this into the email, too: "+err.responseText+"</div>");
+
+					//	this.attr('saveError', JSON.stringify(err))
+					console.dir({
+						"err": err
+					});
+				}
+		);
+		return false;
+	},
+	
+	
+	
+	
+	
+	activateSendFeedback:function(){
+		this.attr('showSendFeedback', true);
+	
+setTimeout(()=>{
+$('#feedbackEntry').focus();
+}, 10);
+
 
 	},
 	testElement: function() {

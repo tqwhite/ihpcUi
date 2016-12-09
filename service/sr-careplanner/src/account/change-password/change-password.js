@@ -62,7 +62,7 @@ export const ViewModel = Map.extend({
 					this.attr('saveMessage', "It worked! The password for login username <span style='color:#999;font-weight:bold;'>'"+item.username+"'</span> has been changed. You can use it for login immediately.");
 					setTimeout(() => {
 						this.attr('%root').attr('newlyRegisteredUserName', item.username);
-						this.attr('%root').setNewPage('', 'login');debugger;
+						this.attr('%root').setNewPage('', 'login');
 					}, 6000);
 
 				},
