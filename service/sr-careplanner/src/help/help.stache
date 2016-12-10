@@ -1,5 +1,17 @@
-<p>{{message}}</p>
+<!-- <p>{{message}}</p> -->
 
-Eventually...<p/>
-topic list<br/>
-contact form<br/>
+
+
+<div style='height:30vh;width:100%;margin-bottom::50px;' class='centerVertical'>
+{{#loginUserDataOnly}}
+<div>
+For now, contact us. Your email will be included automatically.
+<br/>
+<br/>
+<br/>
+</div>
+<div class='buttonContainer'>
+<button type='submit' class="c-button c-button--primary c-button--small" ($click)='activateSendFeedback()'>Send Feedback</button>
+</div>
+</div>
+{{/loginUserDataOnly}}

@@ -158,11 +158,16 @@
 
 	{{^feedbackResult}}
 				Please be as specific as you can. If you are making a bug report or a complaint about
-				the program, please tell us exactly what you did, ie, the sequence that lead to the 
-				problem, what you saw and what you would prefer.<br/><br/>
-				If you are suggesting a feature, please be as thorough as you can.<br/><br/>
+				the program, please tell us exactly what you did, ie, the sequence that led to the 
+				problem, what you saw and what you would prefer.
+				<br/><br/>
+				If you are suggesting a feature or asking a question, please be as thorough as you can.<br/><br/>
 				In either case, or if you are just saying Hi, please know that we are very
-				grateful for your feedback.<br/><br/>The {{systemProdName}} Team
+				grateful for your feedback. If you want us to reply somewhere other than 
+				<span style='color:gray;'>{{loginUserDataOnly.emailAddress}},</span> 
+				please include that in your message.
+				<br/><br/>
+				The {{systemProdName}} Team
 	{{/feedbackResult}}
 	
 	{{#feedbackResult}}
