@@ -20,26 +20,22 @@ const AppViewModel = Map.extend({
 					this.attr('loginUserDataOnly', item.attr());
 
 					const dictionary = item.attr('dictionary');
-					if (dictionary.length === 0) {
+					let newItemsFlag=false;
+
+					['writtenby', 'district', 'infoPhone'].map(( item, inx,all)=>{
+						if (!qtools.getByProperty(dictionary, 'pattern', item)){
 						dictionary.push({
-							pattern: 'writtenby',
-							replacement: 'Written By',
+							pattern: item,
+							replacement: 'DEFAULT '+item,
 							mandatory: true
 						});
-						dictionary.push({
-							pattern: 'district',
-							replacement: 'District',
-							mandatory: true
-						});;
-						dictionary.push({
-							pattern: 'infoPhone',
-							replacement: 'Info Phone',
-							mandatory: true
-						});
+						newItemsFlag=true;
+						}
+					});
+					if (newItemsFlag){
 						item.save();
 					}
 				});
-
 				return loginUser;
 			},
 		},
