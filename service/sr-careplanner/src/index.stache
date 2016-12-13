@@ -140,7 +140,7 @@
 {{#is session.get('username') 'tqwhite'}}
  	<div style='position:static;bottom:15px;left:50px;'>
  	
-
+		<div style='font-size:8pt;color:red;margin-top:30px;'><b>DANGER:</b>these four buttons overwrite the database entirely. It puts it back into the original debugging state with no backup. They will not work on Prod.</div>
 		<button ($click)='reinitializeDb("student")' style='' tabindex='-1'>reinitialize student db</button>
 		<button ($click)='reinitializeDb("boilerplate")' style='margin-left:20px;' tabindex='-1'>reinitialize boilerplate db</button>
 		<button ($click)='reinitializeDb("plan")' style='margin-left:20px;' tabindex='-1'>reinitialize plan db</button>
@@ -152,9 +152,9 @@
 
 {{#showSendFeedback}}
   
-<div class='centerVertical' style='position:absolute;top:0px;left:0px;width:100%;height:100vh;background:rgba(0,0,0,.7);padding:5vh 15vw;'>
+<div class='centerVertical modalBackground' style=''>
 
-				<div style='background:white;width:50vw;margin-bottom:20px;padding:20px;font-size:80%;'>
+				<div class='modalInset'>
 
 	{{^feedbackResult}}
 				Please be as specific as you can. If you are making a bug report or a complaint about
@@ -189,6 +189,57 @@
 
 </div>
 {{/showSendFeedback}}
+
+{{#if firstLogin}}
+
+  
+<div class='centerVertical modalBackground' style=''>
+	<div class='modalInset firstUser'>
+		<div class='headline'>
+			Welcome to {{systemProdName}}
+		</div>
+		<div>
+			<p>Here are a couple of things that we think you would like to know to start.</p>
+			<ul>
+				<li>Autosave. The system saves every time you change anything. The actual
+					saving occurs when you <i>leave</i> an entry field. That is, when you
+					type tab or when you click on something else. You will see a green
+					indicator in the upper right corner of whatever you are changing.
+				</li>
+				<li>
+					Help. The word Help in the top, right corner leads to helpful information.
+					Right now that includes a short video demonstration (go watch this!) and a button to 
+					ask us questions. As users let us know what would be helpful, there
+					will be more.
+				</li>
+				<li>
+					Email Confirmation. If you see a red bar at the top of the page, that is because you have 
+					not confirmed your email address. This is very important to us because
+					it is the only way we know to communicate with you. If you cannot find 
+					the email message sent when you registered, there is a link in the red
+					bar that will send it again.
+				<li>
+					Feedback and Questions. There is a button at the bottom left of the app.
+					Please use it a <u>lot</u>. This app is new. We are sure there are still
+					plenty of bugs left but need your help to find them. We also have a lot 
+					of ideas for improvements but are waiting for you to tell us what is important.
+					You are the person who has to actually <i>use</i> this thing. Please
+					help us make it perfect for your needs.
+				</li>
+			
+			</ul>
+		<div class='headline'>
+			Good Luck and Keep in Touch,
+			<div style='font-size:80%;font-style:italic;'>The {{systemProdName}} Team</div>
+			<div style='font-size:60%;color:gray;'>ps, Click anywhere to make this message go away. It will not reappear.</div>
+		</div>
+		
+		<div>
+	</div>
+</div>
+
+{{activateModal}}
+{{/if}}
 
     {{#switch env.NODE_ENV}}
       {{#case "production"}}

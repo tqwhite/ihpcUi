@@ -16,21 +16,19 @@ export const ViewModel = Map.extend({
 		this.attr('usersRootVm').attr('showEditor', true);
 
 	},
+
+	collectChildComponents: function(childType, childVm) {
+		this.childComponentLists = this.childComponentLists || {};
+		this.childComponentLists[childType] = this.childComponentLists[childType] || [];
+		this.childComponentLists[childType].push(childVm);
+	},
 	testElement: function() {
-		window['user-admin-users-selector']=this;
-		console.log('added: window['+"'"+'user-admin-users-selector'+"'"+']');
+		window['user-admin-users-selector'] = this;
+		console.log('added: window[' + "'" + 'user-admin-users-selector' + "'" + ']');
 		console.dir({
-			"user-admin-users-selector": this.attr()
+			"user-admin-users-selector": this.attr(),
+			'childComponentLists':this.childComponentLists
 		});
-this.attr('users').then((item)=>{
-console.dir({"item":item});
-
-
-});
-
-
-
-
 	}
 });
 

@@ -17,22 +17,27 @@ const AppViewModel = Map.extend({
 				})
 
 				loginUser.then((item) => {
-
 					this.attr('loginUserDataOnly', item.attr());
 
 					const dictionary = item.attr('dictionary');
 					if (dictionary.length === 0) {
 						dictionary.push({
 							pattern: 'writtenby',
-							replacement: 'Written By'
+							replacement: 'Written By',
+							mandatory: true
 						});
 						dictionary.push({
 							pattern: 'district',
-							replacement: 'District'
+							replacement: 'District',
+							mandatory: true
+						});;
+						dictionary.push({
+							pattern: 'infoPhone',
+							replacement: 'Info Phone',
+							mandatory: true
 						});
 						item.save();
 					}
-
 				});
 
 				return loginUser;
@@ -53,12 +58,18 @@ const AppViewModel = Map.extend({
 				if (value.attr(0)) {
 					if (!value.attr(0).emailConfirmationDate) {
 						this.attr('unconfirmedEmailAddress', value.attr(0).emailAddress);
-
+					}
+					if (!value.attr(0).lastLogin) {
+						this.attr('firstLogin', true);
 					}
 				}
 				return value;
 			},
 			serialize: false //or, function(val, type){ return f(val); }
+		},
+		firstLogin:{
+			value:'',
+			serialize:false
 		},
 		unconfirmedEmailAddress: {
 			value: '',
@@ -121,6 +132,7 @@ const AppViewModel = Map.extend({
 			serialize: false,
 		},
 		loginUserDataOnly: {
+			value:{},
 			serialize: false
 		},
 		confirmEmailMessage: {
@@ -166,6 +178,10 @@ const AppViewModel = Map.extend({
 		console.clear();
 	},
 	activateModal: function(callback) {
+		const clearModal=()=>{
+			$('.modalBackground').hide();
+		}
+		callback=(typeof(callback)=='function')?callback:clearModal
 		$('body').one('click', callback);
 	},
 	reinitializeDb: function(database) {
@@ -213,11 +229,6 @@ const AppViewModel = Map.extend({
 
 	},
 
-
-
-
-
-
 	resendConfirmation: function() {
 
 		const resend = new ResendEmail({
@@ -247,9 +258,6 @@ const AppViewModel = Map.extend({
 	
 	findErrorsSpecial: function(saveObj, domObj) {
 		let errorList = saveObj.validate();
-console.dir({"errorList":errorList});
-
-
 		if (errorList.length) {
 			setTimeout(() => {
 				domObj.addClass('error');
@@ -307,17 +315,13 @@ console.dir({"errorList":errorList});
 		);
 		return false;
 	},
-	
-	
-	
-	
-	
+
 	activateSendFeedback:function(){
 		this.attr('showSendFeedback', true);
 	
-setTimeout(()=>{
-$('#feedbackEntry').focus();
-}, 10);
+		setTimeout(()=>{
+		$('#feedbackEntry').focus();
+		}, 10);
 
 
 	},

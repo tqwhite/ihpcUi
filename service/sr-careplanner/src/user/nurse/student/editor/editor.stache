@@ -32,11 +32,12 @@
 					<input class="c-field c-field--xsmall" type="text"  placeholder="street1" {($value)}="student.street1" />
 					<input class="c-field c-field--xsmall" type="text"  placeholder="street2" {($value)}="student.street2" />
 					<div class="inlineSet">
-						<input style='flex-grow:6;' class="c-field c-field--xsmall" type="text"  placeholder="city" {($value)}="student.city" />
+						<input class="c-field c-field--xsmall" type="text"  placeholder="city" {($value)}="student.city" />
 						<input style='flex-grow:1;' class="c-field c-field--xsmall" type="text"  placeholder="state code" {($value)}="student.state" />
 						<input style='flex-grow:2;' class="c-field c-field--xsmall" type="text"  placeholder="zip" {($value)}="student.zip" />
 					</div>
 					<input class="c-field c-field--xsmall" type="tel"  placeholder="Phone" {($value)}="student.phone" />
+					<input class="c-field c-field--xsmall" type="email"  placeholder="Email Address (if any)" {($value)}="student.emailAddress" />
 
 			</div>
 		
@@ -44,7 +45,10 @@
 			<div class='inputBlock halfBlock'>
 		
 				<div class="c-field-group">
-					<div class='labeledInput'><span class='lightLabel'>birthday</span><input class="c-field c-field--xsmall" type="date"  placeholder="mm/dd/yy" {($value)}="student.birthday" /></div>
+					<div class='labeledInput'>
+					<span class='lightLabel'>birthday</span><input class="c-field c-field--xsmall" type="date"  placeholder="mm/dd/yy" {($value)}="student.birthday" />
+					<span class='lightLabel'>grade level</span><input class="c-field c-field--xsmall" type="date"  placeholder="mm/dd/yy" {($value)}="student.gradeLevel" />
+				</div>
 					<div class='labeledInput'><span class='lightLabel'>gender</span><input class="c-field c-field--xsmall" type="text"  placeholder="eg, m, f, trans male, trans female" {($value)}="student.gender" /></div>
 					<div class='labeledInput'><span class='lightLabel'>idNumber</span><input class="c-field c-field--xsmall" type="text"  placeholder="anything" {($value)}="student.idNumber" /></div>
 					<div class='labeledInput'><span class='lightLabel'>school</span><input class="c-field c-field--xsmall" type="text"  placeholder="anything" {($value)}="student.school" /></div>
@@ -62,14 +66,14 @@
 			<div class='inputBlock wideBlock'>
 					<div class="inlineSet">
 						<span style='flex-grow:2;' class='lightLabel'>HC Provider</span>
-						<input style='flex-grow:6;' class="c-field c-field--xsmall" type="text"  placeholder="hcOneName" {($value)}="student.hcOneName" />
+						<input class="c-field c-field--xsmall" type="text"  placeholder="hcOneName" {($value)}="student.hcOneName" />
 						<input style='flex-grow:2;' class="c-field c-field--xsmall" type="text"  placeholder="hcOnePhone" {($value)}="student.hcOnePhone" />
 						<input style='flex-grow:3;BORDER-RIGHT:1PX SOLID #ADADAD;' class="c-field c-field--xsmall" type="text"  placeholder="hcOneEmailAdr" {($value)}="student.hcOneEmailAdr" />
 					</div>
 					
 					<div class="inlineSet">
 						<span style='flex-grow:2;' class='lightLabel'>HC Provider</span>
-						<input style='flex-grow:6;' class="c-field c-field--xsmall" type="text"  placeholder="hcTwoName" {($value)}="student.hcTwoName" />
+						<input class="c-field c-field--xsmall" type="text"  placeholder="hcTwoName" {($value)}="student.hcTwoName" />
 						<input style='flex-grow:2;' class="c-field c-field--xsmall" type="text"  placeholder="hcTwoPhone" {($value)}="student.hcTwoPhone" />
 						<input style='flex-grow:3;BORDER-RIGHT:1PX SOLID #ADADAD;' class="c-field c-field--xsmall" type="text"  placeholder="hcTwoEmailAdr" {($value)}="student.hcTwoEmailAdr" />
 					</div>
@@ -77,32 +81,25 @@
 					<div class="inlineSet">
 						<span style='flex-grow:2;' class='lightLabel'>ICD-9-CM</span>
 
-						<input style='flex-grow:16;BORDER-BOTTOM:1PX SOLID #ADADAD;BORDER-RIGHT:1PX SOLID #ADADAD;' class="c-field c-field--xsmall" type="text"  placeholder="IDC9CM" {($value)}="student.IDC9CM" />
+						<input style='flex-grow:9;BORDER-BOTTOM:1PX SOLID #ADADAD;BORDER-RIGHT:1PX SOLID #ADADAD;' class="c-field c-field--xsmall" type="text"  placeholder="IDC9CM" {($value)}="student.IDC9CM" />
 					</div>
-			</div>
 
-					<div class='entry' style='width:70%;padding:20px;'>
-						<div>
-								  <label class="c-label {{#if student.iep}}darkLabel{{else}}lightLabel{{/if}}">
-									<input type="checkbox" {($checked)}="student.iep">
-									Individual Education Plan
-								  </label>
-								  <label class="c-label {{#if student.eep}}darkLabel{{else}}lightLabel{{/if}}">
-									<input type="checkbox" {($checked)}="student.eep">
-									Emergency Evacuation Plan
-								  </label>
-						</div>
-						<div>
-								  <label class="c-label {{#if student.504plan}}darkLabel{{else}}lightLabel{{/if}}">
-									<input type="checkbox" {($checked)}="student.504plan">
-									504 Plan
-								  </label>
-								  <label class="c-label {{#if student.eap}}darkLabel{{else}}lightLabel{{/if}}">
-									<input type="checkbox" {($checked)}="student.eap">
-									Emergency Action Plan
-								  </label>
-						</div>
+			<div class='inlineSet' style='margin-top:5px;'>
+
+				<div class='entry' style='justify-content:center;'>
+					<div class='labeledInput'>
+					
+						<span class='lightLabel'>IEP Date</span><input style='margin-right:10px;' class="rightBorder c-field c-field--xsmall planDateField" type="text"  placeholder="Individual Education Plan Date" {($value)}="student.iep" />
+						<span class='lightLabel'>EEP Date</span><input class="rightBorder c-field c-field--xsmall planDateField" type="text"  placeholder="Emergency Evacuation Plan Date" {($value)}="student.eep" />
+					</div>
+					<div class='labeledInput bottomRightBorders'>
+						<span class='lightLabel'>504 Date</span><input style='margin-right:10px;' class="bottomRightBorder c-field c-field--xsmall planDateField" type="text"  placeholder="504 Plan Date" {($value)}="student.504plan" />
+						<span class='lightLabel'>EAP Date</span><input class="bottomRightBorder c-field c-field--xsmall planDateField" type="text"  placeholder="Emergency Action Plan Date" {($value)}="student.eap" />
+					</div>
+				</div>
+			</div>
 		</div>
+
 	</div>
 	<hr/>
 
@@ -113,19 +110,18 @@
 		<div class='entry'>
 			<div class='inputBlock halfBlock'>
 		
-					<div class="inlineSet">
-					<div class='labeledInput'><span class='lightLabel'>Relationship</span><input class="c-field c-field--xsmall" type="date"  placeholder="mother/father/guardian/aunt/etc" {($value)}="student.gOneRelationship" /></div>
-					</div>
+					<input class="c-field c-field--xsmall" type="date"  placeholder="Relationship: mother/father/guardian/aunt/etc" {($value)}="student.gOneRelationship" />
 
-					<input class="c-field c-field--xsmall" type="text"  placeholder="gOneName" {($value)}="student.gOneName" />
-					<input class="c-field c-field--xsmall" type="text"  placeholder="gOneStreet1" {($value)}="student.gOneStreet1" />
-					<input class="c-field c-field--xsmall" type="text"  placeholder="gOneStreet2" {($value)}="student.gOneStreet2" />
+					<input class="c-field c-field--xsmall" type="text"  placeholder="Name" {($value)}="student.gOneName" />
+					<input class="c-field c-field--xsmall" type="text"  placeholder="Street1" {($value)}="student.gOneStreet1" />
+					<input class="c-field c-field--xsmall" type="text"  placeholder="Street2" {($value)}="student.gOneStreet2" />
 					<div class="inlineSet">
-						<input style='flex-grow:6;' class="c-field c-field--xsmall" type="text"  placeholder="gOneCity" {($value)}="student.gOneCity" />
-						<input style='flex-grow:1;' class="c-field c-field--xsmall" type="text"  placeholder="state code" {($value)}="student.gOneState" />
-						<input style='flex-grow:2;' class="c-field c-field--xsmall" type="text"  placeholder="zip" {($value)}="student.gOneZip" />
+						<input class="c-field c-field--xsmall" type="text"  placeholder="City" {($value)}="student.gOneCity" />
+						<input style='flex-grow:1;' class="c-field c-field--xsmall" type="text"  placeholder="State Code" {($value)}="student.gOneState" />
+						<input style='flex-grow:2;' class="c-field c-field--xsmall" type="text"  placeholder="Zip" {($value)}="student.gOneZip" />
 					</div>
-					<input class="c-field c-field--xsmall" type="tel"  placeholder="Phone" {($value)}="student.gOnePhoneMain" />
+					<input class="c-field c-field--xsmall" type="tel"  placeholder="Main Phone" {($value)}="student.gOnePhoneMain" />
+					<input class="c-field c-field--xsmall" type="tel"  placeholder="Alternate Phone" {($value)}="student.gOnePhoneAlt" />
 
 			</div>
 		
@@ -133,19 +129,19 @@
 
 			<div class='inputBlock halfBlock'>
 		
-					<div class="inlineSet">
-					<div class='labeledInput'><span class='lightLabel'>Relationship</span><input class="c-field c-field--xsmall" type="date"  placeholder="mother/father/guardian/aunt/etc" {($value)}="student.gTwoRelationship" /></div>
-					</div>
+					<input class="c-field c-field--xsmall" type="date"  placeholder="Relationship: mother/father/guardian/aunt/etc" {($value)}="student.gTwoRelationship" />
 
-					<input class="c-field c-field--xsmall" type="text"  placeholder="gTwoName" {($value)}="student.gTwoName" />
-					<input class="c-field c-field--xsmall" type="text"  placeholder="gTwoStreet1" {($value)}="student.gTwoStreet1" />
-					<input class="c-field c-field--xsmall" type="text"  placeholder="gTwoStreet2" {($value)}="student.gTwoStreet2" />
+
+					<input class="c-field c-field--xsmall" type="text"  placeholder="Name" {($value)}="student.gTwoName" />
+					<input class="c-field c-field--xsmall" type="text"  placeholder="Street1" {($value)}="student.gTwoStreet1" />
+					<input class="c-field c-field--xsmall" type="text"  placeholder="Street2" {($value)}="student.gTwoStreet2" />
 					<div class="inlineSet">
-						<input style='flex-grow:6;' class="c-field c-field--xsmall" type="text"  placeholder="gTwoCity" {($value)}="student.gTwoCity" />
-						<input style='flex-grow:1;' class="c-field c-field--xsmall" type="text"  placeholder="state code" {($value)}="student.gTwoState" />
-						<input style='flex-grow:2;' class="c-field c-field--xsmall" type="text"  placeholder="zip" {($value)}="student.gTwoZip" />
+						<input class="c-field c-field--xsmall" type="text"  placeholder="City" {($value)}="student.gTwoCity" />
+						<input style='flex-grow:1;' class="c-field c-field--xsmall" type="text"  placeholder="State Code" {($value)}="student.gTwoState" />
+						<input style='flex-grow:2;' class="c-field c-field--xsmall" type="text"  placeholder="Zip" {($value)}="student.gTwoZip" />
 					</div>
-					<input class="c-field c-field--xsmall" type="tel"  placeholder="Phone" {($value)}="student.gTwoPhoneMain" />
+					<input class="c-field c-field--xsmall" type="tel"  placeholder="Main Phone" {($value)}="student.gTwoPhoneMain" />
+					<input class="c-field c-field--xsmall" type="tel"  placeholder="Alternate Phone" {($value)}="student.gTwoPhoneAlt" />
 
 			</div>
 		</div>

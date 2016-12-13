@@ -75,14 +75,6 @@ export const ViewModel = Map.extend({
 				}
 			);
 	},
-
-	testElement: function() {
-		window['user-admin-users-editor']=this;
-		console.log('added: window['+"'"+'user-admin-users-editor'+"'"+']');
-		console.dir({
-			"user-admin-users-editor": this.attr()
-		});
-	},
 	
 	clearEntryError:function(){
 			const prevErrorList=this.attr('errorList');
@@ -106,6 +98,20 @@ export const ViewModel = Map.extend({
 	
 	showIncompleteStatus:function(domObj, errorList){
 				this.attr('errorList', {user:[{errorText:'Not saved. All Fields are Required'}], domObj:domObj});
+	},
+
+	collectChildComponents: function(childType, childVm) {
+		this.childComponentLists = this.childComponentLists || {};
+		this.childComponentLists[childType] = this.childComponentLists[childType] || [];
+		this.childComponentLists[childType].push(childVm);
+	},
+	testElement: function() {
+		window['user-admin-users-editor'] = this;
+		console.log('added: window[' + "'" + 'user-admin-users-editor' + "'" + ']');
+		console.dir({
+			"user-admin-users-editor": this.attr(),
+			'childComponentLists':this.childComponentLists
+		});
 	}
 });
 

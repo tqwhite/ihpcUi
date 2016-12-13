@@ -46,10 +46,3 @@
 {{/each}}
 
 
-
-
-
-<button ($click)='testElement("x")' style='margin-left:50px;' tabindex='-1'>test itemEditor</button>
-
-
-

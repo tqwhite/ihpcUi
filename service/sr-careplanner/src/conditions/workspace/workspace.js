@@ -55,12 +55,18 @@ export const ViewModel = Map.extend({
 		this.attr('openConditionId', '');
 	},
 
+	collectChildComponents: function(childType, childVm) {
+		this.childComponentLists = this.childComponentLists || {};
+		this.childComponentLists[childType] = this.childComponentLists[childType] || [];
+		this.childComponentLists[childType].push(childVm);
+	},
 	testElement: function(x) {
-		console.clear();
+		window['conditions-workspace'] = this;
+		console.log('added: window[' + "'" + 'conditions-workspace' + "'" + ']');
 		console.dir({
-			"conditions-workspace.attr()": this.attr()
+			"conditions": this.attr(),
+			'childComponentLists':this.childComponentLists
 		});
-	//this.attr('workingCondition').attr('diagnoses').attr(inx)
 	},
 
 });

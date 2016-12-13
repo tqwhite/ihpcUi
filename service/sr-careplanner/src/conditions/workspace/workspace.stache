@@ -18,7 +18,8 @@
 		
 			<li class="c-list__item--unstyled conditionListStyle" id='{{refId}}' ($click)='selectCondition({refId})'>
 				{{#shouldShowEditor .}}
-					<conditions-workspace-item-editor boilerplate="{../}" parent-vm='{../.}' />
+					<conditions-workspace-item-editor boilerplate="{../}" parent-vm='{../.}' 
+						($inserted)="collectChildComponents('workspaceContainer', %viewModel))" />
 				{{/shouldShowEditor}}
 				
 				{{#showShowSummary .}}
@@ -33,7 +34,8 @@
 
 	{{#newConditionFlag}}
 		<li class="c-list__item--unstyled conditionListStyle">
-				<conditions-workspace-item-editor parent-vm='{../.}' />
+				<conditions-workspace-item-editor parent-vm='{../.}' 
+			($inserted)="collectChildComponents('workspaceContainer', %viewModel))" />
 		</li>
 	{{/newConditionFlag}}
 

@@ -11,7 +11,7 @@ export const ViewModel = Map.extend({
 			value: 'This is the account-forgot-password component'
 		},
 		forgotPasswordInfo: {
-			value: 'tqwhite',
+			value: '',
 			serialize: false
 		}
 	},

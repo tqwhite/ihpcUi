@@ -18,9 +18,23 @@ export const ViewModel = Map.extend({
   }
   
   },
-  clearConsole:function(){
-  	console.clear();
-  	}
+
+	collectChildComponents: function(childType, childVm) {
+console.log("\n=-=============   collectChildComponents  =========================\n");
+
+
+		this.childComponentLists = this.childComponentLists || {};
+		this.childComponentLists[childType] = this.childComponentLists[childType] || [];
+		this.childComponentLists[childType].push(childVm);
+	},
+	testElement: function(x) {
+		window['conditions'] = this;
+		console.log('added: window[' + "'" + 'conditions' + "'" + ']');
+		console.dir({
+			"conditions": this.attr(),
+			'childComponentLists':this.childComponentLists
+		});
+	},
   });
 
 export default Component.extend({

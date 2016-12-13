@@ -15,6 +15,17 @@ export const User = can.Map.extend({
 					if (this.attr('pwhash')){
 						break;
 					}
+console.dir({"this.attr":this.attr()});
+
+
+					if (!this.attr('refId') && !this.attr(fieldName)) {
+
+						errorList.push({
+							fieldName: fieldName,
+							errorText: fieldName + " cannot be empty for new user"
+						});
+					}
+					break;
 				case 'first':
 				case 'last':
 				case 'username':
@@ -50,7 +61,7 @@ export const User = can.Map.extend({
 		if (fieldName) {
 			checkValidation(fieldName);
 		} else {
-			['first', 'last', 'username'].map(checkValidation);
+			['first', 'last', 'username', 'emailAddress', 'password'].map(checkValidation);
 		}
 		return errorList;
 

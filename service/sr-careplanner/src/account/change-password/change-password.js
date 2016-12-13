@@ -76,9 +76,9 @@ export const ViewModel = Map.extend({
 					});
 
 					//	this.attr('saveError', JSON.stringify(err))
-					console.dir({
-						"err": err
-					});
+					setTimeout(()=>{
+						this.attr('%root').setNewPage("account", "forgot-password");
+					}, 5000);
 				}
 		);
 		return false;

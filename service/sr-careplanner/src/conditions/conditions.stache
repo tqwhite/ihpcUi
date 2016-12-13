@@ -1,14 +1,24 @@
 	<!--{{message}}-->
 
-	<can-import from="sr-careplanner/conditions/controls/" />
-	<can-import from="sr-careplanner/conditions/workspace/" />
+{{#is session.get('username') 'tqwhite'}}
+<button ($click)='testElement("x")' style='margin-left:20px;' tabindex='-1'>test conditions</button>
+{{/is}}
+
+	<can-import from="sr-careplanner/conditions/controls/"/>
+	<can-import from="sr-careplanner/conditions/workspace/"/>
 
 	<div class='controlsContainer'>
 
-	<conditions-controls>
+	<conditions-controls
+		($inserted)="collectChildComponents('conditions-controls', %viewModel))"
+		/>
 
 	</div>
 	
 	<div class='workspaceContainer'>
-	<conditions-workspace boilerplate='{boilerplate}' parent-vm='{.}'>
+		<conditions-workspace
+			($inserted)="collectChildComponents('conditions-workspace', %viewModel))" 
+			boilerplate='{boilerplate}' 
+			parent-vm='{.}'
+		/>
 	</div>

@@ -1,4 +1,7 @@
 <!--{{message}}-->
+{{#is session.get('username') 'tqwhite'}}
+<button ($click)='testElement("x")' style='margin-left:20px;' tabindex='-1'>test setup</button>
+{{/is}}
 
 <ul id='adminNav' class='c-nav c-nav--inline'>
   <li style='width:75px;display:inline-block;'>&nbsp;</li>
