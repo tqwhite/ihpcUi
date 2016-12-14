@@ -11,17 +11,27 @@ import buildHeaderSection from "node_modules/format-plan-pdf/node_modules/build-
 import buildStudentSection from "node_modules/format-plan-pdf/node_modules/build-student-section/build-student-section";
 import buildInfoSection from "node_modules/format-plan-pdf/node_modules/build-info-section/build-info-section";
 import buildPlanSection from "node_modules/format-plan-pdf/node_modules/build-plan-section/build-plan-section";
+import this_makes_a_global_called_pdfmake from "node_modules/pdfmake/build/pdfmake"
+//HACKERY: I added code to subvert SSR in pdfmake at line 71937
+//if (view && view.DTRACE_NET_SERVER_CONNECTION){		return;		}
+//note also that nurse.stache has a call to load a type font for pdfmake
 
 export const ViewModel = Map.extend({
 	define: {
 		message: {
 			value: 'This is the user-nurse-viewer component'
 		},
+		downloadReady:{
+			value:'',
+			serialize:false
+		},
+		dataUrl:{
+			value:'',
+			serialize:false
+		}
 	},
 	
 	getPdfDataUrl: function() {
-
-
 		var planFormatter = new formatPlanPdf({
 			qtools: qtools,pdfLibrary:pdfLibrary,
 			buildHeaderSection:buildHeaderSection,
@@ -61,7 +71,7 @@ export const ViewModel = Map.extend({
 
 });
 
-can.stache.registerHelper('nl2br', function(mapElement, options) {
+can.stache.registerHelper('nl2br_UNUSED', function(mapElement, options) {
 
 
 
