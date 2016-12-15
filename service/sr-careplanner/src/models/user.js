@@ -15,9 +15,6 @@ export const User = can.Map.extend({
 					if (this.attr('pwhash')){
 						break;
 					}
-console.dir({"this.attr":this.attr()});
-
-
 					if (!this.attr('refId') && !this.attr(fieldName)) {
 
 						errorList.push({

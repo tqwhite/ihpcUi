@@ -16,16 +16,7 @@ export const ViewModel = Map.extend({
 			type: '*',
 			set: function(value) {
 				//value.attr('studentRefId', this.attr('openStudentRefId')); //used by api to create access record
-				return new Register({
-					bookNumber:'xxxxxx',
-					first:'xxxxxx',
-					last:'lastTest',
-					username:'xxxxxx',
-					password:'test',
-					emailAddress:'tq@genericwhite.com',
-					confirmEmail:'tq@genericwhite.com',
-				
-				});
+				return new Register();
 			}
 		},
 		saveMessage:{
