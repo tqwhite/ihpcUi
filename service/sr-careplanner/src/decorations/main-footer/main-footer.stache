@@ -10,8 +10,8 @@
 <!-- decorations/main-footer end -->
 
 
-{{#loginUserDataOnly}}
+{{#if loginUserDataOnly.username}}
 <div class='buttonContainer'>
 <button type='submit' class="c-button c-button--primary c-button--small" ($click)='activateSendFeedback()'>Send Feedback</button>
 </div>
-{{/loginUserDataOnly}}
+{{/if}}
