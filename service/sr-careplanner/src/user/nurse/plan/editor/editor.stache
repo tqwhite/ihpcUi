@@ -17,7 +17,8 @@
 	{{#workingPlan}}				
 			{{#each conditions}}
 				<user-nurse-plan-editor-condition  
-					boilerplate-diagnoses='{getBoilerplateDiagnoses(.)}' 
+					boilerplate-diagnoses='{getBoilerplateItem(., "diagnoses")}'
+					static-files='{getBoilerplateItem(., "staticFiles")}' 
 					plan-root-vm='{planRootVm}' 
 					index='%index' 
 					{condition}='{.}' 

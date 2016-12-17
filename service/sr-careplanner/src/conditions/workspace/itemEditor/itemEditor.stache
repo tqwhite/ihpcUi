@@ -1,5 +1,7 @@
 <!--{{message}}-->
 <can-import from="sr-careplanner/conditions/workspace/itemEditor/diagnosis/" />
+<button ($click)='testElement("x")' style='margin-left:20px;' tabindex='-1'>test conditions-workspace-item-editor</button>
+
 
 {{#saveError}}
 	<can-import from="sr-careplanner/decorations/server-error/" />
@@ -12,7 +14,19 @@
 	<input class="c-field title" placeholder="Condition Title" {($value)}="boilerplate.title">
 	<input class="c-field shortTitle" placeholder="Short Title" type="input" {($value)}="boilerplate.shortName">
 	<input class="c-field title" type='hidden' {($value)}="boilerplate.refId">
-	
+			<div class='fileControls'>
+			{{#if boilerplate.staticFiles}}
+			<decorations-boilerplate-files
+				static-files='{boilerplate.staticFiles}'
+				/>
+			{{/if}}
+			
+			
+			{{^if boilerplate.staticFiles}}
+			<div class='note'>(No support files present. These are added using SFTP to access the server.)</div>
+			{{/if}}
+			
+			</div>
 	<div class="c-toast c-toast--success overlay {{#saveNotification}}showOverlay{{else}}hideOverlay{{/saveNotification}}">
 		Saving...
 	</div>

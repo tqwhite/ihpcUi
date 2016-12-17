@@ -1,6 +1,7 @@
 <!--{{message}}-->
 
 	<can-import from="sr-careplanner/user/nurse/plan/editor/condition/diagnosis/" />
+	<can-import from="sr-careplanner/decorations/boilerplate-files/" />
 
 
 {{#saveNotification}}
@@ -17,7 +18,13 @@
 			<button class="c-button c-button--ghost c-button--xsmall c-button--primary deleteButton" id='{{refId}}' ($click)='deleteCondition({{index}})' tabindex='-1'>
 				Delete Condition
 			</button>
-			
+			{{#if staticFiles}}
+			<div class='fileControls'>
+			<decorations-boilerplate-files
+				static-files='{staticFiles}'
+				/>
+			</div>
+			{{/if}}
 			{{#if condition.diagnoses.length}}
 				<div class='diagnosisContainer'>
 					<div class='generalChange' ($click)='changeDiagnosesView()'>

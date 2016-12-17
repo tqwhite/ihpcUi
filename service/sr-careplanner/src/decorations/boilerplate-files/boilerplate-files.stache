@@ -1,0 +1,8 @@
+<!--p>{{message}}</p-->
+
+<div class='buttonBox'>
+Support files for download: 
+{{#each staticFiles}}
+	<a class='c-button c-button--xsmall c-button--primary' href='/api/{{urlSegment}}?download=true' target='_blank'>{{title}}</a> 
+{{/each}}
+</div>

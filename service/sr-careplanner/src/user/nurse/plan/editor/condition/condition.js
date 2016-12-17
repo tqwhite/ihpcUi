@@ -80,7 +80,8 @@ export const ViewModel = Map.extend({
 		window['user-nurse-plan-editor-condition']=this;
 		console.log('added: window['+"'"+'user-nurse-plan-editor-condition'+"'"+']');
 		console.dir({
-			"user-nurse-plan-editor-condition": this.attr()
+			"user-nurse-plan-editor-condition": this.attr(),
+			"user-nurse-plan-editor-condition.staticFiles": this.attr('staticFiles')
 		});
 	}
 });

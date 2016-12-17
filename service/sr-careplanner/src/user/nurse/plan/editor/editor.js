@@ -127,19 +127,16 @@ export const ViewModel = Map.extend({
 		}
 	},
 
-	getBoilerplateDiagnoses: function(condition) {
+	getBoilerplateItem: function(condition, boilerplatePropertyName) {
 		const sourceConditionRefId = condition.attr('sourceConditionRefId');
-		
 		if (!sourceConditionRefId){
 			return;
 		}
-		
 		const boilerplateRefIdLookupObject=this.attr('planRootVm').attr('boilerplateRefIdLookupObject');
 		const boilerplaceCondition=boilerplateRefIdLookupObject[sourceConditionRefId];
-		if (boilerplaceCondition.diagnoses){
-			return boilerplaceCondition.diagnoses;
+		if (boilerplaceCondition[boilerplatePropertyName]){
+			return boilerplaceCondition[boilerplatePropertyName];
 		}
-		
 		return;
 	},
 
