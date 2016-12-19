@@ -12,9 +12,9 @@ import buildStudentSection from "node_modules/format-plan-pdf/node_modules/build
 import buildInfoSection from "node_modules/format-plan-pdf/node_modules/build-info-section/build-info-section";
 import buildPlanSection from "node_modules/format-plan-pdf/node_modules/build-plan-section/build-plan-section";
 import this_makes_a_global_called_pdfmake from "node_modules/pdfmake/build/pdfmake"
-//HACKERY: I added code to subvert SSR in pdfmake at line 71937
-//if (view && view.DTRACE_NET_SERVER_CONNECTION){		return;		}
-//note also that nurse.stache has a call to load a type font for pdfmake
+//HACKERY: I added code to subvert SSR in pdfmake at line 2
+//if(!process.browser){return;} //tqii added this to subvert server side rendering.
+
 
 export const ViewModel = Map.extend({
 	define: {
