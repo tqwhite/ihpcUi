@@ -16,7 +16,7 @@ Support files for download:
 	{{else}}
 	
 			<div>
-			<a class='c-button c-button--xsmall c-button--primary fileButton' href='/api/{{urlSegment}}?download=true' target='_blank'>{{./title}}</a> 
+			<a class='c-button c-button--xsmall c-button--primary fileButton' href='/api/{{firstUrlSegment(.)}}?download=true' target='_blank'>{{./title}}</a> 
 
 			</div>
 	{{/if}}

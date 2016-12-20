@@ -49,6 +49,10 @@ export const ViewModel = Map.extend({
 			}, 100)
 		}
 	},
+	
+	firstUrlSegment:function(element){
+		return element.fileList[0].urlSegment;
+	},
 
 	collectChildComponents: function(childType, childVm) {
 		this.childComponentLists = this.childComponentLists || {};
