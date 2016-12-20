@@ -17,16 +17,36 @@ export const ViewModel = Map.extend({
 				const workingObject = value.attr();
 				const outObject = {};
 				for (var inx in workingObject) {
-					var element = workingObject[inx];
-					if (['filename', 'urlSegment'].indexOf(inx) > -1) {
-						console.log("inx=" + inx);
-						continue;
-					}
+					var element = {};
 					element.title = inx.replace(/_/g, ' ');;
+					element.fileList=workingObject[inx]
 					outObject[inx] = element;
 				}
 				return outObject;
 			}
+		}
+	},
+	
+	multipleFiles:function(fileList){
+		return fileList.length>1;
+	},
+	
+	showFilesMenu:function(target, event){
+
+		if(!this.fileListShowing){
+			let fileList=target.parent().find('.fileList');
+			if (fileList.length==0){
+				fileList=target.parent().parent().find('.fileList');
+			}
+		
+			fileList.show();
+			this.fileListShowing=true;
+			setTimeout(()=>{
+			$('body').one('click', ()=>{
+				fileList.hide()
+				this.fileListShowing=false;
+			});
+			}, 100)
 		}
 	},
 
@@ -48,5 +68,11 @@ export const ViewModel = Map.extend({
 export default Component.extend({
 	tag: 'decorations-boilerplate-files',
 	viewModel: ViewModel,
+	events: {
+		'.fileListButton click': function(el, event) {
+			this.viewModel.showFilesMenu($(event.target), event);
+		}
+
+	},
 	template
 });

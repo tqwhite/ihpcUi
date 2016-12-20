@@ -1,7 +1,12 @@
 
 
 <div class="c-alerts__alert c-alerts__alert--primary c-heading c-heading--medium c-heading--medium--center">
+{{#message}}
 	<div>{{message}}</div><div class='leftMargin'>{{{emotion}}}</div>
+{{/message}}
+{{^message}}
+	<div><img src='/src/images/welcome-text.png' style='height:60px;'></div>
+{{/message}}
 </div>
 
 <form ($submit)="createSession(%event)" action="">  

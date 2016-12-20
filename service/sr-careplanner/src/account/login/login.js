@@ -22,7 +22,7 @@ export const ViewModel = Map.extend({
 		}
 	},
 		message: {
-		  value: 'Welcome Back!!'
+		  value: ''
 		},
 		emotion: {
 		  value: '<span class="fa fa-smile-o fa-2x"/>'
@@ -43,7 +43,7 @@ export const ViewModel = Map.extend({
 			this.attr("%root").attr("confirmEmailMessage", '');
 		};
 		const errorFunc=(err)=>{
-			this.attr('message', err.responseText);
+			this.attr('message', err.responseJSON.errorText);
 			this.attr('emotion', '<span class="fa fa-frown-o fa-2x errorText"/>');
 			
 		}

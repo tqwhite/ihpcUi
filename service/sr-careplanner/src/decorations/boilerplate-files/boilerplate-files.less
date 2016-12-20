@@ -9,10 +9,30 @@ color:gray;
 height:auto;
 padding:none;
 margin:15px 0px;;
+
+
+	display:-webkit-flex;
+	display:flex;
+	
+	flex-direction:row;
+	-webkit-flex-direction: row;
+	
+	/* between items in main direction */
+	justify-content:center; /*flex-start, flex-end, center, space-between, space-around, stretch*/
+	-webkit-justify-content:flex-start;
+	
+	align-items:center; /*flex-start, flex-end, center, baseline, stretch*/
+	-webkit-align-items:flex-start;
+	
+
+	
+
+
 }
 
 decorations-boilerplate-files .buttonBox a{
 
 color:white;
 font-weight:bold;
+	margin-left:15px;
 }

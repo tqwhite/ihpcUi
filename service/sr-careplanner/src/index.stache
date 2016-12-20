@@ -27,7 +27,7 @@
     <div id='workingContainer'>
 {{#if session.get('role')}}
     <main-header/>
-    		
+ <div style='background:url(/src/images/insideDecoration.png) no-repeat;background-size:100% auto;'>   		
 	{{#unconfirmedEmailAddress}}
 	<div class='unconfirmedEmailAddressNotification'>Email address ({{unconfirmedEmailAddress}}) has not been confirmed. Click <span class='resend' ($click)='resendConfirmation()'>HERE</span> to resend confirmation email (or check your spam filter).</div>
 	{{/unconfirmedEmailAddress}}
@@ -108,8 +108,9 @@
 		{{/default}}
 		
 	 {{/switch}} 
- 
+ </div>
 {{else}}
+<div style='background:url(/src/images/business-background.jpg) no-repeat; background:size:100% 100%;width:100vw;height:100vh;'>
 	  {{#slug}}
 		{{#switch slug}}
 		  {{#case 'register'}}
@@ -131,6 +132,7 @@
 	  {{else}}
 		<account-login/>
 	  {{/slug}}
+</div>
 {{/if}}  
     
 

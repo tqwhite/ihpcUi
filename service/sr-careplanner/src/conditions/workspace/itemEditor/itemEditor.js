@@ -32,6 +32,15 @@ export const ViewModel = Map.extend({
 			type: '*'
 		}
 	},
+	
+	generateFolderName:function(element){
+const shortName=element.attr('shortName')
+
+	if (!shortName){
+		return;
+	}
+		return shortName.replace(/\W/g, '');
+	},
 
 	deleteCondition: function(element) {
 		if (!window.confirm('Are you sure?')) {

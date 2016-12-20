@@ -1,7 +1,4 @@
 <!--{{message}}-->
-{{#is session.get('username') 'tqwhite'}}
-<button ($click)='testElement("x")' style='margin-left:20px;' tabindex='-1'>test user-nurse</button>
-{{/is}}
 
 <span style='display:none;float;right;'>{{boilerplates}}</span>
 	<can-import from="sr-careplanner/user/nurse/student/summary/" />
@@ -100,3 +97,6 @@
 {{/is}}
 
 
+{{#is session.get('username') 'tqwhite'}}
+<button ($click)='testElement("x")' style='margin-left:20px;' tabindex='-1'>test user-nurse</button>
+{{/is}}

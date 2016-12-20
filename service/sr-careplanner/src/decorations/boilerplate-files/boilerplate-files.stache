@@ -3,6 +3,24 @@
 <div class='buttonBox'>
 Support files for download: 
 {{#each staticFiles}}
-	<a class='c-button c-button--xsmall c-button--primary' href='/api/{{urlSegment}}?download=true' target='_blank'>{{title}}</a> 
+
+	{{#if multipleFiles(fileList)}}
+			<div>
+				<a class='c-button c-button--xsmall c-button--primary fileButton fileListButton' >{{./title}} <span class='fa fa-caret-down'  style='font-size:10pt;'/></a>
+				<div class='fileList' style='display:none;'>
+					{{#each fileList}}
+						<div><a class='c-button c-button--xsmall c-button--primary fileButton' href='/api/{{urlSegment}}?download=true' target='_blank'>{{filename}}</a></div> 
+					{{/each}}
+				</div>
+			</div>
+	{{else}}
+	
+			<div>
+			<a class='c-button c-button--xsmall c-button--primary fileButton' href='/api/{{urlSegment}}?download=true' target='_blank'>{{./title}}</a> 
+
+			</div>
+	{{/if}}
+	
+	
 {{/each}}
 </div>

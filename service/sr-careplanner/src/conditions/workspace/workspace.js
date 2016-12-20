@@ -27,14 +27,14 @@ export const ViewModel = Map.extend({
 	},
 
 	shouldShowEditor: function(element) {
-		return !this.attr('newConditionFlag') && (element.attr('refId') == this.attr('openConditionId'))
+		return !this.attr('newConditionFlag') && ((element.attr('refId') == this.attr('openConditionId')))
 	},
 
 	showShowSummary: function(element) {
 		if (this.attr('newConditionFlag')) {
 			return (element.attr('refId') != this.attr('openConditionId'));
 		} else {
-			return true;
+			return !this.shouldShowEditor(element);
 		}
 
 	},

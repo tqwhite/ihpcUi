@@ -17,14 +17,15 @@
 		{{else}}
 		
 			<li class="c-list__item--unstyled conditionListStyle" id='{{refId}}' ($click)='selectCondition({refId})'>
-				{{#shouldShowEditor .}}
-					<conditions-workspace-item-editor boilerplate="{../}" parent-vm='{../.}' 
-						($inserted)="collectChildComponents('workspaceContainer', %viewModel))" />
-				{{/shouldShowEditor}}
 				
 				{{#showShowSummary .}}
 					<span class='fa fa-caret-right' style='' ><span class='sansSerif listTitle'>{{title}}</span></span>
 				{{/showShowSummary}}
+				
+				{{#shouldShowEditor .}}
+					<conditions-workspace-item-editor boilerplate="{../}" parent-vm='{../.}' 
+						($inserted)="collectChildComponents('workspaceContainer', %viewModel))" />
+				{{/shouldShowEditor}}
 				
 			</li>
 			

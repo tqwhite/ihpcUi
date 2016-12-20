@@ -9,22 +9,27 @@
 {{/saveError}}
 
 <div>
-	<span class='fa fa-caret-down closeSpot' ($click)='closeCondition(%event)'/>
+<div class='firstRow'>
+	<div class='fa fa-caret-down closeSpot' ($click)='closeCondition(%event)'/>
 	
 	<input class="c-field title" placeholder="Condition Title" {($value)}="boilerplate.title">
-	<input class="c-field shortTitle" placeholder="Short Title" type="input" {($value)}="boilerplate.shortName">
+	<div>
+	<input class="c-field shortTitle" style='height:39px;' placeholder="Short Title" type="input" {($value)}="boilerplate.shortName">
+	<div class='folderName'>server folder name: <span style='color:black;font-weight:bold;'>{{generateFolderName(boilerplate)}}</span></div>
+	</div>
+	</div>
 	<input class="c-field title" type='hidden' {($value)}="boilerplate.refId">
 			<div class='fileControls'>
-			{{#if boilerplate.staticFiles}}
-			<decorations-boilerplate-files
-				static-files='{boilerplate.staticFiles}'
-				/>
-			{{/if}}
+				{{#if boilerplate.staticFiles}}
+				<decorations-boilerplate-files
+					static-files='{boilerplate.staticFiles}'
+					/>
+				{{/if}}
 			
 			
-			{{^if boilerplate.staticFiles}}
-			<div class='note'>(No support files present. These are added using SFTP to access the server.)</div>
-			{{/if}}
+				{{^if boilerplate.staticFiles}}
+				<div class='note'>(No support files present. These are added using SFTP to access the server.)</div>
+				{{/if}}
 			
 			</div>
 	<div class="c-toast c-toast--success overlay {{#saveNotification}}showOverlay{{else}}hideOverlay{{/saveNotification}}">
