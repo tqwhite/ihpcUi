@@ -20,9 +20,6 @@ export const ViewModel = Map.extend({
   },
 
 	collectChildComponents: function(childType, childVm) {
-console.log("\n=-=============   collectChildComponents  =========================\n");
-
-
 		this.childComponentLists = this.childComponentLists || {};
 		this.childComponentLists[childType] = this.childComponentLists[childType] || [];
 		this.childComponentLists[childType].push(childVm);
