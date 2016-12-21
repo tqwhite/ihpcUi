@@ -5,7 +5,11 @@
 	
 	<div id='iframeContainer'>
 	{{#downloadReady}}
-	<div class='c-button  c-button--xsmall c-button--primary' ($click)='runDownloadFunction()'>Download</div>
+	<div class='centerHorizontal'>
+		<div style='margin-right:5px;' class='c-button  c-button--xsmall c-button--primary' ($click)='runDownloadFunction()'>Download</div>
+
+		<div style='margin-left:5px;' class='c-button  c-button--xsmall c-button--primary' ($click)='runPrintFunction()'>Print</div>
+	</div>
 	<div class='downloadWarning'>Do not use the download function in the viewer. Only use this button.</div>
 	{{/downloadReady}}
 	<iframe src='{{dataUrl}}' class='pdfFrame'/>		

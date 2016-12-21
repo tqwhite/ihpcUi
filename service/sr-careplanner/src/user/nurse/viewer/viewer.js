@@ -44,15 +44,20 @@ export const ViewModel = Map.extend({
 			dictionary:this.attr('%root').attr('loginUserDataOnly').dictionary
 		});
 
-		planFormatter.getDataUrl((dataUrl, downloadFunction) => {
+		planFormatter.getPdfComponents((dataUrl, downloadFunction, printFunction) => {
 			this.attr('dataUrl', dataUrl);
 			this.attr('downloadReady', true);
 			this.downloadFunction=downloadFunction;
+			this.printFunction=printFunction;
 		});
 	},
 	
 	runDownloadFunction:function(){
 		this.downloadFunction();
+	},
+	
+	runPrintFunction:function(){
+		this.printFunction();
 	},
 
 	collectChildComponents: function(childType, childVm) {
