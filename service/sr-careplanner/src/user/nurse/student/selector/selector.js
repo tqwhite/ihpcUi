@@ -45,7 +45,7 @@ export const ViewModel = Map.extend({
 		this.attr('parentVm').attr('openStudentNameString', 'Creating Student');
 		
 		this.attr('parentVm').attr('showStudentEditor', true); //forces editor (not summary), otherwise controlled by user in editor
-		this.attr('parentVm').attr('workingPlan', {}); 
+		this.attr('parentVm').attr('workingPlan', {});
 	},
 
 });

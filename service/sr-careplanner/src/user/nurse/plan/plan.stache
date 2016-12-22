@@ -8,7 +8,8 @@
 <div class='container'>
 
 <div style=''>	
-	<user-nurse-plan-control plan-root-vm='{planRootVm}' />
+	<user-nurse-plan-control plan-root-vm='{planRootVm}'
+		($inserted)="collectChildComponents(user-nurse-plan-control', %viewModel))" />
 	</div>
 
 <div style=''>

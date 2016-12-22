@@ -14,7 +14,7 @@
 	<div class='fa fa-caret-down closeSpot' style='margin-left:-20px;' ($click)='changeConditionsView()' tabindex='-1'/>
 	{{/closeSpotState}}
 
-	{{#workingPlan}}				
+	{{#workingPlan}}		
 			{{#each conditions}}
 				<user-nurse-plan-editor-condition  
 					boilerplate-diagnoses='{getBoilerplateItem(., "diagnoses")}'

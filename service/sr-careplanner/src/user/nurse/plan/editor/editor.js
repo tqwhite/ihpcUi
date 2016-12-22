@@ -95,7 +95,11 @@ export const ViewModel = Map.extend({
 			this.saveObject();
 		}
 	},
-	
+consoleDir:function(item){
+console.dir({"item":item});
+
+
+},
 	addDefaultDiagnoses:function(newCondition, boilerplateCondition){
 		const boilerplateDiagnoses=boilerplateCondition.attr('diagnoses');
 		let newDiagnosis;

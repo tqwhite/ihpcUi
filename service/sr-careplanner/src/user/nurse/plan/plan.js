@@ -11,6 +11,12 @@ export const ViewModel = Map.extend({
     }
   },
 
+	collectChildComponents: function(childType, childVm) {
+		this.childComponentLists = this.childComponentLists || {};
+		this.childComponentLists[childType] = this.childComponentLists[childType] || [];
+		this.childComponentLists[childType].push(childVm);
+	},
+
 	testElement: function() {
 		window['user-nurse-plan']=this;
 		console.log('added: window['+"'"+'user-nurse-plan'+"'"+']');

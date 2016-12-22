@@ -105,7 +105,8 @@ export const ViewModel = Map.extend({
 				const refId = qtools.newGuid();
 				const newPlan={
 					refId:refId,
-					conditions:[]
+					conditions:[],
+					createdAt:new Date()
 				};
 				return new Plan(newPlan);
 			}

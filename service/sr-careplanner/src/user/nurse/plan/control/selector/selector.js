@@ -59,7 +59,6 @@ export const ViewModel = Map.extend({
 	},
 	
 	createNewPlan:function(){
-		
 		const newPlan=this.attr('planRootVm').attr('blankPlan');
 		this.updateStaticPlanDetails(newPlan.refId);
 		this.attr('planRootVm').attr('workingPlan', newPlan);

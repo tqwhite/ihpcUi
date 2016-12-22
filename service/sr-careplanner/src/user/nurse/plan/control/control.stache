@@ -1,9 +1,15 @@
 <!--{{message}}-->
+<button ($click)='testElement("x")' style='margin-left:20px;' tabindex='-1'>test user-nurse-plan-control-selector</button>
+
 
 	<can-import from="sr-careplanner/user/nurse/plan/control/selector/" />
 
 {{#if planRootVm.openStudentRefId}}
 	<div style='position:absolute;right:20vh;'>	
-		<user-nurse-plan-control-selector plan-root-vm='{planRootVm}' />
+		<user-nurse-plan-control-selector 
+			plan-root-vm='{planRootVm}' 
+			($inserted)="collectChildComponents('user-nurse-plan-control-selector', %viewModel))" 
+			($inserted)="createPlanIfNone(%viewModel))" 
+			/>
 	</div>
 {{/if}}
