@@ -27,7 +27,7 @@
 					{(editor-close-spot-state)}='{closeSpotState}'
 					/>
 			{{/each}}
-
+{{#if workingPlan.refId}}
 			{{#showConditionSelector}}
 				<user-nurse-plan-editor-boilerplate plan-root-vm='{planRootVm}' boilerplates='{boilerplates}'  />
 			{{/showConditionSelector}}
@@ -37,4 +37,5 @@
 					Add Condition
 				</button>		
 			{{/showConditionSelector}}
+{{/if}}
 	{{/workingPlan}}
