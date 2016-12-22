@@ -26,13 +26,13 @@ export const ViewModel = Map.extend({
 	chooseStudent: function(student) {
 		this.attr('showMenu', false);
 
-		this.attr('parentVm').setTool('editor')
+		this.attr('parentVm').setTool('editor'); //activate student editor, leaves in current state, summary or edit
 
 		
 		this.attr('parentVm').attr('newStudentFlag', false);
 		this.attr('parentVm').attr('openStudentRefId', student.attr('refId'));
 		this.attr('parentVm').attr('openStudentNameString', student.attr('last')+', '+student.attr('first'));
-		
+		this.attr('parentVm').attr('workingPlan', {});
 		//plan/control/selector initializes the this.attr('parentVm').attr('workingPlan') 
 		//based on either user input or most recent date
 	},
@@ -40,12 +40,18 @@ export const ViewModel = Map.extend({
 	createNewStudent: function() {
 		this.attr('showMenu', false);
 		
-		this.attr('parentVm').attr('newStudentFlag', true);
+		this.attr('parentVm').attr('newStudentFlag', false); //consecutive new students leaves flag true, page never redraws
+		
+		setTimeout(()=>{
+		
+		this.attr('parentVm').attr('newStudentFlag', true); //consecutive new students leaves flag true, page never redraws
 		this.attr('parentVm').attr('openStudentRefId', '');
 		this.attr('parentVm').attr('openStudentNameString', 'Creating Student');
 		
 		this.attr('parentVm').attr('showStudentEditor', true); //forces editor (not summary), otherwise controlled by user in editor
 		this.attr('parentVm').attr('workingPlan', {});
+		
+		}, 100);
 	},
 
 });

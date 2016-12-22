@@ -5,7 +5,14 @@
 {{#showPlanSelector}}
 	{{#if planRootVm.plans.isResolved}}
 			<ul id='planSelector' class="c-menu c-menu--high a-menu planSelector">
+					{{#if planRootVm.plans.value.length}}
+					
 
+						<li class="c-menu__item a-menu--slow planSelectorIdClass" >
+							<span style='color:gray;'>Choose a Plan</span>
+					
+						</li>
+						{{/if}}
 				{{#each planRootVm.plans.value}}
 
 						<li class="c-menu__item a-menu--slow planSelectorIdClass" ($click)='choosePlan(%index, .)'>
