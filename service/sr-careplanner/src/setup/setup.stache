@@ -1,8 +1,7 @@
 <!--{{message}}-->
-{{#is session.get('username') 'tqwhite'}}
-<button ($click)='testElement("x")' style='margin-left:20px;' tabindex='-1'>test setup</button>
-{{/is}}
 
+<div class='leftHorizontal'>
+	<div>
 <ul id='adminNav' class='c-nav c-nav--inline'>
   <li style='width:75px;display:inline-block;'>&nbsp;</li>
 
@@ -27,6 +26,8 @@
 {{/is}}
 
 </ul>
+</div>
+</div>
 
 {{#switch subsection}}
 {{#case "user"}}

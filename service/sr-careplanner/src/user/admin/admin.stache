@@ -1,10 +1,12 @@
 <!--{{message}}-->
-
-<ul id='adminNav' class='c-nav c-nav--inline'>
-  <li style='width:75px;display:inline-block;'>&nbsp;</li>
-<li class='c-nav__item' ($click)='setSubsection("users")'>Manage Users</a></li>
-</ul>
-
+<div class='leftHorizontal'>
+	<div>
+		<ul id='adminNav' class='c-nav c-nav--inline'>
+		  <li style='width:75px;display:inline-block;'>&nbsp;</li>
+			<li class='c-nav__item' ($click)='setSubsection("users")'>Manage Users</a></li>
+		</ul>
+	</div>
+</div>
 {{#switch subsection}}
 {{#case "users"}}
 		<can-import from="sr-careplanner/user/admin/users/" />
