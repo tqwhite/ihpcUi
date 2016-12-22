@@ -29,7 +29,7 @@ export const ViewModel = Map.extend({
 	updateStaticPlanDetails: function(newRefId) {
 		const openStudentRefId = this.attr('planRootVm').attr('openStudentRefId')
 		
-		const planRefIdStudentMapList = this.attr('planRootVm').attr('planRefIdStudentMapList');
+		const planRefIdStudentMapList = this.attr('planRootVm').attr('%root').attr('planRefIdStudentMapList');
 		planRefIdStudentMapList.attr(openStudentRefId, newRefId);
 		
 		const hasPlansStudentMapList = this.attr('planRootVm').attr('hasPlansStudentMapList');

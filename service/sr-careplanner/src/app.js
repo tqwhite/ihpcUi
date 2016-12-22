@@ -160,7 +160,11 @@ const AppViewModel = Map.extend({
 		supportEmail:{
 			value:'tqwhite@erdc.k12.mn.us',
 			serialize:false
-		}
+		},
+
+		planRefIdStudentMapList:{
+			value:{}
+		},
 	},
 	setNewPage: function(page, slug, subsection) {
 		this.attr('page', page);

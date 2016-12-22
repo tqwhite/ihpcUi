@@ -144,7 +144,7 @@ export const ViewModel = Map.extend({
 			value: 'hello',
 			get: function() {
 
-				const planRefIdStudentMapList = this.attr('planRefIdStudentMapList');
+				const planRefIdStudentMapList = this.attr('%root').attr('planRefIdStudentMapList');
 				const openStudentRefId = this.attr('openStudentRefId');
 
 				if (planRefIdStudentMapList) {
@@ -202,7 +202,7 @@ export const ViewModel = Map.extend({
 				chosen = item.attr('refId');
 			});
 		if (chosen) {
-			const planRefIdStudentMapList = this.attr('planRefIdStudentMapList');
+			const planRefIdStudentMapList = this.attr('%root').attr('planRefIdStudentMapList');
 			const openStudentRefId = this.attr('openStudentRefId');
 			planRefIdStudentMapList.attr(openStudentRefId, chosen);
 			const hasPlansStudentMapList=this.attr('hasPlansStudentMapList');
