@@ -47,7 +47,7 @@
 				<div class="c-field-group">
 					<div class='labeledInput'>
 					<span class='lightLabel'>birthday</span><input class="c-field c-field--xsmall" type="date"  placeholder="mm/dd/yy" {($value)}="student.birthday" />
-					<span class='lightLabel'>grade level</span><input class="c-field c-field--xsmall" type="date"  placeholder="mm/dd/yy" {($value)}="student.gradeLevel" />
+					<span class='lightLabel'>grade level</span><input class="c-field c-field--xsmall"  {($value)}="student.gradeLevel" />
 				</div>
 					<div class='labeledInput'><span class='lightLabel'>gender</span><input class="c-field c-field--xsmall" type="text"  placeholder="eg, m, f, trans male, trans female" {($value)}="student.gender" /></div>
 					<div class='labeledInput'><span class='lightLabel'>idNumber</span><input class="c-field c-field--xsmall" type="text"  placeholder="anything" {($value)}="student.idNumber" /></div>
@@ -89,12 +89,12 @@
 				<div class='entry' style='justify-content:center;'>
 					<div class='labeledInput'>
 					
-						<span class='lightLabel'>IEP Date</span><input style='margin-right:10px;' class="rightBorder c-field c-field--xsmall planDateField" type="text"  placeholder="Individual Education Plan Date" {($value)}="student.iep" />
-						<span class='lightLabel'>EEP Date</span><input class="rightBorder c-field c-field--xsmall planDateField" type="text"  placeholder="Emergency Evacuation Plan Date" {($value)}="student.eep" />
+						<span class='lightLabel'>IEP Date</span><input type="date" style='margin-right:10px;' class="rightBorder c-field c-field--xsmall planDateField"  placeholder="Individual Education Plan Date" {($value)}="student.iep" />
+						<span class='lightLabel'>EEP Date</span><input type="date" class="rightBorder c-field c-field--xsmall planDateField"  placeholder="Emergency Evacuation Plan Date" {($value)}="student.eep" />
 					</div>
 					<div class='labeledInput bottomRightBorders'>
-						<span class='lightLabel'>504 Date</span><input style='margin-right:10px;' class="bottomRightBorder c-field c-field--xsmall planDateField" type="text"  placeholder="504 Plan Date" {($value)}="student.504plan" />
-						<span class='lightLabel'>EAP Date</span><input class="bottomRightBorder c-field c-field--xsmall planDateField" type="text"  placeholder="Emergency Action Plan Date" {($value)}="student.eap" />
+						<span class='lightLabel'>504 Date</span><input type="date" style='margin-right:10px;' class="bottomRightBorder c-field c-field--xsmall planDateField"  placeholder="504 Plan Date" {($value)}="student.504plan" />
+						<span class='lightLabel'>EAP Date</span><input type="date" class="bottomRightBorder c-field c-field--xsmall planDateField"  placeholder="Emergency Action Plan Date" {($value)}="student.eap" />
 					</div>
 				</div>
 			</div>
@@ -110,7 +110,7 @@
 		<div class='entry'>
 			<div class='inputBlock halfBlock'>
 		
-					<input class="c-field c-field--xsmall" type="date"  placeholder="Relationship: mother/father/guardian/aunt/etc" {($value)}="student.gOneRelationship" />
+					<input class="c-field c-field--xsmall"  placeholder="Relationship: mother/father/guardian/aunt/etc" {($value)}="student.gOneRelationship" />
 
 					<input class="c-field c-field--xsmall" type="text"  placeholder="Name" {($value)}="student.gOneName" />
 					<input class="c-field c-field--xsmall" type="text"  placeholder="Street1" {($value)}="student.gOneStreet1" />
@@ -129,7 +129,7 @@
 
 			<div class='inputBlock halfBlock'>
 		
-					<input class="c-field c-field--xsmall" type="date"  placeholder="Relationship: mother/father/guardian/aunt/etc" {($value)}="student.gTwoRelationship" />
+					<input class="c-field c-field--xsmall" placeholder="Relationship: mother/father/guardian/aunt/etc" {($value)}="student.gTwoRelationship" />
 
 
 					<input class="c-field c-field--xsmall" type="text"  placeholder="Name" {($value)}="student.gTwoName" />

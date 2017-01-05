@@ -83,7 +83,17 @@ export const ViewModel = Map.extend({
 	},
 });
 
+/*
+DEMO CODE remind how to access various template things
 
+<div>{{>testTemplate}}</div>
+<div>{{testScopeHelper(mess=message)}}</div>
+<div>{{testHelper '©'}} <span id='tqtest'{{testFunctionHelper 'Sunrise River Press'}} /></div>
+
+  <div style='color:gray;font-size:80%;'>*page: {{../page}}* *role: {{../session.get('role')}}* *expiration: {{../expiration}}*</div>
+<!-- decorations/main-footer end -->
+
+*/
 
 
 can.stache.registerHelper('testHelper', function(name, options){

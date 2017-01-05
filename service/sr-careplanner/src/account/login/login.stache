@@ -2,10 +2,10 @@
 
 <div class="c-alerts__alert c-alerts__alert--primary c-heading c-heading--medium c-heading--medium--center">
 {{#message}}
-	<div>{{message}}</div><div class='leftMargin'>{{{emotion}}}</div>
+	<div>{{message}}</div>
 {{/message}}
 {{^message}}
-	<div><img src='/src/images/welcome-text.png' style='height:60px;'></div>
+	<div class='welcomeMessage'>Welcome</div>
 {{/message}}
 </div>
 
@@ -33,7 +33,7 @@
 			</div>
 			<div>
 				<p/>
-				<button class="c-button c-button--primary c-button--xsmall" ($click)='setNewPage("account", "register")'>Register Instead</button>
+				<button class="c-button c-button--primary c-button--xsmall" ($click)='setNewPage("account", "register")'>Register</button>
 				<button class="c-button c-button--primary c-button--xsmall" ($click)='setNewPage("account", "forgot-password")'>Forgot Password/User Name</button>
 			</div>
 		</div>

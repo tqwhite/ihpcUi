@@ -15,7 +15,13 @@
 {{/saveNotification}}
 
 
+
 <div class='container'>
+
+
+<div class='instructions'>
+This required information appears on every IHP. 
+</div>
 
 {{#if loginUser.isResolved}}
 {{#with loginUser.value}}
@@ -27,13 +33,13 @@
 					<input type='hidden' class="c-field" {($value)}="mandatory" fieldName='mandatory'/>
 
 					{{#if mandatory}}
-						<div class='c-field'>{{pattern}}</div>
+						<div class='c-field'>{{renamePatterns(pattern)}}</div>
 					{{else}}
 						<input class="c-field" placeholder="Pattern (replacable text)" {($value)}="pattern" fieldName='pattern'/>
 					{{/if}}
 				</td>
 				<td>
-					<input class="c-field" placeholder="Replacement (goes into output)" {($value)}="replacement" fieldName='replacement'/><br/>
+					<input class="c-field"{($value)}="replacement" fieldName='replacement'/><br/>
 				</td>
 			</tr>
 			{{/each}}

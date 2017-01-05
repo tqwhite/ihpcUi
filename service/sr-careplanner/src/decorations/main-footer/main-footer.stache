@@ -2,13 +2,9 @@
 <!-- decorations/main-footer start -->
 
 
-<div>{{>testTemplate}}</div>
-<div>{{testScopeHelper(mess=message)}}</div>
-<div>{{testHelper '©'}} <span id='tqtest'{{testFunctionHelper 'Sunrise River Press'}} /></div>
 
-  <div style='color:gray;font-size:80%;'>*page: {{../page}}* *role: {{../session.get('role')}}* *expiration: {{../expiration}}*</div>
-<!-- decorations/main-footer end -->
-
+<i>Individualized Healthcare Plans for the School Nurse</i><br/>
+© 2017 Sunrise River Press
 
 {{#if loginUserDataOnly.username}}
 <div class='buttonContainer'>

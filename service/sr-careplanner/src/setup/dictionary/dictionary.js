@@ -11,6 +11,16 @@ export const ViewModel = Map.extend({
       value: 'This is the setup-dictionary component'
     }
   },
+  
+  renamePatterns:function(pattern){
+  	const labels={
+  		 writtenby: "IHP Author Name",
+  		 district:	"School District",
+  		 infoPhone: "Phone Number"
+  	}
+  	return labels[pattern] || pattern;
+  
+  },
 
 	collectChildComponents: function(childType, childVm) {
 		this.childComponentLists = this.childComponentLists || {};

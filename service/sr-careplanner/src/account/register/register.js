@@ -9,7 +9,7 @@ import qtools from "node_modules/qtools-minus/";
 export const ViewModel = Map.extend({
   define: {
     message: {
-      value: 'Care Planner Registration'
+      value: 'Hello from account-register'
     },
 		newUser: {
 			value: Register,

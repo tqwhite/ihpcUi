@@ -78,30 +78,38 @@
 		{{/case}}
 		
 		{{#default}}
+			{{#if firstLogin}}
+			
 
+			<can-import from="sr-careplanner/setup/" />
+				  <setup
+					session='{session}'
+				  />
 
-	{{#switch session.get('role')}}      
-		{{#case "admin"}}
-		<!--
-		<can-import from="sr-careplanner/user/admin/" />
-			  <user-admin/>
-		-->
-		<can-import from="sr-careplanner/user/nurse/" />
-			  <user-nurse/>
-		{{/case}}
+			{{else}}
+
+			{{#switch session.get('role')}}      
+				{{#case "admin"}}
+				<!--
+				<can-import from="sr-careplanner/user/admin/" />
+					  <user-admin/>
+				-->
+				<can-import from="sr-careplanner/user/nurse/" />
+					  <user-nurse/>
+				{{/case}}
 	   
-		{{#case "editor"}}
-		<can-import from="sr-careplanner/user/editor/" />
-			  <user-editor/>
-		{{/case}}
+				{{#case "editor"}}
+				<can-import from="sr-careplanner/user/editor/" />
+					  <user-editor/>
+				{{/case}}
 	   
-		{{#case "nurse"}}
-		<can-import from="sr-careplanner/user/nurse/" />
-			  <user-nurse/>
-		{{/case}}
-	{{/switch}}
+				{{#case "nurse"}}
+				<can-import from="sr-careplanner/user/nurse/" />
+					  <user-nurse/>
+				{{/case}}
+			{{/switch}}
 
-
+			{{/if}}
 
 
 
@@ -203,31 +211,10 @@
 		<div>
 			<p>Here are a couple of things that we think you would like to know to start.</p>
 			<ul>
-				<li>Autosave. The system saves every time you change anything. The actual
-					saving occurs when you <i>leave</i> an entry field. That is, when you
-					type tab or when you click on something else. You will see a green
-					indicator in the upper right corner of whatever you are changing.
-				</li>
-				<li>
-					Help. The word Help in the top, right corner leads to helpful information.
-					Right now that includes a short video demonstration (go watch this!) and a button to 
-					ask us questions. As users let us know what would be helpful, there
-					will be more.
-				</li>
-				<li>
-					Email Confirmation. If you see a red bar at the top of the page, that is because you have 
-					not confirmed your email address. This is very important to us because
-					it is the only way we know to communicate with you. If you cannot find 
-					the email message sent when you registered, there is a link in the red
-					bar that will send it again.
-				<li>
-					Feedback and Questions. There is a button at the bottom left of the app.
-					Please use it a <u>lot</u>. This app is new. We are sure there are still
-					plenty of bugs left but need your help to find them. We also have a lot 
-					of ideas for improvements but are waiting for you to tell us what is important.
-					You are the person who has to actually <i>use</i> this thing. Please
-					help us make it perfect for your needs.
-				</li>
+<li><b>Getting Started and Help.</b> The word Help in the top right corner leads to helpful information. That includes a short video demonstration on how to use the software and a button to ask questions.</li>
+<li><b>Autosave.</b> The system saves every time you change anything; when you leave an entry field or when you type, tab, or click on something else. You will see a green indicator at the upper right when saving.</li>
+<li><b>Email Confirmation.</b> If you see a red bar at the top of the page, you have not confirmed your email address. It is very important that you confirm your email address. It is the only way we can communicate with you. If you cannot find the email message that was sent when you registered, there is a link in the red bar that will send it again.</li>
+<li><b>Feedback and Questions.</b> There is a button at the bottom of the left of every page. Please use it a lot! This application is new and we are sure there are still plenty of improvements needed, but we are waiting for you to find them. Please help us make it perfect for your needs.</li>
 			
 			</ul>
 		<div class='headline'>

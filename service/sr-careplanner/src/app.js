@@ -26,7 +26,7 @@ const AppViewModel = Map.extend({
 						if (!qtools.getByProperty(dictionary, 'pattern', item)){
 						dictionary.push({
 							pattern: item,
-							replacement: 'DEFAULT '+item,
+							replacement: '',
 							mandatory: true
 						});
 						newItemsFlag=true;

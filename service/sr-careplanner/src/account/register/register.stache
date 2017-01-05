@@ -1,8 +1,8 @@
 
 
 <!-- account/login start -->
-  <div style='width:400px;' class="c-alerts__alert c-alerts__alert--primary c-heading c-heading--medium c-heading--medium--center">
-    {{{message}}}
+  <div style='width:400pxtext-align:center;' class="c-alerts__alert c-alerts__alert--primary c-heading c-heading--medium c-heading--medium--center">
+    {{{systemProdName}}} Registration
   </div>
 {{#errorList}}
 	<div class="c-toast notificationToast save error " style='position:relative;height:auto;'>
@@ -37,7 +37,7 @@
 
 <div class='buttonContainer'> 
 		{{#browserLoaded}}
-	<button class="c-button c-button--primary c-button--xsmall" ($click)='setNewPage("account", "login")'>Login Instead</button>
+	<button class="c-button c-button--primary c-button--xsmall" ($click)='setNewPage("account", "login")'>Login</button>
 
 		<button class="c-button c-button--primary c-button--small rightJustified" id="registerButton">Register</button>
 </div>
