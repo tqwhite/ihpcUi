@@ -15,7 +15,7 @@ var path = require("path");
 
 var compression = require('./sr-careplanner/node_modules/compression');
 
-var middleware = require("./sr-careplanner/node_modules/done-ssr-middleware");
+var ssrMiddleware = require("./sr-careplanner/node_modules/done-ssr-middleware");
 
 // var doneServe=require('./sr-careplanner/node_modules/done-serve');
 // doneServe({ path: '/Volumes/qubuntuFileServer/cmerdc/sunrise/sunriseUi/system/code/service/sr-careplanner',
@@ -63,7 +63,12 @@ var moduleFunction = function() {
 	app.use(bodyParser.urlencoded({
 		extended: true
 	}))
-	app.use(bodyParser.json())
+	app.use(bodyParser.json());
+	
+	// app.use((req, res, next) => {
+	// 	console.log(`req.path= ${req.path}`);
+	// 	next();
+	// });
 
 	// app.use((req, res, next) => {
 	// 	if (typeof (transactionCount) == 'undefined') {
@@ -91,7 +96,7 @@ var moduleFunction = function() {
 			config: path.join(program.path, 'package.json') + '!npm',
 			liveReload: true
 		};
-		app.use(middleware(system, options));
+		app.use(ssrMiddleware(system, options));
 
 		var port = program.port || process.env.PORT || 3030;
 		var server = app.listen(port);
