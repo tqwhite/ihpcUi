@@ -3,6 +3,7 @@ import Map from 'can/map/';
 import 'can/map/define/';
 import './selector.less!';
 import template from './selector.stache!';
+import qtools from "node_modules/qtools-minus/";
 
 export const ViewModel = Map.extend({
 	define: {
@@ -39,19 +40,15 @@ export const ViewModel = Map.extend({
 
 	createNewStudent: function() {
 		this.attr('showMenu', false);
-		
-		this.attr('parentVm').attr('newStudentFlag', false); //consecutive new students leaves flag true, page never redraws
-		
-		setTimeout(()=>{
-		
-		this.attr('parentVm').attr('newStudentFlag', true); //consecutive new students leaves flag true, page never redraws
-		this.attr('parentVm').attr('openStudentRefId', '');
-		this.attr('parentVm').attr('openStudentNameString', 'Creating Student');
-		
+		this.attr('parentVm').setTool('editor');
 		this.attr('parentVm').attr('showStudentEditor', true); //forces editor (not summary), otherwise controlled by user in editor
-		this.attr('parentVm').attr('workingPlan', {});
-		
-		}, 100);
+		this.attr('parentVm').attr('openStudentRefId', qtools.newGuid());	
+		this.attr('parentVm').attr('workingPlan', {});	
+		this.attr('parentVm').attr('openStudentNameString', 'Creating Student');
+
+		setTimeout(()=>{
+		this.attr('parentVm').attr('newStudentFlag', true); //redisplay after dom is settled
+		}, 1);
 	},
 
 });

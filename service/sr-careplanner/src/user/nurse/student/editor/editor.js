@@ -95,8 +95,7 @@ this.attr('student', new Student(testStudent));
 		}
 		
 		if (student.isNew()){
-			student.attr('refId', qtools.newGuid());
-			this.attr('parentVm').attr('openStudentRefId', student.attr('refId'));
+			student.attr('refId', this.attr('parentVm').attr('openStudentRefId'));//openStudentRefId is set by user-nurse-student-selector for new students
 			this.attr('annotation', '');
 		}
 		
@@ -110,6 +109,9 @@ this.attr('student', new Student(testStudent));
 					this.attr('saveNotificationTimeoutId', timeoutId);
 				
 					this.attr('parentVm').attr('openStudentNameString', student.attr('last')+', '+student.attr('first'));
+					this.attr('parentVm').attr('currentStudent', student);
+							this.attr('parentVm').attr('newStudentFlag', false); //consecutive new students leaves flag true, page never redraws
+
 				},
 				(err) => {
 					this.attr('saveError', JSON.stringify(err))
