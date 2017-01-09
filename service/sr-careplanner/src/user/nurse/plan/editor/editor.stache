@@ -31,11 +31,16 @@
 			{{#showConditionSelector}}
 				<user-nurse-plan-editor-boilerplate plan-root-vm='{planRootVm}' boilerplates='{boilerplates}'  />
 			{{/showConditionSelector}}
-			
 			{{^showConditionSelector}}
-				<button class="c-button c-button--ghost c-button--xsmall c-button--primary deleteButton showConditionButton" ($click)='showConditionTool(%event)' tabindex='-1'>
+			<div class='leftHorizontal'>
+				<button class="c-button c-button--ghost c-button--xsmall c-button--primary deleteButton showConditionButton {{#unless workingPlan.conditions.length}}emphatic{{/unless}}" ($click)='showConditionTool(%event)' tabindex='-1'>
 					Add Condition
-				</button>		
+				</button>
+			
+				{{#unless workingPlan.conditions.length}}
+					<div class='startPlanNotification'>Start your plan by adding a condition. Then add nursing diagnoses.</div>
+				{{/unless}}	
+			</div>
 			{{/showConditionSelector}}
 {{/if}}
 	{{/workingPlan}}

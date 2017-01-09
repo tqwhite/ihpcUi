@@ -1,5 +1,5 @@
 <!--{{message}}-->
-<div class='leftHorizontal'>
+<div class='rightHorizontal'>
 	<div>
 		<ul id='adminNav' class='c-nav c-nav--inline'>
 		  <li style='width:75px;display:inline-block;'>&nbsp;</li>

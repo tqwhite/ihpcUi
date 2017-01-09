@@ -22,6 +22,21 @@ export const ViewModel = Map.extend({
 			}
 		}
 	},
+	
+	setTextareaSize:function(segment, textareaId, inObj){
+		setTimeout(()=>{
+			const inString=inObj[segment];
+			const textArea=$('textarea#'+segment+'_'+textareaId);
+			const measurementString=inString.replace(/\n/g, "<br/>");
+			const measurementObj=$("<div class='c-field textareaWidth' style='display:none;'>"+measurementString+"</div>");
+			$('body').prepend(measurementObj);
+			let newHeight=measurementObj.height();
+			measurementObj.remove()
+
+
+			textArea.height(Math.max(newHeight, 60));
+		}, 10); //need to let the dom get written before acting on it
+	},
 
 	toggleEditView: function() {
 		this.attr('showDiagnosisEditor', !this.attr('showDiagnosisEditor'));

@@ -20,68 +20,39 @@
 
 	</div>
 
-{{#richTextExperiment}}
-	<div class='o-panel-container'>
-		<nav class="c-nav c-nav--top c-nav--inline">
-			<span class="c-nav__content">Assessment Data</span>
-		  </nav>
-		<div class="richText" {($value)}="diagnosis.assessmentData">
-		</div>
-	</div>
-	<div class='o-panel-container'>
-		<nav class="c-nav c-nav--top c-nav--inline">
-			<span class="c-nav__content">Nursing Diagnosis</span>
-		  </nav>
-		<div class="richText" {($value)}="diagnosis.nursingDiagnosis">
-		</div>
-	</div>
-	<div class='o-panel-container'>
-		<nav class="c-nav c-nav--top c-nav--inline">
-			<span class="c-nav__content">Interventions</span>
-		  </nav>
-		<div class="richText"  {($value)}="diagnosis.interventions">
-		</div>
-	</div>
-	<div class='o-panel-container'>
-		<nav class="c-nav c-nav--top c-nav--inline">
-			<span class="c-nav__content">Outcomes</span>
-		  </nav>
-		<div class="richText"  {($value)}="diagnosis.outcomes">
-		</div>
-	</div>
-{{/richTextExperiment}}
-{{^richTextExperiment}}
 
-	<div class='o-panel-container'>
-		<nav class="c-nav c-nav--top c-nav--inline">
-			<span class="c-nav__content">Assessment Data</span>
-		  </nav>
-		<textarea class="c-field c-editor o-panel o-panel--nav-top" {($value)}="diagnosis.assessmentData">
-		</textarea>
+		<div class='o-panel-container'>
+			<nav class="c-nav c-nav--top c-nav--inline">
+				<span class="c-nav__content">Assessment Data</span>
+			  </nav>
+			<textarea id='assessmentData_{{diagnosis.refId}}' class="c-field c-editor o-panel o-panel--nav-top textareaWidth" {($value)}="diagnosis.assessmentData">
+			</textarea>
+			{{setTextareaSize('assessmentData', diagnosis.refId, diagnosis)}}
+		</div>
+		<div class='o-panel-container'>
+			<nav class="c-nav c-nav--top c-nav--inline">
+				<span class="c-nav__content">Nursing Diagnosis</span>
+			  </nav>
+			<textarea id='nursingDiagnosis_{{diagnosis.refId}}' class="c-field c-editor o-panel o-panel--nav-top textareaWidth" {($value)}="diagnosis.nursingDiagnosis">
+			</textarea>
+			{{setTextareaSize('nursingDiagnosis', diagnosis.refId, diagnosis)}}
+		</div>
+		<div class='o-panel-container'>
+			<nav class="c-nav c-nav--top c-nav--inline">
+				<span class="c-nav__content">Interventions</span>
+			  </nav>
+			<textarea id='interventions_{{diagnosis.refId}}' class="c-field c-editor o-panel o-panel--nav-top textareaWidth"  {($value)}="diagnosis.interventions">
+			</textarea>
+			{{setTextareaSize('interventions', diagnosis.refId, diagnosis)}}
+		</div>
+		<div class='o-panel-container'>
+			<nav class="c-nav c-nav--top c-nav--inline">
+				<span class="c-nav__content">Outcomes</span>
+			  </nav>
+			<textarea id='outcomes_{{diagnosis.refId}}' class="c-field c-editor o-panel o-panel--nav-top textareaWidth"  {($value)}="diagnosis.outcomes">
+			</textarea>
+			{{setTextareaSize('outcomes', diagnosis.refId, diagnosis)}}
 	</div>
-	<div class='o-panel-container'>
-		<nav class="c-nav c-nav--top c-nav--inline">
-			<span class="c-nav__content">Nursing Diagnosis</span>
-		  </nav>
-		<textarea class="c-field c-editor o-panel o-panel--nav-top" {($value)}="diagnosis.nursingDiagnosis">
-		</textarea>
-	</div>
-	<div class='o-panel-container'>
-		<nav class="c-nav c-nav--top c-nav--inline">
-			<span class="c-nav__content">Interventions</span>
-		  </nav>
-		<textarea class="c-field c-editor o-panel o-panel--nav-top"  {($value)}="diagnosis.interventions">
-		</textarea>
-	</div>
-	<div class='o-panel-container'>
-		<nav class="c-nav c-nav--top c-nav--inline">
-			<span class="c-nav__content">Outcomes</span>
-		  </nav>
-		<textarea class="c-field c-editor o-panel o-panel--nav-top"  {($value)}="diagnosis.outcomes">
-		</textarea>
-	</div>
-	
-{{/richTextExperiment}}
 
 {{/showDiagnosisEditor}}
 
