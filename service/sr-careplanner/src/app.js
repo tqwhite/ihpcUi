@@ -165,6 +165,9 @@ const AppViewModel = Map.extend({
 		planRefIdStudentMapList:{
 			value:{}
 		},
+		closingBox:{
+			value:"<div class='closingX'><div>X</div></div>"
+		}
 	},
 	setNewPage: function(page, slug, subsection) {
 		this.attr('page', page);

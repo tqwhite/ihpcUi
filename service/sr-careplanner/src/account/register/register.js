@@ -21,7 +21,18 @@ export const ViewModel = Map.extend({
 		},
 		saveMessage:{
 			value:'Saving...'
+		},
+		showTerms:{
+			value:false
 		}
+  },
+  
+  showModalTerms:function(element, event){
+	event.stopPropagation();
+	this.attr('showTerms', true);
+	$('#termsModalText').html($(element).find('.modalContent').html());
+	this.attr('%root').activateModal(()=>{this.attr('showTerms', false)});
+
   },
 	
 	clearEntryError:function(){

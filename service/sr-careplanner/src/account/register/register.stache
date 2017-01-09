@@ -33,6 +33,46 @@
 				</div>
 			</div>
 			
+			<div class='termsContainer' ($click)='showModalTerms(%element, %event)' title='Click to enlarge'>
+				<div class='modalContent termsText'> Lorem ipsum dolor sit amet, felis quis mi integer, ante nostra donec aliquam eget dapibus posuere, euismod bibendum eget, commodo nec et dui porro natoque. Massa enim ipsum. Proin ut enim ut suscipit turpis ligula. Cubilia vel, mauris etiam montes labore. Sapien penatibus sed, risus dui lacus, lobortis nec, quis ut tincidunt nunc at elementum. Interdum est aliquam. Adipiscing vitae pellentesque massa placerat aenean vestibulum, ut vel, porttitor velit urna praesent orci convallis, vivamus cum id. Vel malesuada donec a, enim tempus nullam arcu. Wisi dictum integer diam elit nulla vestibulum, nec elit tellus, non porttitor, vestibulum at. Volutpat eu urna, ut diam eu mollis nec mi lectus, vestibulum diam. Libero imperdiet tempus mus orci malesuada sed, nullam duis iaculis mollis in eget, suscipit venenatis ut mattis viverra.
+<br/>
+
+<br/>
+Non sed, et ullamcorper consequat, metus vestibulum mauris, neque nunc iaculis gravida sapien. Tortor tellus at tincidunt sem. Erat gravida, sem sed nunc eu suspendisse. Elit mollis egestas arcu suscipit, non nulla integer suscipit potenti. Dictum velit dapibus nec. Arcu ac morbi dui, pellentesque diam eget, sem quisque diam, phasellus non phasellus. Amet sem felis nibh cubilia pellentesque senectus, nulla eu dicta. Iaculis qui nulla velit euismod dis. In habitasse primis, dui ac nunc blandit, nullam sem duis vestibulum nulla est.
+<br/>
+
+<br/>
+Arcu sem massa curabitur nulla, sit ut proin suspendisse ut omnis, eu praesent nec nec netus, nec nec vitae nunc, eget faucibus quis nec faucibus etiam. Vitae in pede mi tellus, nascetur aliquam quisque. Ipsum auctor, enim leo tellus, quis et sit, nullam ut nam mi etiam sit eleifend, dui id porta. Donec odio curabitur porttitor, libero pellentesque mollis tortor eros proin eget, metus donec luctus vel potenti. Turpis eu lectus malesuada, lectus fames, tempor ante aliquam, feugiat eget, volutpat ipsum etiam quam a sodales in. Metus fames ut, eu pede lectus, libero mauris, diam mauris aliquam. Porttitor egestas dolor vel ligula posuere, neque aliquet enim, non dolor imperdiet non ac lacus, donec duis pede ut commodo odio urna, velit urna phasellus.
+<br/>
+
+<br/>
+Consequat sed convallis. Laoreet posuere rutrum ante aenean torquent. Habitasse eu non felis duis, magnis cras purus, porttitor euismod ac ornare suscipit venenatis pulvinar, dui urna leo, nec diam lectus voluptatem erat a ut. Neque placerat, sit dui volutpat fusce congue nec, malesuada accumsan cras nullam. Quis vestibulum dolor. Dictum purus at. Felis vel luctus, orci vestibulum vel nam, sed purus in odio nec venenatis in, adipiscing augue duis porttitor dapibus proin, fusce facilisi urna. Rutrum suspendisse, eget et gravida tristique aliquam neque, lectus nulla mi nascetur nulla orci lacus. Eleifend aenean ac vitae, elit rhoncus et placerat amet ac amet, posuere et vel elementum sit magna.
+<br/>Non sed, et ullamcorper consequat, metus vestibulum mauris, neque nunc iaculis gravida sapien. Tortor tellus at tincidunt sem. Erat gravida, sem sed nunc eu suspendisse. Elit mollis egestas arcu suscipit, non nulla integer suscipit potenti. Dictum velit dapibus nec. Arcu ac morbi dui, pellentesque diam eget, sem quisque diam, phasellus non phasellus. Amet sem felis nibh cubilia pellentesque senectus, nulla eu dicta. Iaculis qui nulla velit euismod dis. In habitasse primis, dui ac nunc blandit, nullam sem duis vestibulum nulla est.
+<br/>
+
+<br/>
+Arcu sem massa curabitur nulla, sit ut proin suspendisse ut omnis, eu praesent nec nec netus, nec nec vitae nunc, eget faucibus quis nec faucibus etiam. Vitae in pede mi tellus, nascetur aliquam quisque. Ipsum auctor, enim leo tellus, quis et sit, nullam ut nam mi etiam sit eleifend, dui id porta. Donec odio curabitur porttitor, libero pellentesque mollis tortor eros proin eget, metus donec luctus vel potenti. Turpis eu lectus malesuada, lectus fames, tempor ante aliquam, feugiat eget, volutpat ipsum etiam quam a sodales in. Metus fames ut, eu pede lectus, libero mauris, diam mauris aliquam. Porttitor egestas dolor vel ligula posuere, neque aliquet enim, non dolor imperdiet non ac lacus, donec duis pede ut commodo odio urna, velit urna phasellus.
+<br/>
+
+<br/>
+Consequat sed convallis. Laoreet posuere rutrum ante aenean torquent. Habitasse eu non felis duis, magnis cras purus, porttitor euismod ac ornare suscipit venenatis pulvinar, dui urna leo, nec diam lectus voluptatem erat a ut. Neque placerat, sit dui volutpat fusce congue nec, malesuada accumsan cras nullam. Quis vestibulum dolor. Dictum purus at. Felis vel luctus, orci vestibulum vel nam, sed purus in odio nec venenatis in, adipiscing augue duis porttitor dapibus proin, fusce facilisi urna. Rutrum suspendisse, eget et gravida tristique aliquam neque, lectus nulla mi nascetur nulla orci lacus. Eleifend aenean ac vitae, elit rhoncus et placerat amet ac amet, posuere et vel elementum sit magna.
+<br/>Non sed, et ullamcorper consequat, metus vestibulum mauris, neque nunc iaculis gravida sapien. Tortor tellus at tincidunt sem. Erat gravida, sem sed nunc eu suspendisse. Elit mollis egestas arcu suscipit, non nulla integer suscipit potenti. Dictum velit dapibus nec. Arcu ac morbi dui, pellentesque diam eget, sem quisque diam, phasellus non phasellus. Amet sem felis nibh cubilia pellentesque senectus, nulla eu dicta. Iaculis qui nulla velit euismod dis. In habitasse primis, dui ac nunc blandit, nullam sem duis vestibulum nulla est.
+<br/>
+
+<br/>
+Arcu sem massa curabitur nulla, sit ut proin suspendisse ut omnis, eu praesent nec nec netus, nec nec vitae nunc, eget faucibus quis nec faucibus etiam. Vitae in pede mi tellus, nascetur aliquam quisque. Ipsum auctor, enim leo tellus, quis et sit, nullam ut nam mi etiam sit eleifend, dui id porta. Donec odio curabitur porttitor, libero pellentesque mollis tortor eros proin eget, metus donec luctus vel potenti. Turpis eu lectus malesuada, lectus fames, tempor ante aliquam, feugiat eget, volutpat ipsum etiam quam a sodales in. Metus fames ut, eu pede lectus, libero mauris, diam mauris aliquam. Porttitor egestas dolor vel ligula posuere, neque aliquet enim, non dolor imperdiet non ac lacus, donec duis pede ut commodo odio urna, velit urna phasellus.
+<br/>
+
+<br/>
+Consequat sed convallis. Laoreet posuere rutrum ante aenean torquent. Habitasse eu non felis duis, magnis cras purus, porttitor euismod ac ornare suscipit venenatis pulvinar, dui urna leo, nec diam lectus voluptatem erat a ut. Neque placerat, sit dui volutpat fusce congue nec, malesuada accumsan cras nullam. Quis vestibulum dolor. Dictum purus at. Felis vel luctus, orci vestibulum vel nam, sed purus in odio nec venenatis in, adipiscing augue duis porttitor dapibus proin, fusce facilisi urna. Rutrum suspendisse, eget et gravida tristique aliquam neque, lectus nulla mi nascetur nulla orci lacus. Eleifend aenean ac vitae, elit rhoncus et placerat amet ac amet, posuere et vel elementum sit magna.
+<br/>
+</div>
+				<div class='termsNotification'>
+				By clicking the Register button below, you agree to the Terms and Conditions displayed above.
+				</div>
+			
+			</div>
+			
 	</div>
 
 <div class='buttonContainer'> 
@@ -51,5 +91,18 @@
 	</div>
 	</div>
 </div>
+
+{{#if showTerms}}
+	<div class='centerVertical modalBackground' style=''>
+		<div class='modalInset firstUser'>
+			<div class='headline'>
+				{{systemProdName}} Terms and Conditions
+					{{{closingBox}}}
+			</div>
+			<div id='termsModalText'>
+			<div>
+		</div>
+	</div>
+{{/if}}
 <!-- account/login end -->
 
