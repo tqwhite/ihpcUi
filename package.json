@@ -10,7 +10,10 @@
     "multi-ini": "^0.5.2",
     "steal-stache": "^3.0.5"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "steal": "^1.0.9",
+    "steal-tools": "^1.0.2"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
