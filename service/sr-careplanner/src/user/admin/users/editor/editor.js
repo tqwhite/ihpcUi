@@ -141,6 +141,7 @@ const changeHandler=function(domObj, event) {
 		};
 
 export default Component.extend({
+  leakScope: true,
   tag: 'user-admin-users-editor',
   viewModel: ViewModel,
 	events: {

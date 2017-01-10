@@ -19,6 +19,7 @@ export const ViewModel = Map.extend({
 });
 
 export default Component.extend({
+  leakScope: true,
   tag: 'conditions-workspace-item-editor-diagnosis',
   viewModel: ViewModel,
   template

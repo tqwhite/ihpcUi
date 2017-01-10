@@ -70,6 +70,7 @@ export const ViewModel = Map.extend({
 });
 
 export default Component.extend({
+  leakScope: true,
 	tag: 'decorations-boilerplate-files',
 	viewModel: ViewModel,
 	events: {

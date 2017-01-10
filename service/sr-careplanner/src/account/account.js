@@ -13,6 +13,7 @@ export const ViewModel = Map.extend({
 });
 
 export default Component.extend({
+  leakScope: true,
   tag: 'account',
   viewModel: ViewModel,
   template

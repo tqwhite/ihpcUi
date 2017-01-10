@@ -124,6 +124,7 @@ const shortName=element.attr('shortName')
 
 });
 export default Component.extend({
+  leakScope: true,
 	tag: 'conditions-workspace-item-editor',
 	viewModel: ViewModel,
 	events: {

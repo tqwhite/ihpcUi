@@ -86,6 +86,7 @@ export const ViewModel = Map.extend({
 });
 
 export default Component.extend({
+  leakScope: true,
   tag: 'account-change-password',
   viewModel: ViewModel,
   template

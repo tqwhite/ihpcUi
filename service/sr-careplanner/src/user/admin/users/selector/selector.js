@@ -33,6 +33,7 @@ export const ViewModel = Map.extend({
 });
 
 export default Component.extend({
+  leakScope: true,
   tag: 'user-admin-users-selector',
   viewModel: ViewModel,
   template

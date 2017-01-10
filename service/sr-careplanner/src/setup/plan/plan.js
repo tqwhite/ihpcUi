@@ -27,6 +27,7 @@ export const ViewModel = Map.extend({
 });
 
 export default Component.extend({
+  leakScope: true,
   tag: 'setup-plan',
   viewModel: ViewModel,
   template

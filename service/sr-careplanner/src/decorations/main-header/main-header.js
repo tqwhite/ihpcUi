@@ -14,6 +14,7 @@ export const ViewModel = Map.extend({
 
 
 export default Component.extend({
+  leakScope: true,
   tag: 'main-header',
   viewModel: ViewModel,
   template

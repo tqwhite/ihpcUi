@@ -21,6 +21,7 @@ export const ViewModel = Map.extend({
 });
 
 export default Component.extend({
+  leakScope: true,
   tag: 'user-nurse-student-summary',
   viewModel: ViewModel,
   template

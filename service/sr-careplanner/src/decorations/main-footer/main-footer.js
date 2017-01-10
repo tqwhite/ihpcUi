@@ -119,6 +119,7 @@ return function(el){
 
 
 export default Component.extend({
+  leakScope: true,
   tag: 'main-footer',
   viewModel: ViewModel,
   template

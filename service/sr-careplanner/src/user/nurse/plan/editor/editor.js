@@ -209,6 +209,7 @@ export const ViewModel = Map.extend({
 });
 
 export default Component.extend({
+  leakScope: true,
 	tag: 'user-nurse-plan-editor',
 	viewModel: ViewModel,
 	events: {

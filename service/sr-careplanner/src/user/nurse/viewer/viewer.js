@@ -134,6 +134,7 @@ can.stache.registerHelper('nl2br_UNUSED', function(mapElement, options) {
 });
 
 export default Component.extend({
+  leakScope: true,
 	tag: 'user-nurse-viewer',
 	viewModel: ViewModel,
 	template
