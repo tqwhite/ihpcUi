@@ -3,6 +3,7 @@ import Map from 'can/map/';
 import 'can/map/define/';
 import './main-footer.less!';
 import template from './main-footer.stache!';
+import stache from 'can/view/stache/stache'
 
 export const ViewModel = Map.extend({
   define: {
@@ -76,7 +77,7 @@ export const ViewModel = Map.extend({
 		return false;
 	},
 	  
-	testTemplate:can.stache("<h3>{{../systemProdName}}</h3>"), //this works as {{>testTemplate}} and presents Hello World!! from app.js
+	testTemplate:stache("<h3>{{../systemProdName}}</h3>"), //this works as {{>testTemplate}} and presents Hello World!! from app.js
 	testScopeHelper:function(args){
 		//works with call {{testScopeHelper(mess=message)}}, shows values from scope map above
 		return can.stache.safeString('('+args.mess+')');

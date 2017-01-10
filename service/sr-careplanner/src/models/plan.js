@@ -1,9 +1,10 @@
 import can from 'can';
+import map from 'can/map/map';
 import superMap from 'can-connect/can/super-map/';
 import tag from 'can-connect/can/tag/';
 import 'can/map/define/define';
 
-export const Plan = can.Map.extend({
+export const Plan = map.extend({
   define: {}
 });
 

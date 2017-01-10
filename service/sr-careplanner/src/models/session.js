@@ -1,8 +1,9 @@
 import can from 'can';
+import map from 'can/map/map';
 import superMap from 'can-connect/can/super-map/';
 import tag from 'can-connect/can/tag/';
 
-export const Session = can.Map.extend({
+export const Session = map.extend({
   define: {
   },
     get:function(name){

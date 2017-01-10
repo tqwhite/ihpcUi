@@ -1,9 +1,10 @@
 import can from 'can';
+import map from 'can/map/map';
 import superMap from 'can-connect/can/super-map/';
 import tag from 'can-connect/can/tag/';
 import 'can/map/define/define';
 
-export const User = can.Map.extend({
+export const User = map.extend({
 	define: {},
 	validate: function(fieldName) {
 		let name;
