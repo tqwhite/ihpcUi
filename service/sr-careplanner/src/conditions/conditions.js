@@ -35,7 +35,6 @@ export const ViewModel = Map.extend({
   });
 
 export default Component.extend({
-  leakScope: true,
   tag: 'conditions',
   viewModel: ViewModel,
   template

@@ -47,14 +47,13 @@ export const ViewModel = Map.extend({
 		var sessionPromise = this.attr("tmpFormSession").save()
 			.then(successFunc /*, errorFunc here prevents stache from getting {{#if sessionPromise.isRejected}}*/)
 			.fail(errorFunc);
-			console.log('account-login says, still using .fail() in violation of canjs v3 instructions');
+			
 		//this.attr("sessionPromise", sessionPromise); //can't figure out why this was in the example
 
 	}
 });
 
 export default Component.extend({
-  leakScope: true,
   tag: 'account-login',
   viewModel: ViewModel,
   template

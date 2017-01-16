@@ -132,7 +132,6 @@ this.attr('student', new Student(testStudent));
 });
 
 export default Component.extend({
-  leakScope: true,
 	tag: 'user-nurse-student-editor',
 	viewModel: ViewModel,
 	events: {

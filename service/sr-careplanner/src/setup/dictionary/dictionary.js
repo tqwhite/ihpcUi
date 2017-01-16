@@ -48,7 +48,6 @@ const localDataChangeHandler = function(domObj, event) {
 };
 
 export default Component.extend({
-  leakScope: true,
   tag: 'setup-dictionary',
   viewModel: ViewModel,
   template,

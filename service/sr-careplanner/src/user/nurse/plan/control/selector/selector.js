@@ -77,7 +77,6 @@ export const ViewModel = Map.extend({
 });
 
 export default Component.extend({
-  leakScope: true,
 	tag: 'user-nurse-plan-control-selector',
 	viewModel: ViewModel,
 	template

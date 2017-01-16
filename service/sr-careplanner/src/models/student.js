@@ -1,10 +1,9 @@
 import can from 'can';
-import map from 'can/map/map';
 import superMap from 'can-connect/can/super-map/';
 import tag from 'can-connect/can/tag/';
 import 'can/map/define/define';
 
-export const Student = map.extend({
+export const Student = can.Map.extend({
 	define: {},
 	init: function(initData) {
 		//console.dir({"initData":initData});

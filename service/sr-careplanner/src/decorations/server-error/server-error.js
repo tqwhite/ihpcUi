@@ -13,7 +13,6 @@ export const ViewModel = Map.extend({
 });
 
 export default Component.extend({
-  leakScope: true,
   tag: 'decorations-server-error',
   viewModel: ViewModel,
   template
