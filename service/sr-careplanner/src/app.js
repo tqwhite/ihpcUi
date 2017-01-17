@@ -166,7 +166,8 @@ const AppViewModel = Map.extend({
 			value:{}
 		},
 		closingBox:{
-			value:"<div class='closingX'><div>X</div></div>"
+			value:"<div class='closingX'><div>X</div></div>",
+			serialize:false
 		}
 	},
 	setNewPage: function(page, slug, subsection) {
