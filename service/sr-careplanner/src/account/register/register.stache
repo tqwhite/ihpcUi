@@ -33,8 +33,8 @@
 				</div>
 			</div>
 			
-			<div class='termsContainer' ($click)='showModalTerms(%element, %event)' title='Click to enlarge'>
-				<div class='modalContent termsText'> Lorem ipsum dolor sit amet, felis quis mi integer, ante nostra donec aliquam eget dapibus posuere, euismod bibendum eget, commodo nec et dui porro natoque. Massa enim ipsum. Proin ut enim ut suscipit turpis ligula. Cubilia vel, mauris etiam montes labore. Sapien penatibus sed, risus dui lacus, lobortis nec, quis ut tincidunt nunc at elementum. Interdum est aliquam. Adipiscing vitae pellentesque massa placerat aenean vestibulum, ut vel, porttitor velit urna praesent orci convallis, vivamus cum id. Vel malesuada donec a, enim tempus nullam arcu. Wisi dictum integer diam elit nulla vestibulum, nec elit tellus, non porttitor, vestibulum at. Volutpat eu urna, ut diam eu mollis nec mi lectus, vestibulum diam. Libero imperdiet tempus mus orci malesuada sed, nullam duis iaculis mollis in eget, suscipit venenatis ut mattis viverra.
+			<div class='termsContainer' ($click)='showModalTerms("#termsText", %event)' title='Click to Enlarge and Print'>
+				<div id='termsText' class='modalContent termsText'> Lorem ipsum dolor sit amet, felis quis mi integer, ante nostra donec aliquam eget dapibus posuere, euismod bibendum eget, commodo nec et dui porro natoque. Massa enim ipsum. Proin ut enim ut suscipit turpis ligula. Cubilia vel, mauris etiam montes labore. Sapien penatibus sed, risus dui lacus, lobortis nec, quis ut tincidunt nunc at elementum. Interdum est aliquam. Adipiscing vitae pellentesque massa placerat aenean vestibulum, ut vel, porttitor velit urna praesent orci convallis, vivamus cum id. Vel malesuada donec a, enim tempus nullam arcu. Wisi dictum integer diam elit nulla vestibulum, nec elit tellus, non porttitor, vestibulum at. Volutpat eu urna, ut diam eu mollis nec mi lectus, vestibulum diam. Libero imperdiet tempus mus orci malesuada sed, nullam duis iaculis mollis in eget, suscipit venenatis ut mattis viverra.
 <br/>
 
 <br/>
@@ -68,7 +68,9 @@ Consequat sed convallis. Laoreet posuere rutrum ante aenean torquent. Habitasse 
 <br/>
 </div>
 				<div class='termsNotification'>
-				By clicking the Register button below, you agree to the Terms and Conditions displayed above.
+				By clicking the Register button below, you agree to the Terms and Conditions displayed above. 
+				<span class='inlineButton' style='color:rgba(255,255,255, .7)' ($click)='showModalTerms("#termsText", %event, "autoPrint")'>PRINT</span>
+
 				</div>
 			
 			</div>
@@ -96,7 +98,7 @@ Consequat sed convallis. Laoreet posuere rutrum ante aenean torquent. Habitasse 
 	<div class='centerVertical modalBackground' style=''>
 		<div class='modalInset firstUser'>
 			<div class='headline'>
-				{{systemProdName}} Terms and Conditions
+				{{systemProdName}} Terms and Conditions <span class='inlineButton' style='margin-left:10vw;' ($click)='activatePrint(%element, %event)'>PRINT</span>
 					{{{closingBox}}}
 			</div>
 			<div id='termsModalText'>

@@ -27,12 +27,22 @@ export const ViewModel = Map.extend({
 		}
   },
   
-  showModalTerms:function(element, event){
+  activatePrint:function(element, event){
+	event.stopPropagation();
+	window.print();
+  },
+  
+  showModalTerms:function(textSelector, event, autoPrint){
 	event.stopPropagation();
 	this.attr('showTerms', true);
-	$('#termsModalText').html($(element).find('.modalContent').html());
+	$('#termsModalText').html($(textSelector).html());
 	this.attr('%root').activateModal(()=>{this.attr('showTerms', false)});
-
+	if (autoPrint){
+  	setTimeout(()=>{
+		window.print();
+  	}, 100);
+	}
+	
   },
 	
 	clearEntryError:function(){
