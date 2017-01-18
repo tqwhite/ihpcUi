@@ -14,7 +14,7 @@
 	
 	<input class="c-field title" placeholder="Condition Title" {($value)}="boilerplate.title">
 	<div>
-	<input class="c-field shortTitle" style='height:39px;' placeholder="Short Title" type="input" {($value)}="boilerplate.shortName">
+	<input class="c-field shortTitle" style='height:39px;font-size:70%;' placeholder="Short Title" type="input" {($value)}="boilerplate.shortName">
 	<div class='folderName'>server folder name: <span style='color:black;font-weight:bold;'>{{generateFolderName(boilerplate)}}</span></div>
 	</div>
 	</div>
