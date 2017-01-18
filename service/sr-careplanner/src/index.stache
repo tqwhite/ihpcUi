@@ -1,6 +1,5 @@
 <html>
   <head>
-
     <can-import from="sr-careplanner/blaze.min.css" />
     <can-import from="sr-careplanner/blaze.animations.min.css" />
     <can-import from="sr-careplanner/font-awesome/css/font-awesome.css" />

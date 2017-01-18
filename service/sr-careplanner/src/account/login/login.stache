@@ -24,10 +24,6 @@
 		</div>
 <div class='buttonContainer'>
 	{{#browserLoaded}}
-			{{#richTextExperiment}}	
-				<script type='text/javascript' src='node_modules/tinymce/tinymce.jquery.min.js'></script>
-			{{/richTextExperiment}}
-			
 			<div class='loginButtonContainer'>
 			<button type='submit' class="c-button c-button--primary c-button--small">Login</button>
 			</div>

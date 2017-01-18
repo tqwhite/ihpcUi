@@ -40,33 +40,6 @@ export const ViewModel = Map.extend({
 
 	toggleEditView: function() {
 		this.attr('showDiagnosisEditor', !this.attr('showDiagnosisEditor'));
-
-		if (this.attr('%root').attr('richTextExperiment')) {
-			console.log("this.attr('%root').attr('richTextExperiment')=" + this.attr('%root').attr('richTextExperiment'));
-
-
-			setTimeout(() => {
-				$('div.richText').each((inx, item) => {
-					const instance = tinymce.init({
-						selector: 'div.richText:nth-child(' + inx + ')',
-						inline: true,
-						plugins: [
-							'tabfocus textcolor colorpicker advlist autolink lists link image charmap print preview anchor',
-							'searchreplace visualblocks code fullscreen',
-							'insertdatetime media table contextmenu paste'
-						],
-						toolbar: 'forecolor backcolor insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image'
-					}).then(() => {
-						$('div.richText').each((inx, item) => {
-							const id = $(item).attr('id');
-							const editor = tinymce.get(id).setContent($(item).attr('value').replace(/\n/g, '<br/>'));
-						});
-
-					});
-
-				});
-			}, 100);
-		}
 	},
 
 	testElement: function() {

@@ -16,8 +16,24 @@
  {{/switch}} 
   
   
-  
   <li class='c-nav__item' ($click)='logout()'>Logout</a></li>
+  
+  
+  {{#nonProductionSiteName}}
+  
+  <li class='c-nav__item' style='color:
+  	{{#is nonProductionSiteName 'development'}}
+  		green
+  	{{/is}}
+  	{{#is nonProductionSiteName 'demo'}}
+  		orange
+  	{{/is}}
+  
+  ;background: rgba(255, 255, 255, 0.5) none repeat scroll 0 0;font-weight: bold;font-size:150%;padding: 6px 40px;'>
+  	{{nonProductionSiteName}}
+  	</li>
+  
+  {{/nonProductionSiteName}}
   
   <li class='c-nav__item c-nav__item--right' ($click)='setNewPage("help")'>Help</li>
   <li class='c-nav__item c-nav__item--right' ($click)='setNewPage("setup")'><span style='font-weight:bold;'>Hello 

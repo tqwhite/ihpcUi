@@ -39,12 +39,6 @@ const AppViewModel = Map.extend({
 				return loginUser;
 			},
 		},
-		richTextExperiment: {
-			value: '',
-			note: 'any value turns on the experiment',
-			note2: '*everything* associated with this experiment has this attribute, richTextExperiment',
-			serialize: false
-		},
 		session: {
 			value: function() {
 				//placeholder for two-way binding to the form in login.stache
@@ -116,6 +110,16 @@ const AppViewModel = Map.extend({
 		browserLoaded: {
 			get: function() {
 				return window.location.href.match(/\w/);
+			},
+			serialize: false
+		},
+		nonProductionSiteName:{
+			get: function() {
+				const value=window.location.href.match(/(demo|local)/) || [];
+				
+
+
+				return (value[0]=='local')?'development':value[0];
 			},
 			serialize: false
 		},
