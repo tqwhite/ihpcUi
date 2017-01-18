@@ -187,13 +187,14 @@
 
 				<div  style='width:50vw;position:relative'>
 
+	{{^hideFeedbackText}}
 					<textarea id='feedbackEntry' class="c-field c-editor" style='height:30vh;' {($value)}="feedbackMessage" placeholder="Tell us what you think" ></textarea>
 
 					<div class='buttonContainer centerHorizontal' style='margin-top:15px;'>
 						<button  class="c-button c-button--primary c-button--small" ($click)='cancelSendFeedback()'>Cancel</button>
 						<button class="c-button c-button--primary c-button--small" ($click)='sendFeedbackMessage()'>Send</button>
 					</div>
-
+	{{/hideFeedbackText}}
 				</div>
 
 </div>

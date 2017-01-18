@@ -161,13 +161,19 @@ const AppViewModel = Map.extend({
 			value:'',
 			serialize:false
 		},
+		hideFeedbackText:{
+			value:'false',
+			serialize:false
+		
+		},
 		supportEmail:{
 			value:'tqwhite@erdc.k12.mn.us',
 			serialize:false
 		},
 
 		planRefIdStudentMapList:{
-			value:{}
+			value:{},
+			serialize:false
 		},
 		closingBox:{
 			value:"<div class='closingX'><div>X</div></div>",
@@ -298,6 +304,7 @@ const AppViewModel = Map.extend({
 
 
 					this.attr('feedbackResult', "It worked! Thank you for your feedback");
+					this.attr('hideFeedbackText', 'hide');
 					setTimeout(() => {
 						this.attr('feedbackMessage', '');
 						this.attr('showSendFeedback', '');
@@ -326,6 +333,7 @@ const AppViewModel = Map.extend({
 
 	activateSendFeedback:function(){
 		this.attr('showSendFeedback', true);
+		this.attr('hideFeedbackText', '');
 	
 		setTimeout(()=>{
 		$('#feedbackEntry').focus();
