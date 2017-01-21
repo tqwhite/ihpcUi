@@ -12,6 +12,33 @@ user-nurse .studentSelector{
 position:absolute;
 right:20vh;
 z-index:100;
+
+
+	display:-webkit-flex;
+	display:flex;
+	
+	flex-direction:column;
+	-webkit-flex-direction: column;
+	
+	/* between items in main direction */
+	justify-content:center; /*flex-start, flex-end, center, space-between, space-around, stretch*/
+	-webkit-justify-content:center;
+	
+	/* between rows or columns */
+	align-content:center; /*flex-start, flex-end, center, space-between, space-around, stretch*/
+	-webkit-align-content:center;
+	
+	align-items:center; /*flex-start, flex-end, center, baseline, stretch*/
+	-webkit-align-items:center;
+	
+	justify-content:space-between; /*flex-start, flex-end, center, space-between, space-around*/
+	-webkit-justify-content:space-between;
+	
+	flex-wrap:wrap; /*nowrap | wrap | wrap-reverse*/
+	-webkit-flex-wrap:wrap;
+	
+
+
 }
 
 user-nurse .modeControl{
