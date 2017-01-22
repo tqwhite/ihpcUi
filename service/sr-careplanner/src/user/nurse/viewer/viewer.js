@@ -28,10 +28,30 @@ export const ViewModel = Map.extend({
 		dataUrl:{
 			value:'',
 			serialize:false
+		},
+		isDotNet:{
+			serialize:false,
+			get:function(){
+				const appVersion=window.navigator && window.navigator.appVersion;
+
+console.log("appVersion="+appVersion);
+
+console.log("appVersion.match(/NET/)="+appVersion.match(/NET/));
+
+
+
+				if(appVersion && appVersion.match(/NET/)){
+					return true;
+				}
+				else{
+					return false;
+				}
+			}
 		}
 	},
 	
 	getPdfDataUrl: function() {
+	
 		var planFormatter = new formatPlanPdf({
 			qtools: qtools,pdfLibrary:pdfLibrary,
 			buildHeaderSection:buildHeaderSection,

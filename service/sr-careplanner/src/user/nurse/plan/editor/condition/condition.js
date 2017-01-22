@@ -43,13 +43,6 @@ export const ViewModel = Map.extend({
 		return foundIt;
 	},
 	
-	collectChildComponents:function(childType, childVm){
-		if (typeof(this[childType])=='undefined'){
-			this[childType]=[];
-		}
-		this[childType].push(childVm);
-	},
-	
 	changeDiagnosesView:function(){
 		let allSummary=false;
 		const conditionList=this.childComponentLists['diagnosis'];
