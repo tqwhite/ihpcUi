@@ -14,8 +14,7 @@
 	
     <title>{{title}}</title>
   </head>
-  <body>
-  
+  <body> 
 {{simpleRoute}}
 {{confirmEmail}}
 {{#confirmEmailMessage}}

@@ -34,12 +34,6 @@ export const ViewModel = Map.extend({
 			get:function(){
 				const appVersion=window.navigator && window.navigator.appVersion;
 
-console.log("appVersion="+appVersion);
-
-console.log("appVersion.match(/NET/)="+appVersion.match(/NET/));
-
-
-
 				if(appVersion && appVersion.match(/NET/)){
 					return true;
 				}
@@ -68,6 +62,8 @@ console.log("appVersion.match(/NET/)="+appVersion.match(/NET/));
 			this.attr('dataUrl', dataUrl);
 			this.attr('downloadReady', true);
 			this.downloadFunction=downloadFunction;
+
+
 			this.printFunction=printFunction;
 		});
 	},

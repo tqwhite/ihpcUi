@@ -1,7 +1,4 @@
 #!/usr/local/bin/node
-
-
-
 'use strict';
 const qtoolsGen = require('qtools');
 const qtools = new qtoolsGen(module);
@@ -9,17 +6,10 @@ const multiIni = require('multi-ini');
 var express = require('express');
 var app = express();
 var bodyParser = require('body-parser');
-
 var fs = require('fs');
 var path = require("path");
-
 var compression = require('./sr-careplanner/node_modules/compression');
-
 var ssrMiddleware = require("./sr-careplanner/node_modules/done-ssr-middleware");
-
-// var doneServe=require('./sr-careplanner/node_modules/done-serve');
-// doneServe({ path: '/Volumes/qubuntuFileServer/cmerdc/sunrise/sunriseUi/system/code/service/sr-careplanner',
-//  });
 
 //START OF moduleFunction() ============================================================
 
@@ -27,26 +17,24 @@ var moduleFunction = function() {
 
 	if (!process.env.sruiProjectPath) {
 		var message = "there must be an environment variable: sruiProjectPath";
-
 		console.log(message);
 		return (message);
 	}
 	if (!process.env.USER) {
 		var message = "there must be an environment variable: USER";
-
 		console.log(message);
 		return (message);
 	}
 	var configPath = process.env.sruiProjectPath + 'configs/instanceSpecific/ini/' + process.env.USER + '.ini';
 	if (!qtools.realPath(configPath)) {
 		var message = "configuration file " + configPath + " is missing";
-
 		console.log(message);
 		return (message);
 	}
 
+	//LOCAL DECLARATIONS ====================================
+	
 	let webReport = [];
-
 	let reportStatus = (err, result) => {
 		webReport.push({
 			err: err,
@@ -54,33 +42,14 @@ var moduleFunction = function() {
 		});
 	}
 
-	let transactionCount = 0;
-
-	//LOCAL FUNCTIONS ====================================
-
 	//METHODS AND PROPERTIES ====================================
 
 	app.use(bodyParser.urlencoded({
 		extended: true
-	}))
-	app.use(bodyParser.json());
+	}));
 	
-	// app.use((req, res, next) => {
-	// 	console.log(`req.path= ${req.path}`);
-	// 	next();
-	// });
-
-	// app.use((req, res, next) => {
-	// 	if (typeof (transactionCount) == 'undefined') {
-	// 		transactionCount = 0;
-	// 	}
-	// 	transactionCount++;
-	// 	//	console.log("transaction# " + transactionCount + " =======================\n");
-	// 	next();
-	// });
-
+	app.use(bodyParser.json());
 	app.use(compression());
-
 	app.use(express.static(process.env.sruiProjectPath + 'code/service/sr-careplanner'));
 
 	//DONEJS ====================================
@@ -88,7 +57,6 @@ var moduleFunction = function() {
 	const startDonejs = function(program) {
 
 		var exec = require("child_process").exec;
-
 		var options = {
 			path: program.path
 		};
@@ -96,6 +64,7 @@ var moduleFunction = function() {
 			config: path.join(program.path, 'package.json') + '!npm',
 			liveReload: true
 		};
+		
 		app.use(ssrMiddleware(system, options));
 
 		var port = program.port || process.env.PORT || 3030;
@@ -116,11 +85,13 @@ var moduleFunction = function() {
 			var url = 'http://' + (address.address === '::' ?
 				'localhost' : address.address) + ':' + address.port;
 
-			qtools.message(`${config.system.name} starting on ${url} \nat ${new Date().toLocaleDateString('en-US', { hour: '2-digit',minute: '2-digit',second: '2-digit' })} `);
+			qtools.message(`${config.system.name} starting on ${url} \nat ${new Date().toLocaleDateString('en-US', {
+				hour: '2-digit',
+				minute: '2-digit',
+				second: '2-digit'
+			})} `);
 		});
 
-		return server;
- 
 	}
 
 	let config;
@@ -129,59 +100,25 @@ var moduleFunction = function() {
 	const startSystem = () => {
 		config = multiIni.read(configPath);
 		config.user = process.env.USER;
-		
-		if (config.system.serveBuildBundle.toLowerCase()=='false'){
-			process.env.NODE_ENV='development'; //global sent to done-ssr
+		if (config.system.serveBuildBundle.toLowerCase() == 'false') {
+			process.env.NODE_ENV = 'development'; //global sent to done-ssr
+		} else if (config.system.serveBuildBundle.toLowerCase() == 'true') {
+			process.env.NODE_ENV = 'production'; //global sent to done-ssr
+		} else {
+			var message = "config must contain an entry for serveBuildBundle. It must be either true or false.";
+			console.log(message);
+			return (message);
 		}
-		else if (config.system.serveBuildBundle.toLowerCase()=='true'){
-			process.env.NODE_ENV='production'; //global sent to done-ssr
-		}
-		else{
-		
-		var message = "config must contain an entry for serveBuildBundle. It must be either true or false.";
-
-		console.log(message);
-		return (message);
-		}
-
 		var program = {
-
 			path: process.env.sruiProjectPath + 'code/service/sr-careplanner',
 			port: config.system.port
 		}
-
-
-
 		startDonejs(program)
-
 	};
-
-	// 	const cleanup = () => {
-	// 		basicPingServer = null;
-	// 		webReport = [{
-	// 			err: '',
-	// 			result: `flushed at ${Date.now()}`
-	// 		}];
-	// 	}
-	// 
-	// 	const restart = () => {
-	// 		basicPingServer.shutdown('restart', () => {
-	// 			qtools.message("RESTART");
-	// 			cleanup();
-	// 			startSystem();
-	// 		});
-	// 
-	// 	}
 
 	//START SYSTEM =======================================================
 
 	startSystem();
-
-	//START SERVER =======================================================
-
-	// 	app.listen(config.system.port);
-	// 
-	// 	qtools.message('Magic happens on port ' + config.system.port);
 
 	return this;
 };

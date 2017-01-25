@@ -5,7 +5,7 @@
 	<div>{{message}}</div>
 {{/message}}
 {{^message}}
-	<div class='welcomeMessage'>Welcome</div>
+	<div class='welcomeMessage'>{{welcomeMessage}}</div>
 {{/message}}
 </div>
 

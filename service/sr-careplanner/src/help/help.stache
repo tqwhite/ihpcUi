@@ -3,12 +3,42 @@
 
 
 <div style='width:100%;margin-bottom::50px;' class='centerVertical'>
-<div class='buttonContainer' style='margin:15px;'>
-<button type='submit' class="c-button c-button--primary c-button--small" ($click)='activateSendFeedback()'>Send Feedback or Questions</button>
+	<div class='buttonContainer' style='margin:15px;'>
+		<button type='submit' class="c-button c-button--primary c-button--small" ($click)='activateSendFeedback()'>Send Feedback or Questions</button>
+	</div>
+	<div class='videoTrainingContainer'>
+		<div class='videoNav'>
+			<div class='instructions'>
+				Here are some videos to help you get started with IHP Creator. Click below to choose.
+			</div>
+			<div class='navLink' ($click)='showContents("1_GettingStarted")'>Getting Started</div>
+			<div class='navLink' ($click)='showContents("2_FirstStudent")'>First Student</div>
+			<div class='navLink' ($click)='showContents("3_WorkingWithPlans")'>Working with Plans</div>
+			<div class='navLink' ($click)='showContents("4_CustomizingPlans")'>Customizing Plans</div>
+			<div class='navLink' ($click)='showContents("5_ManagingIhpCreator")'>Managing IHP Creator</div>
+		</div>
+	
+	<div>
+		<div class='videoContainer'>
+				{{#is showThis '1_GettingStarted'}}
+				<video style='height:65vh;' controls='true' src='/api/training/1_GettingStarted.mov'/>
+				{{/is}}
+				{{#is showThis '2_FirstStudent'}}
+				<video style='height:65vh;' controls='true' src='/api/training/2_FirstStudent.mov'/>
+				{{/is}}
+				{{#is showThis '3_WorkingWithPlans'}}
+				<video style='height:65vh;' controls='true' src='/api/training/3_WorkingWithPlans.mov'/>
+				{{/is}}
+				{{#is showThis '4_CustomizingPlans'}}
+				<video style='height:65vh;' controls='true' src='/api/training/4_CustomizingPlans.mov'/>
+				{{/is}}
+				{{#is showThis '5_ManagingIhpCreator'}}
+				<video style='height:65vh;' controls='true' src='/api/training/5_ManagingIhpCreator.mov'/>
+				{{/is}}
+		</div>
+						<div style='color:gray;text-align:center;font-size:80%;width:100%;'>(If the panel above is blank and the black bar says 'loading', wait.)</div>
+
 </div>
-<div style='height:70vh;'>
-<video style='height:65vh;' controls='true' src='http://static.cmerdc.org/video/iepCreatorIntro/iepCreatorIntro.mov'/>
+</div>
 </div>
 
-
-</div>
