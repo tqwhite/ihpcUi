@@ -9,7 +9,7 @@
 {{/message}}
 </div>
 
-<form ($submit)="createSession(%event)" action="">  
+ 
 	<div id='controlsWrapper'>
 
 		<div class='fieldContainer'>
@@ -25,7 +25,7 @@
 <div class='buttonContainer'>
 	{{#browserLoaded}}
 			<div class='loginButtonContainer'>
-			<button type='submit' class="c-button c-button--primary c-button--small">Login</button>
+			<button type='submit' class="c-button c-button--primary c-button--small"($click)='createSession(%event)'>Login</button>
 			</div>
 			<div>
 				<p/>
@@ -37,7 +37,6 @@
 	{{^browserLoaded}}
 	<span class="fa fa-spinner fa-spin basicBlue"/>
 	{{/browserLoaded}}
-</div>
-</form>							
+</div>						
 
 
