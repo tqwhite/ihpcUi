@@ -20,9 +20,9 @@
 -->
 
 {{#is subsection 'dictionary'}}
-<li class='c-nav__item subsectionSelected'>Manage Dictionary</a></li>
+<li class='c-nav__item subsectionSelected'>District Setup</a></li>
 {{else}}
-<li class='c-nav__item' ($click)='setSubsection("dictionary")'>Manage Dictionary</a></li>
+<li class='c-nav__item' ($click)='setSubsection("dictionary")'>District Setup</a></li>
 {{/is}}
 
 </ul>

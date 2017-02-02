@@ -20,7 +20,8 @@
 
 
 <div class='instructions'>
-This required information appears on every IHP. 
+Please enter District Setup information before adding students.<br/>
+Click on the Student Healthcare Plans menu to continue.
 </div>
 
 {{#if loginUser.isResolved}}

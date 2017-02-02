@@ -11,11 +11,11 @@ export const ViewModel = Map.extend({
       value: 'This is the account-change-password component'
     },
 		newPassword: {
-			value: 'test22',
+			value: '',
 			serialize: false
 		},
 		newConfirmPassword: {
-			value: 'test22',
+			value: '',
 			serialize: false
 		}
   },

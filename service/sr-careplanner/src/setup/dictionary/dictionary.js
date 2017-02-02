@@ -15,7 +15,7 @@ export const ViewModel = Map.extend({
   renamePatterns:function(pattern){
   	const labels={
   		 writtenby: "IHP Author Name",
-  		 district:	"School District",
+  		 district:	"District or Building Name",
   		 infoPhone: "Phone Number"
   	}
   	return labels[pattern] || pattern;

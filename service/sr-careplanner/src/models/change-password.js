@@ -22,7 +22,7 @@ export const ChangePassword = can.Map.extend({
 
 						errorList.push({
 							fieldName: fieldName,
-							errorText: fieldName + " does not match the confirmation field"
+							errorText: "Passwords do not match"
 						});
 					}
 					

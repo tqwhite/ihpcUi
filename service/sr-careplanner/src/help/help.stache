@@ -9,7 +9,7 @@
 	<div class='videoTrainingContainer'>
 		<div class='videoNav'>
 			<div class='instructions'>
-				Here are some videos to help you get started with IHP Creator. Click below to choose.
+				These videos are designed to help you get up and running with IHP Creator. Each video is constructed to help you become familiar with a special area of IHP Creator. Click on any one of the below to get started.
 			</div>
 			<div class='navLink' ($click)='showContents("1_GettingStarted")'>Getting Started</div>
 			<div class='navLink' ($click)='showContents("2_FirstStudent")'>First Student</div>

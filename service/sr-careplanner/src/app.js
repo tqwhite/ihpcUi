@@ -108,7 +108,7 @@ const AppViewModel = Map.extend({
 			serialize: false
 		},
 		title: {
-			value: 'sr-careplanner',
+			value: 'IHP Creator',
 			serialize: false
 		},
 		page: {
