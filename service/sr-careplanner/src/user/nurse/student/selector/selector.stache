@@ -5,11 +5,6 @@
 	<ul id='studentSelector' class="c-menu c-menu--high a-menu">
 
 		{{#each students.value}}
-
-			{{#debugDataVersion}}
-				<li class="c-menu__item a-menu--slow" style='font-size:70%;color:gray;'>debugDataVersion: {{debugDataVersion}}</li>
-			{{/debugDataVersion}}
-
 				<li class="c-menu__item a-menu--slow" ($click)='chooseStudent(.)'>{{last}}, {{first}}</li>
 
 		{{/each}}
