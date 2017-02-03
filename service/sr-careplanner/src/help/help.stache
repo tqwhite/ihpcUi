@@ -20,6 +20,7 @@
 	
 	<div>
 		<div class='videoContainer'>
+			<div>
 				{{#is showThis '1_GettingStarted'}}
 				<video style='height:65vh;' controls='true' src='/api/training/1_GettingStarted.mov'/>
 				{{/is}}
@@ -35,8 +36,11 @@
 				{{#is showThis '5_ManagingIhpCreator'}}
 				<video style='height:65vh;' controls='true' src='/api/training/5_ManagingIhpCreator.mov'/>
 				{{/is}}
+				<div style='color:gray;text-align:center;font-size:80%;width:100%;'>(If the panel above is blank and the black bar says 'loading', wait.)</div>
+
+			</div>
+
 		</div>
-						<div style='color:gray;text-align:center;font-size:80%;width:100%;'>(If the panel above is blank and the black bar says 'loading', wait.)</div>
 
 </div>
 </div>

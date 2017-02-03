@@ -42,7 +42,7 @@ export const ViewModel = Map.extend({
 		window.print();
   	}, 100);
 	}
-	
+	window.scrollTo(0, 0);
   },
 	
 	clearEntryError:function(){

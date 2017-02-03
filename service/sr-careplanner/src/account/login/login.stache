@@ -1,42 +1,35 @@
 <img class='outsideLogo' src='/src/images/ihpLogo.png'>
-
 <div  class="c-alerts__alert c-alerts__alert--primary c-heading c-heading--medium c-heading--medium--center messageBlock">
-{{#message}}
-	<div>{{message}}</div>
-{{/message}}
-{{^message}}
-	<div class='welcomeMessage'>{{welcomeMessage}}</div>
-{{/message}}
+	{{#message}}
+		<div>{{message}}</div>
+	{{/message}}
+	{{^message}}
+		<div class='welcomeMessage'>{{welcomeMessage}}</div>
+	{{/message}}
 </div>
-
- 
-	<div id='controlsWrapper'>
-
-		<div class='fieldContainer'>
-
-					<div class="c-form-element">
-					<div class="c-field-group">
-						<input class="c-field" placeholder="User Name" {($value)}="tmpFormSession.user.username" value='{{newlyRegisteredUserName}}'>
-						<input class="c-field" placeholder="Password" type="password" value='{{testPassword}}' {($value)}="tmpFormSession.user.password">
-					</div>
+<div id='controlsWrapper'>
+	<div class='fieldContainer'>
+		<div class="c-form-element">
+			<div class="c-field-group">
+				<input class="c-field" placeholder="User Name" {($value)}="tmpFormSession.user.username" value='{{newlyRegisteredUserName}}'>
+				<input class="c-field" placeholder="Password" type="password" value='{{testPassword}}' {($value)}="tmpFormSession.user.password">
+			</div>
+		</div>
+	</div>
+	<div class='buttonContainer'>
+		{{#browserLoaded}}
+				<div class='loginButtonContainer'>
+					<button type='submit' class="c-button c-button--primary c-button--small"($click)='createSession(%event)'>Login</button>
 				</div>
-			
-		</div>
-<div class='buttonContainer'>
-	{{#browserLoaded}}
-			<div class='loginButtonContainer'>
-			<button type='submit' class="c-button c-button--primary c-button--small"($click)='createSession(%event)'>Login</button>
-			</div>
-			<div>
-				<p/>
-				<button class="c-button c-button--primary c-button--xsmall" ($click)='setNewPage("account", "register")'>Register</button>
-				<button class="c-button c-button--primary c-button--xsmall" ($click)='setNewPage("account", "forgot-password")'>Forgot Password/User Name</button>
-			</div>
-		</div>
-	{{/browserLoaded}}
-	{{^browserLoaded}}
-	<span class="fa fa-spinner fa-spin basicBlue"/>
-	{{/browserLoaded}}
-</div>						
+				<div>
+					<p/>
+					<button class="c-button c-button--primary c-button--xsmall" ($click)='setNewPage("account", "register")'>Register</button>
+					<button class="c-button c-button--primary c-button--xsmall" ($click)='setNewPage("account", "forgot-password")'>Forgot Password/User Name</button>
+				</div>
 
-
+		{{/browserLoaded}}
+		{{^browserLoaded}}
+		<span class="fa fa-spinner fa-spin basicBlue"/>
+		{{/browserLoaded}}
+	</div>
+</div>

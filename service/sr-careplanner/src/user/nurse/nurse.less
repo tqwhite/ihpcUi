@@ -1,67 +1,47 @@
 user-nurse {
 	display: block;
-	position:relative;
+	position: relative;
+	
 }
+user-nurse .controls {
+	height: 45px;
+	display: flex;
+	justify-content: flex-end;
+	
+	
+	margin: 0vh 3vw 3vh 3vw;
+	padding: 0vh 2vw 2vh 2vw;
+	position: relative;
 
-user-nurse .controls{
-height:105px;
-padding-top:40px;
-}
 
-user-nurse .studentSelector{
-position:absolute;
-right:20vh;
-z-index:100;
-
-
-	display:-webkit-flex;
-	display:flex;
-	
-	flex-direction:column;
-	-webkit-flex-direction: column;
-	
-	/* between items in main direction */
-	justify-content:center; /*flex-start, flex-end, center, space-between, space-around, stretch*/
-	-webkit-justify-content:center;
-	
-	/* between rows or columns */
-	align-content:center; /*flex-start, flex-end, center, space-between, space-around, stretch*/
-	-webkit-align-content:center;
-	
-	align-items:center; /*flex-start, flex-end, center, baseline, stretch*/
-	-webkit-align-items:center;
-	
-	justify-content:space-between; /*flex-start, flex-end, center, space-between, space-around*/
-	-webkit-justify-content:space-between;
-	
-	flex-wrap:wrap; /*nowrap | wrap | wrap-reverse*/
-	-webkit-flex-wrap:wrap;
-	
 
 
 }
-
-user-nurse .modeControl{
-margin-top:5px;
-	display:-webkit-flex;
-	display:flex;
-	-webkit-justify-content:center;
-	justify-content:center;
-	-webkit-align-items:center;
-	align-items:center;
-	flex-direction:row;
-	-webkit-flex-direction: row;
-
+user-nurse .studentSelector {
+	margin-right:120px;
+	z-index: 100;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-content: center;
+	align-items: center;
+	justify-content: space-between;
+	flex-wrap: wrap;
 }
-
-
-html body div#workingContainer user-nurse div.controls div.studentSelector div.modeControl div.c-button.c-button--xsmall.c-button--primary.modeButton{
-margin:0px 5px;
+user-nurse .modeControl {
+	margin-top: 5px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: row;
 }
-html body div#workingContainer user-nurse div.controls div.studentSelector div.modeControl div.c-button.c-button--xsmall.c-button--primary.modeButton.inactive{
-background:rgba(70%,70%,70%, 5);
-cursor:auto;
+user-nurse .modeControl .c-button{
+	margin-right:10px;
 }
-
-
-
+html body div#workingContainer user-nurse div.controls div.studentSelector div.modeControl div.c-button.c-button--xsmall.c-button--primary.modeButton {
+	margin: 0px 5px;
+}
+html body div#workingContainer user-nurse div.controls div.studentSelector div.modeControl div.c-button.c-button--xsmall.c-button--primary.modeButton.inactive {
+	background: rgba(70%, 70%, 70%, 5);
+	cursor: auto;
+}

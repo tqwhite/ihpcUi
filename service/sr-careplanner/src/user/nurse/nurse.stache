@@ -7,28 +7,28 @@
 	<can-import from="sr-careplanner/user/nurse/plan/" />
 <div class='controls'>
 
-	{{#browserLoaded}}	
-		<script src='node_modules/pdfmake/build/vfs_fonts.js'></script>
-	{{/browserLoaded}}
-	
-	<div class='studentSelector'>
-		<user-nurse-student-selector 
-			parent-vm='{.}' 
-				($inserted)="collectChildComponents('user-nurse-student-selector', %viewModel))"
-		/>
+		{{#browserLoaded}}	
+			<script src='node_modules/pdfmake/build/vfs_fonts.js'></script>
+		{{/browserLoaded}}
 		
-	<div class='modeControl'>
-	{{#openStudentRefId}}
-	{{#is currentTool 'viewer'}}
-		<div class='c-button  c-button--xsmall c-button--primary modeButton' ($click)='setTool("editor")'>Editor</div>
-		<div class='c-button  c-button--xsmall c-button--primary modeButton inactive'>PDF Viewer</div>
-	{{/is}}
-	{{#is currentTool 'editor'}}
-		<div class='c-button  c-button--xsmall c-button--primary modeButton inactive' >Editor</div>
-		<div class='c-button  c-button--xsmall c-button--primary modeButton'($click)='setTool("viewer")'>PDF Viewer</div>
-	{{/is}}
-	{{/openStudentRefId}}
-	</div>
+		<div class='modeControl'>
+			{{#openStudentRefId}}
+				{{#is currentTool 'viewer'}}
+					<div class='c-button  c-button--xsmall c-button--primary modeButton' ($click)='setTool("editor")'>Editor</div>
+					<div class='c-button  c-button--xsmall c-button--primary modeButton inactive'>PDF Viewer</div>
+				{{/is}}
+				{{#is currentTool 'editor'}}
+					<div class='c-button  c-button--xsmall c-button--primary modeButton inactive' >Editor</div>
+					<div class='c-button  c-button--xsmall c-button--primary modeButton'($click)='setTool("viewer")'>PDF Viewer</div>
+				{{/is}}
+			{{/openStudentRefId}}
+		</div>
+	
+		<div class='studentSelector'>
+			<user-nurse-student-selector 
+				parent-vm='{.}' 
+					($inserted)="collectChildComponents('user-nurse-student-selector', %viewModel))"
+			/>
 	</div>
 
 </div>

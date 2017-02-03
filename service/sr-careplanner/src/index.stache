@@ -24,8 +24,7 @@
 <account-login-permission-master/>
     <div id='workingContainer'>
 {{#if session.get('role')}}
-    <main-header/>
- <div style='background:url(/src/images/insideDecoration.png) no-repeat;background-size:100% auto;'>   		
+    <main-header/> 		
 	{{#unconfirmedEmailAddress}}
 	<div class='unconfirmedEmailAddressNotification'>Email address ({{unconfirmedEmailAddress}}) has not been confirmed. Click <span class='resend' ($click)='resendConfirmation()'>HERE</span> to resend confirmation email (or check your spam filter).</div>
 	{{/unconfirmedEmailAddress}}
@@ -114,9 +113,8 @@
 		{{/default}}
 		
 	 {{/switch}} 
- </div>
 {{else}}
-<div style='background:url(/src/images/business-background.jpg) no-repeat; background:size:100% 100%;width:100vw;height:100vh;'>
+<div style='background:url(/src/images/business-background.jpg) no-repeat; background-size:100% 100%;width:100%;height:100%;'>
 	  {{#slug}}
 		{{#switch slug}}
 		  {{#case 'register'}}

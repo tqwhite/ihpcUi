@@ -1,9 +1,10 @@
 <img class='outsideLogo' src='/src/images/ihpLogo.png'>
 
 <!-- account/login start -->
-  <div style='width:400pxtext-align:center;' class="c-alerts__alert c-alerts__alert--primary c-heading c-heading--medium c-heading--medium--center">
-    {{{systemProdName}}} Registration
-  </div>
+<div  class="c-alerts__alert c-alerts__alert--primary c-heading c-heading--medium c-heading--medium--center">
+	{{{systemProdName}}} Registration
+</div>
+  
 {{#errorList}}
 	<div class="c-toast notificationToast save error " style='position:relative;height:auto;'>
 		{{#each errorList.user}}
@@ -17,72 +18,67 @@
 		{{{saveMessage}}}
 	</div>
 {{/saveNotification}}
+
 <div id='controlsWrapper'>
-	<div style='width:50vh;margin-bottom:20px;'>
-	
-				<div class="c-form-element">
-				<div class="c-field-group">
-					<input class="c-field" placeholder="Book Number" {($value)}="newUser.bookNumber" fieldName='bookNumber'>
-					<input class="c-field" placeholder="First Name" {($value)}="newUser.first" fieldName='first'>
-					<input class="c-field" placeholder="Last Name" {($value)}="newUser.last" fieldName='last'>
-					<input class="c-field" placeholder="User Name (Your Choice, No Spaces)" {($value)}="newUser.username" fieldName='username'>
-					<input class="c-field" placeholder="Password" type="password" {($value)}="newUser.password" fieldName='password'>
-					<input class="c-field" placeholder="Email Address" {($value)}="newUser.emailAddress" fieldName='emailAddress'>
-					<input class="c-field" placeholder="Repeat Email Address to Confirm" {($value)}="newUser.confirmEmail"  fieldName='confirmEmail'>
+	<div class='formWrapper'>
+		<div class="c-form-element">
+			<div class="c-field-group">
+				<input class="c-field" placeholder="Book Number" {($value)}="newUser.bookNumber" fieldName='bookNumber'>
+				<input class="c-field" placeholder="First Name" {($value)}="newUser.first" fieldName='first'>
+				<input class="c-field" placeholder="Last Name" {($value)}="newUser.last" fieldName='last'>
+				<input class="c-field" placeholder="User Name (Your Choice, No Spaces)" {($value)}="newUser.username" fieldName='username'>
+				<input class="c-field" placeholder="Password" type="password" {($value)}="newUser.password" fieldName='password'>
+				<input class="c-field" placeholder="Email Address" {($value)}="newUser.emailAddress" fieldName='emailAddress'>
+				<input class="c-field" placeholder="Repeat Email Address to Confirm" {($value)}="newUser.confirmEmail"  fieldName='confirmEmail'>
 
-				</div>
 			</div>
-			
-			<div class='termsContainer' ($click)='showModalTerms("#termsText", %event)' title='Click to Enlarge and Print'>
-				<div id='termsText' class='modalContent termsText'> Lorem ipsum dolor sit amet, felis quis mi integer, ante nostra donec aliquam eget dapibus posuere, euismod bibendum eget, commodo nec et dui porro natoque. Massa enim ipsum. Proin ut enim ut suscipit turpis ligula. Cubilia vel, mauris etiam montes labore. Sapien penatibus sed, risus dui lacus, lobortis nec, quis ut tincidunt nunc at elementum. Interdum est aliquam. Adipiscing vitae pellentesque massa placerat aenean vestibulum, ut vel, porttitor velit urna praesent orci convallis, vivamus cum id. Vel malesuada donec a, enim tempus nullam arcu. Wisi dictum integer diam elit nulla vestibulum, nec elit tellus, non porttitor, vestibulum at. Volutpat eu urna, ut diam eu mollis nec mi lectus, vestibulum diam. Libero imperdiet tempus mus orci malesuada sed, nullam duis iaculis mollis in eget, suscipit venenatis ut mattis viverra.
-<br/>
-
-<br/>
-Non sed, et ullamcorper consequat, metus vestibulum mauris, neque nunc iaculis gravida sapien. Tortor tellus at tincidunt sem. Erat gravida, sem sed nunc eu suspendisse. Elit mollis egestas arcu suscipit, non nulla integer suscipit potenti. Dictum velit dapibus nec. Arcu ac morbi dui, pellentesque diam eget, sem quisque diam, phasellus non phasellus. Amet sem felis nibh cubilia pellentesque senectus, nulla eu dicta. Iaculis qui nulla velit euismod dis. In habitasse primis, dui ac nunc blandit, nullam sem duis vestibulum nulla est.
-<br/>
-
-<br/>
-Arcu sem massa curabitur nulla, sit ut proin suspendisse ut omnis, eu praesent nec nec netus, nec nec vitae nunc, eget faucibus quis nec faucibus etiam. Vitae in pede mi tellus, nascetur aliquam quisque. Ipsum auctor, enim leo tellus, quis et sit, nullam ut nam mi etiam sit eleifend, dui id porta. Donec odio curabitur porttitor, libero pellentesque mollis tortor eros proin eget, metus donec luctus vel potenti. Turpis eu lectus malesuada, lectus fames, tempor ante aliquam, feugiat eget, volutpat ipsum etiam quam a sodales in. Metus fames ut, eu pede lectus, libero mauris, diam mauris aliquam. Porttitor egestas dolor vel ligula posuere, neque aliquet enim, non dolor imperdiet non ac lacus, donec duis pede ut commodo odio urna, velit urna phasellus.
-<br/>
-
-<br/>
-Consequat sed convallis. Laoreet posuere rutrum ante aenean torquent. Habitasse eu non felis duis, magnis cras purus, porttitor euismod ac ornare suscipit venenatis pulvinar, dui urna leo, nec diam lectus voluptatem erat a ut. Neque placerat, sit dui volutpat fusce congue nec, malesuada accumsan cras nullam. Quis vestibulum dolor. Dictum purus at. Felis vel luctus, orci vestibulum vel nam, sed purus in odio nec venenatis in, adipiscing augue duis porttitor dapibus proin, fusce facilisi urna. Rutrum suspendisse, eget et gravida tristique aliquam neque, lectus nulla mi nascetur nulla orci lacus. Eleifend aenean ac vitae, elit rhoncus et placerat amet ac amet, posuere et vel elementum sit magna.
-<br/>Non sed, et ullamcorper consequat, metus vestibulum mauris, neque nunc iaculis gravida sapien. Tortor tellus at tincidunt sem. Erat gravida, sem sed nunc eu suspendisse. Elit mollis egestas arcu suscipit, non nulla integer suscipit potenti. Dictum velit dapibus nec. Arcu ac morbi dui, pellentesque diam eget, sem quisque diam, phasellus non phasellus. Amet sem felis nibh cubilia pellentesque senectus, nulla eu dicta. Iaculis qui nulla velit euismod dis. In habitasse primis, dui ac nunc blandit, nullam sem duis vestibulum nulla est.
-<br/>
-
-<br/>
-Arcu sem massa curabitur nulla, sit ut proin suspendisse ut omnis, eu praesent nec nec netus, nec nec vitae nunc, eget faucibus quis nec faucibus etiam. Vitae in pede mi tellus, nascetur aliquam quisque. Ipsum auctor, enim leo tellus, quis et sit, nullam ut nam mi etiam sit eleifend, dui id porta. Donec odio curabitur porttitor, libero pellentesque mollis tortor eros proin eget, metus donec luctus vel potenti. Turpis eu lectus malesuada, lectus fames, tempor ante aliquam, feugiat eget, volutpat ipsum etiam quam a sodales in. Metus fames ut, eu pede lectus, libero mauris, diam mauris aliquam. Porttitor egestas dolor vel ligula posuere, neque aliquet enim, non dolor imperdiet non ac lacus, donec duis pede ut commodo odio urna, velit urna phasellus.
-<br/>
-
-<br/>
-Consequat sed convallis. Laoreet posuere rutrum ante aenean torquent. Habitasse eu non felis duis, magnis cras purus, porttitor euismod ac ornare suscipit venenatis pulvinar, dui urna leo, nec diam lectus voluptatem erat a ut. Neque placerat, sit dui volutpat fusce congue nec, malesuada accumsan cras nullam. Quis vestibulum dolor. Dictum purus at. Felis vel luctus, orci vestibulum vel nam, sed purus in odio nec venenatis in, adipiscing augue duis porttitor dapibus proin, fusce facilisi urna. Rutrum suspendisse, eget et gravida tristique aliquam neque, lectus nulla mi nascetur nulla orci lacus. Eleifend aenean ac vitae, elit rhoncus et placerat amet ac amet, posuere et vel elementum sit magna.
-<br/>Non sed, et ullamcorper consequat, metus vestibulum mauris, neque nunc iaculis gravida sapien. Tortor tellus at tincidunt sem. Erat gravida, sem sed nunc eu suspendisse. Elit mollis egestas arcu suscipit, non nulla integer suscipit potenti. Dictum velit dapibus nec. Arcu ac morbi dui, pellentesque diam eget, sem quisque diam, phasellus non phasellus. Amet sem felis nibh cubilia pellentesque senectus, nulla eu dicta. Iaculis qui nulla velit euismod dis. In habitasse primis, dui ac nunc blandit, nullam sem duis vestibulum nulla est.
-<br/>
-
-<br/>
-Arcu sem massa curabitur nulla, sit ut proin suspendisse ut omnis, eu praesent nec nec netus, nec nec vitae nunc, eget faucibus quis nec faucibus etiam. Vitae in pede mi tellus, nascetur aliquam quisque. Ipsum auctor, enim leo tellus, quis et sit, nullam ut nam mi etiam sit eleifend, dui id porta. Donec odio curabitur porttitor, libero pellentesque mollis tortor eros proin eget, metus donec luctus vel potenti. Turpis eu lectus malesuada, lectus fames, tempor ante aliquam, feugiat eget, volutpat ipsum etiam quam a sodales in. Metus fames ut, eu pede lectus, libero mauris, diam mauris aliquam. Porttitor egestas dolor vel ligula posuere, neque aliquet enim, non dolor imperdiet non ac lacus, donec duis pede ut commodo odio urna, velit urna phasellus.
-<br/>
-
-<br/>
-Consequat sed convallis. Laoreet posuere rutrum ante aenean torquent. Habitasse eu non felis duis, magnis cras purus, porttitor euismod ac ornare suscipit venenatis pulvinar, dui urna leo, nec diam lectus voluptatem erat a ut. Neque placerat, sit dui volutpat fusce congue nec, malesuada accumsan cras nullam. Quis vestibulum dolor. Dictum purus at. Felis vel luctus, orci vestibulum vel nam, sed purus in odio nec venenatis in, adipiscing augue duis porttitor dapibus proin, fusce facilisi urna. Rutrum suspendisse, eget et gravida tristique aliquam neque, lectus nulla mi nascetur nulla orci lacus. Eleifend aenean ac vitae, elit rhoncus et placerat amet ac amet, posuere et vel elementum sit magna.
-<br/>
-</div>
-				<div class='termsNotification'>
-				By clicking the Register button below, you agree to the Terms and Conditions displayed above. 
-				<span class='inlineButton' style='color:rgba(255,255,255, .7)' ($click)='showModalTerms("#termsText", %event, "autoPrint")'>PRINT</span>
-
-				</div>
-			
-			</div>
-			
+		</div>
+		
 	</div>
+		<div class='termsContainer' ($click)='showModalTerms("#termsText", %event)' title='Click to Enlarge and Print'>
+			<div id='termsText' class='modalContent termsText'> Lorem ipsum dolor sit amet, felis quis mi integer, ante nostra donec aliquam eget dapibus posuere, euismod bibendum eget, commodo nec et dui porro natoque. Massa enim ipsum. Proin ut enim ut suscipit turpis ligula. Cubilia vel, mauris etiam montes labore. Sapien penatibus sed, risus dui lacus, lobortis nec, quis ut tincidunt nunc at elementum. Interdum est aliquam. Adipiscing vitae pellentesque massa placerat aenean vestibulum, ut vel, porttitor velit urna praesent orci convallis, vivamus cum id. Vel malesuada donec a, enim tempus nullam arcu. Wisi dictum integer diam elit nulla vestibulum, nec elit tellus, non porttitor, vestibulum at. Volutpat eu urna, ut diam eu mollis nec mi lectus, vestibulum diam. Libero imperdiet tempus mus orci malesuada sed, nullam duis iaculis mollis in eget, suscipit venenatis ut mattis viverra.
+				<br/>
 
-<div class='buttonContainer'> 
-		{{#browserLoaded}}
-	<button class="c-button c-button--primary c-button--xsmall" ($click)='setNewPage("account", "login")'>Login</button>
+				<br/>
+				Non sed, et ullamcorper consequat, metus vestibulum mauris, neque nunc iaculis gravida sapien. Tortor tellus at tincidunt sem. Erat gravida, sem sed nunc eu suspendisse. Elit mollis egestas arcu suscipit, non nulla integer suscipit potenti. Dictum velit dapibus nec. Arcu ac morbi dui, pellentesque diam eget, sem quisque diam, phasellus non phasellus. Amet sem felis nibh cubilia pellentesque senectus, nulla eu dicta. Iaculis qui nulla velit euismod dis. In habitasse primis, dui ac nunc blandit, nullam sem duis vestibulum nulla est.
+				<br/>
 
+				<br/>
+				Arcu sem massa curabitur nulla, sit ut proin suspendisse ut omnis, eu praesent nec nec netus, nec nec vitae nunc, eget faucibus quis nec faucibus etiam. Vitae in pede mi tellus, nascetur aliquam quisque. Ipsum auctor, enim leo tellus, quis et sit, nullam ut nam mi etiam sit eleifend, dui id porta. Donec odio curabitur porttitor, libero pellentesque mollis tortor eros proin eget, metus donec luctus vel potenti. Turpis eu lectus malesuada, lectus fames, tempor ante aliquam, feugiat eget, volutpat ipsum etiam quam a sodales in. Metus fames ut, eu pede lectus, libero mauris, diam mauris aliquam. Porttitor egestas dolor vel ligula posuere, neque aliquet enim, non dolor imperdiet non ac lacus, donec duis pede ut commodo odio urna, velit urna phasellus.
+				<br/>
+
+				<br/>
+				Consequat sed convallis. Laoreet posuere rutrum ante aenean torquent. Habitasse eu non felis duis, magnis cras purus, porttitor euismod ac ornare suscipit venenatis pulvinar, dui urna leo, nec diam lectus voluptatem erat a ut. Neque placerat, sit dui volutpat fusce congue nec, malesuada accumsan cras nullam. Quis vestibulum dolor. Dictum purus at. Felis vel luctus, orci vestibulum vel nam, sed purus in odio nec venenatis in, adipiscing augue duis porttitor dapibus proin, fusce facilisi urna. Rutrum suspendisse, eget et gravida tristique aliquam neque, lectus nulla mi nascetur nulla orci lacus. Eleifend aenean ac vitae, elit rhoncus et placerat amet ac amet, posuere et vel elementum sit magna.
+				<br/>Non sed, et ullamcorper consequat, metus vestibulum mauris, neque nunc iaculis gravida sapien. Tortor tellus at tincidunt sem. Erat gravida, sem sed nunc eu suspendisse. Elit mollis egestas arcu suscipit, non nulla integer suscipit potenti. Dictum velit dapibus nec. Arcu ac morbi dui, pellentesque diam eget, sem quisque diam, phasellus non phasellus. Amet sem felis nibh cubilia pellentesque senectus, nulla eu dicta. Iaculis qui nulla velit euismod dis. In habitasse primis, dui ac nunc blandit, nullam sem duis vestibulum nulla est.
+				<br/>
+
+				<br/>
+				Arcu sem massa curabitur nulla, sit ut proin suspendisse ut omnis, eu praesent nec nec netus, nec nec vitae nunc, eget faucibus quis nec faucibus etiam. Vitae in pede mi tellus, nascetur aliquam quisque. Ipsum auctor, enim leo tellus, quis et sit, nullam ut nam mi etiam sit eleifend, dui id porta. Donec odio curabitur porttitor, libero pellentesque mollis tortor eros proin eget, metus donec luctus vel potenti. Turpis eu lectus malesuada, lectus fames, tempor ante aliquam, feugiat eget, volutpat ipsum etiam quam a sodales in. Metus fames ut, eu pede lectus, libero mauris, diam mauris aliquam. Porttitor egestas dolor vel ligula posuere, neque aliquet enim, non dolor imperdiet non ac lacus, donec duis pede ut commodo odio urna, velit urna phasellus.
+				<br/>
+
+				<br/>
+				Consequat sed convallis. Laoreet posuere rutrum ante aenean torquent. Habitasse eu non felis duis, magnis cras purus, porttitor euismod ac ornare suscipit venenatis pulvinar, dui urna leo, nec diam lectus voluptatem erat a ut. Neque placerat, sit dui volutpat fusce congue nec, malesuada accumsan cras nullam. Quis vestibulum dolor. Dictum purus at. Felis vel luctus, orci vestibulum vel nam, sed purus in odio nec venenatis in, adipiscing augue duis porttitor dapibus proin, fusce facilisi urna. Rutrum suspendisse, eget et gravida tristique aliquam neque, lectus nulla mi nascetur nulla orci lacus. Eleifend aenean ac vitae, elit rhoncus et placerat amet ac amet, posuere et vel elementum sit magna.
+				<br/>Non sed, et ullamcorper consequat, metus vestibulum mauris, neque nunc iaculis gravida sapien. Tortor tellus at tincidunt sem. Erat gravida, sem sed nunc eu suspendisse. Elit mollis egestas arcu suscipit, non nulla integer suscipit potenti. Dictum velit dapibus nec. Arcu ac morbi dui, pellentesque diam eget, sem quisque diam, phasellus non phasellus. Amet sem felis nibh cubilia pellentesque senectus, nulla eu dicta. Iaculis qui nulla velit euismod dis. In habitasse primis, dui ac nunc blandit, nullam sem duis vestibulum nulla est.
+				<br/>
+
+				<br/>
+				Arcu sem massa curabitur nulla, sit ut proin suspendisse ut omnis, eu praesent nec nec netus, nec nec vitae nunc, eget faucibus quis nec faucibus etiam. Vitae in pede mi tellus, nascetur aliquam quisque. Ipsum auctor, enim leo tellus, quis et sit, nullam ut nam mi etiam sit eleifend, dui id porta. Donec odio curabitur porttitor, libero pellentesque mollis tortor eros proin eget, metus donec luctus vel potenti. Turpis eu lectus malesuada, lectus fames, tempor ante aliquam, feugiat eget, volutpat ipsum etiam quam a sodales in. Metus fames ut, eu pede lectus, libero mauris, diam mauris aliquam. Porttitor egestas dolor vel ligula posuere, neque aliquet enim, non dolor imperdiet non ac lacus, donec duis pede ut commodo odio urna, velit urna phasellus.
+				<br/>
+
+				<br/>
+				Consequat sed convallis. Laoreet posuere rutrum ante aenean torquent. Habitasse eu non felis duis, magnis cras purus, porttitor euismod ac ornare suscipit venenatis pulvinar, dui urna leo, nec diam lectus voluptatem erat a ut. Neque placerat, sit dui volutpat fusce congue nec, malesuada accumsan cras nullam. Quis vestibulum dolor. Dictum purus at. Felis vel luctus, orci vestibulum vel nam, sed purus in odio nec venenatis in, adipiscing augue duis porttitor dapibus proin, fusce facilisi urna. Rutrum suspendisse, eget et gravida tristique aliquam neque, lectus nulla mi nascetur nulla orci lacus. Eleifend aenean ac vitae, elit rhoncus et placerat amet ac amet, posuere et vel elementum sit magna.
+				<br/>
+			</div>
+			<div class='termsNotification'>
+				By clicking the Register button below, you agree to the Terms and Conditions displayed above. 
+				<span class='inlineButton' ($click)='showModalTerms("#termsText", %event, "autoPrint")'>PRINT TERMS</span>
+			</div>
+		</div>
+
+	<div class='buttonContainer'> 
+			{{#browserLoaded}}
+		<button class="c-button c-button--primary c-button--xsmall" ($click)='setNewPage("account", "login")'>Login</button>
 		<button class="c-button c-button--primary c-button--small rightJustified" id="registerButton">Register</button>
-</div>
 		{{/browserLoaded}}
 		
 		{{^browserLoaded}}
@@ -90,8 +86,6 @@ Consequat sed convallis. Laoreet posuere rutrum ante aenean torquent. Habitasse 
 		{{/browserLoaded}}
 	</div>
 	
-	</div>
-	</div>
 </div>
 
 {{#if showTerms}}
