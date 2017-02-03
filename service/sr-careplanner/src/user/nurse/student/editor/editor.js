@@ -26,6 +26,12 @@ export const ViewModel = Map.extend({
 		student: {
 			value: Student,
 			type: '*',
+			set:function(value){
+				
+console.dir({"value":value});
+return value;
+
+			},
 			note:'bitballs called for type:Student but that causes error'
 		},
 	},

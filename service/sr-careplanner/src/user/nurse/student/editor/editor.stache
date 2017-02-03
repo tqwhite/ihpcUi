@@ -44,10 +44,8 @@
 			<div class='inputBlock halfBlock'>
 		
 				<div class="c-field-group">
-					<div class='labeledInput'>
-					<span class='lightLabel'>birthday</span><input class="c-field c-field--xsmall" type="date"  placeholder="mm/dd/yy" {($value)}="student.birthday" />
-					<span class='lightLabel'>grade level</span><input class="c-field c-field--xsmall"  {($value)}="student.gradeLevel" />
-				</div>
+					<div class='labeledInput'><span class='lightLabel'>birthday</span><input class="c-field c-field--xsmall" type="date"  placeholder="mm/dd/yy" {($value)}="student.birthday" /></div>
+					<div class='labeledInput'><span class='lightLabel'>grade level</span><input class="c-field c-field--xsmall" placeholder="anything" {($value)}="student.gradeLevel" /></div>
 					<div class='labeledInput'><span class='lightLabel'>gender</span><input class="c-field c-field--xsmall" type="text"  placeholder="eg, m, f, trans male, trans female" {($value)}="student.gender" /></div>
 					<div class='labeledInput'><span class='lightLabel'>idNumber</span><input class="c-field c-field--xsmall" type="text"  placeholder="anything" {($value)}="student.idNumber" /></div>
 					<div class='labeledInput'><span class='lightLabel'>school</span><input class="c-field c-field--xsmall" type="text"  placeholder="anything" {($value)}="student.school" /></div>
@@ -78,9 +76,10 @@
 					</div>
 					
 					<div class="inlineSet">
-						<span style='flex-grow:2;' class='lightLabel'>ICD-9-CM</span>
+						<span style='flex-grow:2;' class='lightLabel'>ICD-10-CM</span>
 
-						<input style='flex-grow:9;BORDER-BOTTOM:1PX SOLID #ADADAD;BORDER-RIGHT:1PX SOLID #ADADAD;' class="c-field c-field--xsmall" type="text"  placeholder="IDC9CM" {($value)}="student.IDC9CM" />
+						<input style='flex-grow:9;BORDER-BOTTOM:1PX SOLID #ADADAD;BORDER-RIGHT:1PX SOLID #ADADAD;' class="c-field c-field--xsmall" type="text"  placeholder="ICD-10-CM" {($value)}="student.icdCode" />
+						<input type='hidden'  {($value)}="student.icdCodingSystem" value='ICD-10-CM'/>
 					</div>
 
 			<div class='inlineSet' style='margin-top:5px;'>
