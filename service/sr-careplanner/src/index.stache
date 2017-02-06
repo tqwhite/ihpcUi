@@ -148,7 +148,7 @@
  	
 		<div style='font-size:8pt;color:red;margin-top:30px;'><b>DANGER:</b>these four buttons overwrite the database entirely. It puts it back into the original debugging state with no backup. They will not work on Prod.</div>
 		<button ($click)='reinitializeDb("student")' style='' tabindex='-1'>reinitialize student db</button>
-		<button ($click)='reinitializeDb("boilerplate")' style='margin-left:20px;' tabindex='-1'>reinitialize boilerplate db</button>
+		[ use refreshBoilerplates() ] 
 		<button ($click)='reinitializeDb("plan")' style='margin-left:20px;' tabindex='-1'>reinitialize plan db</button>
 		<button ($click)='reinitializeDb("user")' style='margin-left:20px;' tabindex='-1'>reinitialize user db</button>
 
