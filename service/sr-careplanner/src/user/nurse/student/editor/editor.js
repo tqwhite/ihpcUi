@@ -110,7 +110,6 @@ this.attr('student', new Student(testStudent));
 				
 					this.attr('parentVm').attr('openStudentNameString', student.attr('last')+', '+student.attr('first'));
 					this.attr('parentVm').attr('currentStudent', student);
-					this.attr('parentVm').attr('newStudentFlag', false); //consecutive new students leaves flag true, page never redraws
 
 				},
 				(err) => {

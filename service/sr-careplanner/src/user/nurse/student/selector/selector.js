@@ -45,9 +45,21 @@ export const ViewModel = Map.extend({
 		this.attr('parentVm').attr('openStudentRefId', qtools.newGuid());	
 		this.attr('parentVm').attr('workingPlan', {});	
 		this.attr('parentVm').attr('openStudentNameString', 'Creating Student');
+		
+		/*
+			When an existing student is chosen, it's values overwrite the all the previous
+			student's fields. When New Student is chosen, it's empty and doesn't overwrite
+			whatever was there previously. The following prevents previous values from
+			remaining if New Student is chosen twice in a row (with no intervening editing
+			of a previously existing student).
+		*/
 
 		setTimeout(()=>{
-		this.attr('parentVm').attr('newStudentFlag', true); //redisplay after dom is settled
+		this.attr('parentVm').attr('newStudentFlag', false); //remove student editor
+
+			setTimeout(()=>{
+			this.attr('parentVm').attr('newStudentFlag', true); //display new student editor
+			}, 1);
 		}, 1);
 	},
 
