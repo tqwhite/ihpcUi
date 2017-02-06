@@ -112,3 +112,5 @@ import 'sr-careplanner/account/change-password/change-password_test';
 import 'sr-careplanner/account/forgot-password/forgot-password_test';
 
 import 'sr-careplanner/decorations/boilerplate-files/boilerplate-files_test';
+
+import 'sr-careplanner/forms/forms_test';

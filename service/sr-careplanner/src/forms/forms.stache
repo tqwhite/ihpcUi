@@ -1,0 +1,18 @@
+<div class='formList centervertical'>
+<div class='instructions'>
+
+Some Helpful Forms
+
+</div>
+
+<div class='buttons'>
+<a href='/api/_forms/Form1.pdf' target='_blank'><button class="c-button c-button--primary c-button--small" >Form 1 (view)</button></a>
+<a href='/api/_forms/Form1.pdf?download=true' target='_blank'><button class="c-button c-button--primary c-button--small" >Form 1 (download)</button></a>
+</div>
+
+<div class='buttons'>
+<a href='/api/_forms/Form2.pdf'><button class="c-button c-button--primary c-button--small" >Form 2 (view)</button></a>
+<a href='/api/_forms/Form2.pdf?download=true'><button class="c-button c-button--primary c-button--small" >Form 2 (download)</button></a>
+</div>
+
+</div>

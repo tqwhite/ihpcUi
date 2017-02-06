@@ -11,6 +11,7 @@
     <can-import from="sr-careplanner/user/editor/" />
 	<can-import from="sr-careplanner/account/login/" />
 	<can-import from="sr-careplanner/account/login/permissionMaster/" />
+	<can-import from="sr-careplanner/forms/" />
 	
     <title>{{title}}</title>
   </head>
@@ -60,6 +61,11 @@
 		{{#case "nurse"}}
 		<can-import from="sr-careplanner/user/nurse/" />
 			  <user-nurse/>
+		{{/case}}
+	   
+		{{#case "forms"}}
+		<can-import from="sr-careplanner/forms/" />
+			  <forms/>
 		{{/case}}
 	   
 		{{#case "setup"}}
