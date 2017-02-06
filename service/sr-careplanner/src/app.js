@@ -6,6 +6,7 @@ import User from "sr-careplanner/models/user";
 import ConfirmEmail from "sr-careplanner/models/confirm-email";
 import ResendEmail from "sr-careplanner/models/resend-email";
 import FeedBackSupport from "sr-careplanner/models/feedback-support";
+import KeepAlive from "sr-careplanner/models/sessionKeepAlive";
 
 const AppViewModel = Map.extend({
 	define: {
@@ -73,6 +74,7 @@ const AppViewModel = Map.extend({
 			if (value && value.claims && value.claims.expiration){
 				const expirationTime=value.claims.expiration;
 				const interval=value.claims.expiration-(new Date());
+				this.attr('sessionInterval', interval);
 				if (this.previousSessionTimeoutId){
 					clearTimeout(this.previousSessionTimeoutId);
 				}
@@ -82,6 +84,9 @@ const AppViewModel = Map.extend({
 		}
 				return value;
 			}
+		},
+		sessionInterval:{
+			serialize:false
 		},
 		welcomeMessage:{
 			get:function(value='Welcome'){
@@ -195,13 +200,19 @@ const AppViewModel = Map.extend({
 		closingBox: {
 			value: "<div class='closingX'><div>X</div></div>",
 			serialize: false
+		},
+		showResendNotification:{
+			value:'',
+			serialize:false
 		}
 	},
+	sessionInterval:'set in token.js',
 	setNewPage: function(page, slug, subsection) {
 		this.attr('welcomeMessage', '');
 		this.attr('page', page);
 		this.attr('slug', slug);
 		this.attr('subsection', subsection);
+		$(window).trigger('app.setNewPage');
 	},
 	logout: function(queryString='') {
 		window.location.href = '/'+queryString;
@@ -363,6 +374,11 @@ const AppViewModel = Map.extend({
 
 
 	},
+	
+	renewSession:function(){
+  		KeepAlive.getList();
+  	},
+	
 	testElement: function() {
 		window['AppViewModel'] = this;
 		console.log('added: window[' + "'" + 'AppViewModel' + "'" + ']');

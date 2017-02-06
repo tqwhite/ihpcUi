@@ -16,6 +16,7 @@
 			<div class='navLink' ($click)='showContents("3_WorkingWithPlans")'>Working with Plans</div>
 			<div class='navLink' ($click)='showContents("4_CustomizingPlans")'>Customizing Plans</div>
 			<div class='navLink' ($click)='showContents("5_ManagingIhpCreator")'>Managing IHP Creator</div>
+			{{startVideoEventMonitoring()}}
 		</div>
 	
 	<div>
