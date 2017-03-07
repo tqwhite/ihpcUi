@@ -36,38 +36,505 @@
 		
 	</div>
 		<div class='termsContainer' ($click)='showModalTerms("#termsText", %event)' title='Click to Enlarge and Print'>
-			<div id='termsText' class='modalContent termsText'> Lorem ipsum dolor sit amet, felis quis mi integer, ante nostra donec aliquam eget dapibus posuere, euismod bibendum eget, commodo nec et dui porro natoque. Massa enim ipsum. Proin ut enim ut suscipit turpis ligula. Cubilia vel, mauris etiam montes labore. Sapien penatibus sed, risus dui lacus, lobortis nec, quis ut tincidunt nunc at elementum. Interdum est aliquam. Adipiscing vitae pellentesque massa placerat aenean vestibulum, ut vel, porttitor velit urna praesent orci convallis, vivamus cum id. Vel malesuada donec a, enim tempus nullam arcu. Wisi dictum integer diam elit nulla vestibulum, nec elit tellus, non porttitor, vestibulum at. Volutpat eu urna, ut diam eu mollis nec mi lectus, vestibulum diam. Libero imperdiet tempus mus orci malesuada sed, nullam duis iaculis mollis in eget, suscipit venenatis ut mattis viverra.
-				<br/>
+			<div id='termsText' class='modalContent termsText'> 
+			
+			
+<style>
+<!--
+ /* Font Definitions */
+@font-face
+	{font-family:Arial;
+	panose-1:2 11 6 4 2 2 2 2 2 4;}
+@font-face
+	{font-family:"Courier New";
+	panose-1:2 7 3 9 2 2 5 2 4 4;}
+@font-face
+	{font-family:Wingdings;
+	panose-1:5 0 0 0 0 0 0 0 0 0;}
+@font-face
+	{font-family:"__ __";}
+@font-face
+	{font-family:"Cambria Math";
+	panose-1:0 0 0 0 0 0 0 0 0 0;}
+@font-face
+	{font-family:Cambria;
+	panose-1:2 4 5 3 5 4 6 3 2 4;}
+@font-face
+	{font-family:"Lucida Grande";
+	panose-1:2 11 6 0 4 5 2 2 2 4;}
+ /* Style Definitions */
+p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{margin:0in;
+	margin-bottom:.0001pt;
+	font-size:12.0pt;
+	font-family:Cambria;}
+p.MsoCommentText, li.MsoCommentText, div.MsoCommentText
+	{margin:0in;
+	margin-bottom:.0001pt;
+	font-size:12.0pt;
+	font-family:Cambria;}
+p.MsoBodyText, li.MsoBodyText, div.MsoBodyText
+	{margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:5.0pt;
+	margin-bottom:.0001pt;
+	text-indent:71.95pt;
+	font-size:12.0pt;
+	font-family:"Times New Roman";}
+p.MsoCommentSubject, li.MsoCommentSubject, div.MsoCommentSubject
+	{margin:0in;
+	margin-bottom:.0001pt;
+	font-size:10.0pt;
+	font-family:Cambria;
+	font-weight:bold;}
+p.MsoAcetate, li.MsoAcetate, div.MsoAcetate
+	{margin:0in;
+	margin-bottom:.0001pt;
+	font-size:9.0pt;
+	font-family:"Lucida Grande";}
+p.Pa0, li.Pa0, div.Pa0
+	{margin:0in;
+	margin-bottom:.0001pt;
+	line-height:12.05pt;
+	text-autospace:none;
+	font-size:12.0pt;
+	font-family:Arial;}
+span.A5
+	{font-family:Arial;
+	color:black;
+	font-weight:bold;}
+span.A4
+	{font-family:Arial;
+	color:black;}
+span.BalloonTextChar
+	{font-family:"Lucida Grande";}
+span.CommentSubjectChar
+	{font-weight:bold;}
+span.BodyTextChar
+	{font-family:"Times New Roman";}
+.MsoChpDefault
+	{font-family:Cambria;}
+@page WordSection1
+	{size:8.5in 11.0in;
+	margin:1.0in 1.0in 1.0in 1.0in;}
+div.WordSection1
+	{page:WordSection1;}
+ /* List Definitions */
+ol
+	{margin-bottom:0in;}
+ul
+	{margin-bottom:0in;}
+-->
+</style>
 
-				<br/>
-				Non sed, et ullamcorper consequat, metus vestibulum mauris, neque nunc iaculis gravida sapien. Tortor tellus at tincidunt sem. Erat gravida, sem sed nunc eu suspendisse. Elit mollis egestas arcu suscipit, non nulla integer suscipit potenti. Dictum velit dapibus nec. Arcu ac morbi dui, pellentesque diam eget, sem quisque diam, phasellus non phasellus. Amet sem felis nibh cubilia pellentesque senectus, nulla eu dicta. Iaculis qui nulla velit euismod dis. In habitasse primis, dui ac nunc blandit, nullam sem duis vestibulum nulla est.
-				<br/>
 
-				<br/>
-				Arcu sem massa curabitur nulla, sit ut proin suspendisse ut omnis, eu praesent nec nec netus, nec nec vitae nunc, eget faucibus quis nec faucibus etiam. Vitae in pede mi tellus, nascetur aliquam quisque. Ipsum auctor, enim leo tellus, quis et sit, nullam ut nam mi etiam sit eleifend, dui id porta. Donec odio curabitur porttitor, libero pellentesque mollis tortor eros proin eget, metus donec luctus vel potenti. Turpis eu lectus malesuada, lectus fames, tempor ante aliquam, feugiat eget, volutpat ipsum etiam quam a sodales in. Metus fames ut, eu pede lectus, libero mauris, diam mauris aliquam. Porttitor egestas dolor vel ligula posuere, neque aliquet enim, non dolor imperdiet non ac lacus, donec duis pede ut commodo odio urna, velit urna phasellus.
-				<br/>
+<div class=WordSection1>
 
-				<br/>
-				Consequat sed convallis. Laoreet posuere rutrum ante aenean torquent. Habitasse eu non felis duis, magnis cras purus, porttitor euismod ac ornare suscipit venenatis pulvinar, dui urna leo, nec diam lectus voluptatem erat a ut. Neque placerat, sit dui volutpat fusce congue nec, malesuada accumsan cras nullam. Quis vestibulum dolor. Dictum purus at. Felis vel luctus, orci vestibulum vel nam, sed purus in odio nec venenatis in, adipiscing augue duis porttitor dapibus proin, fusce facilisi urna. Rutrum suspendisse, eget et gravida tristique aliquam neque, lectus nulla mi nascetur nulla orci lacus. Eleifend aenean ac vitae, elit rhoncus et placerat amet ac amet, posuere et vel elementum sit magna.
-				<br/>Non sed, et ullamcorper consequat, metus vestibulum mauris, neque nunc iaculis gravida sapien. Tortor tellus at tincidunt sem. Erat gravida, sem sed nunc eu suspendisse. Elit mollis egestas arcu suscipit, non nulla integer suscipit potenti. Dictum velit dapibus nec. Arcu ac morbi dui, pellentesque diam eget, sem quisque diam, phasellus non phasellus. Amet sem felis nibh cubilia pellentesque senectus, nulla eu dicta. Iaculis qui nulla velit euismod dis. In habitasse primis, dui ac nunc blandit, nullam sem duis vestibulum nulla est.
-				<br/>
+<p class=Pa0><span class=A5><span style='font-size:14.0pt'>Limited-Use License </span></span></p>
 
-				<br/>
-				Arcu sem massa curabitur nulla, sit ut proin suspendisse ut omnis, eu praesent nec nec netus, nec nec vitae nunc, eget faucibus quis nec faucibus etiam. Vitae in pede mi tellus, nascetur aliquam quisque. Ipsum auctor, enim leo tellus, quis et sit, nullam ut nam mi etiam sit eleifend, dui id porta. Donec odio curabitur porttitor, libero pellentesque mollis tortor eros proin eget, metus donec luctus vel potenti. Turpis eu lectus malesuada, lectus fames, tempor ante aliquam, feugiat eget, volutpat ipsum etiam quam a sodales in. Metus fames ut, eu pede lectus, libero mauris, diam mauris aliquam. Porttitor egestas dolor vel ligula posuere, neque aliquet enim, non dolor imperdiet non ac lacus, donec duis pede ut commodo odio urna, velit urna phasellus.
-				<br/>
+<p class=MsoNormal>&nbsp;</p>
 
-				<br/>
-				Consequat sed convallis. Laoreet posuere rutrum ante aenean torquent. Habitasse eu non felis duis, magnis cras purus, porttitor euismod ac ornare suscipit venenatis pulvinar, dui urna leo, nec diam lectus voluptatem erat a ut. Neque placerat, sit dui volutpat fusce congue nec, malesuada accumsan cras nullam. Quis vestibulum dolor. Dictum purus at. Felis vel luctus, orci vestibulum vel nam, sed purus in odio nec venenatis in, adipiscing augue duis porttitor dapibus proin, fusce facilisi urna. Rutrum suspendisse, eget et gravida tristique aliquam neque, lectus nulla mi nascetur nulla orci lacus. Eleifend aenean ac vitae, elit rhoncus et placerat amet ac amet, posuere et vel elementum sit magna.
-				<br/>Non sed, et ullamcorper consequat, metus vestibulum mauris, neque nunc iaculis gravida sapien. Tortor tellus at tincidunt sem. Erat gravida, sem sed nunc eu suspendisse. Elit mollis egestas arcu suscipit, non nulla integer suscipit potenti. Dictum velit dapibus nec. Arcu ac morbi dui, pellentesque diam eget, sem quisque diam, phasellus non phasellus. Amet sem felis nibh cubilia pellentesque senectus, nulla eu dicta. Iaculis qui nulla velit euismod dis. In habitasse primis, dui ac nunc blandit, nullam sem duis vestibulum nulla est.
-				<br/>
+<p class=Pa0><span class=A4><b><span style='font-size:11.0pt'>NOTICE TO
+LICENSEE: </span></b></span><span class=A4><span style='font-size:11.0pt'>This
+is a legal document between you and Sunrise River Press. It is important that
+you read this License before using IHP Creator. By clicking the Register button,
+you agree to be bound by the terms of this License.&nbsp; If you do not agree
+with these terms, do not click the Register button. </span></span></p>
 
-				<br/>
-				Arcu sem massa curabitur nulla, sit ut proin suspendisse ut omnis, eu praesent nec nec netus, nec nec vitae nunc, eget faucibus quis nec faucibus etiam. Vitae in pede mi tellus, nascetur aliquam quisque. Ipsum auctor, enim leo tellus, quis et sit, nullam ut nam mi etiam sit eleifend, dui id porta. Donec odio curabitur porttitor, libero pellentesque mollis tortor eros proin eget, metus donec luctus vel potenti. Turpis eu lectus malesuada, lectus fames, tempor ante aliquam, feugiat eget, volutpat ipsum etiam quam a sodales in. Metus fames ut, eu pede lectus, libero mauris, diam mauris aliquam. Porttitor egestas dolor vel ligula posuere, neque aliquet enim, non dolor imperdiet non ac lacus, donec duis pede ut commodo odio urna, velit urna phasellus.
-				<br/>
+<p class=MsoNormal>&nbsp;</p>
 
-				<br/>
-				Consequat sed convallis. Laoreet posuere rutrum ante aenean torquent. Habitasse eu non felis duis, magnis cras purus, porttitor euismod ac ornare suscipit venenatis pulvinar, dui urna leo, nec diam lectus voluptatem erat a ut. Neque placerat, sit dui volutpat fusce congue nec, malesuada accumsan cras nullam. Quis vestibulum dolor. Dictum purus at. Felis vel luctus, orci vestibulum vel nam, sed purus in odio nec venenatis in, adipiscing augue duis porttitor dapibus proin, fusce facilisi urna. Rutrum suspendisse, eget et gravida tristique aliquam neque, lectus nulla mi nascetur nulla orci lacus. Eleifend aenean ac vitae, elit rhoncus et placerat amet ac amet, posuere et vel elementum sit magna.
-				<br/>
+<p class=MsoNormal><b><span style='font-size:11.0pt;font-family:Arial'>SUBSCRIPTION:</span></b>&nbsp;
+<span style='font-size:11.0pt;font-family:Arial'>Upon registration you will
+receive a one year subscription to IHP Creator.&nbsp; Your subscription will
+include a limited nonexclusive license to use IHP Creator and to store student data
+selected by you on a cloud-based server located in the U.S. and maintained by a
+contract vendor of Sunrise River Press for use in connection with IHP Creator
+(“IHP Server”).&nbsp; Your subscription will be activated on the date you register,
+and will expire one year from that date, regardless of when you begin use of
+IHP Creator.&nbsp; You may purchase successive one year renewals of your
+subscription by payment of the nonrefundable subscription rate in effect at the
+time of each renewal.&nbsp; You will be responsible for any sales, use or value
+added taxes assessed by any government or government agency or entity in
+connection with your subscription or any renewal.&nbsp; If you do not renew
+your subscription at the end of a term, you will no longer have access to IHP
+Creator or the IHP Server.</span></p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=Pa0><span class=A4><b><span style='font-size:11.0pt'>LICENSE: </span></b></span><span
+class=A4><span style='font-size:11.0pt'>Sunrise River Press grants you a
+limited nonexclusive, nontransferable license to use IHP Creator, subject to
+the following terms, conditions and restrictions:</span></span></p>
+
+<p class=MsoNormal style='margin-left:81.0pt;text-indent:-.25in;line-height:
+125%;vertical-align:top'><span style='font-size:10.0pt;line-height:125%;
+font-family:"Courier New";color:#333333'>o<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;
+</span></span><span style='font-size:11.0pt;line-height:125%;font-family:Arial;
+color:#333333'>Your use of IHP Creator is subject to the terms set forth in
+this Agreement, including any modifications to those terms which may be made at
+any time by Sunrise River Press. </span></p>
+
+<p class=MsoNormal style='margin-left:81.0pt;text-indent:-.25in;line-height:
+125%;vertical-align:top'><span style='font-size:10.0pt;line-height:125%;
+font-family:"Courier New";color:#333333'>o<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;
+</span></span><span style='font-size:11.0pt;line-height:125%;font-family:Arial;
+color:#333333'>You may use IHP Creator only for internal purposes, and you may not
+use IHP Creator to provide, create, or develop any software, instructional
+materials, or multi-person presentations for or render or perform any training
+or other services to any party outside of your organization.</span></p>
+
+<p class=MsoNormal style='margin-left:81.0pt;text-indent:-.25in;line-height:
+125%;vertical-align:top'><span style='font-size:10.0pt;line-height:125%;
+font-family:"Courier New";color:#333333'>o<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;
+</span></span><span style='font-size:11.0pt;line-height:125%;font-family:Arial;
+color:#333333'>You may copy, modify, adapt, distribute, display and create
+derivative works from the forms and materials contained in IHP Creator, but
+only in connection with the development of student healthcare plans for internal
+use within your organization.</span></p>
+
+<p class=MsoNormal style='margin-left:81.0pt;text-indent:-.25in;line-height:
+125%;vertical-align:top'><span style='font-size:10.0pt;line-height:125%;
+font-family:"Courier New";color:#333333'>o<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;
+</span></span><span style='font-size:11.0pt;line-height:125%;font-family:Arial;
+color:#333333'>You may not remove or alter any copyright, trademark or other
+proprietary notices or labels from any material included in IHP Creator.</span></p>
+
+<p class=Pa0><span class=A4><b><span style='font-size:11.0pt'>DATA STORAGE:</span></b></span><span
+class=A4><span style='font-size:11.0pt'>&nbsp; Your subscription to IHP Creator
+includes the ability to store and access student data on the IHP Server.&nbsp;
+You will be solely responsible for the collection and selection of data to be
+stored on the IHP Server and for compliance with FERPA, PPRA and any other
+federal, state or local laws or regulations applicable to the collection, selection
+and storage of student data.&nbsp; Y</span></span><span style='font-size:11.0pt'>ou
+will not store on the IHP Server any data, information or material which is illegal,
+defamatory, malicious, harmful, or discriminatory based on race, sex, religion,
+nationality, disability, sexual orientation, or age.&nbsp; You also will not
+attempt to circumvent or disable any of the security features of the IHP Server.&nbsp;
+<span class=A4>You will retain ownership of and responsibility for all data which
+you store on the IHP Server.&nbsp; You may act as an intermediary to provide
+access to stored data to a parent, student or other party, provided that you
+will be solely responsible for complying with applicable law when granting any
+such access.&nbsp; Upon the expiration or termination of your subscription, all
+student data stored by you on the IHP Server and not transferred or removed
+within 90 days will be permanently erased .</span></span></p>
+
+<p class=Pa0><span class=A4><span style='font-size:11.0pt'>&nbsp;</span></span></p>
+
+<p class=MsoNormal><span class=A4><b><span style='font-size:11.0pt;font-family:
+Cambria'>REVISIONS:</span></b></span><span class=A4><span style='font-size:
+11.0pt;font-family:Cambria'>&nbsp; Sunrise River Press may update, revise, add
+material to and delete material from IHP Creator at any time.</span></span></p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal><b><span style='font-size:11.0pt;font-family:Arial'>DISCLAIMER
+OF WARRANTY:</span></b><span style='font-size:11.0pt;font-family:Arial'>&nbsp; IHP
+CREATOR AND THE IHP SERVER ARE PROVIDED “AS IS” AND “AS AVAILABLE.”&nbsp; EXCEPT
+AS PROVIDED ABOVE, SUNRISE RIVER PRESS SHALL NOT BE LIABLE FOR ANY DELAY IN OR
+INTERRUPTION OF YOUR ACCESS TO IHP CREATOR OR THE IHP SERVER OR FOR ANY
+TRANSMISSION ERRORS, EQUIPMENT OR SOFTWARE INCOMPATIBILITIES, FORCE MAJEURE OR
+OTHER FAILURE OF PERFORMANCE, AND SHALL NOT BE REQUIRED TO MAKE ANY CHANGES TO
+ITS EQUIPMENT OR TO IHP CREATOR TO ENSURE COMPATIBILITY WITH ANY EQUIPMENT OR
+SOFTWARE USED BY YOU.&nbsp; SUNRISE RIVER PRESS MAKES NO<span style='letter-spacing:
+-.05pt'> </span><span style='letter-spacing:.05pt'>W</span>ARRA<span
+style='letter-spacing:-.05pt'>N</span>TY<span style='letter-spacing:-.05pt'> </span>OR
+REPRESE<span style='letter-spacing:-.05pt'>N</span>T<span style='letter-spacing:
+-.05pt'>A</span><span style='letter-spacing:.05pt'>T</span><span
+style='letter-spacing:-.3pt'>I</span>ON<span style='letter-spacing:.05pt'> O</span>F<span
+style='letter-spacing:-.1pt'> </span>A<span style='letter-spacing:-.05pt'>N</span>Y<span
+style='letter-spacing:.05pt'> K</span><span style='letter-spacing:-.2pt'>I</span>N<span
+style='letter-spacing:-.05pt'>D</span>, <span style='letter-spacing:.05pt'>E</span>XPRESS
+OR<span style='letter-spacing:.1pt'> </span><span style='letter-spacing:-.3pt'>I</span>M<span
+style='letter-spacing:.15pt'>P</span>L<span style='letter-spacing:-.2pt'>I</span>E<span
+style='letter-spacing:-.05pt'>D</span>, <span style='letter-spacing:.15pt'>W</span><span
+style='letter-spacing:-.2pt'>I</span>TH<span style='letter-spacing:.05pt'> </span>RESPECT
+TO IHP CREATOR <span style='letter-spacing:-.05pt'>O</span>R YOUR ABILITY TO
+ACCE<span style='letter-spacing:-.1pt'>S</span>S OR USE <span style='letter-spacing:
+-.1pt'>IHP CREATOR OR THE IHP SERVER</span>,<span style='letter-spacing:.1pt'> </span><span
+style='letter-spacing:-.2pt'>I</span><span style='letter-spacing:.2pt'>N</span><span
+style='letter-spacing:.1pt'>C</span><span style='letter-spacing:-.3pt'>L</span>U<span
+style='letter-spacing:.15pt'>D</span><span style='letter-spacing:-.2pt'>I</span>NG,
+WITHOUT LIMITATION,<span style='letter-spacing:-.05pt'> </span>A<span
+style='letter-spacing:.05pt'>N</span>Y <span style='letter-spacing:.05pt'>W</span>ARRA<span
+style='letter-spacing:-.05pt'>N</span>TY<span style='letter-spacing:-.05pt'> </span>OR
+REP<span style='letter-spacing:-.1pt'>R</span>ESE<span style='letter-spacing:
+-.05pt'>N</span>T<span style='letter-spacing:-.05pt'>A</span><span
+style='letter-spacing:.05pt'>T</span><span style='letter-spacing:-.2pt'>I</span>ON<span
+style='letter-spacing:-.05pt'> </span>AS TO <span style='letter-spacing:.05pt'>T</span>HE<span
+style='letter-spacing:-.05pt'> </span>S<span style='letter-spacing:.05pt'>U</span><span
+style='letter-spacing:-.2pt'>I</span>T<span style='letter-spacing:-.05pt'>A</span><span
+style='letter-spacing:.1pt'>B</span>I<span style='letter-spacing:-.05pt'>L</span><span
+style='letter-spacing:-.2pt'>I</span>T<span style='letter-spacing:-.05pt'>Y</span>,<span
+style='letter-spacing:.1pt'> </span>OPERA<span style='letter-spacing:.05pt'>T</span><span
+style='letter-spacing:-.2pt'>I</span>O<span style='letter-spacing:-.05pt'>N</span>,
+OR PER<span style='letter-spacing:-.05pt'>F</span>ORMANCE OF<span
+style='letter-spacing:-.1pt'> I</span>HP CREATOR OR THE IHP SERVER, T<span
+style='letter-spacing:-.05pt'>H</span>E COM<span style='letter-spacing:.1pt'>P</span>A<span
+style='letter-spacing:.05pt'>T</span><span style='letter-spacing:-.2pt'>I</span><span
+style='letter-spacing:.1pt'>B</span>I<span style='letter-spacing:-.05pt'>L</span><span
+style='letter-spacing:-.2pt'>I</span>TY<span style='letter-spacing:.05pt'> </span>OF<span
+style='letter-spacing:-.1pt'> IHP CREATOR OR THE IHP SERVER </span><span
+style='letter-spacing:.15pt'>W</span><span style='letter-spacing:-.3pt'>I</span>TH<span
+style='letter-spacing:-.05pt'> </span><span style='letter-spacing:.05pt'>A</span>NY
+COMPUTER, OPERA<span style='letter-spacing:.05pt'>T</span><span
+style='letter-spacing:-.2pt'>I</span>NG<span style='letter-spacing:-.05pt'> </span>SYSTEM
+OR <span style='letter-spacing:.05pt'>S</span>O<span style='letter-spacing:
+-.1pt'>F</span>TWARE, OR A<span style='letter-spacing:-.05pt'>N</span>Y WA<span
+style='letter-spacing:-.15pt'>R</span>RA<span style='letter-spacing:-.05pt'>N</span>TY<span
+style='letter-spacing:-.05pt'> </span>OF SUITABILITY, MERCH<span
+style='letter-spacing:-.05pt'>A</span>N<span style='letter-spacing:-.05pt'>T</span>ABI<span
+style='letter-spacing:-.05pt'>L</span><span style='letter-spacing:-.2pt'>I</span><span
+style='letter-spacing:.05pt'>T</span>Y, TITLE, NONINFRINGEMENT<span
+style='letter-spacing:.05pt'> </span>OR F<span style='letter-spacing:-.2pt'>I</span>T<span
+style='letter-spacing:-.05pt'>N</span>ESS <span style='letter-spacing:-.1pt'>F</span>OR
+A <span style='letter-spacing:.1pt'>P</span>AR<span style='letter-spacing:.1pt'>T</span><span
+style='letter-spacing:-.3pt'>I</span>C<span style='letter-spacing:.05pt'>U</span><span
+style='letter-spacing:-.15pt'>L</span>AR PURPOSE. <span style='letter-spacing:
+.2pt'>&nbsp;SUNRISE RIVER PRESS </span><span style='letter-spacing:.05pt'>A</span><span
+style='letter-spacing:-.3pt'>L</span><span style='letter-spacing:.15pt'>S</span>O
+D<span style='letter-spacing:-.05pt'>O</span>ES N<span style='letter-spacing:
+-.05pt'>O</span>T WARRA<span style='letter-spacing:-.05pt'>N</span>T T<span
+style='letter-spacing:-.05pt'>H</span>AT<span style='letter-spacing:-.05pt'>
+IHP CREATOR, </span>THE IHP &nbsp;SERVER OR ANY OTHER SERVER <span
+style='letter-spacing:-.05pt'>F</span>ROM<span style='letter-spacing:.05pt'> WH</span><span
+style='letter-spacing:-.3pt'>I</span>CH IHP CREATOR MAY<span style='letter-spacing:
+-.05pt'> </span><span style='letter-spacing:-.1pt'>B</span>E A<span
+style='letter-spacing:.1pt'>C</span>CESSED<span style='letter-spacing:-.05pt'> </span><span
+style='letter-spacing:.05pt'>W</span><span style='letter-spacing:-.2pt'>I</span>LL<span
+style='letter-spacing:-.05pt'> </span><span style='letter-spacing:-.1pt'>B</span>E
+UNINTERUPTED, COMPLETELY SECURE, OR <span style='letter-spacing:.05pt'>E</span>R<span
+style='letter-spacing:.1pt'>R</span>OR<span style='letter-spacing:-.05pt'>-</span><span
+style='letter-spacing:-.1pt'>F</span>REE OR THAT ALL DEFECTS WILL BE CORRECTED.&nbsp;
+YOU ACKNOWLEDGE THAT SUNRISE RIVER PRESS DOES NOT CONTROL OR MONITOR THE
+TRANSFER OF DATA OVER THE INTERNET, AND THAT INTERNET ACCESSIBILITY CARRIES
+WITH IT THE RISK THAT ANY DATA TRANSMITTED BY YOU MAY BE LOST OR COMPROMISED.</span></p>
+
+<p class=MsoNormal><span style='font-size:11.0pt;font-family:Arial'>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-size:11.0pt;font-family:Arial'>NEITHER SUNRISE
+RIVER PRESS NOR ITS SERVICE PROVIDERS WILL BE LIABLE FOR UNAUTHORIZED ACCESS
+(I.E., HACKING) INTO THE IHP SERVER OR YOUR TRANSMISSION FACILITIES, PREMISES
+OR EQUIPMENT, OR FOR UNAUTHORIZED ACCESS TO DATA OR INFORMATION STORED ON THE
+IHP SERVER, EXCEPT TO THE EXTENT THAT THIS DISCLAIMER IS PROHIBITED BY
+APPLICABLE LAW.</span></p>
+
+<p class=MsoNormal style='text-indent:76.95pt'><span style='font-family:"Times New Roman"'>&nbsp;</span></p>
+
+<p class=MsoBodyText><b><span style='font-size:11.0pt;font-family:Arial'>LIMITATION
+OF LIABILITY:&nbsp; </span></b><span style='font-size:11.0pt;font-family:Arial'>SUNRISE
+RIVER PRESS AND ITS SERVICE PROVIDERS SHALL NO</span><span lang=EN
+style='font-size:11.0pt;font-family:Arial'>T </span><span style='font-size:
+11.0pt;font-family:Arial;letter-spacing:-.1pt'>B</span><span style='font-size:
+11.0pt;font-family:Arial'>E<span style='letter-spacing:.2pt'> </span>L<span
+style='letter-spacing:-.2pt'>I</span><span style='letter-spacing:.05pt'>A</span>B<span
+style='letter-spacing:-.15pt'>L</span>E<span style='letter-spacing:.05pt'> </span><span
+style='letter-spacing:-.1pt'>F</span><span style='letter-spacing:.05pt'>O</span>R
+A<span style='letter-spacing:-.05pt'>N</span>Y PUNITIVE, <span
+style='letter-spacing:-.2pt'>I</span><span style='letter-spacing:.05pt'>ND</span><span
+style='letter-spacing:-.2pt'>I</span>RECT,<span style='letter-spacing:.1pt'> </span><span
+style='letter-spacing:-.2pt'>I</span>N<span style='letter-spacing:.1pt'>C</span><span
+style='letter-spacing:-.2pt'>I</span>D<span style='letter-spacing:.05pt'>E</span>N<span
+style='letter-spacing:.05pt'>TA</span><span style='letter-spacing:-.3pt'>L</span>,
+SPE<span style='letter-spacing:.1pt'>C</span><span style='letter-spacing:-.2pt'>I</span><span
+style='letter-spacing:.05pt'>A</span>L<span style='letter-spacing:-.15pt'> </span>OR
+CO<span style='letter-spacing:.05pt'>N</span>SE<span style='letter-spacing:
+-.05pt'>Q</span>U<span style='letter-spacing:-.05pt'>E</span>N<span
+style='letter-spacing:.05pt'>T</span><span style='letter-spacing:-.2pt'>I</span><span
+style='letter-spacing:.05pt'>A</span>L<span style='letter-spacing:-.15pt'> </span><span
+style='letter-spacing:.05pt'>D</span>AM<span style='letter-spacing:.05pt'>A</span>G<span
+style='letter-spacing:-.05pt'>E</span>S OR EXPENSES OF<span style='letter-spacing:
+-.1pt'> </span>A<span style='letter-spacing:.05pt'>N</span>Y <span
+style='letter-spacing:.05pt'>K</span><span style='letter-spacing:-.2pt'>I</span>ND<span
+style='letter-spacing:.05pt'> </span>A<span style='letter-spacing:.1pt'>R</span><span
+style='letter-spacing:-.3pt'>I</span><span style='letter-spacing:.25pt'>S</span><span
+style='letter-spacing:-.2pt'>I</span><span style='letter-spacing:.05pt'>N</span>G
+<span style='letter-spacing:-.05pt'>O</span>UT<span style='letter-spacing:-.05pt'>
+</span><span style='letter-spacing:.05pt'>O</span>F<span style='letter-spacing:
+-.1pt'> </span>OR<span style='letter-spacing:.1pt'> </span><span
+style='letter-spacing:-.2pt'>I</span>N CO<span style='letter-spacing:.05pt'>N</span>N<span
+style='letter-spacing:-.05pt'>E</span>C<span style='letter-spacing:.05pt'>T</span><span
+style='letter-spacing:-.2pt'>I</span>ON<span style='letter-spacing:.1pt'> </span><span
+style='letter-spacing:.15pt'>W</span><span style='letter-spacing:-.2pt'>I</span>TH<span
+style='letter-spacing:-.05pt'> IHP CREATOR O</span>R YOUR ACCESS TO OR USE OF<span
+style='letter-spacing:-.1pt'> IHP CREATOR OR THE IHP SERVER</span>, <span
+style='letter-spacing:.05pt'>W</span>H<span style='letter-spacing:-.05pt'>E</span>T<span
+style='letter-spacing:-.05pt'>H</span>ER <span style='letter-spacing:.05pt'>S</span>UCH
+<span style='letter-spacing:-.05pt'>D</span>AM<span style='letter-spacing:-.05pt'>A</span>G<span
+style='letter-spacing:-.05pt'>E</span>S ARE <span style='letter-spacing:-.1pt'>B</span>ASED
+<span style='letter-spacing:-.05pt'>O</span>N CO<span style='letter-spacing:
+-.05pt'>N</span>TRACT, T<span style='letter-spacing:-.05pt'>O</span>RT, ST<span
+style='letter-spacing:.1pt'>R</span><span style='letter-spacing:-.3pt'>I</span>CT<span
+style='letter-spacing:.05pt'> </span>L<span style='letter-spacing:-.2pt'>I</span><span
+style='letter-spacing:.05pt'>A</span>BI<span style='letter-spacing:-.05pt'>L</span><span
+style='letter-spacing:-.2pt'>I</span><span style='letter-spacing:.05pt'>T</span>Y
+<span style='letter-spacing:-.05pt'>O</span>R <span style='letter-spacing:.05pt'>O</span>T<span
+style='letter-spacing:-.05pt'>H</span>ER<span style='letter-spacing:.2pt'>W</span><span
+style='letter-spacing:-.3pt'>I</span>SE, E<span style='letter-spacing:-.05pt'>V</span>EN<span
+style='letter-spacing:.05pt'> </span><span style='letter-spacing:-.2pt'>I</span>F<span
+style='letter-spacing:.1pt'> </span>A<span style='letter-spacing:-.05pt'>D</span><span
+style='letter-spacing:.05pt'>V</span><span style='letter-spacing:-.2pt'>I</span>SED<span
+style='letter-spacing:-.05pt'> </span><span style='letter-spacing:.05pt'>O</span>F<span
+style='letter-spacing:-.1pt'> </span>T<span style='letter-spacing:-.05pt'>H</span>E
+POS<span style='letter-spacing:.05pt'>S</span><span style='letter-spacing:-.2pt'>I</span>BI<span
+style='letter-spacing:-.05pt'>L</span><span style='letter-spacing:-.2pt'>I</span><span
+style='letter-spacing:.05pt'>T</span>Y <span style='letter-spacing:.05pt'>O</span>F<span
+style='letter-spacing:-.1pt'> </span>SUCH <span style='letter-spacing:-.05pt'>D</span>AM<span
+style='letter-spacing:-.05pt'>A</span>G<span style='letter-spacing:-.05pt'>E</span>S.
+<span style='letter-spacing:.2pt'>&nbsp;</span><span style='letter-spacing:
+-.2pt'>I</span>N<span style='letter-spacing:.05pt'> </span>NO<span
+style='letter-spacing:.05pt'> </span>E<span style='letter-spacing:-.05pt'>V</span>E<span
+style='letter-spacing:-.05pt'>N</span>T SH<span style='letter-spacing:.05pt'>A</span>LL<span
+style='letter-spacing:-.15pt'> </span>T<span style='letter-spacing:-.05pt'>H</span>E
+<span style='letter-spacing:.05pt'>T</span>O<span style='letter-spacing:-.05pt'>T</span><span
+style='letter-spacing:.05pt'>A</span>L<span style='letter-spacing:-.15pt'> </span>A<span
+style='letter-spacing:-.05pt'>G</span>GRE<span style='letter-spacing:.05pt'>G</span>A<span
+style='letter-spacing:-.05pt'>T</span>E L<span style='letter-spacing:-.2pt'>I</span><span
+style='letter-spacing:.05pt'>A</span><span style='letter-spacing:.1pt'>B</span>I<span
+style='letter-spacing:-.2pt'>L</span>ITY<span style='letter-spacing:-.05pt'> </span><span
+style='letter-spacing:.05pt'>O</span>F<span style='letter-spacing:-.05pt'> </span>SUNRISE
+RIVER PRESS <span style='letter-spacing:-.1pt'>F</span>OR A<span
+style='letter-spacing:-.05pt'>N</span>Y <span style='letter-spacing:.1pt'>C</span><span
+style='letter-spacing:-.15pt'>L</span><span style='letter-spacing:.2pt'>A</span><span
+style='letter-spacing:-.2pt'>I</span><span style='letter-spacing:.1pt'>M</span>S,<span
+style='letter-spacing:.1pt'> </span><span style='letter-spacing:-.3pt'>L</span>OS<span
+style='letter-spacing:.05pt'>S</span>ES OR D<span style='letter-spacing:-.05pt'>A</span>MA<span
+style='letter-spacing:-.05pt'>G</span>ES A<span style='letter-spacing:.1pt'>R</span><span
+style='letter-spacing:-.3pt'>I</span><span style='letter-spacing:.15pt'>S</span><span
+style='letter-spacing:-.2pt'>I</span><span style='letter-spacing:.05pt'>N</span>G
+<span style='letter-spacing:-.05pt'>O</span>UT OF<span style='letter-spacing:
+-.1pt'> </span>A<span style='letter-spacing:.05pt'>N</span>Y <span
+style='letter-spacing:-.15pt'>B</span>RE<span style='letter-spacing:-.05pt'>A</span>CH
+<span style='letter-spacing:-.05pt'>O</span>R<span style='letter-spacing:.1pt'>
+</span>TER<span style='letter-spacing:.1pt'>M</span><span style='letter-spacing:
+-.3pt'>I</span><span style='letter-spacing:.05pt'>N</span>A<span
+style='letter-spacing:.05pt'>T</span><span style='letter-spacing:-.2pt'>I</span>ON<span
+style='letter-spacing:.05pt'> </span>OF<span style='letter-spacing:-.1pt'> </span><span
+style='letter-spacing:.05pt'>TH</span><span style='letter-spacing:-.2pt'>I</span>S<span
+style='letter-spacing:.2pt'> </span>A<span style='letter-spacing:-.05pt'>G</span>REEME<span
+style='letter-spacing:.05pt'>N</span>T E<span style='letter-spacing:-.05pt'>X</span>C<span
+style='letter-spacing:.05pt'>E</span>ED<span style='letter-spacing:-.05pt'> </span>T<span
+style='letter-spacing:-.05pt'>H</span>E T<span style='letter-spacing:-.05pt'>O</span>T<span
+style='letter-spacing:.05pt'>A</span>L AM<span style='letter-spacing:-.05pt'>O</span>U<span
+style='letter-spacing:-.05pt'>N</span>T P<span style='letter-spacing:.05pt'>A</span><span
+style='letter-spacing:-.2pt'>I</span>D<span style='letter-spacing:.05pt'> </span><span
+style='letter-spacing:-.1pt'>B</span>Y YOU FOR<span style='letter-spacing:.15pt'>
+</span>T<span style='letter-spacing:-.05pt'>H</span>E<span style='letter-spacing:
+-.05pt'> SUBSCRIPTION TERM DURING WHICH SUCH </span><span style='letter-spacing:
+.1pt'>C</span><span style='letter-spacing:-.15pt'>L</span><span
+style='letter-spacing:.05pt'>A</span>IM,<span style='letter-spacing:.05pt'> </span><span
+style='letter-spacing:-.3pt'>L</span>OSS<span style='letter-spacing:.05pt'> </span>OR
+D<span style='letter-spacing:-.05pt'>A</span>MA<span style='letter-spacing:
+-.05pt'>G</span>E AROSE OR OCCURRED. </span></p>
+
+<p class=MsoBodyText><span style='font-size:10.0pt;font-family:Arial;
+color:#333333'>&nbsp;</span></p>
+
+<p class=MsoNormal><b><span style='font-size:11.0pt;font-family:Arial'>INDEMNIFICATION:</span></b>&nbsp;
+<span style='font-size:11.0pt;font-family:Arial'>You will be solely responsible
+for the use of your subscription and for any data or information selected, submitted,
+generated or stored by or through your use of IHP Creator and the IHP Server.&nbsp;
+You will indemnify and hold harmless Sunrise River Press from and against any
+and all claims, liabilities, damages, losses, expenses (including attorney’s
+fees and court costs) arising from or incurred in connection with any breach by
+you of any term of this Agreement or any information, materials or data which
+you submit, generate or store by or through IHP Creator, including but not
+limited to any alleged violation by you of <span class=A4>FERPA, PPRA or any
+other federal, state or local law or regulation applicable to the selection,
+storage, disclosure or release of any student data</span> or any claim for
+copyright or trademark infringement, defamation, invasion of privacy or breach
+of confidentiality.</span></p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal><b><span style='font-size:11.0pt;font-family:Arial'>OWNERSHIP:</span>&nbsp;
+</b><span style='font-size:11.0pt;font-family:Arial'>IHP Creator is being
+licensed and not sold to you.&nbsp; All copyrights and other rights in and to IHP
+Creator, all contents of IHP Creator, and all Sunrise River Press trade names
+and trademarks displayed or used in connection with IHP Creator are and shall remain
+the property of Sunrise River Press.&nbsp; You will retain ownership of all
+student data stored by you on the IHP Server.&nbsp; </span></p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=Pa0><span class=A4><b><span style='font-size:11.0pt'>TERMINATION: </span></b></span><span
+class=A4><span style='font-size:11.0pt'>Sunrise River Press reserves the right
+to suspend or terminate your subscription to IHP Creator and your access to the
+IHP Server at any time and without prior notice i</span></span><span class=A4><span
+style='font-size:11.0pt'>f you breach any term of this Agreement or if Sunrise
+River Press determines, in its sole discretion, that: (i) you have stored data
+on the IHP Server or allowed access to data stored on the IHP Server in
+violation of applicable law; (ii) your use of the IHP Server poses a threat to
+the security of the data of others stored on the IHP Server; or (iii) your use
+of the IHP Server may subject Sunrise River Press to civil or criminal
+liability.&nbsp; Sunrise River Press also reserves the right to terminate your
+subscription to IHP Creator and your access to the IHP Server without cause,
+upon thirty (30) days’ notice, provided that in the event of such termination
+Sunrise River Press will refund your unused subscription fee for the balance of
+the subscription term and will allow you thirty (30) days to remove or transfer
+all data which you have stored on the IHP Server.&nbsp; Upon the expiration or
+termination of your subscription, all student data stored by you on the IHP
+Server will be permanently erased.</span></span></p>
+
+<p class=MsoBodyText style='margin-left:1.5in;text-indent:0in'><span
+style='font-size:11.0pt;font-family:Arial;color:#333333'>&nbsp;</span></p>
+
+<p class=MsoBodyText style='margin-left:0in;text-indent:0in'><b><span
+style='font-size:11.0pt;font-family:Arial'>MISCELLANEOUS:&nbsp; </span></b><span
+style='font-size:11.0pt;font-family:Arial'>This agreement represents the entire
+agreement for your subscription to IHP Creator.&nbsp; This agreement will be
+governed by and construed in accordance with the laws of the State of
+Minnesota, without regard to its conflicts of laws principles.&nbsp; If any
+provision of this agreement is deemed invalid by a court of competent
+jurisdiction, the remaining provisions shall remain in full force and
+effect.&nbsp; No waiver of any term of this agreement shall be deemed a further
+or continuing waiver of such term or any other term, and any failure by Sunrise
+River Press to assert any right or provision under this agreement shall not
+constitute a waiver of such right or provision.&nbsp; Sunrise River Press may
+assign this agreement, in whole or in part, at any time without notice to you. You
+may not assign this agreement or transfer your subscription.</span></p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=Pa0><span class=A4><b><span style='font-size:11.0pt'>Sunrise River
+Press and the authors of IHP Creator have made a conscientious effort to ensure
+that the forms, processes, and procedures included in IHP Creator are in
+accordance with accepted school nursing practices at the time of publication. However,
+neither Sunrise River Press nor any author represents or warrants that IHP
+Creator will be suitable for your purposes or that any individual healthcare
+plan or other result or outcome generated by your use of IHP Creator will be
+suitable, accurate or complete.&nbsp; As is the case with health care in
+general and school nursing in particular, each specific health issue and each
+individual question combine to form a unique situation, which may require
+additional plans, analysis and solutions beyond the generic information or
+results offered by a program such as IHP Creator.&nbsp; IHP Creator is designed
+to be used in combination with and not as a substitute or replacement for professional
+analysis and evaluation.</span></b></span></p>
+
+<p class=Pa0><span class=A4><b><span style='font-size:11.0pt'>&nbsp;</span></b></span></p>
+
+<p class=Pa0><span class=A4><b><span style='font-size:11.0pt'>&nbsp;</span></b></span></p>
+
+<p class=Pa0><span class=A4><span style='font-size:11.0pt'>Sunrise River Press </span></span></p>
+
+<p class=Pa0><span class=A4><span style='font-size:11.0pt'>838 Lake St S</span></span></p>
+
+<p class=MsoNormal>Forest Lake, MN 55025</p>
+
+<p class=MsoNormal><span class=A4><span style='font-size:11.0pt;font-family:
+Cambria'>(651) 277-1400</span></span></p>
+
+<p class=MsoNormal><span class=A4><span style='font-size:11.0pt;font-family:
+Cambria'>&nbsp;</span></span></p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal style='margin-left:.5in;line-height:125%;vertical-align:
+top'>&nbsp;</p>
+
+</div>
+
+
 			</div>
 			<div class='termsNotification'>
 				By clicking the Register button below, you agree to the Terms and Conditions displayed above. 
