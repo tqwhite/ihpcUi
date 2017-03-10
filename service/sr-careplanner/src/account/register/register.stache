@@ -27,7 +27,7 @@
 				<input class="c-field" placeholder="First Name" {($value)}="newUser.first" fieldName='first'>
 				<input class="c-field" placeholder="Last Name" {($value)}="newUser.last" fieldName='last'>
 				<input class="c-field" placeholder="User Name (Your Choice, No Spaces)" {($value)}="newUser.username" fieldName='username'>
-				<input class="c-field" placeholder="Password" type="password" {($value)}="newUser.password" fieldName='password'>
+				<input class="c-field" placeholder="Password (EIGHT characters, FERPA!)" type="password" {($value)}="newUser.password" fieldName='password'>
 				<input class="c-field" placeholder="Email Address" {($value)}="newUser.emailAddress" fieldName='emailAddress'>
 				<input class="c-field" placeholder="Repeat Email Address to Confirm" {($value)}="newUser.confirmEmail"  fieldName='confirmEmail'>
 

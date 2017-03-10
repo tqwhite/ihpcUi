@@ -42,7 +42,7 @@ export const User = can.Map.extend({
 							errorText: fieldName + " cannot be empty"
 						});
 					}
-					if (!this.attr(fieldName) || !this.attr(fieldName).match(/@/)) {
+					if (!this.attr(fieldName) || !this.attr(fieldName).match(/@/) || this.attr(fieldName).length<3) {
 
 						errorList.push({
 							fieldName: fieldName,

@@ -9,12 +9,6 @@ import User from "sr-careplanner/models/user";
 
 export const ViewModel = Map.extend({
   define: {
-	testPassword:{
-		value:'', //all are the same for now
-	},
-	readyIndicator:{
-		value:'true', //all are the same for now
-	},
 	tmpFormSession: {
 		value: function(){
 				//placeholder for two-way binding to the form in login.stache
@@ -25,6 +19,8 @@ export const ViewModel = Map.extend({
 		  value: ''
 		}
 	  },
+	
+	
 
 	createSession: function(ev, options){
 		if(ev) {
@@ -56,5 +52,17 @@ export const ViewModel = Map.extend({
 export default Component.extend({
   tag: 'account-login',
   viewModel: ViewModel,
-  template
+  template,
+  events:{
+  	'keypress':function(el, event){
+		if (event.which==13){
+console.log("event.which="+event.which);
+
+
+
+
+		this.viewModel.createSession(event);
+		}
+  	}
+  }
 });

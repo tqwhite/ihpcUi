@@ -9,13 +9,16 @@ export const Register = can.Map.extend({
 		let name;
 		const errorList = [];
 		const checkValidation = (fieldName) => {
+console.log("fieldName="+fieldName);
+
+
 			switch (fieldName) {
 				case 'bookNumber':
 					if (!this.attr(fieldName) || this.attr(fieldName).length!=6) {
 
 						errorList.push({
 							fieldName: fieldName,
-							errorText: fieldName + " is exactly six characters long"
+							errorText: fieldName + " must be exactly six characters long"
 						});
 					}
 					break;
@@ -23,6 +26,21 @@ export const Register = can.Map.extend({
 					if (this.attr('pwhash')){
 						break;
 					}
+					if (!this.attr('refId') && !this.attr(fieldName)) {
+
+						errorList.push({
+							fieldName: fieldName,
+							errorText: fieldName + " cannot be empty"
+						});
+					}
+					if (!this.attr('refId') && this.attr(fieldName)<1) {
+
+						errorList.push({
+							fieldName: fieldName,
+							errorText: fieldName + " must be more than eight characters (more is better)"
+						});
+					}
+					break;
 				case 'first':
 				case 'last':
 				case 'username':
@@ -43,7 +61,7 @@ export const Register = can.Map.extend({
 						});
 					break;
 					}
-					if (!this.attr(fieldName) || !this.attr(fieldName).match(/@/)) {
+					if (!this.attr(fieldName) || !this.attr(fieldName).match(/@/) || this.attr(fieldName).length<3) {
 
 						errorList.push({
 							fieldName: fieldName,
@@ -70,7 +88,7 @@ export const Register = can.Map.extend({
 		if (fieldName) {
 			checkValidation(fieldName);
 		} else {
-			['first', 'last', 'username', 'password', 'emailAddress', 'confirmEmail'].map(checkValidation);
+			['bookNumber', 'first', 'last', 'username', 'password', 'emailAddress', 'confirmEmail'].map(checkValidation);
 		}
 		return errorList;
 

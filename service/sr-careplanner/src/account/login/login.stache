@@ -12,7 +12,7 @@
 		<div class="c-form-element">
 			<div class="c-field-group">
 				<input class="c-field" placeholder="User Name" {($value)}="tmpFormSession.user.username" value='{{newlyRegisteredUserName}}'>
-				<input class="c-field" placeholder="Password" type="password" value='{{testPassword}}' {($value)}="tmpFormSession.user.password">
+				<input class="c-field" placeholder="Password" type="password" {($value)}="tmpFormSession.user.password">
 			</div>
 		</div>
 	</div>
@@ -33,3 +33,4 @@
 		{{/browserLoaded}}
 	</div>
 </div>
+	  		
