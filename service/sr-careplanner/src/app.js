@@ -206,7 +206,6 @@ const AppViewModel = Map.extend({
 			serialize:false
 		}
 	},
-	sessionInterval:'set in token.js',
 	setNewPage: function(page, slug, subsection) {
 		this.attr('welcomeMessage', '');
 		this.attr('page', page);
