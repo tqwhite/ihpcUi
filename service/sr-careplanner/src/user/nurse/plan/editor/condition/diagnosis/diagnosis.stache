@@ -47,7 +47,9 @@
 		</div>
 		<div class='o-panel-container'>
 			<nav class="c-nav c-nav--top c-nav--inline">
-				<span class="c-nav__content">Outcomes</span>
+				<span class="c-nav__content">Expected Student Outcomes
+				 <span style='font-style:italic;font-size:80%;color:#666;padding:.5em 2em;'>To make expected student outcomes measurable, add the number of days per week, percentage of the time, or specific date, as appropriate to the statement.</span>
+				</span>
 			  </nav>
 			<textarea id='outcomes_{{diagnosis.refId}}' class="c-field c-editor o-panel o-panel--nav-top textareaWidth"  {($value)}="diagnosis.outcomes">
 			</textarea>

@@ -1,9 +1,10 @@
 
 <!-- decorations/main-header start -->
 
-<img src='/src/images/logoCorner.png' style='height:100px;width:100px;'>
+<img src='/src/images/logoCorner.png' style='width:100px;position:absolute;top:0px;left:7px;z-index:1000;'>
 
 <ul id='mainNav' class='c-nav c-nav--inline' >
+  <li style='width:100px;display:inline-block;'></li>
   <li class='c-nav__item' ($click)='setNewPage("nurse")'>Student Healthcare Plans</a></li>
   <li class='c-nav__item' ($click)='setNewPage("forms")'>Forms</a></li>
   

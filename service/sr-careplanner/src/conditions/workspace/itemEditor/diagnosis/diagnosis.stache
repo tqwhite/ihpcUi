@@ -32,7 +32,7 @@ Include Automatically: <input type="checkbox" {($checked)}="workingDiagnosis.inc
 	</div>
 	<div class='o-panel-container'>
 		<nav class="c-nav c-nav--top c-nav--inline">
-			<span class="c-nav__content">Outcomes</span>
+			<span class="c-nav__content">Expected Student Outcomes</span>
 		  </nav>
 		<textarea class="c-field c-editor o-panel o-panel--nav-top"  {($value)}="workingDiagnosis.outcomes">
 		</textarea>
