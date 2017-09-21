@@ -17,7 +17,15 @@
 
 	<div class='segment'>
 		<div class='title'>
-			Student Info {{annotation}} 
+			<div>Student Info {{annotation}}</div> <div style='color:rgba(66, 165, 245, 0.5);margin-right:40px;'>
+			
+			{{#if student.inactive}}
+			Uncheck to make student active:
+			{{/else}}
+			Check to make student inactive:
+			{{/if}}
+			
+			 <input type="checkbox" {($checked)}="student.inactive"></div>
 		</div>
 		<div class='entry'>
 			<div class='inputBlock halfBlock'>

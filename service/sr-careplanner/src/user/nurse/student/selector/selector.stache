@@ -5,11 +5,37 @@
 	<ul id='studentSelector' class="c-menu c-menu--high a-menu">
 
 		{{#each students.value}}
-				<li class="c-menu__item a-menu--slow" ($click)='chooseStudent(.)'>{{last}}, {{first}}</li>
-
+				{{#is inactive true}}
+				
+				{{#is showingInactive true}}
+					<li class="c-menu__item a-menu--slow inactive" ($click)='chooseStudent(.)'>{{last}}, {{first}} ( i )</li>
+				{{/is}}
+				{{#else}}
+					<li class="c-menu__item a-menu--slow" ($click)='chooseStudent(.)'>{{last}}, {{first}}</li>
+				{{/is}}
 		{{/each}}
 		
-				<li class="c-menu__item a-menu--slow" ($click)='createNewStudent()'>New Student</li>
+				<li class="c-menu__item a-menu--slow control" ($click)='toggleInactive()'>
+				
+					{{#showingInactive}}
+						Stop Showing Inactive Students
+					{{/showingInactive}}
+					{{^showingInactive}}
+					
+					
+						Show {{inactiveCount}} Inactive 
+						
+						{{#is inactiveCount 1}}
+							Student
+						{{#else}}
+							Students
+						{{/is}}
+						
+					{{/showingInactive}}
+				
+				
+				</li>
+				<li class="c-menu__item a-menu--slow control" ($click)='createNewStudent()'>New Student</li>
 
 
 	</ul>

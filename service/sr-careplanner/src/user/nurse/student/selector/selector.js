@@ -7,6 +7,9 @@ import qtools from "node_modules/qtools-minus/";
 
 export const ViewModel = Map.extend({
 	define: {
+		showingInactive:{
+			value:false
+		},
 		message: {
 			value: 'This is the user-nurse-student-selector component'
 		},
@@ -14,8 +17,6 @@ export const ViewModel = Map.extend({
 			value: ''
 		}
 	},
-	
-	
 	
 	activateMenu: function(event) {
 		event.stopPropagation();
@@ -36,6 +37,10 @@ export const ViewModel = Map.extend({
 		this.attr('parentVm').attr('workingPlan', {});
 		//plan/control/selector initializes the this.attr('parentVm').attr('workingPlan') 
 		//based on either user input or most recent date
+	},
+	
+	toggleInactive:function(){
+		this.attr('showingInactive', !this.attr('showingInactive'));
 	},
 
 	createNewStudent: function() {

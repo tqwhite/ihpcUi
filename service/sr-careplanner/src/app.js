@@ -94,6 +94,13 @@ const AppViewModel = Map.extend({
 					value=window.location.search.match(/^\?welcomeMessage=(.*)\&*$/)[1];
 					value=value.replace(/\%20/g, ' ');
 				}
+					value=value.replace(/</g, '&lt;').replace(/>/g, '&gt;');
+					if (window.location.href.match(/demo/)){
+						value+="<div style='color:orange;font-size:50%;'>DEMO SITE</div>";
+					}
+					if (window.location.href.match(/local/)){
+						value+="<div style='color:green;font-size:50%;'>DEV SITE</div>";
+					}
 				return value;
 			},
 			set:function(value){
@@ -145,8 +152,22 @@ const AppViewModel = Map.extend({
 			},
 			serialize: false
 		},
+		databaseName: {
+			get: function() {
+				const token=this.attr('token');
+				if (token.claims && token.claims.databaseName){
+				return token.claims.databaseName;
+				}
+				else{
+				return 'none';
+				}
+			},
+			serialize: false
+		},
 		pdfmakePresent: {
-			value: true,
+			get:function(){
+				return typeof(pdfMake)!='undefined'
+			},
 			serialize: false
 		},
 		newlyRegisteredUserName: {
@@ -225,50 +246,6 @@ const AppViewModel = Map.extend({
 		}
 		callback = (typeof (callback) == 'function') ? callback : clearModal
 		$('body').one('click', callback);
-	},
-	reinitializeDb: function(database) {
-		const currPage = this.attr('page');
-		const initializers = {
-			student: () => {
-				$.ajax({
-					url: '/api/student/reinitialize/'
-				}).done((err, result) => {
-					this.setNewPage('xxx');
-					this.setNewPage(currPage); //trigger reload
-
-				});
-			},
-			boilerplate: () => {
-				$.ajax({
-					url: '/api/boilerplate/reinitialize/'
-				}).done((err, result) => {
-					this.setNewPage('xxx');
-					this.setNewPage(currPage); //trigger reload
-
-				});
-			},
-			plan: () => {
-				$.ajax({
-					url: '/api/plan/reinitialize/'
-				}).done((err, result) => {
-					this.setNewPage('xxx');
-					this.setNewPage(currPage); //trigger reload
-
-				});
-			},
-			user: () => {
-				$.ajax({
-					url: '/api/user/reinitialize/'
-				}).done((err, result) => {
-					this.setNewPage('xxx');
-					this.setNewPage(currPage); //trigger reload
-
-				});
-			},
-		}
-
-		initializers[database]();
-
 	},
 
 	resendConfirmation: function() {

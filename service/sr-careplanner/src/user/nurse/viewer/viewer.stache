@@ -12,9 +12,10 @@
 	</div>
 	<div class='downloadWarning'>Do not use the download function in the viewer. Only use this button.</div>
 	{{/downloadReady}}
+	
+	{{#if dataUrl}}
 	<iframe src='{{dataUrl}}' class='pdfFrame'/>
-
-
+	{{/if}}
 {{else}}
 	<div class='windowsWarning'>You appear to be using a Windows web browser (Internet Explorer or Edge).<br/>
 	Due to it's peculiarities, you must download your PDF to look at it.<br/>

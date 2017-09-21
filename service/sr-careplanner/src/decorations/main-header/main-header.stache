@@ -36,6 +36,7 @@
   
   ;background: rgba(255, 255, 255, 0.5) none repeat scroll 0 0;font-weight: bold;font-size:150%;padding: 6px 40px;'>
   	{{nonProductionSiteName}}
+  	<div style='font-size:50%;color:white;font-weight:normal;width:100%;text-align:center;'>{{databaseName}}</div>
   	</li>
   
   {{/nonProductionSiteName}}

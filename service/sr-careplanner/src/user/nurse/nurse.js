@@ -24,6 +24,7 @@ export const ViewModel = Map.extend({
 		students: {
 			get: function() {
 				const list = Student.getList({});
+				this.countInactive(list); //this operates the promise
 				return list;
 			}
 		},
@@ -174,10 +175,28 @@ export const ViewModel = Map.extend({
 
 		},
 
+		inactiveCount:{
+			value:0,
+			type:'*'
+
+		},
+
 		currentTool:{
 			value:'editor',
 			serialize:false
 		}
+	},
+	
+	countInactive:function(students){
+		let count=0;
+		students.then((student)=>{
+			student.each((student)=>{
+				if (student.attr('inactive')){
+					count++;
+				}
+			});
+			this.attr('inactiveCount', count);
+		});
 	},
 
 	boilerplateGetStaticInfo:function(boilerplates){
