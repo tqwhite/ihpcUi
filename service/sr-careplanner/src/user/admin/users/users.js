@@ -22,7 +22,13 @@ export const ViewModel = Map.extend({
 			set: function(value) {
 				//value.attr('studentRefId', this.attr('openStudentRefId')); //used by api to create access record
 				return value;
-			}
+			},
+			get: function(value) {
+				if (value.attr('lastDayInSubscription')){
+					value.attr('lastDayInSubscription', value.attr('lastDayInSubscription').replace(/^(.*?)T.*$/, '$1'));
+					}
+					return value;
+				}
 		},
 		showEditor:{
 			value:false
