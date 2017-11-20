@@ -8,13 +8,18 @@
 <div class='container'>
 
 <div style=''>	
-	<user-nurse-plan-control plan-root-vm='{planRootVm}'
+	<user-nurse-plan-control 
+		plan-root-vm='{planRootVm}'
+		subscriptionActive={subscriptionActive}
 		($inserted)="collectChildComponents(user-nurse-plan-control', %viewModel))" />
 	</div>
 
 <div style=''>
 
-	<user-nurse-plan-editor plan-root-vm='{planRootVm}' />
+	<user-nurse-plan-editor 
+		plan-root-vm='{planRootVm}'
+		subscriptionActive={subscriptionActive}
+	/>
 </div>
 </div>
 {{/openStudentRefId}}

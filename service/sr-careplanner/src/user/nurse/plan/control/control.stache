@@ -8,6 +8,7 @@
 			plan-root-vm='{planRootVm}' 
 			($inserted)="collectChildComponents('user-nurse-plan-control-selector', %viewModel))" 
 			($inserted)="createPlanIfNone(%viewModel))" 
+			subscriptionActive={subscriptionActive}
 			/>
 	</div>
 {{/if}}

@@ -6,8 +6,11 @@
 <ul id='mainNav' class='c-nav c-nav--inline' >
   <li style='width:100px;display:inline-block;'></li>
   <li class='c-nav__item' ($click)='setNewPage("nurse")'>Student Healthcare Plans</a></li>
-  <li class='c-nav__item' ($click)='setNewPage("forms")'>Forms</a></li>
-  
+
+{{#subscriptionActive}}
+<li class='c-nav__item' ($click)='setNewPage("forms")'>Forms</a></li>
+{{/subscriptionActive}}
+
 {{#switch ../session.get('role')}}      
 	{{#case "admin"}}
   <li class='c-nav__item' ($click)='setNewPage("editor")'>Edit Conditions</a></li>
@@ -50,6 +53,7 @@
   	{{/with}}
   {{/if}}
   
-  <span class='fa fa-caret-down'/></li>
+  <span class='fa fa-caret-down'/>
+  </li>
 </ul>
 <!-- decorations/main-header end -->

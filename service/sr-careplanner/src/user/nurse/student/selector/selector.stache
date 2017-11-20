@@ -35,8 +35,9 @@
 				
 				
 				</li>
-				<li class="c-menu__item a-menu--slow control" ($click)='createNewStudent()'>New Student</li>
-
+				{{#if subscriptionActive}}
+					<li class="c-menu__item a-menu--slow control" ($click)='createNewStudent()'>New Student</li>
+				{{/if}}
 
 	</ul>
 

@@ -1,7 +1,8 @@
 <!--{{message}}-->
 <div class='container'>
+{{#if subscriptionActive}}
 <div class='fa fa-caret-left closeSpot' ($click)='hideSummary(%event)'/>
-
+{{/if}}
 <span class='name'>
 {{student.first}} {{student.last}} - {{student.birthday}} - {{student.school}} -  {{student.teacher}}
 </span>

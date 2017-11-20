@@ -139,6 +139,14 @@ const AppViewModel = Map.extend({
 			value: '',
 			serialize: false
 		},
+		lastDayInSubscription: {
+			value: '',
+			serialize: false
+		},
+		subscriptionActive: {
+			value: '',
+			serialize: false
+		},
 		browserLoaded: {
 			get: function() {
 				return window.location.href.match(/\w/);

@@ -18,17 +18,19 @@
 <li class='c-nav__item' ($click)='setSubsection("plan")'>Manage Plan Reports</a></li>
 {{/is}}
 -->
-
-{{#is subsection 'dictionary'}}
-<li class='c-nav__item subsectionSelected'>District Setup</a></li>
-{{else}}
-<li class='c-nav__item' ($click)='setSubsection("dictionary")'>District Setup</a></li>
-{{/is}}
+{{#if subscriptionActive}}
+	{{#is subsection 'dictionary'}}
+	<li class='c-nav__item subsectionSelected'>District Setup</a></li>
+	{{else}}
+	<li class='c-nav__item' ($click)='setSubsection("dictionary")'>District Setup</a></li>
+	{{/is}}
+{{/if}}
 
 </ul>
 </div>
 </div>
 
+{{#if subscriptionActive}}
 {{#switch subsection}}
 {{#case "user"}}
 		<can-import from="sr-careplanner/setup/user/" />
@@ -52,3 +54,11 @@
 				/>
 	{{/case}}
 {{/switch}}
+
+{{else}}
+		<can-import from="sr-careplanner/setup/user/" />
+			  <setup-user
+				setup-root-vm='{.}'
+				($inserted)="collectChildComponents('setup-user', %viewModel))"
+				/>
+{{/if}}

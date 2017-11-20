@@ -6,13 +6,15 @@
 
 	<can-import from="sr-careplanner/user/nurse/plan/editor/boilerplate/" />
 	<can-import from="sr-careplanner/user/nurse/plan/editor/condition/" />
-	
+
+{{#subscriptionActive}}	
 	{{#closeSpotState}}
 	<div class='fa fa-caret-left closeSpot' style='margin-left:-20px;' ($click)='changeConditionsView()' tabindex='-1'/>
 	{{/closeSpotState}}
 	{{^closeSpotState}}
 	<div class='fa fa-caret-down closeSpot' style='margin-left:-20px;' ($click)='changeConditionsView()' tabindex='-1'/>
 	{{/closeSpotState}}
+{{/subscriptionActive}}
 
 	{{#workingPlan}}		
 			{{#each conditions}}
@@ -25,22 +27,30 @@
 					{diagnoses}='{./diagnoses}' 
 					($inserted)="collectChildComponents('user-nurse-plan-editor-condition', %viewModel))" 
 					{(editor-close-spot-state)}='{closeSpotState}'
+					subscriptionActive={subscriptionActive}
 					/>
 			{{/each}}
-{{#if workingPlan.refId}}
-			{{#showConditionSelector}}
-				<user-nurse-plan-editor-boilerplate plan-root-vm='{planRootVm}' boilerplates='{boilerplates}'  />
-			{{/showConditionSelector}}
-			{{^showConditionSelector}}
-			<div class='leftHorizontal'>
-				<button class="c-button c-button--ghost c-button--xsmall c-button--primary deleteButton showConditionButton {{#unless workingPlan.conditions.length}}emphatic{{/unless}}" ($click)='showConditionTool(%event)' tabindex='-1'>
-					Add Condition
-				</button>
-			
-				{{#unless workingPlan.conditions.length}}
-					<div class='startPlanNotification'>Start your plan by adding a condition. Then add nursing diagnoses.</div>
-				{{/unless}}	
-			</div>
-			{{/showConditionSelector}}
-{{/if}}
+
+{{#if subscriptionActive}}	
+	{{#if workingPlan.refId}}
+				{{#showConditionSelector}}
+					<user-nurse-plan-editor-boilerplate plan-root-vm='{planRootVm}' boilerplates='{boilerplates}'  />
+				{{/showConditionSelector}}
+				{{^showConditionSelector}}
+				<div class='leftHorizontal'>
+					<button class="c-button c-button--ghost c-button--xsmall c-button--primary deleteButton showConditionButton {{#unless workingPlan.conditions.length}}emphatic{{/unless}}" ($click)='showConditionTool(%event)' tabindex='-1'>
+						Add Condition
+					</button>
+				
+					{{#unless workingPlan.conditions.length}}
+						<div class='startPlanNotification'>Start your plan by adding a condition. Then add nursing diagnoses.</div>
+					{{/unless}}	
+				</div>
+				{{/showConditionSelector}}
+	{{/if}}
+
+{{#else}}	
+	<div class='startPlanNotification'>Your subscription has expired. To view the healthcare plan, you must use the PDF VIEWER.</div>
+{{/if}}	
+
 	{{/workingPlan}}

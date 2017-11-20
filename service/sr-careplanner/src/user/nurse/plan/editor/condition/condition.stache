@@ -10,11 +10,11 @@
 	</div>
 {{/saveNotification}}
 
-
+{{#if subscriptionActive}}
 	{{#showEditView}}
 		<div class='editView'>
-			<span class='fa fa-caret-down closeSpot' ($click)='toggleEditView()'/> 
-			<input class="c-field title deleteButton" placeholder="Condition Title" {($value)}="condition.title"/> 
+			<span class='fa fa-caret-down closeSpot' ($click)='toggleEditView()'/>
+			<input class="c-field title deleteButton" placeholder="Condition Title" {($value)}="condition.title"/>
 			<button class="c-button c-button--ghost c-button--xsmall c-button--primary deleteButton" id='{{refId}}' ($click)='deleteCondition({{index}})' tabindex='-1'>
 				Delete Condition
 			</button>
@@ -33,9 +33,9 @@
 					</div>
 					<div class='diagnosisDetailsContainer'>
 							{{#each condition.diagnoses}}
-								<user-nurse-plan-editor-condition-diagnosis 
-									plan-root-vm='{planRootVm}' 
-									{diagnosis}='.' 
+								<user-nurse-plan-editor-condition-diagnosis
+									plan-root-vm='{planRootVm}'
+									{diagnosis}='.'
 									count='{diagnoses.length}'
 									($inserted)="collectChildComponents('diagnosis', %viewModel))"
 								/>
@@ -48,11 +48,8 @@
 					Add Nursing Diagnosis
 				</button>
 			{{/showNdSelector}}
-
-
 			{{#showNdSelector}}
 				<div class='buttonContainer'>
-
 					<div class='columns'>
 							{{#each boilerplateDiagnoses}}
 								{{#if alreadyInPlan(.)}}
@@ -73,14 +70,13 @@
 								New Custom ND
 							</button>
 					</div>
-
 				</div>
 			{{/showNdSelector}}
 	</div>
-	
 	{{/showEditView}}
-	
-
 	{{^showEditView}}
 		<span class='fa fa-caret-right closeSpot' ($click)='toggleEditView()'/> <span class='listTitle'>{{condition.title}}</span>
 	{{/showEditView}}
+{{else}}
+	<span class='listTitle'>{{condition.title}}</span>
+{{/if}}
