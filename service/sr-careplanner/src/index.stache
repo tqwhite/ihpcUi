@@ -17,11 +17,17 @@
   </head>
   <body> 
 {{simpleRoute}}
+
 {{confirmEmail}}
 {{#confirmEmailMessage}}
-<div class='confirmEmailStatusContainer {{confirmEmailStatus}}'> <div class='confirmEmailMessage'>{{confirmEmailMessage}}</div></div>
+<div class='tokenProcessStatusContainer {{confirmEmailStatus}}'> <div class='tokenProcessMessage'>{{confirmEmailMessage}}</div></div>
 {{/confirmEmailMessage}}
 			
+{{updateSubscription}}
+{{#updateSubscriptionMessage}}
+<div class='tokenProcessStatusContainer {{updateSubscriptionStatus}}'> <div class='tokenProcessMessage'>{{updateSubscriptionMessage}}</div></div>
+{{/updateSubscriptionMessage}}
+
 <account-login-permission-master/>
     <div id='workingContainer'>
 {{#if session.get('role')}}

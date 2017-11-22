@@ -1,7 +1,7 @@
 <img class='outsideLogo' src='/src/images/ihpLogo.png'>
 <div  class="c-alerts__alert c-alerts__alert--primary c-heading c-heading--medium c-heading--medium--center messageBlock">
 	{{#message}}
-		<div>{{message}}</div>
+		<div>{{{message}}}</div>
 	{{/message}}
 	{{^message}}
 		<div class='welcomeMessage'>{{{welcomeMessage}}}</div>

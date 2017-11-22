@@ -194,6 +194,18 @@ const AppViewModel = Map.extend({
 			value: '',
 			serialize: false,
 		},
+		updateSubscriptionMessage: {
+			value: '',
+			serialize: false,
+		},
+		updateSubscriptionStatus: {
+			value: '',
+			serialize: false,
+		},
+		updateSubscriptionToken: {
+			value: '',
+			serialize: false,
+		},
 		showResendNotification: {
 			serialize: false
 		},
@@ -393,13 +405,13 @@ can.stache.registerHelper('simpleRoute', function(options) {
 	}
 });
 
-let alreadyBeenHere = false;
+let alreadyConfirmedEmail = false;
 can.stache.registerHelper('confirmEmail', function(options) {
-	if (!process.browser || alreadyBeenHere) {
+	if (!process.browser || alreadyConfirmedEmail) {
 		return;
 	}
 
-	alreadyBeenHere = true;
+	alreadyConfirmedEmail = true;
 
 	if (window && window.location && window.location.pathname) {
 		const confirmInfo = window.location.pathname.match(/\/confirmEmail\/(\w+)/);
@@ -428,4 +440,44 @@ can.stache.registerHelper('confirmEmail', function(options) {
 	}
 
 });
+
+
+
+
+
+
+
+
+
+let alreadyUpdatedSubscription = false;
+can.stache.registerHelper('updateSubscription', function(options) {
+	if (!process.browser || alreadyUpdatedSubscription) {
+		return;
+	}
+
+
+	if (window && window.location && window.location.pathname) {
+		const updateSubscriptionToken = window.location.pathname.match(/\/updateSubscription\/(\w+)/);
+		if (updateSubscriptionToken) {
+			if (options.scope.attr('updateSubscriptionStatus')=='complete'){
+				options.scope.attr('updateSubscriptionMessage', "");
+			}
+			else{
+				alreadyUpdatedSubscription = true;
+				options.scope.attr('updateSubscriptionMessage', "Found subscription update info. Please log in or register.");
+				options.scope.attr('updateSubscriptionStatus', "incomplete");
+				options.scope.attr('updateSubscriptionToken', updateSubscriptionToken[1]);
+			}
+		}
+	}
+
+});
+
+
+
+
+
+
+
+
 export default AppViewModel;
