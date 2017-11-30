@@ -35,8 +35,9 @@
 		subscriptionActive={subscriptionActive}
     /> 		
 	{{#unconfirmedEmailAddress}}
-	<div class='unconfirmedEmailAddressNotification'>Email address ({{unconfirmedEmailAddress}}) has not been confirmed. Click <span class='resend' ($click)='resendConfirmation()'>HERE</span> to resend confirmation email (or check your spam filter).</div>
+	<div class='accountNotification accountError'>Email address ({{unconfirmedEmailAddress}}) has not been confirmed. Click <span class='resend' ($click)='resendConfirmation()'>HERE</span> to resend confirmation email (or check your spam filter).</div>
 	{{/unconfirmedEmailAddress}}
+		{{{messageOfTheDay}}}
 
 	{{#showResendNotification}}
 	<div class='c-overlay showResendNotificationContainer' style=''>
@@ -247,5 +248,8 @@
     {{^pdfmakePresent}}
 		<script src='/node_modules/pdfmake/build/pdfmake.js'></script>
     {{/pdfmakePresent}}
+{{#is session.get('username') 'tqwhite'}}
+<button ($click)='testElement("x")' style='margin-left:20px;' tabindex='-1'>test user-xx</button>
+{{/is}}
   </body>
 </html>

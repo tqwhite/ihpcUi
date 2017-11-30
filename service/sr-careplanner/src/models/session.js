@@ -31,12 +31,13 @@ export const sessionConnection = superMap({
 	parseListProp: "data",
 	parseListData:function(incomingJson){ 
 		const incoming=JSON.parse(incomingJson);
-		return incoming.data;
+		return incoming.data; //not used I think, tqii, 11/29/17
 	},
  	parseInstanceProp: "data",
 	parseInstanceData:function(inJsonItem){ 
 		const incoming=JSON.parse(inJsonItem);
-		return incoming.data;
+		const users=incoming.data.users;
+		return users;
 	}
 	
  

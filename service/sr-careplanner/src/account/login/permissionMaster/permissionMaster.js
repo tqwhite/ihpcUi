@@ -31,9 +31,18 @@ export const ViewModel = Map.extend({
 			dataFilter: (data, type, c) => {
 				//strip token from inbound and save
 				const incoming = JSON.parse(data);
+				
+				if (incoming.data.configuration){
+					this.attr('%root').attr('configuration', incoming.data.configuration);
+				}
+				
+				if (incoming.data.metaData){
+					this.attr('%root').attr('metaData', incoming.data.metaData);
+				}
 
 				if (!incoming.token.public) {
-				
+					//public is set if there's no login, etc
+					
 					let active = false;
 					if (incoming.token.claims.lastDayInSubscription) {
 						const lastDay = new Date(
