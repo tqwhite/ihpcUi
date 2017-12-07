@@ -421,9 +421,10 @@ const AppViewModel = Map.extend({
 			const today = new Date();
 			const exactDaysLeft=(subscriptionDate - today) / 1000 / 3600 / 24;
 			const daysLeft = Math.floor(exactDaysLeft);
+			//someday this should get switched to the more recent user property 'daysLeftInSubscription'
 			
 			const messageIndex = breakpoints
-				.filter(item => daysLeft <= item)
+				.filter(item => daysLeft <= item) //get rid of this when you have time to test it
 				.filter(item => daysLeft <= item)
 				.reduce((result, item) => result = Math.min(result, item), 1000);
 
