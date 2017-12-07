@@ -126,6 +126,7 @@
 						<input style='flex-grow:1;' class="c-field c-field--xsmall" type="text"  placeholder="State Code" {($value)}="student.gOneState" />
 						<input style='flex-grow:2;' class="c-field c-field--xsmall" type="text"  placeholder="Zip" {($value)}="student.gOneZip" />
 					</div>
+					<input class="c-field c-field--xsmall" type="tel"  placeholder="Email Address" {($value)}="student.gOneEmailAdr" />
 					<input class="c-field c-field--xsmall" type="tel"  placeholder="Main Phone" {($value)}="student.gOnePhoneMain" />
 					<input class="c-field c-field--xsmall" type="tel"  placeholder="Alternate Phone" {($value)}="student.gOnePhoneAlt" />
 
@@ -146,6 +147,7 @@
 						<input style='flex-grow:1;' class="c-field c-field--xsmall" type="text"  placeholder="State Code" {($value)}="student.gTwoState" />
 						<input style='flex-grow:2;' class="c-field c-field--xsmall" type="text"  placeholder="Zip" {($value)}="student.gTwoZip" />
 					</div>
+					<input class="c-field c-field--xsmall" type="tel"  placeholder="Email Address" {($value)}="student.gTwoEmailAdr" />
 					<input class="c-field c-field--xsmall" type="tel"  placeholder="Main Phone" {($value)}="student.gTwoPhoneMain" />
 					<input class="c-field c-field--xsmall" type="tel"  placeholder="Alternate Phone" {($value)}="student.gTwoPhoneAlt" />
 
