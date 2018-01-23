@@ -8,6 +8,8 @@ import ResendEmail from 'sr-careplanner/models/resend-email';
 import FeedBackSupport from 'sr-careplanner/models/feedback-support';
 import KeepAlive from 'sr-careplanner/models/sessionKeepAlive';
 
+//NOTE: CSS override (!important) in styles.less for input elements
+
 const AppViewModel = Map.extend({
 	define: {
 		loginUser: {
