@@ -1,0 +1,32 @@
+<div class='header'>
+Payment Information
+</div>
+
+
+<div class='info'>
+Pay with Purchase Order <input type="checkbox" {($checked)}="useInvoice">
+</div>
+
+{{#useInvoice}}
+		<can-import from="sr-careplanner/setup/store/payment/invoice/" />
+			  <setup-store-payment-invoice
+				setup-root-vm='{.}'
+				($inserted)="collectChildComponents('setup-store-payment-invoice', %viewModel))"
+				/>
+
+{{#else}}
+		<can-import from="sr-careplanner/setup/store/payment/card/" />
+			  <setup-store-payment-card
+				setup-root-vm='{.}'
+				($inserted)="collectChildComponents('setup-store-payment-card', %viewModel))"
+				/>
+
+{{/if}}
+	
+
+
+<div>
+
+<div class='bottom'>
+		<div class='c-button  c-button--xsmall c-button--primary modeButton' ($click)='submit("editor")'>Submit Payment</div>
+</div>

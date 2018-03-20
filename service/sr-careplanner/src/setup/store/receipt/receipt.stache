@@ -1,0 +1,4 @@
+<p>{{message}}</p>
+<div class='bottom'>
+		<div class='c-button  c-button--xsmall c-button--primary modeButton' ($click)='reset()'>Buy More</div>
+</div>

@@ -1,0 +1,29 @@
+
+<div class='container'>
+
+{{#if unpaid}}
+		<can-import from="sr-careplanner/setup/store/selector/" />
+			  <setup-store-selector
+				store-root-vm='{.}'
+				($inserted)="collectChildComponents('setup-store-selector', %viewModel))"
+				/>
+				
+				
+		<can-import from="sr-careplanner/setup/store/payment/" />
+			  <setup-store-payment
+				store-root-vm='{.}'
+				($inserted)="collectChildComponents('setup-store-payment', %viewModel))"
+				/>
+		
+{{#else}}	
+
+		<can-import from="sr-careplanner/setup/store/receipt/" />
+			  <setup-store-receipt
+				store-root-vm='{.}'
+				($inserted)="collectChildComponents('setup-store-receipt', %viewModel))"
+				/>
+			{{/if}}
+</div>
+
+
+

@@ -26,12 +26,25 @@
 	{{/is}}
 {{/if}}
 
+
+{{#is subsection 'store'}}
+	<li class='c-nav__item subsectionSelected'>Renew Subscription</a></li>
+{{else}}
+	<li class='c-nav__item ' ($click)='setSubsection("store")'>Renew Subscription</a></li>
+{{/is}}
 </ul>
 </div>
 </div>
 
 {{#if subscriptionActive}}
 {{#switch subsection}}
+{{#case "dictionary"}}
+		<can-import from="sr-careplanner/setup/store/" />
+			  <setup-store
+				setup-root-vm='{.}'
+				($inserted)="collectChildComponents('setup-store', %viewModel))"
+				/>
+	{{/case}}
 {{#case "user"}}
 		<can-import from="sr-careplanner/setup/user/" />
 			  <setup-user
@@ -46,7 +59,7 @@
 				($inserted)="collectChildComponents('setup-plan', %viewModel))"
 				/>
 	{{/case}}
-{{#case "dictionary"}}
+{{#case "dictionaryTMPREASSIGNEDTOstore"}}
 		<can-import from="sr-careplanner/setup/dictionary/" />
 			  <setup-dictionary
 				setup-root-vm='{.}'
