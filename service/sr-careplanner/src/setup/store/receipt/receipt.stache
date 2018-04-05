@@ -1,4 +1,35 @@
-<p>{{message}}</p>
+Thank You!<br/>
+ <br/>
+{{receiptMonths}} Months have been added to your account.<br/>
+ <br/>
+Your next expiration date is {{receiptExpiration}}.<br/>
+ <br/>
+A receipt has been emailed to you at xx@school.org<br/>
+ <br/>
+You can also print this:<br/>
+
+<div style='border:1pt solid black;padding:10px;color:black;margin-right:10px;'>
+IHP Creator Subscription Renewal<br/>
+ <br/>
+<b>{{paymentProcessResult.incrementResult.months}} Months of IHP Creator resulting in an expiration date of {{paymentProcessResult.incrementResult.newDate}}<br/></b>
+ <br/>
+Date: {{paymentProcessResult.transactionResult.createdAt}}<br/>
+Amount: ${{paymentProcessResult.paymentResult.amountPaid}}<br/><br/>
+
+{{#if usePurchaseOrder}}
+Purchase Order<br/><br/>
+{{poInfo.orgName}}<br/>
+{{poInfo.number}}<br/>
+
+{{else}}
+Credit Card<br/><br/>
+{{ccInfo.name}}<br/>
+{{ccInfo.number}}<br/>
+{{/if}}
+<br/>
+<br/>
+</div>
+ 
 <div class='bottom'>
 		<div class='c-button  c-button--xsmall c-button--primary modeButton' ($click)='reset()'>Buy More</div>
 </div>

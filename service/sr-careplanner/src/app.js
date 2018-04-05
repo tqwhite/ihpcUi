@@ -137,7 +137,7 @@ const AppViewModel = Map.extend({
 			serialize: false
 		},
 		page: {
-			value: '',
+			value: 'setup',
 			serialize: false
 		},
 		slug: {
@@ -167,6 +167,13 @@ const AppViewModel = Map.extend({
 		browserLoaded: {
 			get: function() {
 				return window.location.href.match(/\w/);
+			},
+			serialize: false
+		},
+		productionSystem: {
+			get: function() {
+				const value = window.location.href.match(/(demo|local)/);
+				return value?false:true;
 			},
 			serialize: false
 		},

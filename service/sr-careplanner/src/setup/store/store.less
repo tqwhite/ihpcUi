@@ -1,27 +1,55 @@
 setup-store {
-
-/* distribute horizontally */	
-
-display: flex;
-
-flex-direction: row;
-
-justify-content: center;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
 }
-
 setup-store .container{
-
-border:1pt solid #666;
-height:60vh;
-width:50vw;
-padding:0px;
-
-/* distribute horizontally */	
-
-display: flex;
-
-flex-direction: row;
-
-justify-content: space-between;
-
+	border:1pt solid #666;
+	width:70vw;
+	padding:0px;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
 }
+
+/*thanks: https://stackoverflow.com/questions/41177542/bouncing-text-animation-like-dvd*/
+
+#processingIndicator{
+    width:150px;
+    height:20px;
+    font-weight:bold;
+    color:white;
+  }
+p{
+  text-align:center;
+  }
+.bounce{
+  animation:bounce 10s linear 100;
+  }
+ @keyframes bounce{
+    0%{
+      transform:translate(0vw,100px);
+      color:white;
+     
+      }
+    25%{
+       transform:translate(15vw,200px);
+       color:rgb(66, 165, 245);;
+      
+      }
+    50%{
+       transform:translate(30vw,100px); 
+      color:white;
+      }
+     75%{
+       transform:translate(15vw,0px);
+       color:rgb(66, 165, 245);;
+        
+
+       }
+   100%{
+      transform:translate(0vw,100px);
+      color:white;
+      
+      }   
+   }

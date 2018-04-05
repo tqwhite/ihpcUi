@@ -1,10 +1,8 @@
 setup-store-selector {
 	display: block;
 	width:50%;
-	border-left:.5px solid #666;
-	padding:0px 15px;
+	padding:0px 15px 80px 15px;
 	position:relative;
-	height:100%;
 }
 
 setup-store-selector .header{
@@ -18,6 +16,7 @@ setup-store-selector .info{
 	border-bottom:1pt solid #666;
 	font-weight:normal;
 	font-size:80%;
+	height:60px;
 }
 
 setup-store-selector .bottom{
@@ -29,4 +28,27 @@ setup-store-selector .bottom{
 	bottom:0px;
 	left:0px;
 	padding:15px;
+}
+
+setup-store-selector .product{
+	padding:10px 0px;
+	font-weight:bold;
+	border:1pt solid transparent;
+	cursor:pointer;
+}
+
+setup-store-selector .product:hover{
+	font-weight:normal;
+}
+
+setup-store-selector .selected{
+	border:1pt solid #333;
+}
+setup-store-selector .cancel{
+	font-weight:normal;
+	font-style:italic;
+	font-size:80%;
+}
+setup-store-selector .cancel:hover{
+	font-weight:bold;
 }

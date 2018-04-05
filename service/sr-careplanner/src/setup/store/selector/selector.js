@@ -10,6 +10,16 @@ export const ViewModel = Map.extend({
       value: 'This is the setup-store-selector component'
     }
   },
+  
+  chooseProduct:function(code, price, months, name){
+	this.storeRootVm.attr('selectedProductCode', code);
+	this.storeRootVm.attr('selectedProductPrice', price);
+	this.storeRootVm.attr('selectedProductMonths', months);
+	this.storeRootVm.attr('selectedProductName', name);
+console.log("new Date().toLocaleDateString()="+new Date().toLocaleDateString()+" [selector.js.chooseProduct]");
+
+	this.storeRootVm.attr('purchaseDate', new Date().toLocaleDateString());
+  },
 
 	collectChildComponents: function(childType, childVm) {
 		this.childComponentLists = this.childComponentLists || {};

@@ -3,18 +3,26 @@ Choose Subscription Below
 </div>
 <div>
 <div class='info'>
-Amount is added to current subscription
+Click to Select.<br/>
+Purchase is added to current subscription, if any.
 </div>
 <div>
 
-<div>prod1</div>
-<div>prod1</div>
-<div>prod1</div>
-<div>prod1</div>
+{{#each productList}}
+
+<div class='product
+
+{{#is storeRootVm.selectedProductCode code}}
+selected
+{{/is}}
+' ($click)='chooseProduct(code, price, months, name)'>{{name}} (${{price}})
+
+</div>
+
+{{/each}}
+
+<div class='product cancel' ($click)='chooseProduct("", "")'>(cancel)</div>
 
 </div>
 </div>
 
-<div class='bottom'>
-		PRICE
-</div>

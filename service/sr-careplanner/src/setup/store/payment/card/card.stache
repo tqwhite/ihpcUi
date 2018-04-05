@@ -1,1 +1,11 @@
-<p>{{message}}</p>
+
+<input class="c-field" placeholder="Card Number" {($value)}="ccInfo.number" fieldName='number'>
+<input class="c-field" placeholder="Expire MM" {($value)}="ccInfo.expMonth" fieldName='expMonth' style='width:45%;display:inline-block;'>
+<input class="c-field" placeholder="Expire YY" {($value)}="ccInfo.expYear" fieldName='expYear' style='width:45%;display:inline-block;'>
+<input class="c-field" placeholder="Code on Card Back" {($value)}="ccInfo.cardCode" fieldName='cardCode'><br/>
+
+<input class="c-field" placeholder="Name on Card" {($value)}="ccInfo.name" fieldName='name'>
+<input class="c-field" placeholder="Billing Street" {($value)}="ccInfo.street" fieldName='street'>
+<input class="c-field" placeholder="City" {($value)}="ccInfo.city" fieldName='city' style='width:45%;display:inline-block;'>
+<input class="c-field" placeholder="State" {($value)}="ccInfo.state" fieldName='state' style='width:20%;display:inline-block;'>
+<input class="c-field" placeholder="Zip" {($value)}="ccInfo.zip" fieldName='zip' style='width:30%;display:inline-block;'>

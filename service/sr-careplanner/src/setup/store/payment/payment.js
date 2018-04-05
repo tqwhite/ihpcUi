@@ -8,16 +8,8 @@ export const ViewModel = Map.extend({
   define: {
     message: {
       value: 'This is the setup-store-payment component'
-    },
-    useInvoice:{
-    	value:false,
-    	serialize:false
     }
   },
-
-	submit: function() {
-		this.storeRootVm.attr('unpaid', false);
-	},
 
 	collectChildComponents: function(childType, childVm) {
 		this.childComponentLists = this.childComponentLists || {};

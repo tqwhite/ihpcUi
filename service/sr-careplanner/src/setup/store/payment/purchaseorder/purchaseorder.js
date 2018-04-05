@@ -1,13 +1,13 @@
 import Component from 'can/component/';
 import Map from 'can/map/';
 import 'can/map/define/';
-import './invoice.less!';
-import template from './invoice.stache!';
+import './purchaseorder.less!';
+import template from './purchaseorder.stache!';
 
 export const ViewModel = Map.extend({
   define: {
     message: {
-      value: 'This is the setup-store-payment-invoice component'
+      value: 'This is the setup-store-payment-purchaseorder component'
     }
   },
 
@@ -17,17 +17,17 @@ export const ViewModel = Map.extend({
 		this.childComponentLists[childType].push(childVm);
 	},
 	testElement: function() {
-		window['setup-store-payment-invoice'] = this;
-		console.log('added: window[' + "'" + 'setup-store-payment-invoice' + "'" + ']');
+		window['setup-store-payment-purchaseorder'] = this;
+		console.log('added: window[' + "'" + 'setup-store-payment-purchaseorder' + "'" + ']');
 		console.dir({
-			"setup-store-payment-invoice": this.attr(),
+			"setup-store-payment-purchaseorder": this.attr(),
 			'childComponentLists':this.childComponentLists
 		});
 	}
 });
 
 export default Component.extend({
-  tag: 'setup-store-payment-invoice',
+  tag: 'setup-store-payment-purchaseorder',
   viewModel: ViewModel,
   template
 });
