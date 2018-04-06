@@ -9,7 +9,8 @@ import qtools from 'node_modules/qtools-minus/';
 export const ViewModel = Map.extend({
 	define: {
 		message: {
-			value: 'This is the setup-store component'
+			value: 'This is the setup-store component',
+			serialize: false
 		},
 		testTmp: {
 			value: 'hello',
@@ -118,11 +119,7 @@ export const ViewModel = Map.extend({
 			class: 'good',
 			message: 'processing'
 		});
-
-		console.dir({
-			"this.attr('ccInfo') [store.js.submit]": this.attr('ccInfo')
-		});
-
+		
 		const ccInfo = this.attr('ccInfo');
 
 		const ccInfoRedacted = {
@@ -213,9 +210,10 @@ export const ViewModel = Map.extend({
 		if (payment.isNew()) {
 		}
 		
-setTimeout(()=>{
-				this.attr('saveNotification', false);
-				this.attr('unpaid', false); }, 4000);
+// setTimeout(()=>{
+// 				this.attr('saveNotification', false);
+// 				this.attr('unpaid', false); 
+// 				}, 4000);
 				
 		var promise = payment.save().then(
 			item => {
@@ -240,10 +238,15 @@ this.attr('paymentProcessResult', item);
 				this.attr('saveNotificationTimeoutId', timeoutId);
 			},
 			err => {
-				this.attr('saveError', JSON.stringify(err));
+				this.attr('saveError', JSON.stringify(err.responseText));
 				console.dir({
 					err: err
 				});
+		this.attr('status', {
+			class: 'bad',
+			message: (typeof(err.responseJSON)=='object')?err.responseJSON.errorText:'unknown error'
+		});
+				this.attr('saveNotification', false);
 			}
 		);
 	},
@@ -257,7 +260,7 @@ this.attr('paymentProcessResult', item);
 			this.attr('ccInfo', {
 				number: '4007000000027',
 				expMonth: '12',
-				expYear: '52',
+				expYear: '20',
 				cardCode: '111',
 				name: 'TQ White II',
 				street: '5004 Three Points Blvd',
