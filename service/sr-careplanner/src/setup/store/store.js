@@ -108,8 +108,16 @@ export const ViewModel = Map.extend({
 			value: '',
 			serialize: false
 		},
-		paymentProcessResult:{
+		paymentProcessResult: {
 			value: {},
+			serialize: false
+		},
+		hasEntryErrors:{
+			value: 0,
+			serialize: false
+		},
+		showBuyButton:{
+			value: false,
 			serialize: false
 		}
 	},
@@ -119,7 +127,7 @@ export const ViewModel = Map.extend({
 			class: 'good',
 			message: 'processing'
 		});
-		
+
 		const ccInfo = this.attr('ccInfo');
 
 		const ccInfoRedacted = {
@@ -158,12 +166,13 @@ export const ViewModel = Map.extend({
 				ccInfoRedacted.opaqueData = response.opaqueData;
 				callback();
 			};
-			
+
 			const authData = {};
-			authData.clientKey = '8v2RAmLU474peM9UML42qvXcR4gR5K3YBbbEHBx7rJF983K5F8qp5h932LxL6jyX';
+			authData.clientKey =
+				'8v2RAmLU474peM9UML42qvXcR4gR5K3YBbbEHBx7rJF983K5F8qp5h932LxL6jyX';
 			authData.apiLoginID = '76XgBFp7tQ';
 			const cardData = {};
-			cardData.cardNumber =ccInfo.number;
+			cardData.cardNumber = ccInfo.number;
 			cardData.month = ccInfo.expMonth;
 			cardData.year = ccInfo.expYear;
 			cardData.cardCode = ccInfo.cardCode;
@@ -209,20 +218,16 @@ export const ViewModel = Map.extend({
 
 		if (payment.isNew()) {
 		}
-		
-// setTimeout(()=>{
-// 				this.attr('saveNotification', false);
-// 				this.attr('unpaid', false); 
-// 				}, 4000);
-				
+
+		// setTimeout(()=>{
+		// 				this.attr('saveNotification', false);
+		// 				this.attr('unpaid', false);
+		// 				}, 4000);
+
 		var promise = payment.save().then(
 			item => {
-
-this.attr('paymentProcessResult', item);
-
-
-
-				this.attr('%root').attr(
+				this.attr('paymentProcessResult', item); 
+				 this.attr('%root').attr(
 					'lastDayInSubscription',
 					item.incrementResult.newDate
 				);
@@ -231,8 +236,8 @@ this.attr('paymentProcessResult', item);
 				this.attr('receiptMonths', item.incrementResult.months);
 
 				this.attr('saveNotification', false);
-				this.attr('unpaid', false); 
-				 const timeoutId = setTimeout(() => {
+				this.attr('unpaid', false);
+				const timeoutId = setTimeout(() => {
 					this.attr('saveNotification', false);
 				}, 2000);
 				this.attr('saveNotificationTimeoutId', timeoutId);
@@ -242,10 +247,13 @@ this.attr('paymentProcessResult', item);
 				console.dir({
 					err: err
 				});
-		this.attr('status', {
-			class: 'bad',
-			message: (typeof(err.responseJSON)=='object')?err.responseJSON.errorText:'unknown error'
-		});
+				this.attr('status', {
+					class: 'bad',
+					message:
+						typeof err.responseJSON == 'object'
+							? err.responseJSON.errorText
+							: 'unknown error'
+				});
 				this.attr('saveNotification', false);
 			}
 		);
@@ -263,9 +271,6 @@ this.attr('paymentProcessResult', item);
 				expYear: '20',
 				cardCode: '111',
 				name: 'TQ White II',
-				street: '5004 Three Points Blvd',
-				city: 'Mound',
-				state: 'MN',
 				zip: '55364'
 			});
 			this.attr('poInfo', {
@@ -282,6 +287,8 @@ this.attr('paymentProcessResult', item);
 		}
 
 		this.childComponentLists[childType].push(childVm);
+		
+		this.attr('status', {message:'All fields are required', class:'good'});
 	},
 	testElement: function() {
 		window['setup-store'] = this;
@@ -293,8 +300,48 @@ this.attr('paymentProcessResult', item);
 	}
 });
 
+const localDataChangeHandler = function(domObj, event) {
+	const ccInfo = this.viewModel.attr('ccInfo');
+	const poInfo = this.viewModel.attr('poInfo');
+	const fieldName = domObj.attr('fieldName');
+	const fieldLabel = domObj.attr('placeholder');
+	const value = ccInfo[fieldName];
+	var payment = new Payment({
+		usePurchaseOrder: this.viewModel.attr('usePurchaseOrder') ? true : false,
+		ccInfo: ccInfo,
+		poInfo: poInfo,
+		userInfo: this.viewModel.attr('loginUser'),
+		productInfo: { code: this.viewModel.attr('selectedProductCode') }
+	});
+
+	const validator = this.viewModel.attr('usePurchaseOrder')
+		? payment.checkPoInfo.bind(payment)
+		: payment.checkCcInfo.bind(payment);
+	const result = validator(fieldName, fieldLabel);
+	
+
+	if (result.length) {
+		this.viewModel.attr('status', {
+			message: result[0].errorText,
+			class: 'bad'
+		});
+		domObj.addClass('errorx');
+	} else {
+		this.viewModel.attr('status', { message: 'All fields are required', class: 'good' });
+		domObj.removeClass('errorx');
+	}
+
+this.viewModel.attr('hasEntryErrors', validator().length);
+this.viewModel.attr('showBuyButton', (this.viewModel.attr('selectedProductPrice') && !this.viewModel.attr('hasEntryErrors'))?true:false);
+
+};
+
 export default Component.extend({
 	tag: 'setup-store',
 	viewModel: ViewModel,
-	template
+	template,
+	events: {
+		'input blur': localDataChangeHandler,
+		'textarea blur': localDataChangeHandler
+	}
 });

@@ -35,7 +35,7 @@ Pay with Purchase Order <input type="checkbox" {($checked)}="usePurchaseOrder">
 
 
 <div class='bottom'>
-{{#if storeRootVm.selectedProductPrice}}
+{{#if storeRootVm.showBuyButton}}
 		<button class='c-button  c-button--small c-button--primary modeButton' style='width:80%;' ($click)='submit("editor")'>Pay ${{storeRootVm.selectedProductPrice}}</button>
 		{{#else}}
 		

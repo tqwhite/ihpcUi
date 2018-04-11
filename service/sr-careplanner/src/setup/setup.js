@@ -10,13 +10,10 @@ export const ViewModel = Map.extend({
 		message: {
 			value: 'This is the setup component'
 		},
-		subsection: {
-			value: 'dictionary'
-		},
 	},
 
 	setSubsection: function(subsection) {
-		this.attr('subsection', subsection);
+		this.attr('%root').attr('subsection', subsection);
 	},
 
 	clearEntryError: function() {

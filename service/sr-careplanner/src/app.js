@@ -137,7 +137,7 @@ const AppViewModel = Map.extend({
 			serialize: false
 		},
 		page: {
-			value: 'setup',
+			value: '',
 			serialize: false
 		},
 		slug: {
@@ -517,6 +517,16 @@ can.stache.registerHelper('simpleRoute', function(options) {
 	if (!routingBits || typeof routingBits[1] == 'undefined') {
 		return;
 	}
+if (this.attr('browserLoaded') && this.attr('loginUserDataOnly').isActive){
+	switch (routingBits[1]) {
+		case 'renew':
+			this.setNewPage('setup', '', 'store');
+			break;
+	}
+
+}
+
+
 	switch (routingBits[1]) {
 		case 'forgotPassword':
 			this.setNewPage('', 'forgot-password');

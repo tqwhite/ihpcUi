@@ -16,9 +16,11 @@ export const ViewModel = Map.extend({
 	this.storeRootVm.attr('selectedProductPrice', price);
 	this.storeRootVm.attr('selectedProductMonths', months);
 	this.storeRootVm.attr('selectedProductName', name);
-console.log("new Date().toLocaleDateString()="+new Date().toLocaleDateString()+" [selector.js.chooseProduct]");
 
 	this.storeRootVm.attr('purchaseDate', new Date().toLocaleDateString());
+	
+	this.storeRootVm.attr('showBuyButton', (this.storeRootVm.attr('selectedProductPrice') && !this.storeRootVm.attr('hasEntryErrors'))?true:false);
+
   },
 
 	collectChildComponents: function(childType, childVm) {

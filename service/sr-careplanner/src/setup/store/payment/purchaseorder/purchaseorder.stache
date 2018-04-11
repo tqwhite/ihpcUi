@@ -2,9 +2,9 @@
 
 <input class="c-field" placeholder="PO Number" {($value)}="poInfo.number" fieldName='number'><br/>
 
-<input class="c-field" placeholder="Authorizer Name" {($value)}="poInfo.authName" fieldName='authorizerName'>
-<input class="c-field" placeholder="Authorizer Email" {($value)}="poInfo.authEmail" fieldName='authorizerEmail'>
-<input class="c-field" placeholder="Authorizer Phone" {($value)}="poInfo.authPhone" fieldName='authorizerPhone'><br/>
+<input class="c-field" placeholder="Authorizer Name" {($value)}="poInfo.authName" fieldName='authName'>
+<input class="c-field" placeholder="Authorizer Email" {($value)}="poInfo.authEmail" fieldName='authEmail'>
+<input class="c-field" placeholder="Authorizer Phone" {($value)}="poInfo.authPhone" fieldName='authPhone'><br/>
 
 <input class="c-field" placeholder="Organization Name" {($value)}="poInfo.orgName" fieldName='orgName'>
 <input class="c-field" placeholder="Billing Street" {($value)}="poInfo.street" fieldName='street'>

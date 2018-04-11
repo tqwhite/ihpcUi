@@ -38,7 +38,7 @@
 
 {{#if subscriptionActive}}
 {{#switch subsection}}
-{{#case "dictionary"}}
+{{#case "store"}}
 		<can-import from="sr-careplanner/setup/store/" />
 			  <setup-store
 				setup-root-vm='{.}'
@@ -59,13 +59,13 @@
 				($inserted)="collectChildComponents('setup-plan', %viewModel))"
 				/>
 	{{/case}}
-{{#case "dictionaryTMPREASSIGNEDTOstore"}}
+{{#default}}
 		<can-import from="sr-careplanner/setup/dictionary/" />
 			  <setup-dictionary
 				setup-root-vm='{.}'
 				($inserted)="collectChildComponents('setup-dictionary', %viewModel))"
 				/>
-	{{/case}}
+	{{/default}}
 {{/switch}}
 
 {{else}}
