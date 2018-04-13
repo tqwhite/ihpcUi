@@ -1,35 +1,54 @@
-Thank You!<br/>
- <br/>
-{{receiptMonths}} Months have been added to your account.<br/>
- <br/>
-Your next expiration date is {{receiptExpiration}}.<br/>
- <br/>
-A receipt has been emailed to you at xx@school.org<br/>
- <br/>
-You can also print this:<br/>
+<div class='thanks'>Thank you for your purchase.</div>
 
-<div style='border:1pt solid black;padding:10px;color:black;margin-right:10px;'>
-IHP Creator Subscription Renewal<br/>
- <br/>
-<b>{{paymentProcessResult.incrementResult.months}} Months of IHP Creator resulting in an expiration date of {{paymentProcessResult.incrementResult.newDate}}<br/></b>
- <br/>
-Date: {{paymentProcessResult.transactionResult.createdAt}}<br/>
-Amount: ${{paymentProcessResult.paymentResult.amountPaid}}<br/><br/>
 
-{{#if usePurchaseOrder}}
-Purchase Order<br/><br/>
-{{poInfo.orgName}}<br/>
-{{poInfo.number}}<br/>
+<div class='notification'>
+{{#usePurchaseOrder}}
+An email with this information has been sent to you at {{loginUserDataOnly.emailAddress}}.<br/>
+A copy has also been sent to {{paymentProcessResult.poInfo.authName}} at {{paymentProcessResult.poInfo.authEmail}}.
 
-{{else}}
-Credit Card<br/><br/>
-{{ccInfo.name}}<br/>
-{{ccInfo.number}}<br/>
-{{/if}}
-<br/>
-<br/>
+{{#else}}
+
+An email with this information has been sent to you at {{loginUserDataOnly.emailAddress}}.
+
+{{/usePurchaseOrder}}
+
 </div>
- 
-<div class='bottom'>
-		<div class='c-button  c-button--xsmall c-button--primary modeButton' ($click)='reset()'>Buy More</div>
+
+<div class='productSummary'>
+<table class=''>
+
+<tr><td>Purchase Date:</td><td>{{formatDate(paymentProcessResult.transactionResult.createdAt)}}</td></tr>
+<tr><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>Months Purchased:</td><td>{{receiptMonths}}</td></tr>
+<tr><td>New Expiration Date:</td><td>{{formatDate(receiptExpiration)}}</td></tr>
+
+<tr><td>&nbsp;</td><td>&nbsp;</td></tr>
+
+{{#usePurchaseOrder}}
+<tr><td>PO Number:</td><td>{{paymentProcessResult.poInfo.number}}</td></tr>
+<tr><td>Authorizer Name:</td><td>{{paymentProcessResult.poInfo.authName}}</td></tr>
+<tr><td>Authorizer Email:</td><td>{{paymentProcessResult.poInfo.authEmail}}</td></tr>
+<tr><td>Authorizer Phone:</td><td>{{paymentProcessResult.poInfo.authPhone}}</td></tr>
+<tr><td>Organization Name:</td><td>{{paymentProcessResult.poInfo.orgName}}</td></tr>
+<tr><td>Organization Street:</td><td>{{paymentProcessResult.poInfo.street}}</td></tr>
+<tr><td>Organization City:</td><td>{{paymentProcessResult.poInfo.city}}</td></tr>
+<tr><td>Organization State:</td><td>{{paymentProcessResult.poInfo.state}}</td></tr>
+<tr><td>Organization Zip:</td><td>{{paymentProcessResult.poInfo.zip}}</td></tr>
+<tr><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>Invoice Number:</td><td>{{paymentProcessResult.transactionResult.number}}</td></tr>
+<tr><td><b>Amount Due:</b></td><td><b>${{paymentProcessResult.product.price}}</b></td></tr>
+
+{{#else}}
+<tr><td>Card Name:</td><td>{{paymentProcessResult.ccInfo.name}}</td></tr>
+<tr><td>Card Info:</td><td>{{paymentProcessResult.paymentResult.processDetails.response.transactionResponse.accountNumber}}</td></tr>
+<tr><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>Invoice Number:</td><td>{{paymentProcessResult.paymentResult.processDetails.request.transactionRequest.order.invoiceNumber}}</td></tr>
+<tr><td>Amount Charged:</td><td>${{paymentProcessResult.paymentResult.processDetails.request.transactionRequest.amount}}</td></tr>
+
+{{/usePurchaseOrder}}
+</table>
+
+
+<div class='bottom' style='margin-top:10px;'>
+		<div class='c-button  c-button--xsmall c-button--primary modeButton' ($click)='reset()'>Buy Again</div>
 </div>

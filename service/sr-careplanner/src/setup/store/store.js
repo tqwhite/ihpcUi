@@ -265,14 +265,7 @@ export const ViewModel = Map.extend({
 			this.childComponentLists[childType] || [];
 
 		if (window.location.href.match(/local/)) {
-			this.attr('ccInfo', {
-				number: '4007000000027',
-				expMonth: '12',
-				expYear: '20',
-				cardCode: '111',
-				name: 'TQ White II',
-				zip: '55364'
-			});
+
 			this.attr('poInfo', {
 				number: 'PO1234567',
 				authName: 'TQ White II',

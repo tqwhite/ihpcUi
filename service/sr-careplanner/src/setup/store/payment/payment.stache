@@ -29,7 +29,7 @@ Pay with Purchase Order <input type="checkbox" {($checked)}="usePurchaseOrder">
 				($inserted)="collectChildComponents('setup-store-payment-card', %viewModel))"
 				/>
 
-{{/if}}
+{{/usePurchaseOrder}}
 	
 
 

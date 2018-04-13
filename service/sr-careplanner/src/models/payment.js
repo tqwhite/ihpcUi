@@ -8,7 +8,7 @@ export const Payment = can.Map.extend({
 	init: function(initData) {
 		//console.dir({"initData":initData});
 	},
-	checkCcInfo: function(fieldName, fieldLabel) {
+	checkCcInfo: function(fieldName, fieldLabel) {return [];
 		let name;
 		const errorList = [];
 		const pmtInfo=this.attr('ccInfo');

@@ -10,6 +10,10 @@ export const ViewModel = Map.extend({
       value: 'This is the setup-store-receipt component'
     }
   },
+  	formatDate:function(dateString){
+  		const date=new Date(dateString);
+  		return date.toLocaleDateString('en-US');
+  	},
   	reset:function(){
   	
   		this.storeRootVm.attr('unpaid', true);
