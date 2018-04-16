@@ -27,7 +27,8 @@ export const ViewModel = Map.extend({
 					name: 'One month',
 					price: '20.00',
 					role: 'nurse',
-					months: 1
+					months: 1,
+					NOTE: 'this is duplicated in api/payment.js'
 				},
 				{
 					code: 3,
@@ -112,11 +113,11 @@ export const ViewModel = Map.extend({
 			value: {},
 			serialize: false
 		},
-		hasEntryErrors:{
+		hasEntryErrors: {
 			value: 0,
 			serialize: false
 		},
-		showBuyButton:{
+		showBuyButton: {
 			value: false,
 			serialize: false
 		}
@@ -127,7 +128,7 @@ export const ViewModel = Map.extend({
 			class: 'good',
 			message: 'processing'
 		});
-
+		
 		const ccInfo = this.attr('ccInfo');
 
 		const ccInfoRedacted = {
@@ -149,7 +150,13 @@ export const ViewModel = Map.extend({
 		};
 
 		const accessNonce = (ccInfo, callback) => {
-			const dispatchCallback = response => {
+			const config = this.attr('%root').attr('configuration');
+			const processorChoice = config.processorChoice;
+			let apiLoginID = config.keys[processorChoice].authorizeApiLoginKey;
+			let clientKey =
+				config.keys[processorChoice]
+					.authorizePublicClientKey;  
+			 const dispatchCallback = response => {
 				if (response.messages.resultCode === 'Error') {
 					let i = 0;
 					while (i < response.messages.message.length) {
@@ -168,9 +175,8 @@ export const ViewModel = Map.extend({
 			};
 
 			const authData = {};
-			authData.clientKey =
-				'8v2RAmLU474peM9UML42qvXcR4gR5K3YBbbEHBx7rJF983K5F8qp5h932LxL6jyX';
-			authData.apiLoginID = '76XgBFp7tQ';
+			authData.clientKey = clientKey;
+			authData.apiLoginID = apiLoginID;
 			const cardData = {};
 			cardData.cardNumber = ccInfo.number;
 			cardData.month = ccInfo.expMonth;
@@ -204,7 +210,8 @@ export const ViewModel = Map.extend({
 			ccInfo: ccInfo,
 			poInfo: this.attr('poInfo'),
 			userInfo: { refId: loginUser.refId, _id: loginUser._id },
-			productInfo: { code: this.attr('selectedProductCode') }
+			productInfo: { code: this.attr('selectedProductCode'),
+			price: this.attr('selectedProductPrice')}
 		});
 
 		//validation goes here, with a return;
@@ -226,8 +233,8 @@ export const ViewModel = Map.extend({
 
 		var promise = payment.save().then(
 			item => {
-				this.attr('paymentProcessResult', item); 
-				 this.attr('%root').attr(
+				this.attr('paymentProcessResult', item);
+				this.attr('%root').attr(
 					'lastDayInSubscription',
 					item.incrementResult.newDate
 				);
@@ -265,7 +272,6 @@ export const ViewModel = Map.extend({
 			this.childComponentLists[childType] || [];
 
 		if (window.location.href.match(/local/)) {
-
 			this.attr('poInfo', {
 				number: 'PO1234567',
 				authName: 'TQ White II',
@@ -279,9 +285,21 @@ export const ViewModel = Map.extend({
 			});
 		}
 
+		if (window.location.href.match(/local/)) {
+			this.attr('ccInfo', {
+				number: '4007000000027',
+				name: 'TQ White II',
+				email: 'tq@justkidding.com',
+				expMonth: '01',
+				expYear: '20',
+				cardCode: '333',
+				zip: '55126'
+			});
+		}
+
 		this.childComponentLists[childType].push(childVm);
-		
-		this.attr('status', {message:'All fields are required', class:'good'});
+
+		this.attr('status', { message: 'All fields are required', class: 'good' });
 	},
 	testElement: function() {
 		window['setup-store'] = this;
@@ -320,13 +338,21 @@ const localDataChangeHandler = function(domObj, event) {
 		});
 		domObj.addClass('errorx');
 	} else {
-		this.viewModel.attr('status', { message: 'All fields are required', class: 'good' });
+		this.viewModel.attr('status', {
+			message: 'All fields are required',
+			class: 'good'
+		});
 		domObj.removeClass('errorx');
 	}
 
-this.viewModel.attr('hasEntryErrors', validator().length);
-this.viewModel.attr('showBuyButton', (this.viewModel.attr('selectedProductPrice') && !this.viewModel.attr('hasEntryErrors'))?true:false);
-
+	this.viewModel.attr('hasEntryErrors', validator().length);
+	this.viewModel.attr(
+		'showBuyButton',
+		this.viewModel.attr('selectedProductPrice') &&
+		!this.viewModel.attr('hasEntryErrors')
+			? true
+			: false
+	);
 };
 
 export default Component.extend({

@@ -7,16 +7,17 @@
 </div>
 {{/if}}
 
-{{#if productionSystem}}
+{{#is configuration.processorChoice 'production'}}
 	<script type="text/javascript"
 		src="https://js.authorize.net/v1/Accept.js"
 		charset="utf-8">
 	</script>
 {{#else}}
+	*{{configuration.processorChoice}}*
 	<script type="text/javascript"
 		src="https://jstest.authorize.net/v1/Accept.js"
 		charset="utf-8"></script>
-{{/if}}
+{{/is}}
     
 	{{#if unpaid}}
 			<can-import from="sr-careplanner/setup/store/selector/" />
