@@ -11,6 +11,9 @@
 			<div class='instructions'>
 				These videos are designed to help you get up and running with IHP Creator. Each video is constructed to help you become familiar with a special area of IHP Creator. Click on any one of the below to get started.
 			</div>
+			<div class='instructions' style='font-size:80%;font-style:italic;'>
+			The purpose of these videos is to demonstrate how to use IHP Creator, not to demonstrate nursing practice. The video presenter is the highly-competent programer for IHP Creator, not a school nurse.  Examples used in the videos are intentionally fictitious and silly and are being used only show how to fill in the IHP Creator fields, not show appropriate nursing care.
+			</div>
 			<div class='navLink' ($click)='showContents("1_GettingStarted")'>Getting Started</div>
 			<div class='navLink' ($click)='showContents("2_FirstStudent")'>First Student</div>
 			<div class='navLink' ($click)='showContents("3_WorkingWithPlans")'>Working with Plans</div>

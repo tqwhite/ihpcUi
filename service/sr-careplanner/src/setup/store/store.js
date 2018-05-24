@@ -23,34 +23,35 @@ export const ViewModel = Map.extend({
 		productList: {
 			value: [
 				{
-					code: 1,
-					name: 'One month',
-					price: '20.00',
+					code: 'RENEW',
+					name: 'One year',
+					price: '99.00',
 					role: 'nurse',
-					months: 1,
-					NOTE: 'this is duplicated in api/payment.js'
+					months: 12,
+					NOTE: 'this is duplicated in api/payment.js',
+					NOTE2: 'this is duplicated in ui/store.js'
 				},
-				{
-					code: 3,
-					name: 'Three Months',
-					price: '55.00',
-					role: 'nurse',
-					months: 3
-				},
-				{
-					code: 6,
-					name: 'Six Months',
-					price: '100.00',
-					role: 'nurse',
-					months: 6
-				},
-				{
-					code: 12,
-					name: 'One Year',
-					price: '180.00',
-					role: 'nurse',
-					months: 12
-				}
+// 				{
+// 					code: 3,
+// 					name: 'Three Months',
+// 					price: '55.00',
+// 					role: 'nurse',
+// 					months: 3
+// 				},
+// 				{
+// 					code: 6,
+// 					name: 'Six Months',
+// 					price: '100.00',
+// 					role: 'nurse',
+// 					months: 6
+// 				},
+// 				{
+// 					code: 12,
+// 					name: 'One Year',
+// 					price: '180.00',
+// 					role: 'nurse',
+// 					months: 12
+// 				}
 			],
 			serialize: false
 		},
@@ -167,6 +168,14 @@ export const ViewModel = Map.extend({
 						);
 						i = i + 1;
 					}
+					this.attr('status', {
+					class: 'bad',
+					message:
+						typeof err.responseJSON == 'object'
+							? err.responseJSON.errorText
+							: 'unknown error'
+				});
+				this.attr('saveNotification', false);
 					return;
 				}
 

@@ -49,6 +49,6 @@ An email with this information has been sent to you at {{loginUserDataOnly.email
 </table>
 
 
-<div class='bottom' style='margin-top:10px;'>
+<!-- div class='bottom' style='margin-top:10px;'>
 		<div class='c-button  c-button--xsmall c-button--primary modeButton' ($click)='reset()'>Buy Again</div>
-</div>
+</div-->

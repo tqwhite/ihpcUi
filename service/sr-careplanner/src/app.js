@@ -453,8 +453,16 @@ const AppViewModel = Map.extend({
 							.toString()
 							.replace(/^.*?, (\w+) (\d+), (\d+)$/, '$2_$1_$3')
 					)
-					.replace(/<!daysLeft!>/, daysLeft);
+					.replace(/<!daysLeft!>/, daysLeft)
+				.replace(/<!renewButton!>/, "<div class='c-button c-button--primary c-button--small' ($click)='clearConsole()' style='display:inline-block;' id='renew'>RENEW</div>");
 				outString += `<div class='accountNotification ${subClass}'>${message}</div>`;
+				
+				setTimeout(() => { 
+					 $('#renew').on('click', () => {
+						this.setNewPage('setup', '', 'store');
+					});
+				}, 10);
+
 			}
 		}
 		const metaData = this.attr('metaData');
@@ -476,7 +484,8 @@ const AppViewModel = Map.extend({
 						.toString()
 						.replace(/^.*?, (\w+) (\d+), (\d+)$/, '$2_$1_$3')
 				)
-				.replace(/<!months!>/, months);
+				.replace(/<!months!>/, months)
+				.replace(/<!renewButton!>/, "<div class='c-button c-button--primary c-button--small' ($click)='clearConsole()' style='display:inline-block;' id='renew'>RENEW</div>");
 
 			outString += `<div class='accountNotification ${subClass}'>${accountMessage}</div>`;
 		}
