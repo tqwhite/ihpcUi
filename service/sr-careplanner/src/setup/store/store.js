@@ -141,48 +141,55 @@ export const ViewModel = Map.extend({
 		};
 
 		const callSaveObject = (err, result) => {
-			this.saveObject(
-				this.attr('%root').attr('loginUserDataOnly'),
-				ccInfoRedacted,
-				this.attr('poInfo'),
-				this.attr('selectedProductCode'),
-				this.attr('usePurchaseOrder')
-			);
+			if (!err) {
+				this.saveObject(
+					this.attr('%root').attr('loginUserDataOnly'),
+					ccInfoRedacted,
+					this.attr('poInfo'),
+					this.attr('selectedProductCode'),
+					this.attr('usePurchaseOrder')
+				);
+			} else {
+				this.attr('status', {
+					class: 'bad',
+					message: err
+				});
+				console.log(
+					'error from authorize nonce generation [setup/store/store.js.submit]'
+				);
+			}
 		};
+
 
 		const accessNonce = (ccInfo, callback) => {
 			const config = this.attr('%root').attr('configuration');
 			const processorChoice = config.processorChoice;
 			let apiLoginID = config.keys[processorChoice].authorizeApiLoginKey;
-			let clientKey =
-				config.keys[processorChoice]
-					.authorizePublicClientKey;  
-			 const dispatchCallback = response => {
+			let clientKey = config.keys[processorChoice].authorizePublicClientKey;
+			const dispatchCallback = response => {
+				console.dir({ 'response [store.js.submit]': response });
+		
 				if (response.messages.resultCode === 'Error') {
 					let i = 0;
 					while (i < response.messages.message.length) {
 						console.log(
-							response.messages.message[i].code +
+							'Accept.dispatchData says: ' +
+								response.messages.message[i].code +
 								': ' +
-								response.messages.message[i].text
+								response.messages.message[i].text +
+								' [setup/store/store.js]'
 						);
 						i = i + 1;
 					}
-					this.attr('status', {
-					class: 'bad',
-					message:
-						typeof err.responseJSON == 'object'
-							? err.responseJSON.errorText
-							: 'unknown error'
-				});
-				this.attr('saveNotification', false);
+					this.attr('saveNotification', false);
+					callback(response.messages.message[0].text);
 					return;
 				}
-
+		
 				ccInfoRedacted.opaqueData = response.opaqueData;
 				callback();
 			};
-
+			
 			const authData = {};
 			authData.clientKey = clientKey;
 			authData.apiLoginID = apiLoginID;
@@ -191,12 +198,13 @@ export const ViewModel = Map.extend({
 			cardData.month = ccInfo.expMonth;
 			cardData.year = ccInfo.expYear;
 			cardData.cardCode = ccInfo.cardCode;
-
+		
 			const secureData = {};
 			secureData.authData = authData;
 			secureData.cardData = cardData;
 			Accept.dispatchData(secureData, dispatchCallback);
 		};
+		this.attr('saveNotification', true);
 
 		if (this.attr('usePurchaseOrder')) {
 			callSaveObject();
@@ -204,7 +212,6 @@ export const ViewModel = Map.extend({
 			accessNonce(ccInfo, callSaveObject);
 		}
 
-		this.attr('saveNotification', true);
 	},
 	
 	saveObject: function(
@@ -260,9 +267,7 @@ export const ViewModel = Map.extend({
 			},
 			err => {
 				this.attr('saveError', JSON.stringify(err.responseText));
-				console.dir({
-					err: err
-				});
+				console.dir({"err [store.js.saveObject]":err});
 				this.attr('status', {
 					class: 'bad',
 					message:
