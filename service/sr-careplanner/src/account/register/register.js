@@ -24,7 +24,7 @@ export const ViewModel = Map.extend({
 		},
 		showTerms:{
 			value:false
-		}
+		},
   },
   
   activatePrint:function(element, event){
@@ -126,12 +126,39 @@ const changeHandler=function(domObj, event) {
 			
 		};
 
+		let secondaryEmailMessageTimeoutId;
+		const secondaryHandlerOn = function(domObj, event) {
+			if (secondaryEmailMessageTimeoutId){
+				clearTimeout(secondaryEmailMessageTimeoutId);
+			}
+			
+			$('#secondaryEmailMessage').css({display:'block', height:'auto'});
+		};
+		const secondaryHandlerOff = function(domObj, event) {
+			if ($('#emailAddressSecondary').is(':focus')){
+				return;
+			}
+			secondaryEmailMessageTimeoutId = setTimeout(() => {
+			$('#secondaryEmailMessage').animate({height:'0px', padding:'0px'}, 4000, ()=>{
+			
+			$('#secondaryEmailMessage').css({display:'none', height:'auto'});
+			});
+			}, 2000);
+		};
+
+
 export default Component.extend({
   tag: 'account-register',
   viewModel: ViewModel,
   template,
 	events: {
-		'#registerButton click': changeHandler
+		'#registerButton click': changeHandler,
+		'#emailAddressSecondary mouseover': secondaryHandlerOn,
+		'#emailAddressSecondary mouseout': secondaryHandlerOff,
+		'#secondaryEmailMessage mouseover': secondaryHandlerOn,
+		'#secondaryEmailMessage mouseout': secondaryHandlerOff,
+		'#emailAddressSecondary focus': secondaryHandlerOn,
+		'#emailAddressSecondary blur': secondaryHandlerOff
 
 	},
 });

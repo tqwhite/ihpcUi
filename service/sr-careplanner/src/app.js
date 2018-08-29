@@ -173,7 +173,7 @@ const AppViewModel = Map.extend({
 		productionSystem: {
 			get: function() {
 				const value = window.location.href.match(/(demo|local)/);
-				return value?false:true;
+				return value ? false : true;
 			},
 			serialize: false
 		},
@@ -406,18 +406,24 @@ const AppViewModel = Map.extend({
 				subClass = classInfo[1];
 			}
 
-			expiredAccountMessage = expiredAccountMessage.replace(
-				/<!lastDayInSubscription!>/,
-				new Date(this.attr('lastDayInSubscription'))
-					.toLocaleDateString('en-US')
-					.toString()
-					.replace(/^.*?, (\w+) (\d+), (\d+)$/, '$2_$1_$3')
-			);
+			expiredAccountMessage = expiredAccountMessage
+				.replace(
+					/<!lastDayInSubscription!>/,
+					new Date(this.attr('lastDayInSubscription'))
+						.toLocaleDateString('en-US')
+						.toString()
+						.replace(/^.*?, (\w+) (\d+), (\d+)$/, '$2_$1_$3')
+				)
+				.replace(
+					/<!renewButton!>/,
+					"<div class='c-button c-button--primary c-button--small' ($click)='clearConsole()' style='display:inline-block;' id='renew'>RENEW</div>"
+				);
+
 			outString += `<div class='accountNotification ${subClass}'>${expiredAccountMessage}</div>`;
 		} else {
 			const lastDayInSubscription = this.attr('lastDayInSubscription');
 			const expirationWarnings = config.expirationWarning;
-			
+
 			const breakpoints = [];
 			for (var i = 0, len = expirationWarnings.length; i < len; i++) {
 				var element = expirationWarnings[i];
@@ -425,17 +431,17 @@ const AppViewModel = Map.extend({
 					breakpoints.push(i);
 				}
 			}
-			
+
 			const subscriptionDate = new Date(lastDayInSubscription);
 			const today = new Date();
-			const exactDaysLeft=(subscriptionDate - today) / 1000 / 3600 / 24;
+			const exactDaysLeft = (subscriptionDate - today) / 1000 / 3600 / 24;
 			const daysLeft = Math.floor(exactDaysLeft);
 			//someday this should get switched to the more recent user property 'daysLeftInSubscription'
-			
+
 			const messageIndex = breakpoints
 				.filter(item => daysLeft <= item) //get rid of this when you have time to test it
 				.filter(item => daysLeft <= item)
-				.reduce((result, item) => result = Math.min(result, item), 1000);
+				.reduce((result, item) => (result = Math.min(result, item)), 1000);
 
 			let message = expirationWarnings[messageIndex];
 
@@ -454,17 +460,20 @@ const AppViewModel = Map.extend({
 							.replace(/^.*?, (\w+) (\d+), (\d+)$/, '$2_$1_$3')
 					)
 					.replace(/<!daysLeft!>/, daysLeft)
-				.replace(/<!renewButton!>/, "<div class='c-button c-button--primary c-button--small' ($click)='clearConsole()' style='display:inline-block;' id='renew'>RENEW</div>");
+					.replace(
+						/<!renewButton!>/,
+						"<div class='c-button c-button--primary c-button--small' ($click)='clearConsole()' style='display:inline-block;' id='renew'>RENEW</div>"
+					);
 				outString += `<div class='accountNotification ${subClass}'>${message}</div>`;
-				
-				setTimeout(() => { 
-					 $('#renew').on('click', () => {
-						this.setNewPage('setup', '', 'store');
-					});
-				}, 10);
-
 			}
 		}
+
+		setTimeout(() => {
+			$('#renew').on('click', () => {
+				this.setNewPage('setup', '', 'store');
+			});
+		}, 10);
+
 		const metaData = this.attr('metaData');
 		let accountParameters;
 		if (metaData) {
@@ -485,7 +494,10 @@ const AppViewModel = Map.extend({
 						.replace(/^.*?, (\w+) (\d+), (\d+)$/, '$2_$1_$3')
 				)
 				.replace(/<!months!>/, months)
-				.replace(/<!renewButton!>/, "<div class='c-button c-button--primary c-button--small' ($click)='clearConsole()' style='display:inline-block;' id='renew'>RENEW</div>");
+				.replace(
+					/<!renewButton!>/,
+					`<div class='c-button c-button--primary c-button--small' ($click)='clearConsole()' style='display:inline-block;' id='renew'>RENEW</div>`
+				);
 
 			outString += `<div class='accountNotification ${subClass}'>${accountMessage}</div>`;
 		}
@@ -526,16 +538,14 @@ can.stache.registerHelper('simpleRoute', function(options) {
 	if (!routingBits || typeof routingBits[1] == 'undefined') {
 		return;
 	}
-if (this.attr('browserLoaded') && this.attr('loginUserDataOnly').isActive){
-	switch (routingBits[1]) {
-		case 'renew':
-			this.setNewPage('setup', '', 'store');
-			break;
+	if (this.attr('browserLoaded') && this.attr('loginUserDataOnly').isActive) {
+		switch (routingBits[1]) {
+			case 'renew':
+				this.setNewPage('setup', '', 'store');
+				break;
+		}
 	}
-
-}
-
-
+	
 	switch (routingBits[1]) {
 		case 'forgotPassword':
 			this.setNewPage('', 'forgot-password');

@@ -69,9 +69,27 @@
 {{/switch}}
 
 {{else}}
+{{#switch subsection}}
+{{#case "store"}}
+		<can-import from="sr-careplanner/setup/store/" />
+			  <setup-store
+				setup-root-vm='{.}'
+				($inserted)="collectChildComponents('setup-store', %viewModel))"
+				/>
+	{{/case}}
+{{#case "user"}}
 		<can-import from="sr-careplanner/setup/user/" />
 			  <setup-user
 				setup-root-vm='{.}'
 				($inserted)="collectChildComponents('setup-user', %viewModel))"
 				/>
+	{{/case}}
+{{#default}}
+		<can-import from="sr-careplanner/setup/store/" />
+			  <setup-store
+				setup-root-vm='{.}'
+				($inserted)="collectChildComponents('setup-store', %viewModel))"
+				/>
+	{{/default}}
+{{/switch}}
 {{/if}}

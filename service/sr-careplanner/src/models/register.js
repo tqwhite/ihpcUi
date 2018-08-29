@@ -9,9 +9,6 @@ export const Register = can.Map.extend({
 		let name;
 		const errorList = [];
 		const checkValidation = (fieldName) => {
-console.log("fieldName="+fieldName);
-
-
 			switch (fieldName) {
 				case 'bookNumber':
 					if (!this.attr(fieldName) || this.attr(fieldName).length!=6) {
@@ -72,16 +69,32 @@ console.log("fieldName="+fieldName);
 					
 					
 					break;
-				case 'confirmEmail':
-					if (this.attr(fieldName)!=this.attr('emailAddress')) {
+				case 'emailAddressSecondary':
+					if (!this.attr(fieldName) || !this.attr(fieldName).length) {
+					//empty is allowed
+					break;
+					}
+					if (!this.attr(fieldName) || !this.attr(fieldName).match(/@/) || this.attr(fieldName).length<3) {
 
 						errorList.push({
 							fieldName: fieldName,
-							errorText: "Email Address and Confirmation Address must match"
+							errorText: fieldName + " must be a valid email address"
 						});
+					break;
 					}
 					
+					
 					break;
+// 				case 'confirmEmail':
+// 					if (this.attr(fieldName)!=this.attr('emailAddress')) {
+// 
+// 						errorList.push({
+// 							fieldName: fieldName,
+// 							errorText: "Email Address and Confirmation Address must match"
+// 						});
+// 					}
+// 					
+// 					break;
 			}
 		}
 

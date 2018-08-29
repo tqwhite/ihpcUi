@@ -14,9 +14,16 @@
 	</div>
 {{/saveNotification}}
 
-
+<div>
 <div class='container'>
+	<div class='secondaryEmailNotification'>
+		Many schools have restrictive spam filters that make receiving emails unreliable.
+		<br/><br/>
+		Entering an optional secondary email address will ensure you'll receive ALL communications including renewal messages, reset password notices, etc. 
 
+	</div>
+</div>
+<div class='container'>
 {{#if loginUser.isResolved}}
 {{#with loginUser.value}}
 	<div class='editorRow'><input class="c-field" placeholder="First Name" {($value)}="first" fieldName='first'/> <input class="c-field" placeholder="Last Name" {($value)}="last" fieldName='last'/> </div>
@@ -24,6 +31,11 @@
 	<div>
 		<input class="c-field" placeholder="Email Address" {($value)}="emailAddress" fieldName='emailAddress'/> 
 	</div>
+
+	<div>
+		<input class="c-field" placeholder="Optional Secondary/Home Email" {($value)}="emailAddressSecondary" fieldName='emailAddressSecondary'/> 
+	</div>
+	
 	<div>
 		<input class="c-field" placeholder="User Name" {($value)}="username" fieldName='username'/> 
 	</div>
@@ -33,4 +45,5 @@
 
 {{/with}}
 {{/if}}
+</div>
 </div>

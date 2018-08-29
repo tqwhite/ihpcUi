@@ -29,8 +29,21 @@
 				<input class="c-field" placeholder="User Name (Your Choice, No Spaces)" {($value)}="newUser.username" fieldName='username'>
 				<input class="c-field" placeholder="Password (EIGHT characters, FERPA!)" type="password" {($value)}="newUser.password" fieldName='password'>
 				<input class="c-field" placeholder="Email Address" {($value)}="newUser.emailAddress" fieldName='emailAddress'>
-				<input class="c-field" placeholder="Repeat Email Address to Confirm" {($value)}="newUser.confirmEmail"  fieldName='confirmEmail'>
-
+				<input id='emailAddressSecondary' class="c-field" placeholder="Optional Secondary/Home Email" {($value)}="newUser.emailAddressSecondary" fieldName='emailAddressSecondary'>
+<div style='border:1pt solid transparent;min-height:15px;' id='stopFinalBumpInAnimation'>
+				<div id='secondaryEmailMessage' class='formWrapper secondaryEmailMessage'> 
+					Entering an optional secondary email address will ensure you'll receive ALL communications including renewal messages, reset password notices, etc. 
+					<br/><br/>
+					Many schools have restrictive spam filters that make receiving emails unreliable.
+				<!--You may enter a second email address which will <i>also</I> receive system messages (reset password, renewal messages, etc).
+					<br/><br/>
+					We have added this option because many schools have very restrictive spam filters that make receiving email messages
+					unreliable. Many people have a personal email address that is more forgiving.
+					<br/><br/>
+					If you add a second email address, we will send your communications to both destinations.
+					-->
+				</div>
+</div>
 			</div>
 		</div>
 		

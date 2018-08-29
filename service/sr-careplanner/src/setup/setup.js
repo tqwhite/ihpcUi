@@ -65,7 +65,7 @@ export const ViewModel = Map.extend({
 			const value = itemDomObj.val();
 			const fieldName = itemDomObj.attr('fieldName');
 			
-			if (['first', 'last', 'username', 'password', 'emailAddress'].indexOf(fieldName) > -1) {
+			if (['first', 'last', 'username', 'password', 'emailAddress', 'emailAddressSecondary'].indexOf(fieldName) > -1) {
 				hackeryDataFromDom[fieldName] = value;
 			}
 			else{
