@@ -267,7 +267,20 @@ const AppViewModel = Map.extend({
 		showResendNotification: {
 			value: '',
 			serialize: false
-		}
+		},
+		
+		showStudentManager: {
+			value: '',
+			serialize: false
+		},
+		filterFragment:{
+			value:'',
+			serialize:false
+		},
+		studentSearchField:{
+			value:'last',
+			serialize:false
+		},
 	},
 	setNewPage: function(page, slug, subsection) {
 		this.attr('welcomeMessage', '');
@@ -282,6 +295,7 @@ const AppViewModel = Map.extend({
 	clearConsole: function() {
 		console.clear();
 	},
+	
 	activateModal: function(callback) {
 		const clearModal = () => {
 			$('.modalBackground').hide();

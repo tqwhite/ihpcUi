@@ -1,0 +1,25 @@
+<input id='filterFragment' class="c-field wide" placeholder="Type Last Name (partial)..." type="text" {($value)}="filterFragment" fieldName='filterFragment' />
+
+
+	<div class='filters'>
+	
+	<div>
+		Search:
+		<label class="c-choice inline">
+			<input type='radio' can-value='studentSearchField' value='last' /> Last Name
+		</label><label class="c-choice inline">
+			<input type='radio' can-value='studentSearchField' value='gradeLevel'/> Grade Level
+		</label>
+	</div>
+	
+	
+	<div>
+		{{#if showInactiveStudents}}
+			Hide
+		{{else}}
+			Show
+		{{/if}} {{inactiveCount}} inactive students: <input type="checkbox" {($checked)}="showInactiveStudents"> 
+	</div>
+	
+	
+	</div>

@@ -1,0 +1,15 @@
+
+		{{#each students.value}}
+		
+		{{#if matchesFragment(last, gradeLevel)}}
+		
+				{{#is inactive true}}
+				
+				{{#is showInactiveStudents true}}
+					<div class="student inactive" ($click)='chooseStudent(.)'>{{last}}, {{first}} ( i )</div>
+				{{/is}}
+				{{#else}}
+					<div class="student " ($click)='chooseStudent(.)'>{{last}}, {{first}}</div>
+				{{/is}}
+			{{/if}}
+		{{/each}}

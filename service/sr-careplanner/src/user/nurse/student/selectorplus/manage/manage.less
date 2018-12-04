@@ -1,0 +1,96 @@
+user-nurse-student-selectorplus-manage {
+	width:90vw;
+	height:50vh;
+	position:relative;
+	background:white;
+	border:2pt solid rgba(95, 95, 95, .2);
+
+
+	display:flex;
+	align-items:center;
+	flex-direction:column;
+}
+
+user-nurse-student-selectorplus-manage .controlsContainer {
+	width:100%;
+	display:flex;
+	justify-content:space-between;
+}
+
+
+user-nurse-student-selectorplus-manage .workingContainer {
+	height:35%;
+	display:flex;
+	justify-content:space-around;
+}
+
+
+
+.fullWidth{
+width:100%;
+}
+
+.halfWidth{
+width:50%;
+}
+
+user-nurse-student-selectorplus-manage .studentPlanSelector {
+width:100%;
+}
+
+user-nurse-student-selectorplus-manage .studentTransferSelector {
+width:50%;
+}
+
+user-nurse-student-selectorplus-manage .transferControls{
+background:#aab;
+}
+
+
+
+
+
+
+
+
+user-nurse-student-selectorplus-manage .statusArea{
+background:#aab;
+width:48%;
+overflow:scroll;
+overflow-x: hidden;
+font-size:10pt;
+}
+
+.centerHorizontal{
+	display:-webkit-flex;
+	display:flex;
+	
+	flex-direction:row;
+	-webkit-flex-direction: row;
+	
+	/* between items in main direction */
+	justify-content:center; /*flex-start, flex-end, center, space-between, space-around, stretch*/
+	-webkit-justify-content:center;
+	
+	/* between rows or columns */
+	align-content:center; /*flex-start, flex-end, center, space-between, space-around, stretch*/
+	-webkit-align-content:center;
+	
+	align-items:center; /*flex-start, flex-end, center, baseline, stretch*/
+	-webkit-align-items:center;
+	
+	justify-content:space-between; /*flex-start, flex-end, center, space-between, space-around*/
+	-webkit-justify-content:space-between;
+	
+	flex-wrap:wrap; /*nowrap | wrap | wrap-reverse*/
+	-webkit-flex-wrap:wrap;
+	
+}
+
+.flexItem{
+/*order: 1; (2, 3, 4, ... )*/
+flex-grow: 1;  /*2, 3, 4, ...*/
+flex-shrink: 1;  /*2, 3, 4, ...*/
+flex-basis:auto; /* percent, dimension, ... */
+align-self:auto; /*same as but overrides align items above*/
+}

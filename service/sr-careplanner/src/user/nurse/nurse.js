@@ -181,21 +181,54 @@ export const ViewModel = Map.extend({
 
 		},
 
+		activeCount:{
+			value:0,
+			type:'*'
+
+		},
+
+		allCount:{
+			value:0,
+			type:'*'
+
+		},
+
+		showSmallStudentSelectorPlus:{
+			value:false,
+			serialize:false
+		},
+
 		currentTool:{
 			value:'editor',
+			serialize:false
+		},
+		showInactiveStudents:{
+			value:true,
 			serialize:false
 		}
 	},
 	
 	countInactive:function(students){
-		let count=0;
+		let inactiveCount=0;
+		let activeCount=0;
+		let allCount=0;
 		students.then((student)=>{
 			student.each((student)=>{
 				if (student.attr('inactive')){
-					count++;
+					inactiveCount++;
 				}
+				else{
+				activeCount++;
+				}
+				allCount++;
 			});
-			this.attr('inactiveCount', count);
+			this.attr('inactiveCount', inactiveCount);
+			this.attr('activeCount', activeCount);
+			this.attr('allCount', allCount);
+			
+			const showInactiveStudents=this.attr('showInactiveStudents');
+			const displayCount=showInactiveStudents?allCount:activeCount;
+			this.attr('showSmallStudentSelectorPlus', (displayCount<20)?true:false);
 		});
 	},
 

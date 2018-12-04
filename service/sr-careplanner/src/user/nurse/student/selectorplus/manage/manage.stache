@@ -1,0 +1,47 @@
+	<can-import from="sr-careplanner/user/nurse/student/selectorplus/manage/students/" />
+	<can-import from="sr-careplanner/user/nurse/student/selectorplus/manage/transfer/" />
+	<can-import from="sr-careplanner/user/nurse/student/selectorplus/manage/filter/" />
+	<can-import from="sr-careplanner/user/nurse/student/selectorplus/manage/switch/" />
+
+
+
+<div class='controlsContainer'>
+
+	<user-nurse-student-selectorplus-manage-filter /> 
+<div class='switch'>
+	<user-nurse-student-selectorplus-manage-switch /> 
+	</div>
+</div>
+	
+	
+<div class='workingContainer
+		
+		{{#is functionMode 'transfer'}}
+			fullWidth
+		{{#else}}
+			{{#if showSmallStudentSelectorPlus}}
+				halfWidth
+			{{#else}}
+				fullWidth
+			{{/if}}
+		{{/is}}
+'>
+
+<div class='
+	{{#is functionMode 'selector'}}
+		studentPlanSelector
+	{{#else}}
+		studentTransferSelector
+	{{/is}}
+'>
+	
+	<user-nurse-student-selectorplus-manage-students /> 
+	</div>
+		
+	{{#is functionMode 'transfer'}}
+		<div class='transferControls'>
+			<user-nurse-student-selectorplus-manage-transfer /> 
+			</div>
+	{{/is}}
+
+</div>

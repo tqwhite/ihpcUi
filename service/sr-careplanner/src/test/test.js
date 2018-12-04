@@ -114,3 +114,13 @@ import 'sr-careplanner/account/forgot-password/forgot-password_test';
 import 'sr-careplanner/decorations/boilerplate-files/boilerplate-files_test';
 
 import 'sr-careplanner/forms/forms_test';
+
+import 'sr-careplanner/user/nurse/student/selectorplus/manage/manage_test';
+
+import 'sr-careplanner/user/nurse/student/selectorplus/manage/students/students_test';
+
+import 'sr-careplanner/user/nurse/student/selectorplus/manage/transfer/transfer_test';
+
+import 'sr-careplanner/user/nurse/student/selectorplus/manage/filter/filter_test';
+
+import 'sr-careplanner/user/nurse/student/selectorplus/manage/switch/switch_test';

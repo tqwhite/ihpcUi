@@ -1,0 +1,32 @@
+<!--{{message}}-->
+	<can-import from="sr-careplanner/user/nurse/student/selectorplus/manage/"
+					selector-plus-vm='{.}' 
+					/>
+	
+
+{{#../showStudentManager}}
+
+
+			<user-nurse-student-selectorplus-manage /> 
+
+{{/../showStudentManager}}
+
+{{^../showStudentManager}}
+	<button class="c-button  c-button--medium openSelectorPlusButton
+	
+		{{#../openStudentNameString}}
+			c-button--ghost
+		{{else}}
+			c-button--primary 
+		{{/../openStudentNameString}}
+	
+	
+	" ($click)='activateMenu(%event)'>
+		{{#../openStudentNameString}}
+			{{openStudentNameString}}
+		{{else}}
+			Select Student+ 
+		{{/../openStudentNameString}}
+	</button>
+{{/../showStudentManager}}
+
