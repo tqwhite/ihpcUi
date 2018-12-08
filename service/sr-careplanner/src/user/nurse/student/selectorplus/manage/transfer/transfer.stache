@@ -1,1 +1,53 @@
-<p>{{message}}</p>
+
+
+<div class='transferTitle'>
+Transfer Controls
+</div>
+
+
+<div class='studentListWrapper'>
+	{{^if transferListLength}}
+		<div class='placeHolder'><div class='chooseNote'>Choose some students</div></div>
+		<div class='note'></div>
+	{{/if}}
+	
+	{{#if transferListLength}}
+		<user-nurse-student-selectorplus-manage-students
+			usage='transferOnly' 
+		/> 
+	{{/if}}
+
+		<div class='note'>	
+	{{#if transferListLength}}
+		{{{displayTransferControlStatus()}}}
+	{{/if}}
+	{{^if transferListLength}}
+		{{{displayTransferControlStatus()}}}
+	{{/if}}
+</div>
+		
+	{{#if activateClearTransferList}}
+		{{clearTransferList}}
+	{{/if}}
+	
+	
+	<div class='transferControls'>
+	
+		<div class='receiverGoodies'>
+					<input id='receivingNurseUserName' class="c-field wide" placeholder="Login Name of Receiving Nurse..." type="text" {($value)}="tmpReceivingNurseUserName" />
+
+			<div class='buttonHolder'>
+			
+						<button class="c-button  c-button--medium c-button--primary local" ($click)='executeTransfer(%event, transferList)' 
+						{{^if enableTransferButton(transferListLength)}}
+						disabled
+						{{/if}}
+						>
+						Send Transfer Notice
+						</button>
+				
+			</div>
+		</div>
+	</div>
+
+</div>

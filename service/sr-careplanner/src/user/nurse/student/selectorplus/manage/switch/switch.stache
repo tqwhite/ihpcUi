@@ -6,7 +6,7 @@
 		
 
 
-{{#is ../functionMode 'transfer'}}
+{{#is ../selectorPlusFunctionMode 'transfer'}}
 	<button class="c-button  c-button--medium c-button--primary local" ($click)='../createNewStudent(%event)' disabled>
 	
 	ADD<br/>STUDENT&nbsp;
@@ -19,7 +19,7 @@
 {{/is}}	
 
 
-{{#is ../functionMode 'transfer'}}
+{{#is ../selectorPlusFunctionMode 'transfer'}}
 	<button class="c-button  c-button--medium c-button--primary local" ($click)='../toggleFunction(%event)'>
 	
 	&nbsp;Select&nbsp;&nbsp;
@@ -34,7 +34,7 @@
 
 
 
-{{#is ../functionMode 'transfer'}}
+{{#is ../selectorPlusFunctionMode 'transfer'}}
 	<button class="c-button  c-button--medium c-button--primary local" ($click)='../toggleFunction(%event)' disabled>
 	
 	Transfer

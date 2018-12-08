@@ -1,15 +1,56 @@
+{{#is usage 'fullSelection'}}
+	{{#is selectorPlusFunctionMode 'transfer'}}
+		<div class='transferTitle'>
+			Click to Choose Students for Transfer
+		</div>
+	{{/is}}
+{{/is}}
 
+	<div class='studentList'>
 		{{#each students.value}}
 		
 		{{#if matchesFragment(last, gradeLevel)}}
 		
-				{{#is inactive true}}
-				
-				{{#is showInactiveStudents true}}
-					<div class="student inactive" ($click)='chooseStudent(.)'>{{last}}, {{first}} ( i )</div>
-				{{/is}}
-				{{#else}}
-					<div class="student " ($click)='chooseStudent(.)'>{{last}}, {{first}}</div>
-				{{/is}}
+
+		
+		
+				{{#if studentShouldBeShown(usage, ., showInactiveStudents)}}		
+					
+						<div class="
+						
+						
+						
+						{{^if transferPending}}
+						student
+						{{/if}} 
+						
+						{{#if inactive}}
+						inactive
+						{{/if}}
+						
+						{{#if onTransferList(.)}}
+						transfer
+						{{/if}}
+						
+						{{#if transferPending}}
+						transferPending
+						{{/if}}
+						
+						
+						" ($click)='selectStudent(., selectorPlusFunctionMode)'
+						
+						
+						{{#if transferPending}}
+						title='This student has a transfer pending and cannot be changed. The transfer tool has the ability to edit the transfer to reclaim the student if the receiving nurse has not already accepted it.'
+						{{/if}} 
+						
+						>{{last}}, {{first}}</div>
+					
+				{{/if}}
 			{{/if}}
+			
+	
 		{{/each}}
+
+
+<div>

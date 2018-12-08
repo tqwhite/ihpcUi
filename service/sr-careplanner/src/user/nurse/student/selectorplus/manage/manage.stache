@@ -6,17 +6,14 @@
 
 
 <div class='controlsContainer'>
-
 	<user-nurse-student-selectorplus-manage-filter /> 
-<div class='switch'>
 	<user-nurse-student-selectorplus-manage-switch /> 
-	</div>
 </div>
 	
 	
 <div class='workingContainer
 		
-		{{#is functionMode 'transfer'}}
+		{{#is selectorPlusFunctionMode 'transfer'}}
 			fullWidth
 		{{#else}}
 			{{#if showSmallStudentSelectorPlus}}
@@ -28,20 +25,48 @@
 '>
 
 <div class='
-	{{#is functionMode 'selector'}}
+	{{#is selectorPlusFunctionMode 'selector'}}
 		studentPlanSelector
 	{{#else}}
 		studentTransferSelector
 	{{/is}}
 '>
+
+		
 	
-	<user-nurse-student-selectorplus-manage-students /> 
+	<user-nurse-student-selectorplus-manage-students
+		usage='fullSelection' 
+	/> 
+	<div style='width:100%;border:1pt solid yellow;'>
+		Next: create<br/>
+		transfer history<br/>
+		here.
+	
+	</div>
+
+	
 	</div>
 		
-	{{#is functionMode 'transfer'}}
-		<div class='transferControls'>
-			<user-nurse-student-selectorplus-manage-transfer /> 
-			</div>
+	{{#is selectorPlusFunctionMode 'transfer'}}
+			<user-nurse-student-selectorplus-manage-transfer 
+					transfer-list-length='{transferListLength}' 
+					/> 
 	{{/is}}
 
 </div>
+	{{#is selectorPlusFunctionMode 'transfer'}}
+
+	<div class='instructions'>
+		
+	<div><span class='instTitle'>The process looks like this:</span></div>
+	<div><span class='instTitle'>1)</span> You and the receiving nurse talk on the phone.</div>
+	<div><span class='instTitle'>2)</span> The receiving nurse tells you his or her IHP Creator login name.</div>
+	<div><span class='instTitle'>3)</span> You choose students, enter the login name and click Send Transfer Notice</div>
+	<div><span class='instTitle'>4)</span> The receiving nurse sees a notification when she logs in.</div>
+	<div><span class='instTitle'>5)</span> The receiving nurse clicks on the button in the notification.</div>
+	<div><span class='instTitle'>6)</span> The receiving nurse clicks on the Accept Transfer Students button.</div>
+	<div><span class='instTitle'>7)</span> You see a notification when you log in that the students were accepted.</div>
+	<div><span class='instTitle'>8)</span> The students are no longer on your student selector list.</div>
+	{{/is}}		
+</div>
+
