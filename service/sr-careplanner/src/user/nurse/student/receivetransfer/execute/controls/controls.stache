@@ -1,0 +1,23 @@
+<div class='receivingControls'>
+
+<div class='centerWrapper'>
+
+	<button 
+		class='c-button c-button--primary c-button--small button' 
+		style='display:inline-block;'
+		{{^selectedTransfer.refId}}
+			disabled
+		{{/selectedTransfer.refId}}
+		($click)='acceptSelectedTransfer(%event)'
+	>Accept Students</button>
+	
+	<button class='c-button c-button--primary c-button--small button' 
+		class='c-button c-button--primary c-button--small button' 
+		style='display:inline-block;'
+		{{^selectedTransfer.refId}}
+			disabled
+		{{/selectedTransfer.refId}}
+		($click)='rejectSelectedTransfer(%event)'
+	>Reject Transfer</button>
+</div>
+</div>

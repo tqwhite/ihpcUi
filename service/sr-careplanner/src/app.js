@@ -15,13 +15,17 @@ const AppViewModel = Map.extend({
 		loginUser: {
 			get: function() {
 				const session = this.attr('session');
+
 				const loginUser = User.get({
 					_id: session.attr('0')._id
 				});
 
 				loginUser.then(item => {
-					this.attr('loginUserDataOnly', item.attr());
+					const userExpanded = item.attr();
 
+					userExpanded['transfers'] = session.attr('0').attr('transfers');
+					this.attr('loginUserDataOnly', userExpanded);
+					
 					const dictionary = item.attr('dictionary');
 					let newItemsFlag = false;
 
@@ -39,6 +43,7 @@ const AppViewModel = Map.extend({
 						item.save();
 					}
 				});
+
 				return loginUser;
 			}
 		},
@@ -268,19 +273,23 @@ const AppViewModel = Map.extend({
 			value: '',
 			serialize: false
 		},
-		
+
 		showStudentManager: {
 			value: '',
 			serialize: false
 		},
-		filterFragment:{
-			value:'',
-			serialize:false
+		filterFragment: {
+			value: '',
+			serialize: false
 		},
-		studentSearchField:{
-			value:'last',
-			serialize:false
+		studentSearchField: {
+			value: 'last',
+			serialize: false
 		},
+		showReceiveTransferTool: {
+			value: false,
+			serialize: false
+		}
 	},
 	setNewPage: function(page, slug, subsection) {
 		this.attr('welcomeMessage', '');
@@ -482,12 +491,6 @@ const AppViewModel = Map.extend({
 			}
 		}
 
-		setTimeout(() => {
-			$('#renew').on('click', () => {
-				this.setNewPage('setup', '', 'store');
-			});
-		}, 10);
-
 		const metaData = this.attr('metaData');
 		let accountParameters;
 		if (metaData) {
@@ -510,8 +513,8 @@ const AppViewModel = Map.extend({
 				.replace(/<!months!>/, months)
 				.replace(
 					/<!renewButton!>/,
-					`<div class='c-button c-button--primary c-button--small' ($click)='clearConsole()' style='display:inline-block;' id='renew'>RENEW</div>`
-				);
+					`<div class='c-button c-button--primary c-button--small' style='display:inline-block;' id='renew'>RENEW</div>`
+				); //this button's click event is set at the end of this function
 
 			outString += `<div class='accountNotification ${subClass}'>${accountMessage}</div>`;
 		}
@@ -521,11 +524,42 @@ const AppViewModel = Map.extend({
 			subClass = 'motd';
 			outString += `<div class='accountNotification ${subClass}'>${messageOfTheDay}</div>`;
 		}
+
+		var userData = this.attr('loginUserDataOnly');
+
+		if (userData.transfers && userData.transfers.length) {
+			const button = `<div class='c-button c-button--primary c-button--small' style='display:inline-block;' id='receivetransfers'>REVIEW TRANSFERS</div>`;
+			//this button's click event is set at the end of this function
+
+			outString += `<div class='accountNotification ${subClass}'>You have ${
+				userData.transfers.length
+			} pending transfer requests. Click ${button} to act on them.</div>`;
+		}
+
 		if (outString) {
 			outString = `<div class='messagesContainer'>${outString}</div>`;
 		}
 
+		setTimeout(() => {
+			$('#renew').on('click', event => {
+				event.stopPropagation();
+				this.setNewPage('setup', '', 'store');
+			});
+			$('#receivetransfers').on('click', event => {
+				event.stopPropagation();
+				this.setNewPage('nurse', '', '');
+				this.receiveTransfer(event);
+			});
+		}, 10); //needs to be in a timeout function so that the elements can be drawn first
 		return outString;
+	},
+
+	receiveTransfer: function(event) {
+		this.attr('showReceiveTransferTool', true);
+		this.activateModal(() => {
+			this.attr('showReceiveTransferTool', false);
+		});
+		
 	},
 
 	renewSession: function() {

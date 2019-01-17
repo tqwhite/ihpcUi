@@ -66,12 +66,12 @@ export const ViewModel = Map.extend({
 				this.attr('planRootVm').attr('openPlanNameString', saveObj.attr('createdAt'));
 
 			},
-				(err) => {
-					this.attr('saveError', JSON.stringify(err))
-					console.dir({
-						"err": err
-					});
+			(err) => {
+				this.attr('saveError', JSON.stringify(err))
+				console.dir({
+					"err": err
 				});
+			});
 	},
 
 	showConditionTool: function(event) {

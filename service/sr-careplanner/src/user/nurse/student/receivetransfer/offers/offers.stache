@@ -1,0 +1,14 @@
+<div class='transferOffers'>
+{{#each loginUserDataOnly.transfers}}
+<div class='listItem
+
+{{#is refId selectedTransfer.refId}}
+selected
+{{/is}}
+'
+>
+<div ($click)='selectOffer(%event, .)'>{{studentPartialList.length}} students offered by {{sendingUserPartial.first}} {{sendingUserPartial.last}}</div>
+
+</div>
+{{/each}}
+</div>

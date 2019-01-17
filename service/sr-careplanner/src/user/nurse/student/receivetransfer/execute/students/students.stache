@@ -1,0 +1,7 @@
+<div class='studentList'>
+
+{{#each selectedTransfer.studentPartialList}}
+{{first}} {{last}} ({{gradeLevel}})<br/>
+{{/each}}
+
+</div>

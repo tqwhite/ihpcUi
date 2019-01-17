@@ -1,0 +1,30 @@
+<can-import from="sr-careplanner/user/nurse/student/receivetransfer/execute/controls/" />
+
+<can-import from="sr-careplanner/user/nurse/student/receivetransfer/execute/students/" />
+
+
+
+
+
+{{#selectedTransfer.refId}}
+	<span class='nameTitle'>Coming from {{selectedTransfer.sendingUserPartial.first}} {{selectedTransfer.sendingUserPartial.last}}</span><br/>
+	<span class='contactInfo'>Phone: {{selectedTransfer.sendingUserPartial.infoPhone}} District/School: {{selectedTransfer.sendingUserPartial.district}}</span>
+{{/selectedTransfer.refId}}
+<div class='executeReceiving'>
+
+
+	
+	{{#transferResultStatus}}
+		<div class='transferStatus'>
+			{{transferResultStatus}}
+		</div>
+	{{/transferResultStatus}}
+	
+	{{^transferResultStatus}}
+		<user-nurse-student-receivetransfer-execute-students />
+		<user-nurse-student-receivetransfer-execute-controls />
+	{{/transferResultStatus}}
+	
+	
+
+</div>

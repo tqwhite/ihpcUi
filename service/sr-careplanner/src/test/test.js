@@ -124,3 +124,15 @@ import 'sr-careplanner/user/nurse/student/selectorplus/manage/transfer/transfer_
 import 'sr-careplanner/user/nurse/student/selectorplus/manage/filter/filter_test';
 
 import 'sr-careplanner/user/nurse/student/selectorplus/manage/switch/switch_test';
+
+import 'sr-careplanner/user/nurse/student//_test';
+
+import 'sr-careplanner/user/nurse/student/receivetransfer/receivetransfer_test';
+
+import 'sr-careplanner/user/nurse/student/receivetransfer/offers/offers_test';
+
+import 'sr-careplanner/user/nurse/student/receivetransfer/execute/execute_test';
+
+import 'sr-careplanner/user/nurse/student/receivetransfer/execute/students/students_test';
+
+import 'sr-careplanner/user/nurse/student/receivetransfer/execute/controls/controls_test';

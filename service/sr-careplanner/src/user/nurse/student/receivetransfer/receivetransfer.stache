@@ -1,0 +1,12 @@
+<can-import from="sr-careplanner/user/nurse/student/receivetransfer/execute/" />
+
+<can-import from="sr-careplanner/user/nurse/student/receivetransfer/offers/" />
+
+<div class='title'>Proposed Transfer of Students</div>
+
+<div class='workingArea'>
+
+	<user-nurse-student-receivetransfer-offers />
+	<user-nurse-student-receivetransfer-execute />
+
+</div>

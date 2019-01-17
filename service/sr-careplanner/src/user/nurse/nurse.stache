@@ -3,8 +3,9 @@
 <span style='display:none;float;right;'>{{boilerplates}}</span>
 	<can-import from="sr-careplanner/user/nurse/student/summary/" />
 	<can-import from="sr-careplanner/user/nurse/student/editor/" />
-	<can-import from="sr-careplanner/user/nurse/student/selector/" />
+	<!-- can-import from="sr-careplanner/user/nurse/student/selector/" DISCARD / -->
 	<can-import from="sr-careplanner/user/nurse/student/selectorplus/" />
+	<can-import from="sr-careplanner/user/nurse/student/receivetransfer/" />
 	<can-import from="sr-careplanner/user/nurse/plan/" />
 <div class='controls'>
 
@@ -25,6 +26,13 @@
 			{{/openStudentRefId}}
 		</div>
 	
+	{{#showReceiveTransferTool}}
+	<div class='receiveTransferContainer workingContainer'>
+		<user-nurse-student-receivetransfer 
+			plan-root-vm='{../}' 
+		/>
+		</div>
+	{{/showReceiveTransferTool}}
 	
 		<div class='
 			{{#showStudentManager}}
@@ -92,6 +100,9 @@
 			subscriptionActive={subscriptionActive}
 		/>
 	{{/openStudentRefId}}
+	
+	
+
 
 {{/is}}
 

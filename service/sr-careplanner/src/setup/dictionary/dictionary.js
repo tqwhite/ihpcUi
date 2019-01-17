@@ -5,6 +5,23 @@ import './dictionary.less!';
 import template from './dictionary.stache!';
 import User from "sr-careplanner/models/user";
 
+/*
+
+A few years later, I have found it useful to send two of these 
+original elements when creating a student transfer. These
+two things probably should have been moved into a property
+of the user document in mongo. However, that's too much work.
+
+Be aware future programmer, that infoPhone and district are
+referenced in transfer.js and are put into properties
+of the transfer object in mongo.
+
+They are then used by the receiveTransfer function here.
+
+tqii, 1/2018
+
+*/
+
 export const ViewModel = Map.extend({
   define: {
     message: {
