@@ -22,8 +22,16 @@ const AppViewModel = Map.extend({
 
 				loginUser.then(item => {
 					const userExpanded = item.attr();
-
-					userExpanded['transfers'] = session.attr('0').attr('transfers');
+					/*
+						I added transfers years later. Originally, I thought of the 
+						session and the user as synonyms. That was shortsighted.
+						Now I have to consider the transfer elements to be part
+						of the user or I have to rewrite a lot more than I want to.
+						Sorry, tqii, 1/2019
+					*/
+					userExpanded['transfersRecipient'] = session.attr('0').attr('transfersRecipient');
+					userExpanded['transfersSender'] = session.attr('0').attr('transfersSender');
+					
 					this.attr('loginUserDataOnly', userExpanded);
 					
 					const dictionary = item.attr('dictionary');
@@ -527,12 +535,12 @@ const AppViewModel = Map.extend({
 
 		var userData = this.attr('loginUserDataOnly');
 
-		if (userData.transfers && userData.transfers.length) {
+		if (userData.transfersRecipient && userData.transfersRecipient.length) {
 			const button = `<div class='c-button c-button--primary c-button--small' style='display:inline-block;' id='receivetransfers'>REVIEW TRANSFERS</div>`;
 			//this button's click event is set at the end of this function
 
 			outString += `<div class='accountNotification ${subClass}'>You have ${
-				userData.transfers.length
+				userData.transfersRecipient.length
 			} pending transfer requests. Click ${button} to act on them.</div>`;
 		}
 

@@ -28,7 +28,7 @@
 						inactive
 						{{/if}}
 						
-						{{#if onTransferList(.)}}
+						{{#if ontransferStudentList(.)}}
 						transfer
 						{{/if}}
 						

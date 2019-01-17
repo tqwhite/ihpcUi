@@ -32,7 +32,7 @@ const baseModel = {
 						});
 					}
 					break;
-				case 'transferList':
+				case 'transferStudentList':
 					if (
 						this.attr('executeTransfer') === true &&
 						(!this.attr(fieldName) || !this.attr(fieldName).length)
@@ -49,7 +49,7 @@ const baseModel = {
 		if (fieldName) {
 			checkValidation(fieldName);
 		} else {
-			['receivingNurseUserName', 'transferList'].map(checkValidation);
+			['receivingNurseUserName', 'transferStudentList'].map(checkValidation);
 		}
 		return errorList;
 	}

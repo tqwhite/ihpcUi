@@ -14,11 +14,11 @@ export const ViewModel = Map.extend({
 			value: '',
 			serialize: false
 		},
-		transferList: {
+		transferStudentList: {
 			value: [],
 			serialize: false
 		},
-		transferListLength: {
+		transferStudentListLength: {
 			value: 0,
 			serialize: false
 		},
@@ -27,9 +27,9 @@ export const ViewModel = Map.extend({
 			serialize: false
 		}
 	},
-	clearTransferList:function(){
-		this.attr('transferList', []);
-		this.attr('transferListLength', 0);
+	cleartransferStudentList:function(){
+		this.attr('transferStudentList', []);
+		this.attr('transferStudentListLength', 0);
 	},
 	toggleFunction: function(event) {
 		event.stopPropagation();
@@ -55,25 +55,25 @@ export const ViewModel = Map.extend({
 		if (selectorPlusFunctionMode == 'selector') {
 			this.editStudent(student);
 		} else {
-			this.toggleTransferListElement(student);
+			this.toggletransferStudentListElement(student);
 		}
 	},
-	toggleTransferListElement: function(student) {
-		if (this.onTransferList(student)) {
+	toggletransferStudentListElement: function(student) {
+		if (this.ontransferStudentList(student)) {
 			const thisRefId=student.attr('refId');
 			this.attr(
-				'transferList',
-				this.attr('transferList').filter(item => item.attr('refId')!=thisRefId || !this.onTransferList(item))
+				'transferStudentList',
+				this.attr('transferStudentList').filter(item => item.attr('refId')!=thisRefId || !this.ontransferStudentList(item))
 			);
 		} else {
-			this.attr('transferList').push(student);
+			this.attr('transferStudentList').push(student);
 		}
-		this.attr('transferListLength', this.attr('transferList').length);
+		this.attr('transferStudentListLength', this.attr('transferStudentList').length);
 
 	},
-	onTransferList: function(student) {
+	ontransferStudentList: function(student) {
 		const refId = student.attr('refId');
-		return this.attr('transferList').filter(item => item.attr('refId') == refId)
+		return this.attr('transferStudentList').filter(item => item.attr('refId') == refId)
 			.length
 			? true
 			: false;
@@ -144,7 +144,7 @@ export const ViewModel = Map.extend({
 			return !inactive || (inactive && showInactiveStudents);
 			break;
 		case 'transferOnly':
-			const isTransfer=this.onTransferList(student);
+			const isTransfer=this.ontransferStudentList(student);
 			return isTransfer;
 			break;
 		default:

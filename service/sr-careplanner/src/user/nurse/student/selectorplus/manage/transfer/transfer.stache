@@ -6,28 +6,28 @@ Transfer Controls
 
 
 <div class='studentListWrapper'>
-	{{^if transferListLength}}
+	{{^if transferStudentListLength}}
 		<div class='placeHolder'><div class='chooseNote'>Choose some students</div></div>
 		<div class='note'></div>
 	{{/if}}
 	
-	{{#if transferListLength}}
+	{{#if transferStudentListLength}}
 		<user-nurse-student-selectorplus-manage-students
 			usage='transferOnly' 
 		/> 
 	{{/if}}
 
 		<div class='note'>	
-	{{#if transferListLength}}
+	{{#if transferStudentListLength}}
 		{{{displayTransferControlStatus()}}}
 	{{/if}}
-	{{^if transferListLength}}
+	{{^if transferStudentListLength}}
 		{{{displayTransferControlStatus()}}}
 	{{/if}}
 </div>
 		
-	{{#if activateClearTransferList}}
-		{{clearTransferList}}
+	{{#if activateCleartransferStudentList}}
+		{{cleartransferStudentList}}
 	{{/if}}
 	
 	
@@ -38,8 +38,8 @@ Transfer Controls
 
 			<div class='buttonHolder'>
 			
-						<button class="c-button  c-button--medium c-button--primary local" ($click)='executeTransfer(%event, transferList)' 
-						{{^if enableTransferButton(transferListLength)}}
+						<button class="c-button  c-button--medium c-button--primary local" ($click)='executeTransfer(%event, transferStudentList)' 
+						{{^if enableTransferButton(transferStudentListLength)}}
 						disabled
 						{{/if}}
 						>

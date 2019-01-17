@@ -36,7 +36,7 @@ export const ViewModel = Map.extend({
 			value: {},
 			serialize: false
 		},
-		activateClearTransferList: {
+		activateCleartransferStudentList: {
 			value: false,
 			serialize: false
 		},
@@ -45,59 +45,58 @@ export const ViewModel = Map.extend({
 			type: '*'
 		}
 	},
-	executeTransfer: function(event, transferList) {
+	executeTransfer: function(event, transferStudentList) {
 		const localCallback = () => {
-			transferList.each(item => {
+			transferStudentList.each(item => {
 				item.attr('transferPending', true);
 			});
 
-			this.attr('activateClearTransferList', true);
+			this.attr('activateCleartransferStudentList', true);
 
 			this.attr('statusMessage', {
 				alreadySeen: false,
 				message: `Success: Transfer of ${
-					transferList.length
+					transferStudentList.length
 				} students offered to ${this.attr('receivingNurseInfo').attr(
 					'first'
 				)} ${this.attr('receivingNurseInfo').attr('last')}`,
 				className: 'goodResult'
 			});
 
-			this.attr('activateClearTransferList', false);
+			this.attr('activateCleartransferStudentList', false);
 			this.attr('receivingNurseInfo', {});
 			this.attr('tmpReceivingNurseUserName', '');
 		};
 
 		const loginUser = this.attr('%root').attr('loginUserDataOnly');
 
-const dictionary=loginUser.attr('dictionary');
+		const dictionary = loginUser.attr('dictionary');
 
-const infoPhone=qtools.getByProperty(dictionary, 'pattern', 'infoPhone');
-const district=qtools.getByProperty(dictionary, 'pattern', 'district');
+		const infoPhone = qtools.getByProperty(dictionary, 'pattern', 'infoPhone');
+		const district = qtools.getByProperty(dictionary, 'pattern', 'district');
 
 		const pendingTransfer = {
-			status:'pending',
+			status: 'pending',
 			sendingUserPartial: {
-				refId:loginUser.refId,
-				first:loginUser.first,
-				last:loginUser.last,
-				infoPhone:infoPhone.replacement?infoPhone.replacement:'n/a',
-				district:district.replacement?district.replacement:'n/a'
-			
+				refId: loginUser.refId,
+				first: loginUser.first,
+				last: loginUser.last,
+				infoPhone: infoPhone.replacement ? infoPhone.replacement : 'n/a',
+				district: district.replacement ? district.replacement : 'n/a'
 			},
 			receivingUserPartial: {
-				refId:this.attr('receivingNurseInfo').attr('refId'),
-				first:this.attr('receivingNurseInfo').attr('first'),
-				last:this.attr('receivingNurseInfo').attr('last'),
+				refId: this.attr('receivingNurseInfo').attr('refId'),
+				first: this.attr('receivingNurseInfo').attr('first'),
+				last: this.attr('receivingNurseInfo').attr('last')
 			},
-			studentPartialList: transferList.map(item => ({
-				first:item.first,
-				last:item.last,
-				gradeLevel:item.gradeLevel?tem.gradeLevel:'n/a',
-				refId:item.refId,
+			studentPartialList: transferStudentList.map(item => ({
+				first: item.first,
+				last: item.last,
+				gradeLevel: item.gradeLevel ?item.gradeLevel : 'n/a',
+				refId: item.refId
 			}))
 		};
-		
+
 		const transfer = new Transfer.Transfer(pendingTransfer);
 		this.attr('pendingTransfer', transfer);
 
@@ -147,12 +146,12 @@ const district=qtools.getByProperty(dictionary, 'pattern', 'district');
 		//Transfer.Transfer.getList({username:loginUser.attr('username')});
 	},
 
-	enableTransferButton: function(transferListLength) {
-		return this.attr('receivingNurseInfo').attr('refId') && transferListLength;
+	enableTransferButton: function(transferStudentListLength) {
+		return this.attr('receivingNurseInfo').attr('refId') && transferStudentListLength;
 	},
 
 	displayTransferControlStatus: function() {
-	
+		
 		const statusMessage = this.attr('statusMessage');
 		if (statusMessage.message && statusMessage.alreadySeen == false) {
 			this.attr('statusMessage', { alreadySeen: true });
@@ -160,10 +159,10 @@ const district=qtools.getByProperty(dictionary, 'pattern', 'district');
 				statusMessage.message
 			}</div>`;
 		}
-		
+
 		const receivingNurseInfo = this.attr('receivingNurseInfo');
 		const eligibleStatus = receivingNurseInfo.attr('refId') ? true : false;
-		const transferListLength = this.attr('transferListLength');
+		const transferStudentListLength = this.attr('transferStudentListLength');
 
 		const tmpReceivingNurseUserName = this.attr('tmpReceivingNurseUserName');
 
@@ -179,11 +178,11 @@ const district=qtools.getByProperty(dictionary, 'pattern', 'district');
 			}
 		}
 
-		if (tmpReceivingNurseUserName || transferListLength != 0) {
+		if (tmpReceivingNurseUserName || transferStudentListLength != 0) {
 			return "<div class='note'>Click on student to remove.</div>";
 		}
 
-		if (!tmpReceivingNurseUserName || transferListLength != 0) {
+		if (!tmpReceivingNurseUserName || transferStudentListLength != 0) {
 			return "<div class='note'>Enter Receiving Nurse Login Name below.</div>";
 		}
 		return '%nbsp;';

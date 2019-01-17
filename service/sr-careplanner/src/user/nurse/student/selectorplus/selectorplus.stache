@@ -1,6 +1,6 @@
 <!--{{message}}-->
 	<can-import from="sr-careplanner/user/nurse/student/selectorplus/manage/"
-					transfer-list-length='{transferListLength}' 
+					transfer-list-length='{transferStudentListLength}' 
 					/>
 	
 

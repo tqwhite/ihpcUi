@@ -37,11 +37,11 @@ export const sessionConnection = superMap({
 	parseInstanceData:function(inJsonItem){ 
 		const incoming=JSON.parse(inJsonItem);
 		const users=incoming.data.users;
-		users.transfers=incoming.data.transfers;
+		users.transfersRecipient=incoming.data.transfersRecipient;
+		users.transfersSender=incoming.data.transfersSender;
 		return [users]; //originally, api sent a list of one. change in 1/2019 so it sends individual.
 	}
 	
- 
 });
 
 tag('session-model', sessionConnection);

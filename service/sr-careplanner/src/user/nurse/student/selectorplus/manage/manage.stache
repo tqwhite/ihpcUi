@@ -49,7 +49,7 @@
 		
 	{{#is selectorPlusFunctionMode 'transfer'}}
 			<user-nurse-student-selectorplus-manage-transfer 
-					transfer-list-length='{transferListLength}' 
+					transfer-list-length='{transferStudentListLength}' 
 					/> 
 	{{/is}}
 
