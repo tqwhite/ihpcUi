@@ -136,3 +136,13 @@ import 'sr-careplanner/user/nurse/student/receivetransfer/execute/execute_test';
 import 'sr-careplanner/user/nurse/student/receivetransfer/execute/students/students_test';
 
 import 'sr-careplanner/user/nurse/student/receivetransfer/execute/controls/controls_test';
+
+import 'sr-careplanner/user/nurse/student/selectorplus/manage/transfer/history/history_test';
+
+import 'sr-careplanner/user/nurse/student/receivetransfer/execute/transitiondisplay/transitiondisplay_test';
+
+import 'sr-careplanner/user/nurse/student/receivetransfer/transitiondisplay/transitiondisplay_test';
+
+import 'sr-careplanner/user/nurse/student/selectorplus/manage/history/history_test';
+
+import 'sr-careplanner/user/nurse/student/selectorplus/manage/transferhistory/transferhistory_test';

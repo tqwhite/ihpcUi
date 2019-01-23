@@ -3,12 +3,12 @@
 
 <div class='notification'>
 {{#usePurchaseOrder}}
-An email with this information has been sent to you at {{loginUserDataOnly.emailAddress}}.<br/>
+An email with this information has been sent to you at {{loginUserWorkingData.emailAddress}}.<br/>
 A copy has also been sent to {{paymentProcessResult.poInfo.authName}} at {{paymentProcessResult.poInfo.authEmail}}.
 
 {{#else}}
 
-An email with this information has been sent to you at {{loginUserDataOnly.emailAddress}}.
+An email with this information has been sent to you at {{loginUserWorkingData.emailAddress}}.
 
 {{/usePurchaseOrder}}
 

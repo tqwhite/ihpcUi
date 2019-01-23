@@ -26,7 +26,7 @@ export const ViewModel = Map.extend({
 				const list = Student.getList({});
 				this.countInactive(list); //this operates the promise
 				return list;
-			}
+			},
 		},
 		plans: {
 			get: function() {

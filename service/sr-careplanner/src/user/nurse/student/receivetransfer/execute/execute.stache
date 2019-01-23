@@ -16,7 +16,7 @@
 	
 	{{#transferResultStatus}}
 		<div class='transferStatus'>
-			{{transferResultStatus}}
+			{{{transferResultStatus}}}
 		</div>
 	{{/transferResultStatus}}
 	

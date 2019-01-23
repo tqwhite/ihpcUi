@@ -3,6 +3,7 @@
 <can-import from="sr-careplanner/user/nurse/student/receivetransfer/offers/" />
 
 <div class='title'>Proposed Transfer of Students</div>
+<div class='close fa fa-close' ></div>
 
 <div class='workingArea'>
 

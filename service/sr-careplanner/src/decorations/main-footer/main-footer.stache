@@ -6,7 +6,7 @@
 <i>Individualized Healthcare Plans for the School Nurse</i><br/>
 © 2017 Sunrise River Press
 
-{{#if loginUserDataOnly.username}}
+{{#if loginUserWorkingData.username}}
 <div class='buttonContainer'>
 <button tabindex="-1" type='submit' class="c-button c-button--primary c-button--small" ($click)='activateSendFeedback()'>Send Feedback</button>
 </div>

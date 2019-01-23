@@ -1,0 +1,69 @@
+{{loginUserWorkingData.transfersSender.length}} transfers have been offered<br>
+
+{{#each loginUserWorkingData.transfersSender}}
+<nobr>[ <span style='font-size:80%;
+
+{{#is status 'rejected'}}
+text-decoration:line-through;
+color:gray;
+{{/is}}
+
+{{#is status 'accepted'}}
+color:green;
+{{/is}}
+
+'
+
+
+
+{{#is status 'rejected'}}
+title='rejected on {{formatDate(recipientDecisionDate)}}'
+{{/is}}
+
+{{#is status 'accepted'}}
+title='accepted on {{formatDate(recipientDecisionDate)}}'
+{{/is}}
+
+{{#is status 'pending'}}
+title='offered on {{formatDate(createdAt)}}'
+{{/is}}
+
+
+>
+<span class='
+
+
+{{#is status 'rejected'}}
+hide
+{{/is}}
+
+{{#is status 'accepted'}}
+hide
+{{/is}}
+
+{{#is status 'pending'}}cancel
+{{/is}}
+
+
+'
+
+
+
+{{#is status 'rejected'}}
+title='hide from view (cannot be undone)'
+{{/is}}
+
+{{#is status 'accepted'}}
+title='hide from view (cannot be undone)'
+{{/is}}
+
+{{#is status 'pending'}}
+title='CANCEL TRANSFER OFFER (cannot be undone)'
+{{/is}}
+
+
+($click)='cancelOrHide(.)'
+
+>X</span> {{receivingUserPartial.first}} {{receivingUserPartial.last}} ({{studentPartialList.length}})
+</span> ]</nobr> 
+{{/each}}

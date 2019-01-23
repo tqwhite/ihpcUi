@@ -7,7 +7,9 @@
 {{#../showStudentManager}}
 
 
-			<user-nurse-student-selectorplus-manage /> 
+			<user-nurse-student-selectorplus-manage 
+				parent-vm='{parentVm}' 
+				/> 
 
 {{/../showStudentManager}}
 

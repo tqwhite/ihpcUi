@@ -1,5 +1,6 @@
 <div class='transferOffers'>
-{{#each loginUserDataOnly.transfers}}
+<div class='annotation'>Click on an offer</div>
+{{#each loginUserWorkingData.transfersRecipient}}
 <div class='listItem
 
 {{#is refId selectedTransfer.refId}}

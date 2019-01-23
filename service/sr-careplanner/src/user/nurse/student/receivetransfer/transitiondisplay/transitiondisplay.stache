@@ -1,0 +1,6 @@
+<div class='workingArea'>
+<div class='centeringContainer'>
+	<div id='transitionMessage'>processing... <span class="fa fa-spinner fa-spin basicBlue"/></div>
+	</div>
+
+</div>

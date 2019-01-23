@@ -55,7 +55,7 @@
 	
 	</div>
 	{{/showResendNotification}}
-
+<div class='studentTransferHackContainer'>
 	{{#switch page}}      
 		{{#case "admin"}}
 		<can-import from="sr-careplanner/user/admin/" />
@@ -66,7 +66,7 @@
 		<can-import from="sr-careplanner/user/editor/" />
 			  <user-editor/>
 		{{/case}}
-	   
+	   <div id='studentTransferHackContainer'>
 		{{#case "nurse"}}
 		<can-import from="sr-careplanner/user/nurse/" />
 			  <user-nurse/>
@@ -87,6 +87,11 @@
 		{{#case "help"}}
 		<can-import from="sr-careplanner/help/" />
 			  <help/>
+		{{/case}}
+	   
+		{{#case "transitiondisplay"}}
+		<can-import from="sr-careplanner/user/nurse/student/receivetransfer/transitiondisplay/" />
+			  <user-nurse-student-receivetransfer-transitiondisplay/>
 		{{/case}}
 		
 		{{#default}}
@@ -128,6 +133,7 @@
 		{{/default}}
 		
 	 {{/switch}} 
+	 </div 'studentTransferHackContainer'>
 {{else}}
 <div style='background:url(/src/images/business-background.jpg) no-repeat; background-size:100% 100%;width:100%;height:100%;'>
 	  {{#slug}}
@@ -155,6 +161,7 @@
 {{/if}}  
     
 
+<div class='studentTransferHackContainer'>
     <main-footer></main-footer>
 
 
@@ -173,7 +180,7 @@
 				If you are suggesting a feature or asking a question, please be as thorough as you can.<br/><br/>
 				In either case, or if you are just saying Hi, please know that we are very
 				grateful for your feedback. If you want us to reply somewhere other than 
-				<span style='color:gray;'>{{loginUserDataOnly.emailAddress}},</span> 
+				<span style='color:gray;'>{{loginUserWorkingData.emailAddress}},</span> 
 				please include that in your message.
 				<br/><br/>
 				The {{systemProdName}} Team
@@ -248,5 +255,8 @@
 		<button ($click)='clearConsole()' style='margin-left:20px;' tabindex='-1'>clearConsole</button>
 	</div> 
 {{/is}}	
+
+
+	 </div 'studentTransferHackContainer'>
   </body>
 </html>

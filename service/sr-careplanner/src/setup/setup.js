@@ -125,7 +125,7 @@ export const ViewModel = Map.extend({
 						this.attr('saveNotification', false);
 					}, 2000);
 					this.attr('saveNotificationTimeoutId', timeoutId);
-					this.attr('%root').attr('loginUserDataOnly', item.attr());
+					this.attr('%root').attr('loginUserWorkingData', item.attr());
 				},
 				(err) => {
 					this.attr('saveNotification', false);

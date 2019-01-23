@@ -143,7 +143,7 @@ export const ViewModel = Map.extend({
 		const callSaveObject = (err, result) => {
 			if (!err) {
 				this.saveObject(
-					this.attr('%root').attr('loginUserDataOnly'),
+					this.attr('%root').attr('loginUserWorkingData'),
 					ccInfoRedacted,
 					this.attr('poInfo'),
 					this.attr('selectedProductCode'),

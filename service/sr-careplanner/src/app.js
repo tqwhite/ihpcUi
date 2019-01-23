@@ -27,12 +27,21 @@ const AppViewModel = Map.extend({
 						session and the user as synonyms. That was shortsighted.
 						Now I have to consider the transfer elements to be part
 						of the user or I have to rewrite a lot more than I want to.
+						A consequence of this is that model/session.js has to
+						add these transfer things to the inbound user data. That
+						would screw up donejs auto cache stuff but I don't use it.
 						Sorry, tqii, 1/2019
+						
+						ps, to be clear, transfersRecipient means loginUser receives students,
+						sender means that he or she initiated the offer of students
 					*/
 					userExpanded['transfersRecipient'] = session.attr('0').attr('transfersRecipient');
 					userExpanded['transfersSender'] = session.attr('0').attr('transfersSender');
+					userExpanded['transfersRecipient']=userExpanded['transfersRecipient']?userExpanded['transfersRecipient']:[];
+					userExpanded['transfersSender']=userExpanded['transfersSender']?userExpanded['transfersSender']:[];
 					
-					this.attr('loginUserDataOnly', userExpanded);
+					this.attr('loginUserWorkingData', userExpanded);
+					this.attr('transfersRecipientCount', userExpanded['transfersRecipient'].length);
 					
 					const dictionary = item.attr('dictionary');
 					let newItemsFlag = false;
@@ -218,7 +227,7 @@ const AppViewModel = Map.extend({
 			value: '',
 			serialize: false
 		},
-		loginUserDataOnly: {
+		loginUserWorkingData: {
 			value: {},
 			serialize: false
 		},
@@ -297,6 +306,14 @@ const AppViewModel = Map.extend({
 		showReceiveTransferTool: {
 			value: false,
 			serialize: false
+		},
+		transferResultStatus:{
+			value: '',
+			serialize: false
+		},
+		transfersRecipientCount:{
+			value: 0,
+			serialize: false
 		}
 	},
 	setNewPage: function(page, slug, subsection) {
@@ -365,7 +382,7 @@ const AppViewModel = Map.extend({
 	},
 
 	sendFeedbackMessage: function() {
-		var userData = this.attr('loginUserDataOnly');
+		var userData = this.attr('loginUserWorkingData');
 		var saveObj = new FeedBackSupport({
 			feedbackMessage: this.attr('feedbackMessage'),
 			user: userData
@@ -533,14 +550,13 @@ const AppViewModel = Map.extend({
 			outString += `<div class='accountNotification ${subClass}'>${messageOfTheDay}</div>`;
 		}
 
-		var userData = this.attr('loginUserDataOnly');
 
-		if (userData.transfersRecipient && userData.transfersRecipient.length) {
+		if (this.attr('transfersRecipientCount')) {
 			const button = `<div class='c-button c-button--primary c-button--small' style='display:inline-block;' id='receivetransfers'>REVIEW TRANSFERS</div>`;
-			//this button's click event is set at the end of this function
+			//this button's click event is set at the end of this function in setTimeout()
 
 			outString += `<div class='accountNotification ${subClass}'>You have ${
-				userData.transfersRecipient.length
+				this.attr('transfersRecipientCount')
 			} pending transfer requests. Click ${button} to act on them.</div>`;
 		}
 
@@ -594,7 +610,7 @@ can.stache.registerHelper('simpleRoute', function(options) {
 	if (!routingBits || typeof routingBits[1] == 'undefined') {
 		return;
 	}
-	if (this.attr('browserLoaded') && this.attr('loginUserDataOnly').isActive) {
+	if (this.attr('browserLoaded') && this.attr('loginUserWorkingData').isActive) {
 		switch (routingBits[1]) {
 			case 'renew':
 				this.setNewPage('setup', '', 'store');

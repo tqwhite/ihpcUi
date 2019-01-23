@@ -1,11 +1,15 @@
 	<can-import from="sr-careplanner/user/nurse/student/selectorplus/manage/students/" />
 	<can-import from="sr-careplanner/user/nurse/student/selectorplus/manage/transfer/" />
+	<can-import from="sr-careplanner/user/nurse/student/selectorplus/manage/transferhistory/" />
 	<can-import from="sr-careplanner/user/nurse/student/selectorplus/manage/filter/" />
 	<can-import from="sr-careplanner/user/nurse/student/selectorplus/manage/switch/" />
 
 
 
 <div class='controlsContainer'>
+
+	<div class='close fa fa-close' ></div>
+
 	<user-nurse-student-selectorplus-manage-filter /> 
 	<user-nurse-student-selectorplus-manage-switch /> 
 </div>
@@ -24,27 +28,21 @@
 		{{/is}}
 '>
 
-<div class='
-	{{#is selectorPlusFunctionMode 'selector'}}
-		studentPlanSelector
-	{{#else}}
-		studentTransferSelector
-	{{/is}}
-'>
-
-		
+	<div class='
+			{{#is selectorPlusFunctionMode 'selector'}}
+				studentPlanSelector
+			{{#else}}
+				studentTransferSelector
+			{{/is}}
+		'>
 	
-	<user-nurse-student-selectorplus-manage-students
-		usage='fullSelection' 
-	/> 
-	<div style='width:100%;border:1pt solid yellow;'>
-		Next: create<br/>
-		transfer history<br/>
-		here.
+		<user-nurse-student-selectorplus-manage-students
+			usage='fullSelection' 
+		/> 
 	
-	</div>
-
-	
+		{{#is selectorPlusFunctionMode 'transfer'}}
+		<user-nurse-student-selectorplus-manage-transferhistory />
+		{{/is}}
 	</div>
 		
 	{{#is selectorPlusFunctionMode 'transfer'}}
@@ -54,6 +52,7 @@
 	{{/is}}
 
 </div>
+
 	{{#is selectorPlusFunctionMode 'transfer'}}
 
 	<div class='instructions'>

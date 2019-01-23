@@ -61,7 +61,7 @@ export const ViewModel = Map.extend({
 			pdfMake: pdfMake,
 			student: this.attr('currentStudent').attr(),
 			plan: this.attr('plan').attr(),
-			dictionary:this.attr('%root').attr('loginUserDataOnly').dictionary
+			dictionary:this.attr('%root').attr('loginUserWorkingData').dictionary
 		});
 
 		planFormatter.getPdfComponents((dataUrl, downloadFunction, printFunction) => {

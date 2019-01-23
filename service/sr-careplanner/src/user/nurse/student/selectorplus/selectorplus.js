@@ -48,7 +48,7 @@ export const ViewModel = Map.extend({
 		});
 	},
 	selectStudent: function(student, selectorPlusFunctionMode) {
-		if (student.attr('transferPending')){
+		if (student.attr('transferStatus')=='pending'){
 			return;
 		}
 	
@@ -166,6 +166,9 @@ export default Component.extend({
 
 		click: function(el, event) {
 			if (this.viewModel.attr('selectorPlusFunctionMode') == 'transfer') {
+				if ($(event.target).hasClass('close')){
+					return;
+				}
 				event.stopPropagation();
 			}
 		}
