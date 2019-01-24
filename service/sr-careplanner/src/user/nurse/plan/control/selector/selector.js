@@ -4,18 +4,15 @@ import 'can/map/define/';
 import './selector.less!';
 import template from './selector.stache!';
 import qtools from 'node_modules/qtools-minus/';
+import Plan from "sr-careplanner/models/plan";
 
 export const ViewModel = Map.extend({
 	define: {
 		message: {
 			value: 'This is the user-nurse-plan-control-selector component'
 		},
-		showPlanSelector: {
-			value: true,
-			serialize: false
-		},
-		showChangePlanDate: {
-			value: false,
+		selectorMode: {
+			value: '',
 			serialize: false
 		},
 		newPlanDate: {
@@ -25,7 +22,11 @@ export const ViewModel = Map.extend({
 		localStatusMessage: {
 			value: '',
 			serialize: false
-		}
+		},
+		showConfirmDuplicatePlan: {
+			value: false,
+			serialize: false
+		},
 	},
 	
 	notes: [
@@ -57,14 +58,14 @@ export const ViewModel = Map.extend({
 	
 	menuIsVisible: function(visibility) {
 		setTimeout(() => {
-			this.attr('showPlanSelector', visibility);
+			this.attr('planRootVm').attr('showPlanSelector', visibility);
 		}, 100);
 	},
 	
 	activateMenu: function(event) {
 		event.stopPropagation();
 		this.attr('%root').activateModal(() => {
-			this.attr('showPlanSelector', false);
+			this.attr('planRootVm').attr('showPlanSelector', false);
 		});
 		this.menuIsVisible(true);
 		this.updateStaticPlanDetails('');
@@ -82,21 +83,23 @@ export const ViewModel = Map.extend({
 		this.menuIsVisible(false);
 	},
 	
-	createNewPlan: function() {
+	createNewPlan: function(conditions, callback) {
 		const newPlan = this.attr('planRootVm').attr('blankPlan');
+		if (conditions){
+			newPlan.attr('conditions', conditions);
+		}
 		this.updateStaticPlanDetails(newPlan.refId);
 		this.attr('planRootVm').attr('workingPlan', newPlan);
-
 		this.attr('planRootVm').attr('openPlanNameString', new Date().toString()); //flow through to latestPlanRefid when it's accessed
-
+		callback && callback();
 		//this.menuIsVisible(); //Once new plan is created, it gets chosen automatically, choosePlan() closes menu
 	},
 	activateChangePlanDate: function(event) {
-		this.attr('showChangePlanDate', true);
+		this.attr('selectorMode', 'changeDate');
 		setTimeout(() => $('#planDateInput').focus(), 10);
 	},
-	cancelChangePlanDate: function(event) {
-		this.attr('showChangePlanDate', false);
+	cancelSpecialButtonMode: function(event) {
+		this.attr('selectorMode', '');
 		this.attr('localStatusMessage', '');
 	},
 	savePlanDate: function(event) {
@@ -108,18 +111,30 @@ export const ViewModel = Map.extend({
 				.attr('planDate', newPlanDate);
 
 			this.attr('planRootVm').savePlan(err=>{
-			this.cancelChangePlanDate();
-console.log("this.attr('planRootVm').attr('openPlanNameString')="+this.attr('planRootVm').attr('openPlanNameString')+" [selector.js.savePlanDate]");
+			this.cancelSpecialButtonMode();
 
 			this.attr('planRootVm').attr('openPlanNameString', newPlanDate);
-console.log("this.attr('planRootVm').attr('openPlanNameString')="+this.attr('planRootVm').attr('openPlanNameString')+" [selector.js.savePlanDate]");
 
-			
 			}); //planRootVm is nurse.js
 		}
 		else{
 			this.attr('localStatusMessage', 'Date entered is incorrect');
 		}
+	},
+	
+	activateDuplicatePlan:function(){
+		this.attr('selectorMode', 'duplicatePlan');
+
+	},
+	
+	confirmDuplicatePlan:function(){
+		const originalPlan=this.attr('planRootVm').attr('workingPlan').attr();
+		this.createNewPlan(originalPlan.conditions, ()=>{
+		this.attr('planRootVm').savePlan();
+		
+		this.attr('selectorMode', '');
+		
+		});
 	},
 	
 	testElement: function(x) {

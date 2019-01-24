@@ -46,7 +46,7 @@ export const ViewModel = Map.extend({
 		planList.attr('conditions').push(newCondition)
 		this.attr('showConditionSelector', false);
 		if (boilerplateCondition) {
-			this.saveObject();
+			this.attr('planRootVm').savePlan(); //planRootVm is nurse.js;
 		}
 	},
 	addDefaultDiagnoses:function(newCondition, boilerplateCondition){
@@ -76,12 +76,12 @@ export const ViewModel = Map.extend({
 		
 		condition.attr('diagnoses').push(newDiagnosis);
 		if (boilerplateDiagnosis) {
-			this.saveObject();
+			this.attr('planRootVm').savePlan(); //planRootVm is nurse.js;
 		}
 	},
 
 	getBoilerplateItem: function(condition, boilerplatePropertyName) {
-		const sourceConditionRefId = condition.attr('sourceConditionRefId');
+		const sourceConditionRefId = condition.sourceConditionRefId || condition.attr('sourceConditionRefId');
 		if (!sourceConditionRefId){
 			return;
 		}
@@ -117,7 +117,7 @@ export const ViewModel = Map.extend({
 		// 		}
 		const planList = this.attr('planRootVm').attr('workingPlan');
 		planList.attr('conditions').removeAttr(index)
-		this.saveObject();
+		this.attr('planRootVm').savePlan(); //planRootVm is nurse.js;
 	},
 
 	deleteDiagnosis: function(index, condition) {
@@ -126,7 +126,7 @@ export const ViewModel = Map.extend({
 		// 		}
 		const planList = this.attr('planRootVm').attr('workingPlan');
 		condition.attr('diagnoses').removeAttr(index)
-		this.saveObject()
+		this.attr('planRootVm').savePlan(); //planRootVm is nurse.js
 	},
 	
 	allConditionsAreSummary:function(){

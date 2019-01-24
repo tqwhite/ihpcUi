@@ -108,6 +108,10 @@ export const ViewModel = Map.extend({
 				return value?qtools.getDateString('dd_MMM_yyyy', new Date(value)):''
 			}
 		},
+		showPlanSelector: {
+			value: true,
+			serialize: false
+		},
     	
 		blankPlan:{
 			get:function(){

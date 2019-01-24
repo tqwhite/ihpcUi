@@ -36,53 +36,103 @@
 {{/showPlanSelector}}
 
 {{^showPlanSelector}}
-{{^showChangePlanDate}}
-	<button id='selectPlan' 
-		class="
-			c-button  c-button--medium openSelectButton
-			{{#../openPlanNameString}}
-				c-button--ghost
-			{{else}}
-				c-button--primary 
-			{{/../openPlanNameString}}
-		" 
-		($click)='activateMenu(%event)'
-	>
-	
-		{{#../openPlanNameString}}
-			Plan Date: {{openPlanNameString}}
-		{{else}}
-			Select Student 
-		{{/../openPlanNameString}}
-	</button>
-	<button id='selectPlan' 
-		class="
-			c-button  c-button--xsmall 
-			{{#../openPlanNameString}}
-				c-button--ghost
-			{{else}}
-				hidden 
-			{{/../openPlanNameString}}
-		" 
-		($click)='activateChangePlanDate(%event)'
-	>EDIT DATE</button>
-{{/showChangePlanDate}}
 
-{{#showChangePlanDate}}
-<input id='planDateInput' type='text' {($value)}="newPlanDate">
-	<button id='selectPlan' 
-		class="
-			c-button  c-button--xsmall 
+{{#switch selectorMode}}
+
+	
+	
+
+      {{#case "duplicatePlan"}}
+		<button id='selectPlan' 
+			class="
+				c-button  c-button--xsmall c-button--error
+			" 
+			($click)='confirmDuplicatePlan(%event)'
+		>
+			Click to Confirm Duplication
+		</button>
+		<button id='selectPlan' 
+			class="
+				c-button  c-button--xsmall 
+				{{#../openPlanNameString}}
+					c-button--ghost
+				{{else}}
+					hidden 
+				{{/../openPlanNameString}}
+			" 
+			($click)='cancelSpecialButtonMode(%event)'
+		>
+			CANCEL
+		</button>
+	{{/case}}
+	
+
+      {{#case "changeDate"}}
+		<input id='planDateInput' type='text' {($value)}="newPlanDate">
+		<button id='selectPlan' 
+			class="
+				c-button  c-button--xsmall 
+				{{#../openPlanNameString}}
+					c-button--ghost
+				{{else}}
+					hidden 
+				{{/../openPlanNameString}}
+			" 
+			($click)='cancelSpecialButtonMode(%event)'
+		>
+			CANCEL
+		</button>
+	{{/case}}
+	
+	
+      {{#default}}
+		<button id='selectPlan' 
+			class="
+				c-button  c-button--medium openSelectButton
+				{{#../openPlanNameString}}
+					c-button--ghost
+				{{else}}
+					c-button--primary 
+				{{/../openPlanNameString}}
+			" 
+			($click)='activateMenu(%event)'
+		>
+		
 			{{#../openPlanNameString}}
-				c-button--ghost
+				Plan Date: {{openPlanNameString}}
 			{{else}}
-				hidden 
+				Select Student 
 			{{/../openPlanNameString}}
-		" 
-		($click)='cancelChangePlanDate(%event)'
-	>CANCEL</button>
-	{{#localStatusMessage}}
-		<div class='localStatusMessage'>{{localStatusMessage}}</div>
-	{{/localStatusMessage}}
-{{/showChangePlanDate}}
+		</button>
+		<div class='auxiliaryButtonContainer'>
+		<button id='selectPlan' 
+			class="
+				c-button  c-button--xsmall 
+				{{#../openPlanNameString}}
+					c-button--ghost
+				{{else}}
+					hidden 
+				{{/../openPlanNameString}}
+			" 
+			($click)='activateChangePlanDate(%event)'
+		>EDIT PLAN DATE</button>
+		<button id='selectPlan' 
+			class="
+				c-button  c-button--xsmall 
+				{{#../openPlanNameString}}
+					c-button--ghost
+				{{else}}
+					hidden 
+				{{/../openPlanNameString}}
+			" 
+			($click)='activateDuplicatePlan(%event)'
+		>DUPLICATE PLAN</button>
+		</div>
+	{{/default}}
+	{{/switch}}
+	
+
+{{#localStatusMessage}}
+	<div class='localStatusMessage'>{{localStatusMessage}}</div>
+{{/localStatusMessage}}	
 {{/showPlanSelector}}
