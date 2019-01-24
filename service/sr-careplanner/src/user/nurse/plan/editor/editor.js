@@ -15,14 +15,6 @@ export const ViewModel = Map.extend({
 			value: false,
 			type: '*'
 		},
-		saveNotification: {
-			value: false,
-			type: '*'
-		},
-		saveNotificationTimeoutId: {
-			value: false,
-			type: '*'
-		},
 		closeSpotState:{
 			value:false,
 			set:function(value){
@@ -34,44 +26,6 @@ export const ViewModel = Map.extend({
 				}
 			}
 		}
-	},
-	saveObject: function() {
-		var saveObj = this.attr('planRootVm').attr('workingPlan');
-
-		this.attr('saveNotification', true);
-		const prevTimeoutId = this.attr('saveNotificationTimeoutId');
-		if (prevTimeoutId) {
-			clearTimeout(prevTimeoutId);
-			this.attr('saveNotificationTimeoutId', '')
-		}
-
-		if (saveObj.isNew()) {
-
-			saveObj.attr('studentRefId', this.attr('planRootVm').attr('openStudentRefId'));
-
-			//	saveObj.attr('refId', qtools.newGuid()); //the plan is generated with a refId and wired in at creation, don't need this
-	;
-		} 
-		
-		var promise=saveObj
-			.save()
-			.then(() => {
-				const timeoutId = setTimeout(() => {
-					this.attr('saveNotification', false);
-				}, 2000);
-
-				this.attr('saveNotificationTimeoutId', timeoutId);
-				//		this.attr('planRootVm').attr('newsaveObjFlag', false);
-				this.attr('planRootVm').attr('workingPlan', saveObj);
-				this.attr('planRootVm').attr('openPlanNameString', saveObj.attr('createdAt'));
-
-			},
-			(err) => {
-				this.attr('saveError', JSON.stringify(err))
-				console.dir({
-					"err": err
-				});
-			});
 	},
 
 	showConditionTool: function(event) {
@@ -213,10 +167,10 @@ export default Component.extend({
 	viewModel: ViewModel,
 	events: {
 		'input change': function() {
-			this.viewModel.saveObject();
+			this.viewModel.attr('planRootVm').savePlan();
 		},
 		'textarea change': function() {
-			this.viewModel.saveObject();
+			this.viewModel.attr('planRootVm').savePlan();
 		}
 
 	},

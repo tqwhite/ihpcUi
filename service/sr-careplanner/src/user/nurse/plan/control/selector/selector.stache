@@ -15,7 +15,7 @@
 				{{#each planRootVm.plans.value}}
 
 						<li class="c-menu__item a-menu--slow planSelectorIdClass" ($click)='choosePlan(%index, .)'>
-							{{formatDate(createdAt)}}
+							{{showPlanDate(.)}}
 							{{#is latestPlanRefid refId}}{{choosePlan(%index, .)}}{{/is}}
 					
 						</li>
@@ -36,6 +36,7 @@
 {{/showPlanSelector}}
 
 {{^showPlanSelector}}
+{{^showChangePlanDate}}
 	<button id='selectPlan' 
 		class="
 			c-button  c-button--medium openSelectButton
@@ -54,5 +55,34 @@
 			Select Student 
 		{{/../openPlanNameString}}
 	</button>
+	<button id='selectPlan' 
+		class="
+			c-button  c-button--xsmall 
+			{{#../openPlanNameString}}
+				c-button--ghost
+			{{else}}
+				hidden 
+			{{/../openPlanNameString}}
+		" 
+		($click)='activateChangePlanDate(%event)'
+	>EDIT DATE</button>
+{{/showChangePlanDate}}
+
+{{#showChangePlanDate}}
+<input id='planDateInput' type='text' {($value)}="newPlanDate">
+	<button id='selectPlan' 
+		class="
+			c-button  c-button--xsmall 
+			{{#../openPlanNameString}}
+				c-button--ghost
+			{{else}}
+				hidden 
+			{{/../openPlanNameString}}
+		" 
+		($click)='cancelChangePlanDate(%event)'
+	>CANCEL</button>
+	{{#localStatusMessage}}
+		<div class='localStatusMessage'>{{localStatusMessage}}</div>
+	{{/localStatusMessage}}
+{{/showChangePlanDate}}
 {{/showPlanSelector}}
-	

@@ -37,6 +37,14 @@ export const ViewModel = Map.extend({
 				return list;
 			}
 		},
+		saveNotification: {
+			value: false,
+			type: '*'
+		},
+		saveNotificationTimeoutId: {
+			value: false,
+			type: '*'
+		},
 
 		workingPlan:{
 			value:Plan,
@@ -107,7 +115,8 @@ export const ViewModel = Map.extend({
 				const newPlan={
 					refId:refId,
 					conditions:[],
-					createdAt:new Date()
+					createdAt:new Date(),
+					planDate:new Date()
 				};
 				return new Plan(newPlan);
 			}
@@ -282,6 +291,48 @@ export const ViewModel = Map.extend({
 		this.childComponentLists = this.childComponentLists || {};
 		this.childComponentLists[childType] = this.childComponentLists[childType] || [];
 		this.childComponentLists[childType].push(childVm);
+	},
+	
+	savePlan:function(callback){
+	
+		var saveObj = this.attr('workingPlan');
+
+		this.attr('saveNotification', true);
+		const prevTimeoutId = this.attr('saveNotificationTimeoutId');
+		if (prevTimeoutId) {
+			clearTimeout(prevTimeoutId);
+			this.attr('saveNotificationTimeoutId', '')
+		}
+
+		if (saveObj.isNew()) {
+
+			saveObj.attr('studentRefId', this.attr('openStudentRefId'));
+
+			//	saveObj.attr('refId', qtools.newGuid()); //the plan is generated with a refId and wired in at creation, don't need this
+	;
+		} 
+		
+		var promise=saveObj
+			.save()
+			.then(() => {
+				const timeoutId = setTimeout(() => {
+					this.attr('saveNotification', false);
+				}, 2000);
+
+				this.attr('saveNotificationTimeoutId', timeoutId);
+				//		this.attr('newsaveObjFlag', false);
+				this.attr('workingPlan', saveObj);
+				this.attr('openPlanNameString', saveObj.attr('createdAt'));
+				callback && callback()
+			},
+			(err) => {
+				this.attr('saveError', JSON.stringify(err))
+				console.dir({
+					"err": err
+				});
+				callback && callback(err.responseJSON.errorText)
+			});
+	
 	},
 	testElement: function(x) {
 		window['user-nurse']=this;
