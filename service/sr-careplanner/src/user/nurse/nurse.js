@@ -216,7 +216,7 @@ export const ViewModel = Map.extend({
 			serialize:false
 		},
 		showInactiveStudents:{
-			value:true,
+			value:false,
 			serialize:false
 		}
 	},
@@ -326,7 +326,7 @@ export const ViewModel = Map.extend({
 				this.attr('saveNotificationTimeoutId', timeoutId);
 				//		this.attr('newsaveObjFlag', false);
 				this.attr('workingPlan', saveObj);
-				this.attr('openPlanNameString', saveObj.attr('createdAt'));
+				this.attr('openPlanNameString', (saveObj.attr('planDate') || saveObj.attr('createdAt')));
 				callback && callback()
 			},
 			(err) => {

@@ -314,6 +314,10 @@ const AppViewModel = Map.extend({
 		transfersRecipientCount:{
 			value: 0,
 			serialize: false
+		},
+		transferHistoryStatus: {
+			value: '',
+			serialize: false
 		}
 	},
 	setNewPage: function(page, slug, subsection) {

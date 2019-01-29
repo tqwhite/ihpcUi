@@ -37,14 +37,16 @@
 					{{/is}}
 					
 					
-					" ($click)='selectStudent(., selectorPlusFunctionMode)'
+					" 
 					
 					
-					{{#if transferPending}}
-					title='This student has a transfer pending and cannot be changed.'
-					{{/if}} 
+					{{#is transferStatus 'pending'}}
+					title='This student has a transfer pending and cannot be changed. Use the Transfer tool to cancel transfer if needed.'
+					{{#else}}
+					($click)='selectStudent(., selectorPlusFunctionMode)'
+					{{/is}} 
 					
-					>{{last}}, {{first}}</div>
+					>{{last}}, {{first}} ({{#gradeLevel}}{{gradeLevel}}{{#else}}n/a{{/gradeLevel}})</div>
 				
 			{{/if}}
 		{{/if}}

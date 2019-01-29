@@ -61,6 +61,8 @@
 				{{/../openPlanNameString}}
 			" 
 			($click)='cancelSpecialButtonMode(%event)'
+			
+			title='Create a duplicate plan that can be updated or changed without changing the original plan.'
 		>
 			CANCEL
 		</button>
@@ -79,6 +81,8 @@
 				{{/../openPlanNameString}}
 			" 
 			($click)='cancelSpecialButtonMode(%event)'
+			
+			title='Change *only* the plan date. Will not create a new plan.'
 		>
 			CANCEL
 		</button>

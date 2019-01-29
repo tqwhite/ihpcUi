@@ -141,6 +141,7 @@ export const ViewModel = Map.extend({
 			tqii, 1/11/19
 		
 		*/
+		console.trace();
 		this.attr('tmpReceivingNurseUserName', receiver);
 		this.attr('receivingNurseInfo', {});
 
@@ -216,10 +217,14 @@ export const ViewModel = Map.extend({
 		return '%nbsp;';
 	},
 	
-	updateTransferObject: function({ transferObject, cancel }) {
+	updateTransferObject: function({ transferObject, cancel, callback }) {
 		const status = transferObject.attr('status');
 
-		const localCallback = result => {
+		const localCallback = (err, result) => {
+			if (err) {
+				callback(err, result);
+				return;
+			}
 			const transfersSender = this.attr('%root')
 				.attr('loginUserWorkingData')
 				.attr('transfersSender')
@@ -229,44 +234,91 @@ export const ViewModel = Map.extend({
 						item.refId == result.refId ? 'hidden' : item.visibility
 					);
 				});
+			callback(err, result);
 		};
-		
+
 		const transfer = new Transfer.Transfer({
 			refId: transferObject.refId,
 			visibility: 'hidden',
-			status: cancel ? 'cancel' : transferObject.status
+			status: cancel ? 'cancelled' : transferObject.status
 		});
 
-		var promise = transfer.save().then(localCallback, err => {
-			this.attr('saveError cancelOrHide', JSON.stringify(err));
-		});
+		var promise = transfer
+			.save()
+			.then(result => localCallback('', result), err => localCallback(err));
 	},
 	
-	cancelOrHide: function(transferObject) {
+	updateStudentTransferStatus: function(
+		transferObject,
+		status,
+		callback = () => {}
+	) {
+		const cancelStudentList = transferObject
+			.attr('studentPartialList')
+			.attr()
+			.map(item => item.refId);
+
+		const students = this.attr('parentVm').attr('students');
+
+		students.then(item => {
+			const count = item.attr('length');
+			for (let i = 0; i < count; i++) {
+				var element = item.attr(i);
+				if (cancelStudentList.includes(element.attr('refId'))) {
+					element
+						.attr('transferStatus', status)
+						.attr('inactive', false)
+						.save()
+						.then(result => callback('', result), callback); //<----- NOTICE SAVE()
+				}
+			}
+		});
+	},
+	visibleTransferCount:function(){
+	
+			const transfersSender = this.attr('%root')
+				.attr('loginUserWorkingData')
+				.attr('transfersSender').attr();
+				return transfersSender.reduce((a, item)=>(!['hidden'].includes(item.visibility))?a+1:a, 0);
+	},
+	
+	cancelOrHide: function(transferObject, operation) {
 		const status = transferObject.attr('status');
 		const cancel = status == 'pending' ? true : false;
 
-		if (cancel) {
-			const cancelStudentList = transferObject
-				.attr('studentPartialList')
-				.attr()
-				.map(item => item.refId);
-			console.dir({ 'cancelStudentList [manage.js.]': cancelStudentList });
+		const localCallback = (err, result) => {
+			if (err) {
+				this.attr('%root').attr(
+					'transferHistoryStatus',
+					`${err.responseJSON.errorText}<br/>Please log back in to clear the error.`
+				);
+				setTimeout(()=>{
+					window.location.href='/';
+				}, 4000);
+				return;
+			}
+			if (cancel) {
+				this.updateStudentTransferStatus(transferObject, 'cancelled');
+			}
+			
+				this.attr('%root').attr(
+					'transferHistoryStatus',
+					`DONE`
+				);
+				setTimeout(()=>{
+				
+				this.attr('%root').attr(
+					'transferHistoryStatus',
+					``
+				);
+				}, 1000);
+		};
 
-			const students = this.attr('parentVm').attr('students');
-
-			students.then(item => {
-				const count = item.attr('length');
-				for (let i = 0; i < count; i++) {
-					var element = item.attr(i);
-					if (cancelStudentList.includes(element.attr('refId'))) {
-						element.attr('transferStatus', 'canceled').save(); //<----- NOTICE SAVE()
-					}
-				}
-			});
-		}
-
-		this.updateTransferObject({ transferObject, cancel });
+		this.updateTransferObject({
+			transferObject,
+			cancel,
+			callback: localCallback
+		});
 	}
 });
 
@@ -298,7 +350,7 @@ export default Component.extend({
 		keyup: function(el, event) {
 			inputFunction(el, event, this.viewModel);
 		},
-		'input change': function(el, event) {
+		'#receivingNurseUserName change': function(el, event) {
 			inputFunction(el, event, this.viewModel);
 		}
 	}

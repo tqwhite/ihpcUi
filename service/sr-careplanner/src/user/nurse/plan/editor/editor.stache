@@ -15,23 +15,24 @@
 	<div class='fa fa-caret-down closeSpot' style='margin-left:-20px;' ($click)='changeConditionsView()' tabindex='-1'/>
 	{{/closeSpotState}}
 {{/subscriptionActive}}
-	{{#workingPlan}}		
-			{{#each conditions}}
-				<user-nurse-plan-editor-condition  
-					boilerplate-diagnoses='{getBoilerplateItem(., "diagnoses")}'
-					static-files='{getBoilerplateItem(., "staticFiles")}' 
-					plan-root-vm='{planRootVm}' 
-					index='%index' 
-					{condition}='{.}' 
-					{diagnoses}='{./diagnoses}' 
-					($inserted)="collectChildComponents('user-nurse-plan-editor-condition', %viewModel))" 
-					{(editor-close-spot-state)}='{closeSpotState}'
-					subscriptionActive={subscriptionActive}
-					/>
-			{{/each}}
+{{checkWorkingPlan()}}
+{{#workingPlan}}		
+		{{#each conditions}}
+			<user-nurse-plan-editor-condition  
+				boilerplate-diagnoses='{getBoilerplateItem(., "diagnoses")}'
+				static-files='{getBoilerplateItem(., "staticFiles")}' 
+				plan-root-vm='{planRootVm}' 
+				index='%index' 
+				{condition}='{.}' 
+				{diagnoses}='{./diagnoses}' 
+				($inserted)="collectChildComponents('user-nurse-plan-editor-condition', %viewModel))" 
+				{(editor-close-spot-state)}='{closeSpotState}'
+				subscriptionActive={subscriptionActive}
+				/>
+		{{/each}}
 
-{{#if subscriptionActive}}	
-	{{#if workingPlan.refId}}
+		{{#if subscriptionActive}}	
+			{{#if workingPlan.refId}}
 				{{#showConditionSelector}}
 					<user-nurse-plan-editor-boilerplate plan-root-vm='{planRootVm}' boilerplates='{boilerplates}'  />
 				{{/showConditionSelector}}
@@ -46,10 +47,10 @@
 					{{/unless}}	
 				</div>
 				{{/showConditionSelector}}
-	{{/if}}
+			{{/if}}
+		
+		{{#else}}	
+			<div class='startPlanNotification'>Your subscription has expired. To view the healthcare plan, you must use the PDF VIEWER.</div>
+		{{/if}}	
 
-{{#else}}	
-	<div class='startPlanNotification'>Your subscription has expired. To view the healthcare plan, you must use the PDF VIEWER.</div>
-{{/if}}	
-
-	{{/workingPlan}}
+{{/workingPlan}}

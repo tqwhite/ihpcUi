@@ -21,7 +21,7 @@ export default Component.extend({
 	viewModel: ViewModel,
 	template,
 	events: {
-		click: function(el, event) {
+		clickUNUSED: function(el, event) {
 			if (
 				$(event.target)
 					.prop('tagName')

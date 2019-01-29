@@ -1,21 +1,31 @@
-{{loginUserWorkingData.transfersSender.length}} transfers have been offered<br>
+<div  title='Blue means pending. Green means accepted. Gray means rejected.'>
+{{visibleTransferCount}} transfer offer{{#is visibleTransferCount 1}}{{else}}s{{/is}}<br>
 
+<div class='explanation'>
+<span class='pending'>Blue means pending.</span> 
+<span class='accepted'>Green means accepted.</span> 
+<span class='rejected'>Gray means rejected.</span>
+</div>
+
+</div>
+<div class='history'  title='Blue means pending. Green means accepted. Gray means rejected.'>
 {{#each loginUserWorkingData.transfersSender}}
 
 
 {{^is visibility 'hidden'}}
 <nobr>[ 
 <span 
-style='
-	font-size:80%;
-	
+class='
 	{{#is status "rejected"}}
-		text-decoration:line-through;
-		color:gray;
+	rejected
 	{{/is}}
 	
 	{{#is status "accepted"}}
-		color:green;
+	accepted
+	{{/is}}
+	
+	{{#is status "pending"}}
+	pending
 	{{/is}}
 
 	'
@@ -24,7 +34,6 @@ title='{{#is status "rejected"}}rejected on {{formatDate(recipientDecisionDate)}
 Students:
 
 {{formatStudentList(.)}}
-{{refId}}
 	'
 >
 <span 
@@ -65,3 +74,7 @@ class='
 
 {{/is}}
 {{/each}}
+</div>
+{{#transferHistoryStatus}}
+<div class='localStatus'>{{{transferHistoryStatus}}}</div>
+{{/transferHistoryStatus}}

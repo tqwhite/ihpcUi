@@ -27,7 +27,7 @@ export const ViewModel = Map.extend({
 			serialize: false
 		}
 	},
-	cleartransferStudentList:function(){
+	cleartransferStudentList: function() {
 		this.attr('transferStudentList', []);
 		this.attr('transferStudentListLength', 0);
 	},
@@ -48,10 +48,10 @@ export const ViewModel = Map.extend({
 		});
 	},
 	selectStudent: function(student, selectorPlusFunctionMode) {
-		if (student.attr('transferStatus')=='pending'){
+		if (student.attr('transferStatus') == 'pending') {
 			return;
 		}
-	
+		
 		if (selectorPlusFunctionMode == 'selector') {
 			this.editStudent(student);
 		} else {
@@ -60,21 +60,27 @@ export const ViewModel = Map.extend({
 	},
 	toggletransferStudentListElement: function(student) {
 		if (this.ontransferStudentList(student)) {
-			const thisRefId=student.attr('refId');
+			const thisRefId = student.attr('refId');
 			this.attr(
 				'transferStudentList',
-				this.attr('transferStudentList').filter(item => item.attr('refId')!=thisRefId || !this.ontransferStudentList(item))
+				this.attr('transferStudentList').filter(
+					item =>
+						item.attr('refId') != thisRefId || !this.ontransferStudentList(item)
+				)
 			);
 		} else {
 			this.attr('transferStudentList').push(student);
 		}
-		this.attr('transferStudentListLength', this.attr('transferStudentList').length);
-
+		this.attr(
+			'transferStudentListLength',
+			this.attr('transferStudentList').length
+		);
 	},
 	ontransferStudentList: function(student) {
 		const refId = student.attr('refId');
-		return this.attr('transferStudentList').filter(item => item.attr('refId') == refId)
-			.length
+		return this.attr('transferStudentList').filter(
+			item => item.attr('refId') == refId
+		).length
 			? true
 			: false;
 	},
@@ -89,9 +95,9 @@ export const ViewModel = Map.extend({
 			'openStudentNameString',
 			student.attr('last') + ', ' + student.attr('first')
 		);
-		this.attr('parentVm').attr('workingPlan', {});
-		//plan/control/selector initializes the this.attr('parentVm').attr('workingPlan')
-		//based on either user input or most recent date
+		this.attr('parentVm').attr('workingPlan', {}); //don't inherit previous guy's plan if new one has none
+
+		this.attr('parentVm').attr('showPlanSelector', true); //selector tries to show itself and auto-opens a plan if it can
 	},
 	
 	toggleInactive: function() {
@@ -106,6 +112,10 @@ export const ViewModel = Map.extend({
 		this.attr('parentVm').setTool('editor');
 		this.attr('parentVm').attr('showStudentEditor', true); //forces editor (not summary), otherwise controlled by user in editor
 		this.attr('parentVm').attr('openStudentRefId', qtools.newGuid());
+		console.log(
+			`\n=-=============   createNewStudent  ========================= [selectorplus.js.createNewStudent]\n`
+		);
+		
 		this.attr('parentVm').attr('workingPlan', {});
 		this.attr('parentVm').attr('openStudentNameString', 'Creating Student');
 
@@ -138,21 +148,21 @@ export const ViewModel = Map.extend({
 	},
 	
 	studentShouldBeShown: function(usage, student, showInactiveStudents) {
-	switch (usage){
-		case 'fullSelection':
-			const inactive=student.attr('inactive');
-			return !inactive || (inactive && showInactiveStudents);
-			break;
-		case 'transferOnly':
-			const isTransfer=this.ontransferStudentList(student);
-			return isTransfer;
-			break;
-		default:
-			$('body').html("TQ screwed up #6"); //note: there are no #1-5
-			break;
-	
-	}
-	
+		switch (usage) {
+			case 'fullSelection':
+				const inactive = student.attr('inactive');
+				return !inactive || (inactive && showInactiveStudents);
+				break;
+			case 'transferOnly':
+				const isTransfer = this.ontransferStudentList(student);
+				return isTransfer;
+				break;
+			default:
+				$('body').html('TQ screwed up #6'); //note: there are no #1-5
+				break;
+			
+		}
+		
 	}
 });
 
@@ -165,12 +175,10 @@ export default Component.extend({
 		},
 
 		click: function(el, event) {
-			if (this.viewModel.attr('selectorPlusFunctionMode') == 'transfer') {
-				if ($(event.target).hasClass('close')){
-					return;
-				}
-				event.stopPropagation();
+			if ($(event.target).hasClass('close')) {
+				return;
 			}
+			event.stopPropagation();
 		}
 	},
 	template
