@@ -47,9 +47,10 @@
 			class="
 				c-button  c-button--xsmall c-button--error
 			" 
+			style='margin-right:5px;'
 			($click)='confirmDuplicatePlan(%event)'
 		>
-			Click to Confirm Duplication
+			Click to Create New Revision
 		</button>
 		<button id='selectPlan' 
 			class="
@@ -69,24 +70,6 @@
 	{{/case}}
 	
 
-      {{#case "changeDate"}}
-		<input id='planDateInput' type='text' {($value)}="newPlanDate">
-		<button id='selectPlan' 
-			class="
-				c-button  c-button--xsmall 
-				{{#../openPlanNameString}}
-					c-button--ghost
-				{{else}}
-					hidden 
-				{{/../openPlanNameString}}
-			" 
-			($click)='cancelSpecialButtonMode(%event)'
-			
-			title='Change *only* the plan date. Will not create a new plan.'
-		>
-			CANCEL
-		</button>
-	{{/case}}
 	
 	
       {{#default}}
@@ -118,19 +101,8 @@
 					hidden 
 				{{/../openPlanNameString}}
 			" 
-			($click)='activateChangePlanDate(%event)'
-		>EDIT PLAN DATE</button>
-		<button id='selectPlan' 
-			class="
-				c-button  c-button--xsmall 
-				{{#../openPlanNameString}}
-					c-button--ghost
-				{{else}}
-					hidden 
-				{{/../openPlanNameString}}
-			" 
 			($click)='activateDuplicatePlan(%event)'
-		>DUPLICATE PLAN</button>
+		>REVISE PLAN</button>
 		</div>
 	{{/default}}
 	{{/switch}}

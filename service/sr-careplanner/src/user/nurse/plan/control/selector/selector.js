@@ -15,10 +15,6 @@ export const ViewModel = Map.extend({
 			value: '',
 			serialize: false
 		},
-		newPlanDate: {
-			value: '',
-			serialize: false
-		},
 		localStatusMessage: {
 			value: '',
 			serialize: false
@@ -94,32 +90,9 @@ export const ViewModel = Map.extend({
 		callback && callback();
 		//this.menuIsVisible(); //Once new plan is created, it gets chosen automatically, choosePlan() closes menu
 	},
-	activateChangePlanDate: function(event) {
-		this.attr('selectorMode', 'changeDate');
-		setTimeout(() => $('#planDateInput').focus(), 10);
-	},
 	cancelSpecialButtonMode: function(event) {
 		this.attr('selectorMode', '');
 		this.attr('localStatusMessage', '');
-	},
-	savePlanDate: function(event) {
-		const newPlanDate = this.attr('newPlanDate');
-		if (new Date(newPlanDate) != 'Invalid Date') {
-			this.attr('localStatusMessage', '');
-			this.attr('planRootVm')
-				.attr('workingPlan')
-				.attr('planDate', newPlanDate);
-
-			this.attr('planRootVm').savePlan(err=>{
-			this.cancelSpecialButtonMode();
-
-			this.attr('planRootVm').attr('openPlanNameString', newPlanDate);
-
-			}); //planRootVm is nurse.js
-		}
-		else{
-			this.attr('localStatusMessage', 'Date entered is incorrect');
-		}
 	},
 	
 	activateDuplicatePlan:function(){
