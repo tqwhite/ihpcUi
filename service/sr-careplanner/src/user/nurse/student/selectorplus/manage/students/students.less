@@ -1,6 +1,5 @@
 user-nurse-student-selectorplus-manage-students {
 
-	height:100%;
         display: flex;
         flex-direction: column;
         flex-wrap: wrap;
@@ -9,21 +8,23 @@ user-nurse-student-selectorplus-manage-students {
 }
 
 user-nurse-student-selectorplus-manage-students .studentList{
-	margin:0px 15px;
+	overflow:scroll;
+	overflow-x:hidden;
+
 	display:flex;
-        flex-direction: column;
-        flex-wrap: wrap;
-	align-content:center;
-	height:85%;
+	flex-direction: row;
+	flex-wrap: wrap;
+	align-content:flex-start;
+	margin: 2% 10%;
 }
 
 
 
 user-nurse-student-selectorplus-manage-students .studentList>* {
-        flex: 1 1 initial;
+        flex: 1 1 auto;
         cursor:pointer;
         color:#42a5f5;
-	margin:0px 15px;
+		font-size:90%;
         
     }
 user-nurse-student-selectorplus-manage-students .studentList .student:hover {
@@ -36,4 +37,10 @@ user-nurse-student-selectorplus-manage-students .transfer{
 }
 user-nurse-student-selectorplus-manage-students .inactive{
 color:#666;
+}
+user-nurse-student-selectorplus-manage-students .wide{
+width:50%;
+}
+user-nurse-student-selectorplus-manage-students .narrow{
+width:33%;
 }

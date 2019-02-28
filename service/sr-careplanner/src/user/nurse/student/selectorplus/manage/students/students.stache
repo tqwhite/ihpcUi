@@ -6,7 +6,18 @@
 	{{/is}}
 {{/is}}
 
-<div class='studentList'>
+<div class='studentList'
+					
+					
+
+					{{#is selectorPlusFunctionMode 'transfer'}}
+						style='height:37vh;'
+					{{#else}}
+						style='height:60vh;'
+					{{/is}}
+
+					>
+
 	{{#each students.value}}
 	
 	{{#if matchesFragment(last, gradeLevel)}}
@@ -16,10 +27,9 @@
 	
 			{{#if studentShouldBeShown(usage, ., showInactiveStudents)}}		
 				
-					<div class="
+					<div 
 					
-					
-					
+					class="
 					{{^is transferStatus 'pending'}}
 					student
 					{{/is}} 
@@ -37,6 +47,11 @@
 					{{/is}}
 					
 					
+					{{#is selectorPlusFunctionMode 'transfer'}}
+						wide
+					{{#else}}
+						narrow
+					{{/is}}
 					" 
 					
 					

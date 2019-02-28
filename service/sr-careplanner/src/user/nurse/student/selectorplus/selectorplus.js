@@ -51,7 +51,7 @@ export const ViewModel = Map.extend({
 		if (student.attr('transferStatus') == 'pending') {
 			return;
 		}
-		
+
 		if (selectorPlusFunctionMode == 'selector') {
 			this.editStudent(student);
 		} else {
@@ -112,38 +112,24 @@ export const ViewModel = Map.extend({
 		this.attr('parentVm').setTool('editor');
 		this.attr('parentVm').attr('showStudentEditor', true); //forces editor (not summary), otherwise controlled by user in editor
 		this.attr('parentVm').attr('openStudentRefId', qtools.newGuid());
-		console.log(
-			`\n=-=============   createNewStudent  ========================= [selectorplus.js.createNewStudent]\n`
-		);
-		
+
 		this.attr('parentVm').attr('workingPlan', {});
 		this.attr('parentVm').attr('openStudentNameString', 'Creating Student');
 
 		/*
 			When an existing student is chosen, it's values overwrite the all the previous
 			student's fields. When New Student is chosen, it's empty and doesn't overwrite
-			whatever was there previously. The following prevents previous values from
+			whatever was there previously. The following setTimeout() prevents previous values from
 			remaining if New Student is chosen twice in a row (with no intervening editing
 			of a previously existing student).
+		*/
+		setTimeout(() => {
+			this.attr('parentVm').attr('newStudentFlag', false); //remove student editor
 
-		setTimeout(()=>{
-		this.attr('parentVm').attr('newStudentFlag', false); //remove student editor
-
-			setTimeout(()=>{
-			this.attr('parentVm').attr('newStudentFlag', true); //display new student editor
+			setTimeout(() => {
+				this.attr('parentVm').attr('newStudentFlag', true); //display new student editor
 			}, 1);
 		}, 1);
-		
-			LATER...
-			
-			I hated the little flash that appeared when the code above was executed. I did a 
-			whole bunch of things to try to get rid of it. THen I just got rid of it.
-			Everything seems to work. THe values from the previous student are not kept.
-			I have no idea why I felt like the timeout stuff was necessary. If a problem 
-			occurs, perhaps getting rid of it is hte reason. For now, it looks much better.
-			tqii, 12/18
-		*/
-
 		this.attr('parentVm').attr('newStudentFlag', true);
 	},
 	
@@ -160,9 +146,7 @@ export const ViewModel = Map.extend({
 			default:
 				$('body').html('TQ screwed up #6'); //note: there are no #1-5
 				break;
-			
 		}
-		
 	}
 });
 
