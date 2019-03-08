@@ -48,6 +48,60 @@ export const ViewModel = Map.extend({
 			type: '*'
 		}
 	},
+	
+	showHideHelp:function(
+		instructionSelector,
+		showHideInstructionSelector
+	){
+		
+				const instructionDomObj = $(instructionSelector);
+				const showHideDomObj = $(showHideInstructionSelector);
+				const displayStatus=instructionDomObj.css('display');
+
+				if (displayStatus=='none'){
+					showHideDomObj.hide();
+					instructionDomObj.show().css({opacity:1});
+				}
+				else{
+					instructionDomObj.hide();
+					showHideDomObj.show();
+				}
+
+	},
+
+	initInstructionDisplayManagement: function(
+		instructionSelector,
+		showHideInstructionSelector
+	) {
+		
+		const minHeight = 634; //this is the measured value where instructions cause layout trouble
+
+		const manageDomObj = $('user-nurse-student-selectorplus-manage');
+		
+		const selectorPlusVm = this.attr('selectorPlusVm');
+		
+		const decideToShowInstructions=function() {
+				const instructionDomObj = $(instructionSelector);
+				const showHideDomObj = $(showHideInstructionSelector);
+				const height = manageDomObj.height();
+
+				if (height < 620) {
+					instructionDomObj.hide();
+					showHideDomObj.show();
+				} else {
+					showHideDomObj.hide();
+					instructionDomObj.show().css({opacity:1});
+				}
+			};
+
+		selectorPlusVm.attr(
+			'managerComponentInstructionDisplayController',
+			decideToShowInstructions
+		);
+		
+		setTimeout(decideToShowInstructions, 1);
+	},
+
 	executeTransfer: function(event, transferStudentList) {
 		const localCallback = result => {
 			transferStudentList.each(item => {
@@ -123,9 +177,9 @@ export const ViewModel = Map.extend({
 
 		/*
 			this line: this.attr('receivingNurseInfo', {});
-			
+
 			is there because of several completely confusing and screwy things about donejs.
-			
+
 			1) without it, the user in localCallback() arrives as a merge of the previous
 			data and the new data. This is a problem when the new data is empty, ie,
 			the target user is not valid.
@@ -134,12 +188,12 @@ export const ViewModel = Map.extend({
 			before localCallback(). Bizarrely, in the case of a full result (is-valid),
 			the localCallback() happens first. If I add the attr() assignement to
 			receivingNurseInfo, it happens first all for both cases.
-			
+
 			All of this is approximate. This has been one of the most confusing debugging
 			processes I've ever had. It appears to work now.
-			
+
 			tqii, 1/11/19
-		
+
 		*/
 		console.trace();
 		this.attr('tmpReceivingNurseUserName', receiver);
@@ -216,7 +270,7 @@ export const ViewModel = Map.extend({
 		}
 		return '%nbsp;';
 	},
-	
+
 	updateTransferObject: function({ transferObject, cancel, callback }) {
 		const status = transferObject.attr('status');
 
@@ -247,7 +301,7 @@ export const ViewModel = Map.extend({
 			.save()
 			.then(result => localCallback('', result), err => localCallback(err));
 	},
-	
+
 	updateStudentTransferStatus: function(
 		transferObject,
 		status,
@@ -274,14 +328,17 @@ export const ViewModel = Map.extend({
 			}
 		});
 	},
-	visibleTransferCount:function(){
-	
-			const transfersSender = this.attr('%root')
-				.attr('loginUserWorkingData')
-				.attr('transfersSender').attr();
-				return transfersSender.reduce((a, item)=>(!['hidden'].includes(item.visibility))?a+1:a, 0);
+	visibleTransferCount: function() {
+		const transfersSender = this.attr('%root')
+			.attr('loginUserWorkingData')
+			.attr('transfersSender')
+			.attr();
+		return transfersSender.reduce(
+			(a, item) => (!['hidden'].includes(item.visibility) ? a + 1 : a),
+			0
+		);
 	},
-	
+
 	cancelOrHide: function(transferObject, operation) {
 		const status = transferObject.attr('status');
 		const cancel = status == 'pending' ? true : false;
@@ -290,28 +347,23 @@ export const ViewModel = Map.extend({
 			if (err) {
 				this.attr('%root').attr(
 					'transferHistoryStatus',
-					`${err.responseJSON.errorText}<br/>Please log back in to clear the error.`
+					`${
+						err.responseJSON.errorText
+					}<br/>Please log back in to clear the error.`
 				);
-				setTimeout(()=>{
-					window.location.href='/';
+				setTimeout(() => {
+					window.location.href = '/';
 				}, 4000);
 				return;
 			}
 			if (cancel) {
 				this.updateStudentTransferStatus(transferObject, 'cancelled');
 			}
-			
-				this.attr('%root').attr(
-					'transferHistoryStatus',
-					`DONE`
-				);
-				setTimeout(()=>{
-				
-				this.attr('%root').attr(
-					'transferHistoryStatus',
-					``
-				);
-				}, 1000);
+
+			this.attr('%root').attr('transferHistoryStatus', `DONE`);
+			setTimeout(() => {
+				this.attr('%root').attr('transferHistoryStatus', ``);
+			}, 1000);
 		};
 
 		this.updateTransferObject({

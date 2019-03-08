@@ -19,6 +19,9 @@
 			<div class='navLink' ($click)='showContents("3_WorkingWithPlans")'>Working with Plans</div>
 			<div class='navLink' ($click)='showContents("4_CustomizingPlans")'>Customizing Plans</div>
 			<div class='navLink' ($click)='showContents("5_ManagingIhpCreator")'>Managing IHP Creator</div>
+			
+			<div class='navLink' ($click)='showContents("6_TransferStudent")'>Transferring Students to Another Nurse <span style='color:red;'>NEW</span></div>
+			<div class='navLink' ($click)='showContents("7_RevisedPlanDate")'>Revising a Plan Date <span style='color:red;'>NEW</span></div>
 			{{startVideoEventMonitoring()}}
 		</div>
 	
@@ -39,6 +42,12 @@
 				{{/is}}
 				{{#is showThis '5_ManagingIhpCreator'}}
 				<video style='height:65vh;' controls='true' src='/api/training/5_ManagingIhpCreator.mov'/>
+				{{/is}}
+				{{#is showThis '6_TransferStudent'}}
+				<video style='height:65vh;' controls='true' src='/api/training/6_TransferStudent.mp4'/>
+				{{/is}}
+				{{#is showThis '7_RevisedPlanDate'}}
+				<video style='height:65vh;' controls='true' src='/api/training/7_RevisedPlanDate.mp4'/>
 				{{/is}}
 				<div style='color:gray;text-align:center;font-size:80%;width:100%;'>(If the panel above is blank and the black bar says 'loading', wait.)</div>
 

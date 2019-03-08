@@ -1,7 +1,6 @@
 user-nurse-student-selectorplus-manage {
 	width:90vw;
 	height:80vh;
-	min-height:634px;
 	position:relative;
 	background:white;
 
@@ -64,35 +63,6 @@ background:white;
 
 
 
-
-user-nurse-student-selectorplus-manage .instructions{
-width:100%;
-height:10vh;
-display:flex;
-	align-items:left;
-	flex-direction:row;
-	padding:20px;
-	
-	position:absolute;
-	bottom:25px;
-}
-
-user-nurse-student-selectorplus-manage .instructions .instTitle{
-font-weight:bold;
-color:rgb(0, 80, 177);
-}
-
-user-nurse-student-selectorplus-manage .instructions>* {
-        flex: 1 1 initial;
-        color:#666;
-        font-size:80%;
-        margin-right:10px;
-    }
-
-
-
-
-
 user-nurse-student-selectorplus-manage .statusArea{
 background:#aab;
 width:48%;
@@ -137,3 +107,53 @@ align-self:auto; /*same as but overrides align items above*/
 
 
 
+#showHideInstructions {
+	display: none;
+	position: absolute;
+	bottom: 20px;
+	margin: auto;
+	cursor: pointer;
+	z-index: 190;
+	font-size: 60%;
+	opacity: .6;
+	letter-spacing:2px;
+}
+
+
+
+user-nurse-student-selectorplus-manage #transferInstructions {
+	width: 98%;
+	display: flex;
+	align-items: left;
+	flex-direction: row;
+	padding: 20px;
+	position: absolute;
+	bottom: 1px;
+	background: rgba(255,255,255,.9);
+	z-index: 200;
+	border-top: 1pt solid gray;
+	margin: auto;
+opacity:0;
+}
+
+user-nurse-student-selectorplus-manage #transferInstructions .instTitle{
+font-weight:bold;
+color:rgb(0, 80, 177);
+}
+
+user-nurse-student-selectorplus-manage #transferInstructions>* {
+        flex: 1 1 initial;
+        color:#666;
+        font-size:80%;
+        margin-right:10px;
+    }
+
+user-nurse-student-selectorplus-manage .instructionsClose {
+	position: absolute;
+	top: -8px;
+	right: -14px;
+}
+
+user-nurse-student-selectorplus-manage .instructionsClose:hover{
+background:rgba(66, 165, 245, .5);
+}

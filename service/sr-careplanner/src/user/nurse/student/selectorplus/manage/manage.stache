@@ -54,18 +54,20 @@
 </div>
 
 	{{#is selectorPlusFunctionMode 'transfer'}}
+	{{initInstructionDisplayManagement('#transferInstructions', '#showHideInstructions')}}
 
-	<div class='instructions'>
-		
+	<button tabindex="-1" type='submit' class="c-button c-button--primary c-button--xsmall"  id='showHideInstructions' ($click)='showHideHelp("#transferInstructions", "#showHideInstructions")'>Show Transfer Help</button>
+
+	<div id='transferInstructions'>
+		<div class='instructionsClose fa fa-close'  ($click)='showHideHelp("#transferInstructions", "#showHideInstructions")'></div>
 	<div><span class='instTitle'>The process looks like this:</span></div>
 	<div><span class='instTitle'>1)</span> Obtain the IHP Creator login name for the receiving nurse.</div>
 	<div><span class='instTitle'>2)</span> Click to choose students, enter receiver's login name and click 'Send Transfer Notice'.</div>
 	<div><span class='instTitle'>3)</span> The receiving nurse will be notified of the transfer when they log in.</div>
 	<div><span class='instTitle'>4)</span> The receiving nurse click 'Review Transfer' button.</div>
-	<div><span class='instTitle'>5)</span> The receiving nurse click on the Offer and then 'Accept Students' button.</div>
+	<div><span class='instTitle'>5)</span> The receiving nurse clicks on the offer and then the 'Accept Students' button.</div>
 	<div><span class='instTitle'>6)</span> You will see a notification when you log in indicating the students were accepted.</div>
-	<div><span class='instTitle'>7)</span> The students you transferred will no longer be available on your student list.</div>
-
+	<div><span class='instTitle'>7)</span> The students you transferred will no longer be available in your student list.</div>
 
 	{{/is}}		
 </div>

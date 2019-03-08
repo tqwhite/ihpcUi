@@ -9,6 +9,7 @@
 
 			<user-nurse-student-selectorplus-manage 
 				parent-vm='{parentVm}' 
+				selector-plus-vm='{getViewModel}'
 				/> 
 
 {{/../showStudentManager}}

@@ -25,7 +25,14 @@ export const ViewModel = Map.extend({
 		selectorPlusFunctionMode: {
 			value: 'selector',
 			serialize: false
+		},
+		managerComponentInstructionDisplayController: {
+			//this is initialized by the selectorPlus/manager component at startup of transfer mode
+			serialize: false
 		}
+	},
+	getViewModel: function() {
+		return this;
 	},
 	cleartransferStudentList: function() {
 		this.attr('transferStudentList', []);
@@ -34,12 +41,41 @@ export const ViewModel = Map.extend({
 	toggleFunction: function(event) {
 		event.stopPropagation();
 		const mode = this.attr('selectorPlusFunctionMode');
-		this.attr(
-			'selectorPlusFunctionMode',
-			mode == 'selector' ? 'transfer' : 'selector'
-		);
+		const functionStatus = mode == 'selector' ? 'transfer' : 'selector';
+		this.attr('selectorPlusFunctionMode', functionStatus);
+
+		if (functionStatus == 'transfer') {
+			const managerComponentInstructionDisplayController = this.attr('managerComponentInstructionDisplayController');
+
+			(function() {
+				var throttle = function(type, name, obj) {
+					obj = obj || window;
+					var running = false;
+					var func = function() {
+						if (running) {
+							return;
+						}
+						running = true;
+						requestAnimationFrame(function() {
+							obj.dispatchEvent(new CustomEvent(name));
+							running = false;
+						});
+					};
+					obj.addEventListener(type, func);
+				};
+
+				/* init - you can init any event */
+				throttle('resize', 'optimizedResize');
+			})(); //thanks:https://developer.mozilla.org/en-US/docs/Web/Events/resize
+
+			window.addEventListener('optimizedResize', function() {
+				managerComponentInstructionDisplayController();
+			});
+		} else {
+			window.target.removeEventListener('optimizedResize');
+		}
 	},
-	
+
 	activateMenu: function(event) {
 		event.stopPropagation();
 		this.attr('%root').attr('showStudentManager', true);
@@ -99,7 +135,7 @@ export const ViewModel = Map.extend({
 
 		this.attr('parentVm').attr('showPlanSelector', true); //selector tries to show itself and auto-opens a plan if it can
 	},
-	
+
 	toggleInactive: function() {
 		this.attr('parentVm').attr(
 			'showInactiveStudents',
@@ -132,7 +168,7 @@ export const ViewModel = Map.extend({
 		}, 1);
 		this.attr('parentVm').attr('newStudentFlag', true);
 	},
-	
+
 	studentShouldBeShown: function(usage, student, showInactiveStudents) {
 		switch (usage) {
 			case 'fullSelection':
