@@ -593,6 +593,10 @@ const AppViewModel = Map.extend({
 	renewSession: function() {
 		KeepAlive.getList();
 	},
+	
+	browserIsInternetExplorer: function(){
+		return window.navigator.userAgent.match(/Trident/i);
+	},
 
 	testElement: function() {
 		window['AppViewModel'] = this;
