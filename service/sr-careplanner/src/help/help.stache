@@ -20,8 +20,8 @@
 			<div class='navLink' ($click)='showContents("4_CustomizingPlans")'>Customizing Plans</div>
 			<div class='navLink' ($click)='showContents("5_ManagingIhpCreator")'>Managing IHP Creator</div>
 			
-			<div class='navLink' ($click)='showContents("6_TransferStudent")'>Transferring Students to Another Nurse <span style='color:red;'>NEW</span></div>
-			<div class='navLink' ($click)='showContents("7_RevisedPlanDate")'>Revising a Plan Date <span style='color:red;'>NEW</span></div>
+			<div class='navLink' ($click)='showContents("6_TransferStudent")'>Transferring Students to Another Nurse</div>
+			<div class='navLink' ($click)='showContents("7_RevisedPlanDate")'>Revising a Plan Date</div>
 			{{startVideoEventMonitoring()}}
 		</div>
 	
