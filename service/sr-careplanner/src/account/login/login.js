@@ -18,6 +18,11 @@ export const ViewModel = Map.extend({
 			value: ''
 		}
 	},
+	
+	isLocal:function(){
+		return window.location.href.match(/local/);
+	
+	},
 
 	createSession: function(ev, options) {
 		if (ev) {

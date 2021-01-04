@@ -11,8 +11,18 @@
 	<div class='fieldContainer'>
 		<div class="c-form-element">
 			<div class="c-field-group">
+				{{#isLocal}}
+					<div style='font-size:100%;color:red;margin-bottom:2px;'>Plus one here</div>
+				<input class="c-field" placeholder="User Name" {($value)}="tmpFormSession.user.username" value='tqwhite'>
+				<input class="c-field" placeholder="Password" type="password" {($value)}="tmpFormSession.user.password" value='shairWord!0'>
+				
+				{{/isLocal}}
+				
+				{{^isLocal}}
 				<input class="c-field" placeholder="User Name" {($value)}="tmpFormSession.user.username" value='{{newlyRegisteredUserName}}'>
 				<input class="c-field" placeholder="Password" type="password" {($value)}="tmpFormSession.user.password">
+				
+				{{/isLocal}}
 			</div>
 		</div>
 	</div>

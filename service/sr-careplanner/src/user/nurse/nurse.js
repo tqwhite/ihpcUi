@@ -3,11 +3,11 @@ import Map from 'can/map/';
 import 'can/map/define/';
 import './nurse.less!';
 import template from './nurse.stache!';
-import Student from "sr-careplanner/models/student";
-import Plan from "sr-careplanner/models/plan";
-import Boilerplate from "sr-careplanner/models/boilerplate";
-import qtools from "node_modules/qtools-minus/";
-import formatPlanPdf from "node_modules/format-plan-pdf/";
+import Student from 'sr-careplanner/models/student';
+import Plan from 'sr-careplanner/models/plan';
+import Boilerplate from 'sr-careplanner/models/boilerplate';
+import qtools from 'node_modules/qtools-minus/';
+import formatPlanPdf from 'node_modules/format-plan-pdf/';
 
 export const ViewModel = Map.extend({
 	define: {
@@ -26,7 +26,7 @@ export const ViewModel = Map.extend({
 				const list = Student.getList({});
 				this.countInactive(list); //this operates the promise
 				return list;
-			},
+			}
 		},
 		plans: {
 			get: function() {
@@ -46,44 +46,42 @@ export const ViewModel = Map.extend({
 			type: '*'
 		},
 
-		workingPlan:{
-			value:Plan,
-			type:'*'
+		workingPlan: {
+			value: Plan,
+			type: '*'
 		},
 
-		planRefIdStudentMapList:{
-			value:{}
+		planRefIdStudentMapList: {
+			value: {}
 		},
 
-		hasPlansStudentMapList:{
-			value:{}
+		hasPlansStudentMapList: {
+			value: {}
 		},
 
 		showStudentEditor: {
 			value: false
 		},
-		currentStudent:{
-			value:'',
-			note:'this is set as a consequences of setting openStudentRefId because of the history of student/selector'
+		currentStudent: {
+			value: '',
+			note:
+				'this is set as a consequences of setting openStudentRefId because of the history of student/selector'
 		},
 		openStudentRefId: {
 			value: '',
 			type: 'string',
 			set: function(value) {
+				let currentStudent;
 
-			let currentStudent;
-
-			this.attr('students').then((students)=>{
-
-			for (var i=0, len=students.length; i<len; i++){
-				var item=students[i];
-						const refId=item.attr('refId');
-						if (refId==value){
+				this.attr('students').then(students => {
+					for (var i = 0, len = students.length; i < len; i++) {
+						var item = students[i];
+						const refId = item.attr('refId');
+						if (refId == value) {
 							this.attr('currentStudent', item);
 						}
-			}
-
-			});
+					}
+				});
 
 				return value;
 			}
@@ -102,31 +100,40 @@ export const ViewModel = Map.extend({
 				return value;
 			}
 		},
-		openPlanNameString:{
-			value:'',
-			get:function(value){
-				return value?qtools.getDateString('dd_MMM_yyyy', new Date(value)):''
+		openPlanNameString: {
+			value: '',
+			get: function(value) {
+				let showName;
+				if (!value) {
+					showName = 'ERROR';
+				} else {
+					const timestamp = Date.parse(value);
+					showName = !timestamp
+						? value
+						: qtools.getDateString('dd_MMM_yyyy', new Date(value));
+				}
+				return showName;
 			}
 		},
 		showPlanSelector: {
 			value: true,
 			serialize: false
 		},
-    	
-		blankPlan:{
-			get:function(){
+
+		blankPlan: {
+			get: function() {
 				const refId = qtools.newGuid();
-				const newPlan={
-					refId:refId,
-					conditions:[],
-					createdAt:new Date(),
-					planDate:new Date()
+				const newPlan = {
+					refId: refId,
+					conditions: [],
+					createdAt: new Date(),
+					planDate: new Date()
 				};
 				return new Plan(newPlan);
 			}
 		},
-		blankCondition:{
-			get:function(){
+		blankCondition: {
+			get: function() {
 				const refId = qtools.newGuid();
 				const refId2 = qtools.newGuid();
 				//const newDiagnosis=this.attr('blankDiagnosis');
@@ -140,26 +147,27 @@ export const ViewModel = Map.extend({
 				return newCondition;
 			}
 		},
-		blankDiagnosis:{
-			get:function(){
+		blankDiagnosis: {
+			get: function() {
 				const refId = qtools.newGuid();
-				const newDiagnosis={
-						refId: refId,
-						sourceDiagnosisRefId: null,
-						assessment: '',
-						nursingDiagnosis: '',
-						interventions: '',
-						outcomes: '',
-						shortName: ''
-					};
+				const newDiagnosis = {
+					refId: refId,
+					sourceDiagnosisRefId: null,
+					assessment: '',
+					nursingDiagnosis: '',
+					interventions: '',
+					outcomes: '',
+					shortName: ''
+				};
 				return newDiagnosis;
 			}
 		},
 		latestPlanRefid: {
 			value: 'hello',
 			get: function() {
-
-				const planRefIdStudentMapList = this.attr('%root').attr('planRefIdStudentMapList');
+				const planRefIdStudentMapList = this.attr('%root').attr(
+					'planRefIdStudentMapList'
+				);
 				const openStudentRefId = this.attr('openStudentRefId');
 
 				if (planRefIdStudentMapList) {
@@ -171,7 +179,6 @@ export const ViewModel = Map.extend({
 		openStudentHasPlans: {
 			value: 'hello',
 			get: function() {
-
 				const hasPlansStudentMapList = this.attr('hasPlansStudentMapList');
 				const openStudentRefId = this.attr('openStudentRefId');
 
@@ -182,78 +189,76 @@ export const ViewModel = Map.extend({
 			}
 		},
 
-		boilerplateRefIdLookupObject:{
-			value:'',
-			type:'*'
-
+		boilerplateRefIdLookupObject: {
+			value: '',
+			type: '*'
 		},
 
-		inactiveCount:{
-			value:0,
-			type:'*'
-
+		inactiveCount: {
+			value: 0,
+			type: '*'
 		},
 
-		activeCount:{
-			value:0,
-			type:'*'
-
+		activeCount: {
+			value: 0,
+			type: '*'
 		},
 
-		allCount:{
-			value:0,
-			type:'*'
-
+		allCount: {
+			value: 0,
+			type: '*'
 		},
 
-		showSmallStudentSelectorPlus:{
-			value:false,
-			serialize:false
+		showSmallStudentSelectorPlus: {
+			value: false,
+			serialize: false
 		},
 
-		currentTool:{
-			value:'editor',
-			serialize:false
+		currentTool: {
+			value: 'editor',
+			serialize: false
 		},
-		showInactiveStudents:{
-			value:false,
-			serialize:false
+		showInactiveStudents: {
+			value: false,
+			serialize: false
 		}
 	},
 	
-	countInactive:function(students){
-		let inactiveCount=0;
-		let activeCount=0;
-		let allCount=0;
-		students.then((student)=>{
-			student.each((student)=>{
-				if (student.attr('inactive')){
+	countInactive: function(students) {
+		let inactiveCount = 0;
+		let activeCount = 0;
+		let allCount = 0;
+		students.then(student => {
+			student.each(student => {
+				if (student.attr('inactive')) {
 					inactiveCount++;
-				}
-				else{
-				activeCount++;
+				} else {
+					activeCount++;
 				}
 				allCount++;
 			});
 			this.attr('inactiveCount', inactiveCount);
 			this.attr('activeCount', activeCount);
 			this.attr('allCount', allCount);
-			
-			const showInactiveStudents=this.attr('showInactiveStudents');
-			const displayCount=showInactiveStudents?allCount:activeCount;
-			this.attr('showSmallStudentSelectorPlus', (displayCount<20)?true:false);
+
+			const showInactiveStudents = this.attr('showInactiveStudents');
+			const displayCount = showInactiveStudents ? allCount : activeCount;
+			this.attr(
+				'showSmallStudentSelectorPlus',
+				displayCount < 20 ? true : false
+			);
 		});
 	},
 
-	boilerplateGetStaticInfo:function(boilerplates){
-// 		if(this.attr('boilerplateRefIdLookupObject')!==''){
-// 			return;
-// 		}
+	boilerplateGetStaticInfo: function(boilerplates) {
+		// 		if(this.attr('boilerplateRefIdLookupObject')!==''){
+		// 			return;
+		// 		}
 
-		let boilerplateRefIdLookupObject={};
-		boilerplates.then((result)=>{
-			result.each((item)=>{
-				boilerplateRefIdLookupObject[item.refId]=item;
+		let boilerplateRefIdLookupObject = {};
+		boilerplates.then(result => {
+			result.each(item => {
+				boilerplateRefIdLookupObject[item.refId] = item;
 			});
 			this.attr('boilerplateRefIdLookupObject', boilerplateRefIdLookupObject);
 		});
@@ -263,19 +268,20 @@ export const ViewModel = Map.extend({
 		//note: this creates a persistent object because .then doesn't run when a student is
 		//loaded a second time. May need to revise once 'new plan' is created.
 		let chosen;
-		plansMap.then((result) => {
-			result.each((item) => {
+		plansMap.then(result => {
+			result.each(item => {
 				chosen = item.attr('refId');
 			});
-		if (chosen) {
-			const planRefIdStudentMapList = this.attr('%root').attr('planRefIdStudentMapList');
-			const openStudentRefId = this.attr('openStudentRefId');
-			planRefIdStudentMapList.attr(openStudentRefId, chosen);
-			const hasPlansStudentMapList=this.attr('hasPlansStudentMapList');
-			hasPlansStudentMapList.attr(openStudentRefId, true);
-		}
+			if (chosen) {
+				const planRefIdStudentMapList = this.attr('%root').attr(
+					'planRefIdStudentMapList'
+				);
+				const openStudentRefId = this.attr('openStudentRefId');
+				planRefIdStudentMapList.attr(openStudentRefId, chosen);
+				const hasPlansStudentMapList = this.attr('hasPlansStudentMapList');
+				hasPlansStudentMapList.attr(openStudentRefId, true);
+			}
 		});
-
 	},
 
 	showSummary: function() {
@@ -287,38 +293,36 @@ export const ViewModel = Map.extend({
 		this.attr('showStudentEditor', true);
 	},
 
-	setTool:function(newToolName){
+	setTool: function(newToolName) {
 		this.attr('currentTool', newToolName);
 	},
 
 	collectChildComponents: function(childType, childVm) {
 		this.childComponentLists = this.childComponentLists || {};
-		this.childComponentLists[childType] = this.childComponentLists[childType] || [];
+		this.childComponentLists[childType] =
+			this.childComponentLists[childType] || [];
 		this.childComponentLists[childType].push(childVm);
 	},
 	
-	savePlan:function(callback){
-	
+	savePlan: function(callback) {
+		
 		var saveObj = this.attr('workingPlan');
 
 		this.attr('saveNotification', true);
 		const prevTimeoutId = this.attr('saveNotificationTimeoutId');
 		if (prevTimeoutId) {
 			clearTimeout(prevTimeoutId);
-			this.attr('saveNotificationTimeoutId', '')
+			this.attr('saveNotificationTimeoutId', '');
 		}
 
 		if (saveObj.isNew()) {
-
 			saveObj.attr('studentRefId', this.attr('openStudentRefId'));
 
 			//	saveObj.attr('refId', qtools.newGuid()); //the plan is generated with a refId and wired in at creation, don't need this
-	;
-		} 
-		
-		var promise=saveObj
-			.save()
-			.then(() => {
+		}
+
+		var promise = saveObj.save().then(
+			() => {
 				const timeoutId = setTimeout(() => {
 					this.attr('saveNotification', false);
 				}, 2000);
@@ -326,29 +330,34 @@ export const ViewModel = Map.extend({
 				this.attr('saveNotificationTimeoutId', timeoutId);
 				//		this.attr('newsaveObjFlag', false);
 				this.attr('workingPlan', saveObj);
-				this.attr('openPlanNameString', (saveObj.attr('planDate') || saveObj.attr('createdAt')));
-				callback && callback()
+				this.attr(
+					'openPlanNameString',
+					saveObj.attr('name') ||
+						saveObj.attr('planDate') ||
+						saveObj.attr('createdAt')
+				);
+				callback && callback();
 			},
-			(err) => {
-				this.attr('saveError', JSON.stringify(err))
+			err => {
+				this.attr('saveError', JSON.stringify(err));
 				console.dir({
-					"err": err
+					err: err
 				});
-				callback && callback(err.responseJSON.errorText)
-			});
-	
+				callback && callback(err.responseJSON.errorText);
+			}
+		);
+		
 	},
 	testElement: function(x) {
-		window['user-nurse']=this;
-		console.log('added: window['+"'"+'user-nurse'+"'"+']');
+		window['user-nurse'] = this;
+		console.log('added: window[' + "'" + 'user-nurse' + "'" + ']');
 		console.dir({
-			"user-nurse": this.attr(),
-			"students": this.attr('students'),
-			"plans": this.attr('plans'),
-			'childComponentLists':this.childComponentLists
+			'user-nurse': this.attr(),
+			students: this.attr('students'),
+			plans: this.attr('plans'),
+			childComponentLists: this.childComponentLists
 		});
-	},
-
+	}
 });
 
 export default Component.extend({

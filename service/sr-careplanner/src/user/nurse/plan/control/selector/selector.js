@@ -74,7 +74,7 @@ export const ViewModel = Map.extend({
 		const displayDate = planDate ? planDate : creationDate;
 
 		this.attr('planRootVm').attr('workingPlan', element);
-		this.attr('planRootVm').attr('openPlanNameString', displayDate); //flow through to latestPlanRefid when it's accessed
+		this.attr('planRootVm').attr('openPlanNameString', 'XXX'); //flow through to latestPlanRefid when it's accessed
 
 		this.menuIsVisible(false);
 	},

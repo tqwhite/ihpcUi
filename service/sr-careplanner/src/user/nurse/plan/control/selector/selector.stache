@@ -1,5 +1,6 @@
 <!--{{message}}-->
 
+      	<can-import from="sr-careplanner/user/nurse/plan/control/metadata/" />
 
 {{#showPlanSelector}}
 	{{#if planRootVm.plans.isResolved}}
@@ -42,32 +43,12 @@
 	
 	
 
-      {{#case "duplicatePlan"}}
-		<button id='selectPlan' 
-			class="
-				c-button  c-button--xsmall c-button--error
-			" 
-			style='margin-right:5px;'
-			($click)='confirmDuplicatePlan(%event)'
-		>
-			Click to Create New Revision
-		</button>
-		<button id='selectPlan' 
-			class="
-				c-button  c-button--xsmall 
-				{{#../openPlanNameString}}
-					c-button--ghost
-				{{else}}
-					hidden 
-				{{/../openPlanNameString}}
-			" 
-			($click)='cancelSpecialButtonMode(%event)'
-			
-			title='Create a duplicate plan that can be updated or changed without changing the original plan.'
-		>
-			CANCEL
-		</button>
-	{{/case}}
+		{{#case "duplicatePlan"}}
+			<user-nurse-plan-control-metadata
+				plan-root-vm='{planRootVm}' 
+		plan='{workingPlan}'
+			/>
+		{{/case}}
 	
 
 	
@@ -102,7 +83,7 @@
 				{{/../openPlanNameString}}
 			" 
 			($click)='activateDuplicatePlan(%event)'
-		>REVISE PLAN</button>
+		>PLAN CONTROLS</button>
 		</div>
 	{{/default}}
 	{{/switch}}

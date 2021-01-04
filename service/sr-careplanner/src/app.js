@@ -320,6 +320,7 @@ const AppViewModel = Map.extend({
 			serialize: false
 		}
 	},
+	
 	setNewPage: function(page, slug, subsection) {
 		this.attr('welcomeMessage', '');
 		this.attr('page', page);

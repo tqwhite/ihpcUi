@@ -1,0 +1,54 @@
+  <div class='user-nurse-plan-control-metadata '>
+<div class='closeControl'>  
+		<div id='selectPlan' 
+			class="close fa fa-close
+				{{#../openPlanNameString}}
+				{{else}}
+					hidden 
+				{{/../openPlanNameString}}
+			" 
+			($click)='cancelSpecialButtonMode(%event)'
+			
+			title='Close'
+		></div>  
+</div>
+
+<div class='controlSection'>
+
+<input type='text' placeholder='enter name (optional)' {($value)}="plan.name"><br>
+
+
+</div>
+
+<div class='controlSection'>
+		<button id='selectPlan' 
+			class="
+				c-button  c-button--xsmall c-button--info
+			" 
+			style='margin-right:5px;background-color:#6abe6e;'
+			($click)='confirmDuplicatePlan(%event)'
+		>
+			Duplicate to a New Plan
+		</button>
+</div>
+
+
+
+
+
+
+<div class='controlSection'>
+		<button id='selectPlan' 
+			class="
+				c-button  c-button--xsmall c-button--warning
+			" 
+			style='margin-right:5px;background-color:#ff9800;'
+			($click)='confirmDuplicatePlan(%event)'
+		>
+			Delete this Plan
+		</button>
+</div>
+
+
+		
+		</div>
