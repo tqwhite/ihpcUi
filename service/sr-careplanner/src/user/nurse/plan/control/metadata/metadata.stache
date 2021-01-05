@@ -20,6 +20,22 @@
 
 </div>
 
+
+
+				
+				
+				
+				{{#if planRootVm.plans.value.length}}
+					{{#subscriptionActive}}
+<div class='controlSection'>
+
+							<button class=" c-button--ghost c-button--small c-button--primary menuButton basicBlue" ($click)='createNewPlan()' tabindex='-1'>
+							Create New Plan
+							</button>
+</div>				
+					{{/subscriptionActive}}
+				{{/if}}
+
 <div class='controlSection'>
 		<button id='selectPlan' 
 			class="
@@ -42,7 +58,7 @@
 			class="
 				c-button  c-button--xsmall c-button--warning
 			" 
-			style='margin-right:5px;background-color:#ff9800;'
+			style='margin-right:5px;background-color:#FF8000;'
 			($click)='confirmDuplicatePlan(%event)'
 		>
 			Delete this Plan

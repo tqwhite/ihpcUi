@@ -32,10 +32,16 @@ export const ViewModel = Map.extend({
 	showPlanDate: function(element) {
 		const planDate = element.attr('planDate');
 		const creationDate = element.attr('createdAt');
-		const displayDate = planDate ? planDate : creationDate;
-		const result = qtools.getDateString('dd_MMM_yyyy', new Date(displayDate));
+		const displayDate = new Date(planDate ? planDate : creationDate);
+		
+		
 
-		return result;
+		const planName = element.attr('name');
+		const displayName=planName?`${planName} <span style='font-size:80%;'>${displayDate.toLocaleDateString()}</span>`:displayDate;
+
+
+
+		return displayName;
 	},
 	
 	updateStaticPlanDetails: function(newRefId) {
@@ -71,10 +77,13 @@ export const ViewModel = Map.extend({
 		this.updateStaticPlanDetails(element.attr('refId'));
 		const planDate = element.attr('planDate');
 		const creationDate = element.attr('createdAt');
-		const displayDate = planDate ? planDate : creationDate;
+		const displayDate = new Date(planDate ? planDate : creationDate);
+
+		const planName = element.attr('name');
+		const displayName=planName?`${planName} <span style='font-size:80%;'>${displayDate.toLocaleDateString()}</span>`:displayDate;
 
 		this.attr('planRootVm').attr('workingPlan', element);
-		this.attr('planRootVm').attr('openPlanNameString', 'XXX'); //flow through to latestPlanRefid when it's accessed
+		this.attr('planRootVm').attr('openPlanNameString', displayName); //flow through to latestPlanRefid when it's accessed
 
 		this.menuIsVisible(false);
 	},

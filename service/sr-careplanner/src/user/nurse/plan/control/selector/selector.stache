@@ -16,7 +16,7 @@
 				{{#each planRootVm.plans.value}}
 
 						<li class="c-menu__item a-menu--slow planSelectorIdClass" ($click)='choosePlan(%index, .)'>
-							{{showPlanDate(.)}}
+							{{{showPlanDate(.)}}}
 							{{#is latestPlanRefid refId}}{{choosePlan(%index, .)}}{{/is}}
 					
 						</li>
@@ -67,7 +67,7 @@
 		>
 		
 			{{#../openPlanNameString}}
-				Plan Date: {{openPlanNameString}}
+				{{{openPlanNameString}}}
 			{{else}}
 				Select Student 
 			{{/../openPlanNameString}}
