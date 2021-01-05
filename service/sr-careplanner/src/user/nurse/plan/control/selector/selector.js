@@ -37,7 +37,7 @@ export const ViewModel = Map.extend({
 		
 
 		const planName = element.attr('name');
-		const displayName=planName?`${planName} <span style='font-size:80%;'>${displayDate.toLocaleDateString()}</span>`:displayDate;
+		const displayName=planName?`${planName} <span style='font-size:80%;'>${displayDate.toLocaleDateString()}</span>`:displayDate.toLocaleDateString();
 
 
 
@@ -80,7 +80,7 @@ export const ViewModel = Map.extend({
 		const displayDate = new Date(planDate ? planDate : creationDate);
 
 		const planName = element.attr('name');
-		const displayName=planName?`${planName} <span style='font-size:80%;'>${displayDate.toLocaleDateString()}</span>`:displayDate;
+		const displayName=planName?`${planName} <span style='font-size:80%;'>${displayDate.toLocaleDateString()}</span>`:displayDate.toLocaleDateString();
 
 		this.attr('planRootVm').attr('workingPlan', element);
 		this.attr('planRootVm').attr('openPlanNameString', displayName); //flow through to latestPlanRefid when it's accessed

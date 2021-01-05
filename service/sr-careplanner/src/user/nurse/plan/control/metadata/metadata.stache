@@ -14,34 +14,21 @@
 </div>
 
 <div class='controlSection'>
-
-<input type='text' placeholder='enter name (optional)' {($value)}="plan.name"><br>
-
-
+	<input type='text' placeholder='enter name (optional)' {($value)}="plan.name"><br>
 </div>
 
-
-
-				
-				
-				
-				{{#if planRootVm.plans.value.length}}
-					{{#subscriptionActive}}
-<div class='controlSection'>
-
-							<button class=" c-button--ghost c-button--small c-button--primary menuButton basicBlue" ($click)='createNewPlan()' tabindex='-1'>
-							Create New Plan
-							</button>
-</div>				
-					{{/subscriptionActive}}
-				{{/if}}
+{{#if planRootVm.plans.value.length}}
+	{{#subscriptionActive}}
+		<div class='controlSection'>
+			<button  class=" c-button c-button--xsmall c-button--info basicBlueBackground" style='margin-right:5px; color:white;' ($click)='createNewPlan()' tabindex='-1'>
+				Create New Plan
+			</button>
+		</div>				
+	{{/subscriptionActive}}
+{{/if}}
 
 <div class='controlSection'>
-		<button id='selectPlan' 
-			class="
-				c-button  c-button--xsmall c-button--info
-			" 
-			style='margin-right:5px;background-color:#6abe6e;'
+		<button id='selectPlan'  class=" c-button c-button--xsmall c-button--info " style='margin-right:5px;background-color:#6abe6e;'
 			($click)='confirmDuplicatePlan(%event)'
 		>
 			Duplicate to a New Plan
