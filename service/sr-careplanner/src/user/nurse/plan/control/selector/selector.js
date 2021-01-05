@@ -104,6 +104,11 @@ export const ViewModel = Map.extend({
 		this.attr('localStatusMessage', '');
 	},
 	
+	activatePlanControls:function(){
+		this.attr('selectorMode', 'planControls');
+
+	},
+	
 	activateDuplicatePlan:function(){
 		this.attr('selectorMode', 'duplicatePlan');
 

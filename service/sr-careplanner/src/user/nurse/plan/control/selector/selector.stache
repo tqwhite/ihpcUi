@@ -37,13 +37,13 @@
 {{/showPlanSelector}}
 
 {{^showPlanSelector}}
-
+XXX {{selectorMode}} XXX
 {{#switch selectorMode}}
 
 	
 	
 
-		{{#case "duplicatePlan"}}
+		{{#case "planControls"}}
 			<user-nurse-plan-control-metadata
 				plan-root-vm='{planRootVm}' 
 		plan='{workingPlan}'
@@ -82,7 +82,7 @@
 					hidden 
 				{{/../openPlanNameString}}
 			" 
-			($click)='activateDuplicatePlan(%event)'
+			($click)='activatePlanControls(%event)'
 		>PLAN CONTROLS</button>
 		</div>
 	{{/default}}

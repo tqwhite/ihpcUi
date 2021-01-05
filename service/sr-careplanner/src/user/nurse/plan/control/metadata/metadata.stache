@@ -1,4 +1,5 @@
   <div class='user-nurse-plan-control-metadata '>
+  
 <div class='closeControl'>  
 		<div id='selectPlan' 
 			class="close fa fa-close
@@ -13,45 +14,42 @@
 		></div>  
 </div>
 
+{{#if planRootVm.plans.value.length}}
 <div class='controlSection'>
 	<input type='text' placeholder='enter name (optional)' {($value)}="plan.name"><br>
 </div>
 
-{{#if planRootVm.plans.value.length}}
 	{{#subscriptionActive}}
 		<div class='controlSection'>
 			<button  class=" c-button c-button--xsmall c-button--info basicBlueBackground" style='margin-right:5px; color:white;' ($click)='createNewPlan()' tabindex='-1'>
 				Create New Plan
 			</button>
-		</div>				
+		</div>
+
+		<div class='controlSection'>
+				<button id='selectPlan'  class=" c-button c-button--xsmall c-button--info " style='margin-right:5px;background-color:#6abe6e;'
+					($click)='activateDuplicatePlan(%event)'
+				>
+					Duplicate to a New Plan
+				</button>
+		</div>
+
+		<div class='controlSection'>
+			<button id='selectPlan' 
+				class="
+					c-button  c-button--xsmall c-button--warning
+				" 
+				style='margin-right:5px;background-color:#FF8000;'
+				($click)='deletePlan(%event)'
+			>
+				Delete this Plan
+			</button>
+		</div>
 	{{/subscriptionActive}}
+	{{^subscriptionActive}}
+		Please renew your subscription so you can change your students' plans.
+	{{/subscriptionActive}}
+
 {{/if}}
-
-<div class='controlSection'>
-		<button id='selectPlan'  class=" c-button c-button--xsmall c-button--info " style='margin-right:5px;background-color:#6abe6e;'
-			($click)='confirmDuplicatePlan(%event)'
-		>
-			Duplicate to a New Plan
-		</button>
-</div>
-
-
-
-
-
-
-<div class='controlSection'>
-		<button id='selectPlan' 
-			class="
-				c-button  c-button--xsmall c-button--warning
-			" 
-			style='margin-right:5px;background-color:#FF8000;'
-			($click)='confirmDuplicatePlan(%event)'
-		>
-			Delete this Plan
-		</button>
-</div>
-
-
 		
 		</div>
