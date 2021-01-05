@@ -40,7 +40,7 @@
 					c-button  c-button--xsmall c-button--warning
 				" 
 				style='margin-right:5px;background-color:#FF8000;'
-				($click)='deletePlan(%event)'
+				($click)='activateDeletePlan(%event)'
 			>
 				Delete this Plan
 			</button>

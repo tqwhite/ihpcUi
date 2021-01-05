@@ -14,12 +14,13 @@
 						</li>
 						{{/if}}
 				{{#each planRootVm.plans.value}}
-
-						<li class="c-menu__item a-menu--slow planSelectorIdClass" ($click)='choosePlan(%index, .)'>
-							{{{showPlanDate(.)}}}
-							{{#is latestPlanRefid refId}}{{choosePlan(%index, .)}}{{/is}}
+						{{^deleted}}
+							<li class="c-menu__item a-menu--slow planSelectorIdClass" ($click)='choosePlan(%index, .)'>
+								{{{showPlanDate(.)}}}
+								{{#is latestPlanRefid refId}}{{choosePlan(%index, .)}}{{/is}}
 					
-						</li>
+							</li>
+						{{/deleted}}
 
 				{{/each}}		
 				{{#if planRootVm.plans.value.length}}
@@ -37,10 +38,69 @@
 {{/showPlanSelector}}
 
 {{^showPlanSelector}}
-XXX {{selectorMode}} XXX
+
 {{#switch selectorMode}}
 
 	
+		  {{#case "requestDeleteConfirmation"}}
+			<button id='selectPlan' 
+				class="
+					c-button  c-button--xsmall c-button--error
+				" 
+				style='margin-right:5px;'
+				($click)='confirmDeletePlan(%event)'
+			>
+				Click to Delete (Cannot be undone)
+			</button>
+			<button id='selectPlan' 
+				class="
+					c-button  c-button--xsmall 
+					{{#../openPlanNameString}}
+						c-button--ghost
+					{{else}}
+						hidden 
+					{{/../openPlanNameString}}
+				" 
+				($click)='cancelSpecialButtonMode(%event)'
+			
+				title='Delete this plan forever. This cannot be undone.'
+			>
+				CANCEL
+			</button>
+		{{/case}}
+		
+		
+		
+		
+		
+
+	
+		  {{#case "duplicatePlan"}}
+			<button id='selectPlan' 
+				class="
+					c-button  c-button--xsmall c-button--error
+				" 
+				style='margin-right:5px;'
+				($click)='confirmDuplicatePlan(%event)'
+			>
+				Click to Create New Revision
+			</button>
+			<button id='selectPlan' 
+				class="
+					c-button  c-button--xsmall 
+					{{#../openPlanNameString}}
+						c-button--ghost
+					{{else}}
+						hidden 
+					{{/../openPlanNameString}}
+				" 
+				($click)='cancelSpecialButtonMode(%event)'
+			
+				title='Create a duplicate plan that can be updated or changed without changing the original plan.'
+			>
+				CANCEL
+			</button>
+		{{/case}}
 	
 
 		{{#case "planControls"}}

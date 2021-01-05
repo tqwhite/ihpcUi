@@ -124,6 +124,21 @@ export const ViewModel = Map.extend({
 		});
 	},
 	
+	activateDeletePlan:function(){
+		
+		this.attr('selectorMode', 'requestDeleteConfirmation');
+		
+	},
+	
+	confirmDeletePlan:function(){
+		this.attr('planRootVm').attr('workingPlan').attr('deleted', true);
+		const name=this.attr('planRootVm').attr('workingPlan').attr('name');
+		this.attr('planRootVm').attr('workingPlan').attr('name', `${name}_deleted`);
+		this.attr('planRootVm').savePlan();
+		this.attr('planRootVm').attr('showPlanSelector', true);
+		this.attr('selectorMode', '');
+	},
+	
 	testElement: function(x) {
 		console.dir({
 			'user-nurse-plan-control-selector': this.attr(),
