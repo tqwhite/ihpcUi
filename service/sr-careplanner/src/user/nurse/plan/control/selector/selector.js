@@ -132,6 +132,7 @@ export const ViewModel = Map.extend({
 	
 	confirmDeletePlan:function(){
 		this.attr('planRootVm').attr('workingPlan').attr('deleted', true);
+		this.attr('planRootVm').attr('workingPlan').attr('deletedDate', new Date());
 		const name=this.attr('planRootVm').attr('workingPlan').attr('name');
 		this.attr('planRootVm').attr('workingPlan').attr('name', `${name}_deleted`);
 		this.attr('planRootVm').savePlan(()=>{
