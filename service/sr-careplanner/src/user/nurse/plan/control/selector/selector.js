@@ -4,7 +4,7 @@ import 'can/map/define/';
 import './selector.less!';
 import template from './selector.stache!';
 import qtools from 'node_modules/qtools-minus/';
-import Plan from "sr-careplanner/models/plan";
+import Plan from 'sr-careplanner/models/plan';
 
 export const ViewModel = Map.extend({
 	define: {
@@ -22,7 +22,7 @@ export const ViewModel = Map.extend({
 		showConfirmDuplicatePlan: {
 			value: false,
 			serialize: false
-		},
+		}
 	},
 	
 	notes: [
@@ -33,14 +33,11 @@ export const ViewModel = Map.extend({
 		const planDate = element.attr('planDate');
 		const creationDate = element.attr('createdAt');
 		const displayDate = new Date(planDate ? planDate : creationDate);
-		
-		
 
 		const planName = element.attr('name');
-		const displayName=planName?`${planName} <span style='font-size:80%;'>${displayDate.toLocaleDateString()}</span>`:displayDate.toLocaleDateString();
-
-
-
+		const displayName = planName
+			? `${planName} <span style='font-size:80%;'>${displayDate.toLocaleDateString()}</span>`
+			: displayDate.toLocaleDateString();
 		return displayName;
 	},
 	
@@ -80,7 +77,9 @@ export const ViewModel = Map.extend({
 		const displayDate = new Date(planDate ? planDate : creationDate);
 
 		const planName = element.attr('name');
-		const displayName=planName?`${planName} <span style='font-size:80%;'>${displayDate.toLocaleDateString()}</span>`:displayDate.toLocaleDateString();
+		const displayName = planName
+			? `${planName} <span style='font-size:80%;'>${displayDate.toLocaleDateString()}</span>`
+			: displayDate.toLocaleDateString();
 
 		this.attr('planRootVm').attr('workingPlan', element);
 		this.attr('planRootVm').attr('openPlanNameString', displayName); //flow through to latestPlanRefid when it's accessed
@@ -90,7 +89,7 @@ export const ViewModel = Map.extend({
 	
 	createNewPlan: function(conditions, callback) {
 		const newPlan = this.attr('planRootVm').attr('blankPlan');
-		if (conditions){
+		if (conditions) {
 			newPlan.attr('conditions', conditions);
 		}
 		this.updateStaticPlanDetails(newPlan.refId);
@@ -104,45 +103,43 @@ export const ViewModel = Map.extend({
 		this.attr('localStatusMessage', '');
 	},
 	
-	activatePlanControls:function(){
+	activatePlanControls: function() {
 		this.attr('selectorMode', 'planControls');
-
 	},
 	
-	activateDuplicatePlan:function(){
+	activateDuplicatePlan: function() {
 		this.attr('selectorMode', 'duplicatePlan');
+	},
+	
+	confirmDuplicatePlan: function() {
+		const originalPlan = this.attr('planRootVm')
+			.attr('workingPlan')
+			.attr();
+		this.createNewPlan(originalPlan.conditions, () => {
+			this.attr('planRootVm').savePlan();
 
-	},
-	
-	confirmDuplicatePlan:function(){
-		const originalPlan=this.attr('planRootVm').attr('workingPlan').attr();
-		this.createNewPlan(originalPlan.conditions, ()=>{
-		this.attr('planRootVm').savePlan();
-		
-		this.attr('selectorMode', '');
-		
+			this.attr('selectorMode', '');
 		});
 	},
 	
-	activateDeletePlan:function(){
-		
+	activateDeletePlan: function() {
 		this.attr('selectorMode', 'requestDeleteConfirmation');
-		
 	},
 	
-	confirmDeletePlan:function(){
-		this.attr('planRootVm').attr('workingPlan').attr('deleted', true);
-		this.attr('planRootVm').attr('workingPlan').attr('deletedDate', new Date());
-		const name=this.attr('planRootVm').attr('workingPlan').attr('name');
-		this.attr('planRootVm').attr('workingPlan').attr('name', `${name}_deleted`);
-		this.attr('planRootVm').savePlan(()=>{
-		
-		this.attr('planRootVm').attr('workingPlan', '')
-		this.attr('planRootVm').attr('showPlanSelector', true);
-		this.attr('selectorMode', '');
-		
+	confirmDeletePlan: function() {
+		const workingPlan = this.attr('planRootVm').attr('workingPlan');
+
+		workingPlan.attr('deleted', true);
+		workingPlan.attr('deletedDate', new Date());
+
+		const name = workingPlan.attr('name');
+		workingPlan.attr('name', `${name}_deleted`);
+
+		this.attr('planRootVm').savePlan(() => {
+			this.attr('planRootVm').attr('workingPlan', '');
+			this.attr('planRootVm').attr('showPlanSelector', true);
+			this.attr('selectorMode', '');
 		});
-		
 	},
 	
 	testElement: function(x) {
