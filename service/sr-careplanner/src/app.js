@@ -104,7 +104,7 @@ const AppViewModel = Map.extend({
 			serialize: false,
 			type: '*',
 			set: function(value) {
-				if (value && value.claims && value.claims.expiration) {
+				if (false && value && value.claims && value.claims.expiration) {
 					const expirationTime = value.claims.expiration;
 					const interval = value.claims.expiration - new Date();
 					this.attr('sessionInterval', interval);

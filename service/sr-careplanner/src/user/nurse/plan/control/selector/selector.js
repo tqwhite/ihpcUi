@@ -103,15 +103,22 @@ export const ViewModel = Map.extend({
 		this.attr('localStatusMessage', '');
 	},
 	
-	activatePlanControls: function() {
+	activatePlanControls: function(event) {
+		event.stopPropagation();
 		this.attr('selectorMode', 'planControls');
+		this.attr('%root').activateModal(() => {
+			this.attr('selectorMode', '');
+			this.attr('localStatusMessage', '');
+		});
 	},
 	
-	activateDuplicatePlan: function() {
+	activateDuplicatePlan: function(event) {
+		event.stopPropagation();
 		this.attr('selectorMode', 'duplicatePlan');
 	},
 	
-	confirmDuplicatePlan: function() {
+	confirmDuplicatePlan: function(event) {
+		event.stopPropagation();
 		const originalPlan = this.attr('planRootVm')
 			.attr('workingPlan')
 			.attr();
@@ -122,11 +129,13 @@ export const ViewModel = Map.extend({
 		});
 	},
 	
-	activateDeletePlan: function() {
+	activateDeletePlan: function(event) {
+		event.stopPropagation();
 		this.attr('selectorMode', 'requestDeleteConfirmation');
 	},
 	
-	confirmDeletePlan: function() {
+	confirmDeletePlan: function(event) {
+		event.stopPropagation();
 		const workingPlan = this.attr('planRootVm').attr('workingPlan');
 
 		workingPlan.attr('deleted', true);
@@ -157,6 +166,10 @@ export default Component.extend({
 	events: {
 		'input change': function() {
 			this.viewModel.savePlanDate();
+		},
+		'input click': function(el, event) {
+
+			event.stopPropagation();
 		}
 	}
 });

@@ -16,6 +16,16 @@
     <title>{{title}}</title>
   </head>
   <body> 
+  <!-- div style='height:50vh;width:100vw;background:white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1ch;'>
+  
+  IHP Creator has a problem. We know about it and are working to fix it. Back soon.
+  </div -->
+  
 {{simpleRoute}}
 
 {{confirmEmail}}

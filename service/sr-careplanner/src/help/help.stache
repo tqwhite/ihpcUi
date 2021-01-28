@@ -22,6 +22,7 @@
 			
 			<div class='navLink' ($click)='showContents("6_TransferStudent")'>Transferring Students to Another Nurse</div>
 			<div class='navLink' ($click)='showContents("7_RevisedPlanDate")'>Revising a Plan Date</div>
+			<div class='navLink' ($click)='showContents("8_RenameOrDeletePlan")'>Renaming and Deleting a Plan</div>
 			{{startVideoEventMonitoring()}}
 		</div>
 	
@@ -48,6 +49,9 @@
 				{{/is}}
 				{{#is showThis '7_RevisedPlanDate'}}
 				<video style='height:65vh;' controls='true' src='/api/training/7_RevisedPlanDate.mp4'/>
+				{{/is}}
+				{{#is showThis '8_RenameOrDeletePlan'}}
+				<video style='height:65vh;' controls='true' src='/api/training/8_RenameOrDeletePlan.mov'/>
 				{{/is}}
 				<div style='color:gray;text-align:center;font-size:80%;width:100%;'>(If the panel above is blank and the black bar says 'loading', wait.)</div>
 

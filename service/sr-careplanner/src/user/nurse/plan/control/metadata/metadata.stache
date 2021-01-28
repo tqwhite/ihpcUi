@@ -20,17 +20,12 @@
 </div>
 
 	{{#subscriptionActive}}
-		<div class='controlSection'>
-			<button  class=" c-button c-button--xsmall c-button--info basicBlueBackground" style='margin-right:5px; color:white;' ($click)='createNewPlan()' tabindex='-1'>
-				Create New Plan
-			</button>
-		</div>
 
 		<div class='controlSection'>
 				<button id='selectPlan'  class=" c-button c-button--xsmall c-button--info " style='margin-right:5px;background-color:#6abe6e;'
 					($click)='activateDuplicatePlan(%event)'
 				>
-					Duplicate to a New Plan
+					Duplicate to a Create a Revision
 				</button>
 		</div>
 

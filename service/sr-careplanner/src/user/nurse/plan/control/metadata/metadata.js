@@ -16,7 +16,7 @@ export default Component.extend({
 	tag: 'user-nurse-plan-control-metadata',
 	viewModel: ViewModel,
 	events: {
-		'input change': function() {
+		'input change': function(el, event) {
 			this.viewModel.attr('planRootVm').savePlan();
 		}
 	},
