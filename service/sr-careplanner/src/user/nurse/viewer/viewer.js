@@ -14,6 +14,8 @@ import buildStudentSection
 	from 'node_modules/format-plan-pdf/node_modules/build-student-section/build-student-section';
 import buildInfoSection
 	from 'node_modules/format-plan-pdf/node_modules/build-info-section/build-info-section';
+import buildNoteSection
+	from 'node_modules/format-plan-pdf/node_modules/build-note-section/build-note-section';
 import buildPlanSection
 	from 'node_modules/format-plan-pdf/node_modules/build-plan-section/build-plan-section';
 
@@ -57,6 +59,7 @@ export const ViewModel = Map.extend({
 			buildHeaderSection:buildHeaderSection,
 			buildStudentSection:buildStudentSection,
 			buildInfoSection:buildInfoSection,
+			buildNoteSection,
 			buildPlanSection:buildPlanSection,
 			pdfMake: pdfMake,
 			student: this.attr('currentStudent').attr(),

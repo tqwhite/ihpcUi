@@ -104,6 +104,7 @@
 					</div>
 				</div>
 			</div>
+					
 		</div>
 
 	</div>
@@ -152,6 +153,26 @@
 					<input class="c-field c-field--xsmall" type="tel"  placeholder="Alternate Phone" {($value)}="student.gTwoPhoneAlt" />
 
 			</div>
+		</div>
+	</div>
+	
+	
+	
+	
+		<hr/>
+
+	<div class='segment'>
+		<div class='title'>
+			Notes
+		</div>
+		<div class='entry'>
+		
+					<div class="inlineSet" style='margin-top:5px;'>
+						<textarea style='flex-grow:9;BORDER-BOTTOM:1PX SOLID #ADADAD;BORDER-RIGHT:1PX SOLID #ADADAD;' class="c-field c-field--xsmall" type="text"  placeholder="Free text" {($value)}="student.nurseNote" /></textarea>
+						<input type='hidden'  {($value)}="student.nurseNote" value='nurseNote'/>
+					</div>
+		
+		
 		</div>
 	</div>
 
