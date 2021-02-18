@@ -28,7 +28,7 @@
 		<td  ($click)='activateEditor(%event, {.})'>{{zip}}</td>
 	</tr>
 	{{/each}}
-	<tr><td colspan="5"  ($click)='activateEditor(%event, "new")'><span class='controlWidget'>(add guardian)</span></td></tr>
+	<tr><td colspan="5"  ($click)='activateEditor(%event, "new")'><span class='controlWidget'>(add guardian)</span> <span class='annotation'>click row to edit</span></td></tr>
 
 </table>			
 </div>

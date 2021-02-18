@@ -1,19 +1,14 @@
 
-			<div id='hello'>
-		
-					<input class="c-field c-field--xsmall" placeholder="Relationship: mother/father/guardian/aunt/etc" {($value)}="selectedParent.relationship" />
-
-					<input class="c-field c-field--xsmall" type="text"  placeholder="Name" {($value)}="selectedParent.name" />
-					<input class="c-field c-field--xsmall" type="text"  placeholder="Street1" {($value)}="selectedParent.street1" />
-					<input class="c-field c-field--xsmall" type="text"  placeholder="Street2" {($value)}="selectedParent.street2" />
-					<div class="inlineSet">
-						<input class="c-field c-field--xsmall" type="text"  placeholder="City" {($value)}="selectedParent.city" />
-						<input style='flex-grow:1;' class="c-field c-field--xsmall" type="text"  placeholder="State Code" {($value)}="selectedParent.state" />
-						<input style='flex-grow:2;' class="c-field c-field--xsmall" type="text"  placeholder="Zip" {($value)}="selectedParent.zip" />
-					</div>
-					<input class="c-field c-field--xsmall" type="tel"  placeholder="Email Address" {($value)}="selectedParent.emailAdr" />
-					<input class="c-field c-field--xsmall" type="tel"  placeholder="Main Phone" {($value)}="selectedParent.phoneMain" />
-					<input class="c-field c-field--xsmall" type="tel"  placeholder="Alternate Phone" {($value)}="selectedParent.phoneAlt" />
-
-					<button>delete this guardian</button>{{selectedParent._id}}
-			</div>
+<input class="c-field c-field--medium" placeholder="Relationship: mother/father/guardian/aunt/etc" {($value)}="selectedParent.relationship" />
+<input class="c-field c-field--medium" type="text"  placeholder="Name" {($value)}="selectedParent.name" />
+<input class="c-field c-field--medium" type="text"  placeholder="Street1" {($value)}="selectedParent.street1" />
+<input class="c-field c-field--medium" type="text"  placeholder="Street2" {($value)}="selectedParent.street2" />
+<div class="inlineSet">
+	<input class="c-field c-field--medium" type="text"  placeholder="City" {($value)}="selectedParent.city" />
+	<input style='flex-grow:1;' class="c-field c-field--medium" type="text"  placeholder="State Code" {($value)}="selectedParent.state" />
+	<input style='flex-grow:2;' class="c-field c-field--medium" type="text"  placeholder="Zip" {($value)}="selectedParent.zip" />
+</div>
+<input class="c-field c-field--medium" type="tel"  placeholder="Email Address" {($value)}="selectedParent.emailAdr" />
+<input class="c-field c-field--medium" type="tel"  placeholder="Main Phone" {($value)}="selectedParent.phoneMain" />
+<input class="c-field c-field--medium" type="tel"  placeholder="Alternate Phone" {($value)}="selectedParent.phoneAlt" />
+<button class='controlWidget'>delete this guardian</button>

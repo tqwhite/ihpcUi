@@ -23,7 +23,7 @@
 		<td  ($click)='activateEditor(%event, {.})'>{{description}}</td>
 	</tr>
 	{{/each}}
-	<tr><td colspan="5"  ($click)='activateEditor(%event, "new")'><span class='controlWidget'>(add provider)</span></td></tr>
+	<tr><td colspan="5"  ($click)='activateEditor(%event, "new")'><span class='controlWidget'>(add provider)</span> <span class='annotation'>click row to edit</span></td></tr>
 
 </table>			
 </div>

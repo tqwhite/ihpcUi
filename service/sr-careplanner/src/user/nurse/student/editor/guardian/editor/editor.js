@@ -28,11 +28,7 @@ export default Component.extend({
 					selectedParent.attr(key, '');
 				}
 			});
-			  this.viewModel.attr('studentEditorVm').saveObject(()=>this.viewModel.attr('showEditor', false))
-			 ;
-			//	$($(el).parent().find('input')[0]).trigger('change');
-
-			//
+			this.viewModel.attr('studentEditorVm').saveObject(()=>this.viewModel.attr('showEditor', false));
 		},
 		click: function(el, event) {
 			event.stopPropagation(); //stop from cancelling modal

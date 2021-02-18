@@ -48,6 +48,17 @@
 					</div>
 					<input class="c-field c-field--xsmall" type="tel"  placeholder="Phone" {($value)}="student.phone" />
 					<input class="c-field c-field--xsmall" type="email"  placeholder="Email Address (if any)" {($value)}="student.emailAddress" />
+<div>
+<div class='title' style='margin:5px 0px;'>
+			Notes
+		</div>
+
+						<textarea style='margin-top:5px;height:100px;' class="c-field c-field--xsmall" type="text"  placeholder="Free text" {($value)}="student.nurseNote" /></textarea>
+						<input type='hidden'  {($value)}="student.nurseNote" value='nurseNote'/>
+						</div>
+
+
+
 
 			</div>
 		
@@ -64,24 +75,24 @@
 				</div>
 			</div>
 		</div>
+	</div>
 		<hr/>
 
 	<div class='segment'>
 		<div class='title'>
 			Health Info
 		</div>
-		<div class='specialBlock'>
-			<div class='inputBlock wideBlock'>
+	
 					
-					<user-nurse-student-editor-hcprovider 
-								annotation="hcProvider" 
-								subscriptionActive={subscriptionActive} 
-								student-editor-vm={.}
-								student={student}
-								($inserted)="collectChildComponents('user-nurse-student-editor', %viewModel))"
-							/>
-			
-			<div class='inlineSet' style='margin-top:5px;'>
+			<user-nurse-student-editor-hcprovider 
+						annotation="hcProvider" 
+						subscriptionActive={subscriptionActive} 
+						student-editor-vm={.}
+						student={student}
+						($inserted)="collectChildComponents('user-nurse-student-editor', %viewModel))"
+					/>
+
+			<div class='inlineSet' style='margin-top:25px;'>
 			
 					<div class='icdCodeSpecial'>
 						<span style='' class='lightLabel'>ICD-10-CM</span>
@@ -90,7 +101,7 @@
 					</div>
 			</div>
 					
-			<div class='inlineSet' style='margin-top:5px;'>
+			<div class='inlineSet' >
 			
 				<div class='entry' style='justify-content:center;'>
 					<div class='labeledInput specialEntryGroup'>
@@ -101,10 +112,9 @@
 <div><div class='lightLabel'>EAP Date</div><input type="text" class="bottomRightBorder c-field c-field--xsmall planDateField"  placeholder="Emergency Action Plan Date" {($value)}="student.eap" /></div>
 					</div>
 				</div>
-			</div>
-					
-		</div>
+			
 
+	</div>
 	</div>
 	<hr/>
 
@@ -112,7 +122,6 @@
 		<div class='title'>
 			Parent/Guardians
 		</div>
-		<div class='entry'>
 				<user-nurse-student-editor-guardian 
 					annotation="Guardian" 
 					subscriptionActive={subscriptionActive} 
@@ -120,23 +129,8 @@
 					student={student}
 					($inserted)="collectChildComponents('user-nurse-student-editor', %viewModel))"
 				/>
-			
-		</div>
 	</div>
 	
-	
-	
-	
-
-		<hr/>
-	<div class='segment'>
-		<div class='title'>
-			Notes
-		</div>
-
-						<textarea style='margin-top:5px;' class="c-field c-field--xsmall" type="text"  placeholder="Free text" {($value)}="student.nurseNote" /></textarea>
-						<input type='hidden'  {($value)}="student.nurseNote" value='nurseNote'/>
-	</div>
 
 
 {{^../openStudentRefId}}

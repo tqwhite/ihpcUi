@@ -3,11 +3,19 @@ user-nurse-student-editor-guardian {
 }
 
 user-nurse-student-editor-guardian table {
-
+border-collapse: collapse;
 width:84.5vw;
 }
 
 
+
+user-nurse-student-editor-guardian table tr:hover {
+color:gray;
+cursor:pointer;
+}
+
+user-nurse-student-editor-guardian table td {
+}
 
 user-nurse-student-editor-guardian table tr:hover {
 color:gray;
@@ -21,15 +29,37 @@ background:#eee;
 cursor:pointer;
 }
 
+user-nurse-student-editor-guardian .mailto:before {
+	content:"send email: ";
+	color:black;
+}
 
+
+
+user-nurse-student-editor-guardian .annotation {
+font-style:italic;
+color:#ccc;
+font-size:80%;
+}
+user-nurse-student-editor-guardian .annotation:hover {
+font-style:normal;
+color:black;
+font-weight:bold;
+font-size:100%;
+}
 
 user-nurse-student-editor-guardian .controlWidget {
 font-style:italic;
 color:#42a5f5;
 font-size:80%;
+margin:10px 0px;
 }
+
 user-nurse-student-editor-guardian .controlWidget:hover {
 font-style:normal;
 font-weight:bold;
 color:#666;
+font-size:100%;
 }
+
+
