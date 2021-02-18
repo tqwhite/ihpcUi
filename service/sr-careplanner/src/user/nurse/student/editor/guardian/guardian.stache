@@ -1,0 +1,37 @@
+
+<can-import from="sr-careplanner/user/nurse/student/editor/guardian/editor/" />
+
+{{#showEditor}}	
+	<div class="inlineSet">
+	<user-nurse-student-editor-guardian-editor
+	selected-parent={selectedParent}
+	show-editor={showEditor}
+	student-editor-vm={studentEditorVm}
+	/>
+{{/showEditor}}
+{{^showEditor}}	
+
+
+<div style='overflow-x:scroll;'>
+<table class=''>
+
+	{{#each guardianList}}
+	<tr>
+		<td  ($click)='activateEditor(%event, {.})'>{{relationship}}</td>
+		<td><a href='mailto:{{emailAdr}}?subject=RE: Student Healthcare Plan' class='mailto' title='send email to parent'>{{emailAdr}}</a></td>
+		<td  ($click)='activateEditor(%event, {.})'>{{phoneMain}}</td>
+		<td  ($click)='activateEditor(%event, {.})'>{{name}}</td>
+		<td  ($click)='activateEditor(%event, {.})'>{{street1}}</td>
+		<td  ($click)='activateEditor(%event, {.})'>{{street2}}</td>
+		<td  ($click)='activateEditor(%event, {.})'>{{city}}</td>
+		<td  ($click)='activateEditor(%event, {.})'>{{state}}</td>
+		<td  ($click)='activateEditor(%event, {.})'>{{zip}}</td>
+	</tr>
+	{{/each}}
+	<tr><td colspan="5"  ($click)='activateEditor(%event, "new")'><span class='controlWidget'>(add guardian)</span></td></tr>
+
+</table>			
+</div>
+
+
+{{/showEditor}}	

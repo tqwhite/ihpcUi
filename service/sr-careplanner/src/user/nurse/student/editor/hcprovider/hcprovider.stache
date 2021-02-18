@@ -1,0 +1,32 @@
+
+<can-import from="sr-careplanner/user/nurse/student/editor/hcprovider/editor/" />
+
+{{#showEditor}}	
+	<div class="inlineSet">
+	<user-nurse-student-editor-hcprovider-editor
+	selected-provider={selectedProvider}
+	show-editor={showEditor}
+	student-editor-vm={studentEditorVm}
+	/>
+{{/showEditor}}
+{{^showEditor}}	
+
+
+<div style='' class='hcProvider'>
+<table class=''>
+
+	{{#each hcProviderList}}
+	<tr>
+		<td  ($click)='activateEditor(%event, {.})'>{{name}}</td>
+		<td><a href='mailto:{{emailAdr}}?subject=RE: Student Healthcare Plan' class='mailto' title='send email to provider'>{{emailAdr}}</a></td>
+		<td  ($click)='activateEditor(%event, {.})'>{{phone}}</td>
+		<td  ($click)='activateEditor(%event, {.})'>{{description}}</td>
+	</tr>
+	{{/each}}
+	<tr><td colspan="5"  ($click)='activateEditor(%event, "new")'><span class='controlWidget'>(add provider)</span></td></tr>
+
+</table>			
+</div>
+
+
+{{/showEditor}}	

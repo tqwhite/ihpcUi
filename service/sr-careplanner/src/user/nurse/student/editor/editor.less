@@ -51,12 +51,9 @@ justify-content: space-between;
 }
 
 user-nurse-student-editor div.segment div.entry{
-	display:-webkit-flex;
 	display:flex;
 	justify-content:space-around; /*flex-start, flex-end, center, space-between, space-around, stretch*/
-	-webkit-justify-content:space-around;
 	flex-wrap:wrap; /*nowrap | wrap | wrap-reverse*/
-	-webkit-flex-wrap:wrap;
 }
 
 
@@ -98,15 +95,11 @@ user-nurse-student-editor .inlineSet span{
 
 user-nurse-student-editor  .inlineSet{
 
-	display:-webkit-flex;
 	display:flex;
 	justify-content:space-around; /*flex-start, flex-end, center, space-between, space-around, stretch*/
-	-webkit-justify-content:space-around;
-  -webkit-align-items: stretch;
-  align-items: stretch;
+	align-items: flex-start;
 	
 	flex-wrap:wrap; /*nowrap | wrap | wrap-reverse*/
-	-webkit-flex-wrap:wrap;
 
 	width:100%;
 }
@@ -125,51 +118,84 @@ border-bottom:none;
 border-radius: 0px;
 }
 
-user-nurse-student-editor div.labeledInput{
-
-	display:-webkit-flex;
+user-nurse-student-editor div.icdCodeSpecial{
+	width:80.5vw;
+	margin-bottom:10px;
+	
 	display:flex;
 	
 	flex-direction:row;
-	-webkit-flex-direction: row;
+	
+
+	/* between rows or columns */
+	align-content:flex-start; /*flex-start, flex-end, center, space-between, space-around, stretch*/
+	
+
+}
+
+user-nurse-student-editor div.icdCodeSpecial input{
+
+	width:74.5vw;
+	max-width:74.5vw; 
+}
+user-nurse-student-editor div.icdCodeSpecial span{
+	text-align:left;
+	width:10vw;
+	max-width:10vw; 
+}
+
+user-nurse-student-editor div.labeledInput.specialEntryGroup{
+
+	width:80.5vw;
+	margin-bottom:10px;
+}
+user-nurse-student-editor div.labeledInput{
+
+	display:flex;
+	
+	flex-direction:row;
 	
 	/* between items in main direction */
 	justify-content:space-between; /*flex-start, flex-end, center, space-between, space-around, stretch*/
-	-webkit-justify-content:space-between;
 	
 	/* between rows or columns */
-	align-content:space-between; /*flex-start, flex-end, center, space-between, space-around, stretch*/
-	-webkit-align-content:space-between;
+	align-content:flex-start; /*flex-start, flex-end, center, space-between, space-around, stretch*/
 	
-	align-items:center; /*flex-start, flex-end, center, baseline, stretch*/
-	-webkit-align-items:center;
+	align-items:flex-start; /*flex-start, flex-end, center, baseline, stretch*/
 	
 	justify-content:space-between; /*flex-start, flex-end, center, space-between, space-around*/
-	-webkit-justify-content:space-between;
 	
 	flex-wrap:wrap; /*nowrap | wrap | wrap-reverse*/
-	-webkit-flex-wrap:wrap;
 	
+	
+}
 
+user-nurse-student-editor div.labeledInput.specialEntryGroup .lightLabel{
+	text-align:left;
+	width:5vw;
+	display:inline-block;
+}
+
+user-nurse-student-editor div.labeledInput div.span{
+	text-align:left;
+	width:10vw;
+	max-width:10vw;
 }
 
 user-nurse-student-editor div.labeledInput div.input{
 display:inline;
 width:30vw;
 min-width:225px;
-
 }
 
 user-nurse-student-editor div.labeledInput input.c-field.c-field--xsmall{
 display:inline;
-width:30vw;
-min-width:225px;
 
 }
 
 
 user-nurse-student-editor  .planDateField{
-width:150px !important;
+
 }
 
 user-nurse-student-editor  .bottomRightBorder{
@@ -183,16 +209,11 @@ BORDER-RIGHT:1PX SOLID #ADADAD !important;
 
 
 user-nurse-student-editor div.segment div.specialBlock{
-	display:-webkit-flex;
 	display:flex;
 	flex-direction:column;
-	-webkit-flex-direction: column;
 	justify-content:stretch; /*flex-start, flex-end, center, space-between, space-around, stretch*/
-	-webkit-justify-content:stretch;
 	flex-wrap:wrap; /*nowrap | wrap | wrap-reverse*/
-	-webkit-flex-wrap:wrap;
 	align-items:center; /*flex-start, flex-end, center, baseline, stretch*/
-	-webkit-align-items:center;
 	
 	width:100%;
 }

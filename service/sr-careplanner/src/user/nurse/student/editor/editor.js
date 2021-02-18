@@ -80,7 +80,7 @@ export const ViewModel = Map.extend({
 this.attr('student', new Student(testStudent));
 	},
 	
-	saveObject: function() {
+	saveObject: function(callback) {
 
 
 		var student=this.attr('student'); //this should probably be renamed workingStudent to match the pattern elsewhere
@@ -111,6 +111,9 @@ this.attr('student', new Student(testStudent));
 					this.attr('parentVm').attr('openStudentNameString', student.attr('last')+', '+student.attr('first'));
 					this.attr('parentVm').attr('currentStudent', student);
 					this.attr('parentVm').countInactive(this.attr('parentVm').attr('students'));
+					if (typeof(callback)=='function'){
+						callback();
+					}
 
 				},
 				(err) => {

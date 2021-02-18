@@ -146,3 +146,15 @@ import 'sr-careplanner/user/nurse/student/receivetransfer/transitiondisplay/tran
 import 'sr-careplanner/user/nurse/student/selectorplus/manage/history/history_test';
 
 import 'sr-careplanner/user/nurse/student/selectorplus/manage/transferhistory/transferhistory_test';
+
+import 'sr-careplanner/user/nurse/student/editor/guardian/guardian_test';
+
+import 'sr-careplanner/user/nurse/student/editor/parent/parent_test';
+
+import 'sr-careplanner/user/nurse/student/editor/guardian/editor/editor_test';
+
+import 'sr-careplanner/user/nurse/student/editor/parent/editor/editor_test';
+
+import 'sr-careplanner/user/nurse/student/editor/hcprovider/hcprovider_test';
+
+import 'sr-careplanner/user/nurse/student/editor/hcprovider/editor/editor_test';

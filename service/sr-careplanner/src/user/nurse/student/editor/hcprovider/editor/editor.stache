@@ -1,0 +1,12 @@
+
+			<div id='hello'>
+		
+
+	{{tempTest()}}
+					<input class="c-field c-field--xsmall" type="text"  placeholder="Name" {($value)}="selectedProvider.name" />
+					<input class="c-field c-field--xsmall" type="text"  placeholder="Street1" {($value)}="selectedProvider.phone" />
+					<input class="c-field c-field--xsmall" type="text"  placeholder="Street2" {($value)}="selectedProvider.emailAdr" />
+					<input class="c-field c-field--xsmall" type="text"  placeholder="Street2" {($value)}="selectedProvider.description" />
+
+					<button>delete this guardian</button>{{selectedParent._id}}
+			</div>
