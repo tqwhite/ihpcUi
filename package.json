@@ -6,7 +6,9 @@
   "dependencies": {
     "body-parser": "^1.15.1",
     "express": "^4.14.0",
-    "multi-ini": "^0.5.2"
+    "multi-ini": "^0.5.2",
+    "qtools-minus": "*",
+    "format-plan-pdf": "*"
   },
   "devDependencies": {},
   "scripts": {
