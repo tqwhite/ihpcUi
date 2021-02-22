@@ -56,7 +56,9 @@
     "jquery": "~2.2.1",
     "steal": "^0.16.0",
     "tinymce": "^4.4.3",
-    "blaze": "^2.8.0"
+    "blaze": "^2.8.0",
+    "qtools-minus": "*",
+    "format-plan-pdf": "*"
   },
   "devDependencies": {
     "can-fixture": "^0.1.2",
