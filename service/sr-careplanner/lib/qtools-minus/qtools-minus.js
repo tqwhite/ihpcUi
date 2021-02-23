@@ -397,7 +397,37 @@ module.exports = {
 	
 	
 	listAttributes:function (item, args){
-
+		const showValues=args.showValues?args.showValues:false;
+		const label=args.label?args.label:'listAttributes';
+		console.log(`start ${label} ================${showValues}`);
+		if (typeof(item)=='undefined'){
+			console.log('input data is undefined');
+		}
+		else if (item._cid){
+			console.log(`found donejs map`);
+			item.each((item, key)=>{
+			let valueString='';
+			if (showValues){
+				valueString=`=${item}`;
+			}
+			console.log(`${key}${valueString}`);
+			
+			})
+		}
+		else if (typeof(item)=='object'){
+			console.log(`found ${typeof(item)}`);
+			if (showValues){
+			console.dir(item);
+			}
+			else{
+			console.dir(Object.keys(item));
+			}
+		}
+		else{
+			console.log(`found ${typeof(item)}`);
+			console.dir(item)
+		}
+		console.log(`end ${label} ================`);
 }
 
 
