@@ -2,5 +2,5 @@
 <input class="c-field c-field--medium hackForceFiveEighty" type="text"  placeholder="Name" {($value)}="selectedProvider.name" />
 <input class="c-field c-field--medium hackForceFiveEighty" type="text"  placeholder="Street1" {($value)}="selectedProvider.phone" />
 <input class="c-field c-field--medium hackForceFiveEighty" type="text"  placeholder="Street2" {($value)}="selectedProvider.emailAdr" />
-<input class="c-field c-field--medium hackForceFiveEighty" type="text"  placeholder="Street2" {($value)}="selectedProvider.description" />
+<input class="c-field c-field--medium hackForceFiveEighty" type="text"  placeholder="Description" {($value)}="selectedProvider.description" />
 <button class='controlWidget'>delete this guardian</button>
