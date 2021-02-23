@@ -4,7 +4,7 @@ import 'can/map/define/';
 import './register.less!';
 import template from './register.stache!';
 import Register from "sr-careplanner/models/register";
-import qtools from "node_modules/qtools-minus/";
+import qtools from "lib/qtools-minus/";
 
 export const ViewModel = Map.extend({
   define: {

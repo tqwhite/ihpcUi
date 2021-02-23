@@ -54,11 +54,10 @@
     "done-component": "^0.4.0",
     "done-css": "~2.0.2",
     "done-serve": "^0.2.0",
-    "format-plan-pdf": "*",
     "generator-donejs": "^0.9.0",
     "jquery": "~2.2.1",
+    "logform": "^2.2.0",
     "pdfmake": "^0.1.70",
-    "qtools-minus": "*",
     "steal": "^0.16.0",
     "tinymce": "^4.4.3"
   },

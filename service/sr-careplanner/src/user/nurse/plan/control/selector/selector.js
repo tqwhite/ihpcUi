@@ -3,7 +3,7 @@ import Map from 'can/map/';
 import 'can/map/define/';
 import './selector.less!';
 import template from './selector.stache!';
-import qtools from 'node_modules/qtools-minus/';
+import qtools from 'lib/qtools-minus/';
 import Plan from 'sr-careplanner/models/plan';
 
 export const ViewModel = Map.extend({

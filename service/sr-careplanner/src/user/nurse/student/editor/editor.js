@@ -4,7 +4,7 @@ import 'can/map/define/';
 import './editor.less!';
 import template from './editor.stache!';
 import Student from "sr-careplanner/models/student";
-import qtools from "node_modules/qtools-minus/";
+import qtools from "lib/qtools-minus/";
 
 export const ViewModel = Map.extend({
 	define: {

@@ -4,7 +4,7 @@ import 'can/map/define/';
 import './history.less!';
 import template from './history.stache!';
 import Transfer from 'sr-careplanner/models/transfer';
-import qtools from 'node_modules/qtools-minus/';
+import qtools from 'lib/qtools-minus/';
 
 export const ViewModel = Map.extend({
   define: {

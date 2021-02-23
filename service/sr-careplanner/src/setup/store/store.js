@@ -4,7 +4,7 @@ import 'can/map/define/';
 import './store.less!';
 import Payment from 'sr-careplanner/models/payment';
 import template from './store.stache!';
-import qtools from 'node_modules/qtools-minus/';
+import qtools from 'lib/qtools-minus/';
 
 export const ViewModel = Map.extend({
 	define: {

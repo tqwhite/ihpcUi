@@ -3,7 +3,7 @@ import Map from 'can/map/';
 import 'can/map/define/';
 import './editor.less!';
 import template from './editor.stache!';
-import qtools from 'node_modules/qtools-minus/';
+import qtools from 'lib/qtools-minus/';
 
 export const ViewModel = Map.extend({
   define: {

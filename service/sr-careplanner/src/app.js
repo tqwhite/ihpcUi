@@ -1,6 +1,6 @@
 import Map from 'can/map/';
 import Session from 'sr-careplanner/models/session';
-import qtools from 'node_modules/qtools-minus/'; //I do not understand why I have to put node_modules here but not on can/map
+import qtools from 'lib/qtools-minus/'; //I do not understand why I have to put node_modules here but not on can/map
 
 import User from 'sr-careplanner/models/user';
 import ConfirmEmail from 'sr-careplanner/models/confirm-email';

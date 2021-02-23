@@ -3,21 +3,21 @@ import Map from 'can/map/';
 import 'can/map/define/';
 import './viewer.less!';
 import template from './viewer.stache!';
-import qtools from 'node_modules/qtools-minus/';
+import qtools from 'lib/qtools-minus/';
 
-import formatPlanPdf from 'node_modules/format-plan-pdf/format-plan-pdf';
+import formatPlanPdf from 'lib/format-plan-pdf/format-plan-pdf';
 import pdfLibrary
-	from 'node_modules/format-plan-pdf/node_modules/pdf-library/pdf-library';
+	from 'lib/format-plan-pdf/node_modules/pdf-library/pdf-library';
 import buildHeaderSection
-	from 'node_modules/format-plan-pdf/node_modules/build-header-section/build-header-section';
+	from 'lib/format-plan-pdf/node_modules/build-header-section/build-header-section';
 import buildStudentSection
-	from 'node_modules/format-plan-pdf/node_modules/build-student-section/build-student-section';
+	from 'lib/format-plan-pdf/node_modules/build-student-section/build-student-section';
 import buildInfoSection
-	from 'node_modules/format-plan-pdf/node_modules/build-info-section/build-info-section';
+	from 'lib/format-plan-pdf/node_modules/build-info-section/build-info-section';
 import buildNoteSection
-	from 'node_modules/format-plan-pdf/node_modules/build-note-section/build-note-section';
+	from 'lib/format-plan-pdf/node_modules/build-note-section/build-note-section';
 import buildPlanSection
-	from 'node_modules/format-plan-pdf/node_modules/build-plan-section/build-plan-section';
+	from 'lib/format-plan-pdf/node_modules/build-plan-section/build-plan-section';
 
 //pdfmake is not 'import' friendly. It is loaded with <script> in index.stache
 //it's fonts are loaded by <script> in nurse.stache

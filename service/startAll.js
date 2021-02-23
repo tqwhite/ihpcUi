@@ -101,7 +101,7 @@ var moduleFunction = function() {
 		config = multiIni.read(configPath);
 		config.user = process.env.USER;
 		if (config.system.serveBuildBundle.toLowerCase() == 'false') {
-			process.env.NODE_ENV = 'production'; //global sent to done-ssr
+			process.env.NODE_ENV = 'develoment'; //global sent to done-ssr
 		} else if (config.system.serveBuildBundle.toLowerCase() == 'true') {
 			process.env.NODE_ENV = 'production'; //global sent to done-ssr
 		} else {
