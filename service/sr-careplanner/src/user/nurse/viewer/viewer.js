@@ -7,17 +7,17 @@ import qtools from 'lib/qtools-minus/';
 
 import formatPlanPdf from 'lib/format-plan-pdf/format-plan-pdf';
 import pdfLibrary
-	from 'lib/format-plan-pdf/node_modules/pdf-library/pdf-library';
+	from 'lib/format-plan-pdf/lib/pdf-library/pdf-library';
 import buildHeaderSection
-	from 'lib/format-plan-pdf/node_modules/build-header-section/build-header-section';
+	from 'lib/format-plan-pdf/lib/build-header-section/build-header-section';
 import buildStudentSection
-	from 'lib/format-plan-pdf/node_modules/build-student-section/build-student-section';
+	from 'lib/format-plan-pdf/lib/build-student-section/build-student-section';
 import buildInfoSection
-	from 'lib/format-plan-pdf/node_modules/build-info-section/build-info-section';
+	from 'lib/format-plan-pdf/lib/build-info-section/build-info-section';
 import buildNoteSection
-	from 'lib/format-plan-pdf/node_modules/build-note-section/build-note-section';
+	from 'lib/format-plan-pdf/lib/build-note-section/build-note-section';
 import buildPlanSection
-	from 'lib/format-plan-pdf/node_modules/build-plan-section/build-plan-section';
+	from 'lib/format-plan-pdf/lib/build-plan-section/build-plan-section';
 
 //pdfmake is not 'import' friendly. It is loaded with <script> in index.stache
 //it's fonts are loaded by <script> in nurse.stache
