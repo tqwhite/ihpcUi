@@ -12,10 +12,12 @@ import buildHeaderSection
 	from 'lib/format-plan-pdf/lib/build-header-section/build-header-section';
 import buildStudentSection
 	from 'lib/format-plan-pdf/lib/build-student-section/build-student-section';
-import buildInfoSection
-	from 'lib/format-plan-pdf/lib/build-info-section/build-info-section';
-import buildNoteSection
-	from 'lib/format-plan-pdf/lib/build-note-section/build-note-section';
+	
+	
+import buildHealthcareProviderSection
+	from 'lib/format-plan-pdf/lib/build-healthcare-provider-section/build-healthcare-provider-section';
+import buildGuardianSection
+	from 'lib/format-plan-pdf/lib/build-guardian-section/build-guardian-section';
 import buildInfoNoteSection
 	from 'lib/format-plan-pdf/lib/build-info-note-section/build-info-note-section';
 import buildPlanSection
@@ -60,10 +62,12 @@ export const ViewModel = Map.extend({
 			qtools: qtools,pdfLibrary:pdfLibrary,
 			buildHeaderSection:buildHeaderSection,
 			buildStudentSection:buildStudentSection,
-			buildInfoSection:buildInfoSection,
-			buildNoteSection,
+			
+			buildHealthcareProviderSection,
+			buildGuardianSection,
 			buildInfoNoteSection,
 			buildPlanSection:buildPlanSection,
+			
 			pdfMake: pdfMake,
 			student: this.attr('currentStudent').attr(),
 			plan: this.attr('plan').attr(),

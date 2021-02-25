@@ -1,8 +1,8 @@
 {
-  "name": "build-note-section",
+  "name": "build-healthcare-provider-section",
   "version": "1.0.0",
   "description": "isolates code for part of pdf",
-  "main": "build-note-section.js",
+  "main": "build-healthcare-provider-section.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },

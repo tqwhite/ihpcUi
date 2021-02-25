@@ -15,19 +15,25 @@ var moduleFunction = function(args) {
 	const buildStudentSection = new args.buildStudentSection({
 		pdfLibrary: pdfLibrary
 	})
-	const buildInfoSection = new args.buildInfoSection({
+	const buildPlanSection = new args.buildPlanSection({
 		pdfLibrary: pdfLibrary
 	})
-	const buildNoteSection = new args.buildNoteSection({
+
+
+
+	const buildHealthcareProviderSection = new args.buildHealthcareProviderSection({
+		pdfLibrary: pdfLibrary
+	})
+	const buildGuardianSection = new args.buildGuardianSection({
 		pdfLibrary: pdfLibrary
 	})
 	const buildInfoNoteSection = new args.buildInfoNoteSection({
 		pdfLibrary: pdfLibrary
 	})
-	const buildPlanSection = new args.buildPlanSection({
-		pdfLibrary: pdfLibrary
-	})
-
+	
+	
+	
+	
 	const pdfMake = args.pdfMake;
 	const assembleTextCell = pdfLibrary.exportPackage.assembleTextCell;
 
@@ -45,25 +51,21 @@ var moduleFunction = function(args) {
 
 		const section1 = buildHeaderSection.docSpec();
 		const section2 = buildStudentSection.docSpec();
-		const section3 = buildInfoSection.docSpec();
-		const section4 = buildNoteSection.docSpec();
-		const section3a = buildInfoNoteSection.docSpec();
-		const section5 = buildPlanSection.docSpec();
+		
+		
+		const healthcareProviderSection = buildHealthcareProviderSection.docSpec();
+		const parentSection = buildGuardianSection.docSpec();
+		const infoNoteSection = buildInfoNoteSection.docSpec();
+		const planSection = buildPlanSection.docSpec();
 	
-console.log(`\n=-=X:============   assembleReportBody  ========================= [format-plan-pdf.js.assembleReportBody]\n`);
-
-
-	const tmp=console.log(JSON.stringify(section3a))
-console.log(`\n=-=X:============   assembleReportBody  ========================= [format-plan-pdf.js.assembleReportBody]\n`);
-
 		const body = []
 
 		body.push([assembleTextCell('table', section1, '', '', '', 'center')])
 		body.push([assembleTextCell('table', section2, '', '', '', 'center')])
-		body.push([assembleTextCell('table', section3a, '', '', '', 'center')])
-		body.push([assembleTextCell('table', section3, '', '', '', 'center')])
-		body.push([assembleTextCell('table', section4, '', '', '', 'center')])
-		body.push([assembleTextCell('table', section5, 'marginTop', '', '', 'center', 'pageBreak')])
+ 		body.push([assembleTextCell('table', parentSection, '', '', '', 'center')])
+ 		body.push([assembleTextCell('table', infoNoteSection, '', '', '', 'center')])
+		body.push([assembleTextCell('table', healthcareProviderSection, '', '', '', 'center')])
+		body.push([assembleTextCell('table', planSection, 'marginTop', '', '', 'center', 'pageBreak')])
 
 		return body;
 

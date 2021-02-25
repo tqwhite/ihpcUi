@@ -25,25 +25,41 @@ var moduleFunction = function(args) {
 
 	//END COMMON CODE SCOPE BLOCK ====================================
 
-	
 	const miscNoteBlock = function() {
 		const block = [];
 		block.push({ text: student('#Notes#', wrapWith('', ': ')), bold: true });
 		block.push({ text: student('nurseNote', defaultTo(`n/a`)) });
 		return block;
 	};
+
+	const guardianList=student('guardianList');
+
+	const cellStyleLiteral={
+					margin:[0, 5, 0, 5],
+
+	};
+
+	const hcProviderList=student('hcProviderList');
+
+let widths=['*', '*', '*', '*'];
+const body=hcProviderList.map(item=>([
+assembleTextCell('text', item.name, cellStyleLiteral),
+assembleTextCell('text', item.phone, cellStyleLiteral),
+assembleTextCell('text', item.emailAdr, cellStyleLiteral),
+assembleTextCell('text', item.description, cellStyleLiteral),
+
+]))
 	
+	if (!body.length){
+		widths=['*']
+		body.push([assembleTextCell('text', 'no healthcare providers entered', cellStyleLiteral)])
+	}
 	//CONSTRUCTION ====================================
 
 	const finalDocSpec = {
-		widths: ['*', '*', '*', '*'],
-		body: [
-			[
-				assembleTextCell('text', miscNoteBlock(), '', '4', '', 'left'),
-				assembleTextCell('text', ''),
-				assembleTextCell('text', '')
-			]
-		]
+		widths,
+		margin:[0, 5, 0, 5],
+		body
 	};
 
 	//METHODS AND PROPERTIES ====================================
@@ -52,10 +68,10 @@ var moduleFunction = function(args) {
 		console.dir({
 			'finalDocSpec [build-info-section.js.this.docSpec]': finalDocSpec
 		});
-		
+
 		return finalDocSpec;
 	};
-	
+
 	return this;
 };
 

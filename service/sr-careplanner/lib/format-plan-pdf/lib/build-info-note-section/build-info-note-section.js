@@ -28,14 +28,13 @@ var moduleFunction = function(args) {
 
 	//CONSTRUCTION ====================================
 
-
 // 					assembleTextCell('text', [{text: 'IEP Date: ',bold: true}, {text: student('iep')}], '', '', '', ''),
 // 					assembleTextCell('text', [{text: '504 Date: ',bold: true}, {text: student('504plan')}], '', '', '', ''),
 // 					assembleTextCell('text', [{text: 'EEP Date: ',bold: true}, {text: student('eep')}], '', '', '', ''),
 // 					assembleTextCell('text', [{text: 'EAP Date: ',bold: true}, {text: student('eap')}], '', '', '', ''),
 // 					assembleTextCell('text', [{text: 'IHP Author: : ',bold: true}, {text: dictionary('writtenby')}]),
 // 					assembleTextCell('text', 'IHP Date: '+plan('createdAt', standardDate)),
-	
+
 	const miscNoteBlock = function() {
 		const block = [];
 		block.push({ text: student('#Notes#', wrapWith('', ': \n')), bold: true });
@@ -43,7 +42,6 @@ var moduleFunction = function(args) {
 		return block;
 	};
 
-	
 	const idcBlock=function(){
 		const block = [];
 		block.push({text: student('#ICD-10-CM#', wrapWith('', ' ')), bold: true});
@@ -51,7 +49,6 @@ var moduleFunction = function(args) {
 		return block;
 	}
 
-	
 	const cellStyleLiteral={
 					border: [false, false, false, false],
 					margin:[0, 5, 0, 5],
@@ -62,43 +59,34 @@ var moduleFunction = function(args) {
 					border: [false, true, false, false]
 
 	};
-	const ihpCellStyleLiteral={
-					...cellStyleLiteral,
-					border: [false, false, false, true]
-
-	};
+	
 const finalDocSpec = {
 	widths: ['*', '*'],
 	body: [
-		
 		[
-			
-			
 			{
-			layout: 'lightHorizontalLines',
-					table: {
-									widths: ['*', '*'],
-									body: [
-										[
-										assembleTextCell('text', [{text: 'IHP Author: : ',bold: true}, {text: dictionary('writtenby')}], cellStyleLiteral),
-										assembleTextCell('text', 'IHP Date: '+plan('createdAt', standardDate), cellStyleLiteral),
-										]
-										,
-											[
-											assembleTextCell('text', [{text: 'IEP Date: ',bold: true}, {text: student('iep')}], cellStyleLiteral, '', '', ''), 
-											assembleTextCell('text', [{text: '504 Date: ',bold: true}, {text: student('504plan')}], cellStyleLiteral, '', '', ''),
-											],
-											[
-											assembleTextCell('text', [{text: 'EEP Date: ',bold: true}, {text: student('eep')}], cellStyleLiteral, '', '', ''), 
-											assembleTextCell('text', [{text: 'EAP Date: ',bold: true}, {text: student('eap')}], cellStyleLiteral),
-											]
-										
-										,
-										[
-										assembleTextCell('text', idcBlock(), icdCellStyleLiteral, '2', '', 'left')
-										]
-									]
-								},
+				layout: 'lightHorizontalLines',
+				table: {
+					body: [
+						[
+							assembleTextCell('text', [{text: 'IHP Author: : ',bold: true}, {text: dictionary('writtenby')}], cellStyleLiteral),
+							assembleTextCell('text', 'IHP Date: '+plan('createdAt', standardDate), cellStyleLiteral),
+						]
+						,
+						[
+							assembleTextCell('text', [{text: 'IEP Date: ',bold: true}, {text: student('iep')}], cellStyleLiteral, '', '', ''),
+							assembleTextCell('text', [{text: '504 Date: ',bold: true}, {text: student('504plan')}], cellStyleLiteral, '', '', ''),
+						],
+						[
+							assembleTextCell('text', [{text: 'EEP Date: ',bold: true}, {text: student('eep')}], cellStyleLiteral, '', '', ''),
+							assembleTextCell('text', [{text: 'EAP Date: ',bold: true}, {text: student('eap')}], cellStyleLiteral),
+						]
+						,
+						[
+							assembleTextCell('text', idcBlock(), icdCellStyleLiteral, '2', '', 'left')
+						]
+					]
+				},
 			},
 			{
 				text: [
@@ -106,30 +94,16 @@ const finalDocSpec = {
 				],
 				alignment:'left'
 			}
-			
-			
-			
-			
 		]
-		
-		
 	]
 };
-
-
-console.log(`\n=-=X:============   [build-info-note-section.js x ========================= [build-info-note-section.js.this.docSpec]\n`);
-
-
-console.log(JSON.stringify(finalDocSpec));
 
 	//METHODS AND PROPERTIES ====================================
 
 		this.docSpec=function(){
 
-
 			return finalDocSpec;
 		}
-
 
 	return this;
 };
