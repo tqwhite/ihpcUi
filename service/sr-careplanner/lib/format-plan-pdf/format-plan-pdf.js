@@ -21,6 +21,9 @@ var moduleFunction = function(args) {
 	const buildNoteSection = new args.buildNoteSection({
 		pdfLibrary: pdfLibrary
 	})
+	const buildInfoNoteSection = new args.buildInfoNoteSection({
+		pdfLibrary: pdfLibrary
+	})
 	const buildPlanSection = new args.buildPlanSection({
 		pdfLibrary: pdfLibrary
 	})
@@ -38,16 +41,26 @@ var moduleFunction = function(args) {
 
 	const assembleReportBody = function() {
 
+
+
 		const section1 = buildHeaderSection.docSpec();
 		const section2 = buildStudentSection.docSpec();
 		const section3 = buildInfoSection.docSpec();
 		const section4 = buildNoteSection.docSpec();
+		const section3a = buildInfoNoteSection.docSpec();
 		const section5 = buildPlanSection.docSpec();
+	
+console.log(`\n=-=X:============   assembleReportBody  ========================= [format-plan-pdf.js.assembleReportBody]\n`);
+
+
+	const tmp=console.log(JSON.stringify(section3a))
+console.log(`\n=-=X:============   assembleReportBody  ========================= [format-plan-pdf.js.assembleReportBody]\n`);
 
 		const body = []
 
 		body.push([assembleTextCell('table', section1, '', '', '', 'center')])
 		body.push([assembleTextCell('table', section2, '', '', '', 'center')])
+		body.push([assembleTextCell('table', section3a, '', '', '', 'center')])
 		body.push([assembleTextCell('table', section3, '', '', '', 'center')])
 		body.push([assembleTextCell('table', section4, '', '', '', 'center')])
 		body.push([assembleTextCell('table', section5, 'marginTop', '', '', 'center', 'pageBreak')])
@@ -70,6 +83,7 @@ var moduleFunction = function(args) {
 	}
 
 
+
 		pdfLibrary.registerStyleDefinition('marginTop', {
 				margin:[0, 10, 0, 0]
 			});
@@ -89,6 +103,7 @@ var moduleFunction = function(args) {
 				margin:[0, 10, 0, 10]
 			});
 			
+
 	const finalDocSpec = {
 		background: [],
 		pageOrientation: 'landscape',

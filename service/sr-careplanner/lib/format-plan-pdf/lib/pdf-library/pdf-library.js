@@ -54,7 +54,16 @@ var moduleFunction = function(args) {
 
 	const addElement = function(object, name, source) {
 		if (source) {
+		
+		if (name=='style' && typeof(source)=='object'){
+			Object.keys(source).forEach(keyName=>object[keyName]=source[keyName]);
+		}
+		else{
 			object[name] = source;
+		}
+		
+		
+		
 			object.test = object.test ? name : object.test + name;
 			if (name == 'table') {
 				object.layout = {
