@@ -120,7 +120,7 @@
 
 	<div class='segment'>
 		<div class='title'>
-			Parent/Guardians
+			Parents/Guardians
 		</div>
 				<user-nurse-student-editor-guardian 
 					annotation="Guardian" 

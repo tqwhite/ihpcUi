@@ -49,8 +49,8 @@ var moduleFunction = function(args) {
 
 
 
-		const section1 = buildHeaderSection.docSpec();
-		const section2 = buildStudentSection.docSpec();
+		const headerSection = buildHeaderSection.docSpec();
+		const studentSection = buildStudentSection.docSpec();
 		
 		
 		const healthcareProviderSection = buildHealthcareProviderSection.docSpec();
@@ -60,8 +60,8 @@ var moduleFunction = function(args) {
 	
 		const body = []
 
-		body.push([assembleTextCell('table', section1, '', '', '', 'center')])
-		body.push([assembleTextCell('table', section2, '', '', '', 'center')])
+		body.push([assembleTextCell('table', headerSection, '', '', '', 'center')])
+		body.push([assembleTextCell('table', studentSection, '', '', '', 'center')])
  		body.push([assembleTextCell('table', parentSection, '', '', '', 'center')])
  		body.push([assembleTextCell('table', infoNoteSection, '', '', '', 'center')])
 		body.push([assembleTextCell('table', healthcareProviderSection, '', '', '', 'center')])

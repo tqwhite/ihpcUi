@@ -4,7 +4,7 @@ Payment Information
 
 
 <div class='info'>
-Pay with Purchase Order <input type="checkbox" {($checked)}="usePurchaseOrder">
+Pay with Check <input type="checkbox" {($checked)}="usePurchaseOrder">
 
 {{#if status}}
 <div class='status {{status.class}}'>
@@ -36,10 +36,10 @@ Pay with Purchase Order <input type="checkbox" {($checked)}="usePurchaseOrder">
 
 <div class='bottom'>
 {{#if storeRootVm.showBuyButton}}
-		<button class='c-button  c-button--small c-button--primary modeButton' style='width:80%;' ($click)='submit("editor")'>Pay ${{storeRootVm.selectedProductPrice}}</button>
+		<button class='c-button  c-button--small c-button--primary modeButton' style='width:80%;' ($click)='submit("editor")'>Submit ${{storeRootVm.selectedProductPrice}}</button>
 		{{#else}}
 		
-		<button class='c-button  c-button--small c-button--primary modeButton ' disabled>Pay</button>
+		<button class='c-button  c-button--small c-button--primary modeButton ' disabled>Submit</button>
 		{{/if}}
 		
 		

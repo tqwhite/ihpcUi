@@ -41,14 +41,20 @@ var moduleFunction = function(args) {
 
 	const hcProviderList=student('hcProviderList');
 
-let widths=['*', '*', '*', '*'];
-const body=hcProviderList.map(item=>([
-assembleTextCell('text', item.name, cellStyleLiteral),
-assembleTextCell('text', item.phone, cellStyleLiteral),
-assembleTextCell('text', item.emailAdr, cellStyleLiteral),
-assembleTextCell('text', item.description, cellStyleLiteral),
+let widths=['*','*','*','*','*','*',];
+const body=hcProviderList.map(item=>{
+		const addressString=`${item.street1} ${item.street2?', '+item.street2:''}; ${item.city},  ${item.zip}`;
+		const phoneAltString=item.phoneFax?`\n(alt: ${item.phoneFax})`:'';
+		const phoneString=`${item.phoneMain}${phoneAltString}`;
 
-]))
+		return [
+			assembleTextCell('text', item.description, cellStyleLiteral),
+			assembleTextCell('text', item.name, cellStyleLiteral),
+			assembleTextCell('text', phoneString, cellStyleLiteral),
+			assembleTextCell('text', item.emailAddress, cellStyleLiteral),
+			assembleTextCell('text', addressString, cellStyleLiteral, 2),
+		];
+	})
 	
 	if (!body.length){
 		widths=['*']
@@ -65,9 +71,6 @@ assembleTextCell('text', item.description, cellStyleLiteral),
 	//METHODS AND PROPERTIES ====================================
 
 	this.docSpec = function() {
-		console.dir({
-			'finalDocSpec [build-info-section.js.this.docSpec]': finalDocSpec
-		});
 
 		return finalDocSpec;
 	};

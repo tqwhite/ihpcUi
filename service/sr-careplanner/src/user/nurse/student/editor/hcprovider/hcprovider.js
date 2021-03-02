@@ -16,11 +16,6 @@ export const ViewModel = Map.extend({
 	},
 
 	activateEditor: function(event, element) {
-		console.clear();
-		console.log(
-			'clearing in user-nurse-student-editor-hcprovider (selectedParent was proved correct here)'
-		);
-
 
 		event.stopPropagation();
 
@@ -30,10 +25,17 @@ export const ViewModel = Map.extend({
 			const hcProviderList = this.attr('student').attr('hcProviderList');
 
 			const blankHcProviderList = {
-				name: '',
-				phone: '',
-				emailAdr: '',
-				description: ''
+				isNew:true,
+				description:'',
+				name:'',
+				street1:'',
+				street2:'',
+				city:'',
+				state:'',
+				zip:'',
+				emailAddress:'',
+				phoneMain:'',
+				phoneFax:'',
 			};
 			const newProvider = new Map(blankHcProviderList);
 			hcProviderList.push(newProvider);

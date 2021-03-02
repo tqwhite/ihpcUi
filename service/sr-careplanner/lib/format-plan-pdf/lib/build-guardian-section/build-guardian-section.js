@@ -51,7 +51,7 @@ var moduleFunction = function(args) {
 			assembleTextCell('text', item.relationship, cellStyleLiteral),
 			assembleTextCell('text', item.name, cellStyleLiteral),
 			assembleTextCell('text', phoneString, cellStyleLiteral),
-			assembleTextCell('text', item.emailAdr, cellStyleLiteral),
+			assembleTextCell('text', item.emailAddress, cellStyleLiteral),
 			assembleTextCell('text', addressString, cellStyleLiteral, 2),
 		];
 	});
@@ -72,7 +72,6 @@ var moduleFunction = function(args) {
 	//METHODS AND PROPERTIES ====================================
 
 	this.docSpec = function() {
-	console.log(JSON.stringify(finalDocSpec));
 		return finalDocSpec;
 	};
 

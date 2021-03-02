@@ -1,6 +1,14 @@
 
-<input class="c-field c-field--medium hackForceFiveEighty" type="text"  placeholder="Name" {($value)}="selectedProvider.name" />
-<input class="c-field c-field--medium hackForceFiveEighty" type="text"  placeholder="Street1" {($value)}="selectedProvider.phone" />
-<input class="c-field c-field--medium hackForceFiveEighty" type="text"  placeholder="Street2" {($value)}="selectedProvider.emailAdr" />
-<input class="c-field c-field--medium hackForceFiveEighty" type="text"  placeholder="Description" {($value)}="selectedProvider.description" />
-<button class='controlWidget'>delete this guardian</button>
+<input class="c-field c-field--medium  hackForceFiveEighty" placeholder="Description/Specialty" {($value)}="selectedProvider.description" />
+<input class="c-field c-field--medium  hackForceFiveEighty" type="text"  placeholder="Name" {($value)}="selectedProvider.name" />
+<input class="c-field c-field--medium  hackForceFiveEighty" type="tel"  placeholder="Email Address" {($value)}="selectedProvider.emailAddress" />
+<input class="c-field c-field--medium  hackForceFiveEighty" type="tel"  placeholder="Main Phone" {($value)}="selectedProvider.phoneMain" />
+<input class="c-field c-field--medium  hackForceFiveEighty" type="tel"  placeholder="Fax Phone" {($value)}="selectedProvider.phoneFax" />
+<input class="c-field c-field--medium  hackForceFiveEighty" type="text"  placeholder="Street1" {($value)}="selectedProvider.street1" />
+<input class="c-field c-field--medium  hackForceFiveEighty" type="text"  placeholder="Street2" {($value)}="selectedProvider.street2" />
+<div class="inlineSet">
+	<input class="c-field c-field--medium  " type="text"  placeholder="City" {($value)}="selectedProvider.city" />
+	<input style='flex-grow:1;' class="c-field c-field--medium  " type="text"  placeholder="State Code" {($value)}="selectedProvider.state" />
+	<input style='flex-grow:2;' class="c-field c-field--medium  " type="text"  placeholder="Zip" {($value)}="selectedProvider.zip" />
+</div>
+<button class='controlWidget'>Delete This Guardian</button>

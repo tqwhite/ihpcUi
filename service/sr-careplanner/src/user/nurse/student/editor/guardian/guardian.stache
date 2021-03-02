@@ -17,18 +17,16 @@
 
 	{{#each guardianList}}
 	<tr>
+		
 		<td  ($click)='activateEditor(%event, {.})'>{{relationship}}</td>
-		<td><a href='mailto:{{emailAdr}}?subject=RE: Student Healthcare Plan' class='mailto' title='send email to parent'>{{emailAdr}}</a></td>
-		<td  ($click)='activateEditor(%event, {.})'>{{phoneMain}}</td>
 		<td  ($click)='activateEditor(%event, {.})'>{{name}}</td>
-		<td  ($click)='activateEditor(%event, {.})'>{{street1}}</td>
-		<td  ($click)='activateEditor(%event, {.})'>{{street2}}</td>
-		<td  ($click)='activateEditor(%event, {.})'>{{city}}</td>
-		<td  ($click)='activateEditor(%event, {.})'>{{state}}</td>
-		<td  ($click)='activateEditor(%event, {.})'>{{zip}}</td>
+		<td><a href='mailto:{{emailAddress}}?subject=RE: Student Healthcare Plan' class='mailto' title='send email to parent'>{{emailAddress}}</a></td>
+		<td  ($click)='activateEditor(%event, {.})'>{{phoneMain}}{{#if phoneAlt}} <span style='color:gray;'>(alt: {{phoneAlt}}</span>{{/if}}
+		</td>
+		<td  ($click)='activateEditor(%event, {.})'>{{street1}}{{#if street2}}, {{street2}}{{/if}}{{#if city}}; {{city}}{{/if}}{{#if state}}, {{state}}{{/if}} {{zip}}</td>
 	</tr>
 	{{/each}}
-	<tr><td colspan="5"  ($click)='activateEditor(%event, "new")'><span class='controlWidget'>(add guardian)</span> <span class='annotation'>click row to edit</span></td></tr>
+	<tr><td colspan="5"  ($click)='activateEditor(%event, "new")'><span class='controlWidget'>Add Parent/Guardian</span> <span class='annotation'>&nbsp;&nbsp;&nbsp;(click row to edit)</span></td></tr>
 
 </table>			
 </div>

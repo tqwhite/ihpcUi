@@ -16,9 +16,6 @@ export const ViewModel = Map.extend({
 	},
 
 	activateEditor: function(event, element) {
-		console.clear();
-		console.log('clearing in user-nurse-student-editor-guardian (selectedParent was proved correct here)');
-		
 		event.stopPropagation();
 		
 		
@@ -31,7 +28,7 @@ export const ViewModel = Map.extend({
 			const guardianList=this.attr('student').attr('guardianList');
 			
 			const blankGuardian={
-			
+				isNew:true,
 				relationship:'',
 				name:'',
 				street1:'',
@@ -39,7 +36,7 @@ export const ViewModel = Map.extend({
 				city:'',
 				state:'',
 				zip:'',
-				emailAdr:'',
+				emailAddress:'',
 				phoneMain:'',
 				phoneAlt:'',
 			
