@@ -8,7 +8,7 @@
 <input class="c-field c-field--medium  hackForceFiveEighty" type="text"  placeholder="Street2" {($value)}="selectedProvider.street2" />
 <div class="inlineSet">
 	<input class="c-field c-field--medium  " type="text"  placeholder="City" {($value)}="selectedProvider.city" />
-	<input style='flex-grow:1;' class="c-field c-field--medium  " type="text"  placeholder="State Code" {($value)}="selectedProvider.state" />
+	<input style='flex-grow:1;' class="c-field c-field--medium  " type="text"  placeholder="State" {($value)}="selectedProvider.state" />
 	<input style='flex-grow:2;' class="c-field c-field--medium  " type="text"  placeholder="Zip" {($value)}="selectedProvider.zip" />
 </div>
-<button class='controlWidget'>Delete This Guardian</button>
+<button class='controlWidget'>Delete This Provider</button>
