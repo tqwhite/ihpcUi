@@ -20,6 +20,7 @@ export const ViewModel = Map.extend({
 		event.stopPropagation();
 
 		if (element != 'new') {
+			element.attr('isNew', false); //isNew is not used in guardians but I do not want any difference compared to guardians
 			this.attr('selectedProvider', element);
 		} else {
 			const hcProviderList = this.attr('student').attr('hcProviderList');

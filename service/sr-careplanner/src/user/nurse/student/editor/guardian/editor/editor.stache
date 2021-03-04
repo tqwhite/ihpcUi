@@ -16,5 +16,5 @@
 {{#if selectedParent.isNew}}
 	<div style='width:100%;text-align:right;'><button class='controlWidget' id='initFromStudent'>Copy From Student</button> </div>
 {{else}}
-	<div style='width:100%;text-align:left;'><button class='controlWidget' id='deleteGuardian'>Delete This Guardian</button> </div>
+	<div style='width:100%;text-align:left;'><button class='controlWidget' id='deleteGuardian'>Delete This Parent/Guardian</button> </div>
 {{/if}}

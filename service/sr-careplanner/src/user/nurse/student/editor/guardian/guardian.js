@@ -22,6 +22,7 @@ export const ViewModel = Map.extend({
 		
 		
 		if (element!='new'){
+			element.attr('isNew', false);
 			this.attr('selectedParent', element);
 		}
 		else{
