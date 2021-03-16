@@ -44,7 +44,7 @@ var moduleFunction = function(args) {
 let widths=['*','*','*','*','*','*',];
 const body=hcProviderList.map(item=>{
 		const addressString=`${item.street1} ${item.street2?', '+item.street2:''}; ${item.city},  ${item.zip}`;
-		const phoneAltString=item.phoneFax?`\n(alt: ${item.phoneFax})`:'';
+		const phoneAltString=item.phoneFax?`\n(fax: ${item.phoneFax})`:'';
 		const phoneString=`${item.phoneMain}${phoneAltString}`;
 
 		return [
