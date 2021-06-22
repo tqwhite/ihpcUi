@@ -8,16 +8,15 @@ export const ViewModel = Map.extend({
   define: {
     message: {
       value: "This is the help component"
-    },
-    showThis: {
-      value: "1_GettingStarted",
-      serialize: false
     }
   },
   showContents: function(itemName) {
-    this.attr("showThis", itemName);
+    const videoString=`<video style='height:65vh;' controls='true' autoplay='true' src='/api/training/${itemName}'/>`;
+    $(`#videoContainer`).html(videoString);
+
   },
   startVideoEventMonitoring: function() {
+
     setTimeout(
       () => {
         $(window).one("app.setNewPage", () => {
