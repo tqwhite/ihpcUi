@@ -1,5 +1,8 @@
 #!/usr/local/bin/node
 'use strict';
+
+console.log("---------------------------------------INITIATING SYSTEM STARTUP");
+
 const qtoolsGen = require('qtools');
 const qtools = new qtoolsGen(module);
 const multiIni = require('multi-ini');
@@ -33,7 +36,8 @@ var moduleFunction = function() {
 	}
 
 	//LOCAL DECLARATIONS ====================================
-	
+
+
 	let webReport = [];
 	let reportStatus = (err, result) => {
 		webReport.push({
@@ -56,6 +60,7 @@ var moduleFunction = function() {
 
 	const startDonejs = function(program) {
 
+
 		var exec = require("child_process").exec;
 		var options = {
 			path: program.path
@@ -64,6 +69,12 @@ var moduleFunction = function() {
 			config: path.join(program.path, 'package.json') + '!npm',
 			liveReload: true
 		};
+let transactionCount=0;
+	app.use((req, res, next) => {
+		transactionCount++;
+		console.log("transaction# " + transactionCount + " =======================\n");
+		next();
+	});
 		
 		app.use(ssrMiddleware(system, options));
 
@@ -80,7 +91,9 @@ var moduleFunction = function() {
 			}
 		});
 
+
 		server.on('listening', function() {
+
 			var address = server.address();
 			var url = 'http://' + (address.address === '::' ?
 				'localhost' : address.address) + ':' + address.port;
@@ -98,6 +111,7 @@ var moduleFunction = function() {
 	//	let basicPingServer;
 
 	const startSystem = () => {
+
 		config = multiIni.read(configPath);
 		config.user = process.env.USER;
 		if (config.system.serveBuildBundle.toLowerCase() == 'false') {
@@ -113,10 +127,12 @@ var moduleFunction = function() {
 			path: process.env.sruiProjectPath + 'code/service/sr-careplanner',
 			port: config.system.port
 		}
+
 		startDonejs(program)
 	};
 
 	//START SYSTEM =======================================================
+
 
 	startSystem();
 

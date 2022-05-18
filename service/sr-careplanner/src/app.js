@@ -124,14 +124,17 @@ const AppViewModel = Map.extend({
 			serialize: false
 		},
 		welcomeMessage: {
-			get: function(value = 'Welcome') {
-				if (window && window.location && window.location.search) {
-					value = window.location.search.match(/^\?welcomeMessage=(.*)\&*$/)[1];
+			get: function(value = 'WELCOME') {
+				if (window && window.location && window.location.search && window.location.search) {
+					// Feb 23 06:30:10 IHPC startProdServer[745]: TypeError: Cannot read properties of null (reading '1')
+					// Feb 23 06:30:10 IHPC startProdServer[745]:     at a.get (file:/home/ui/prod/system/code/service/sr-careplanner/dist/bundles/sr-careplanner/index.js:247:1890)
+					const tmp = window.location.search.match(/^\?welcomeMessage=(.*)\&*$/);
+					value = tmp?window.location.search.match(/^\?welcomeMessage=(.*)\&*$/)[1]:'';
 					value = value.replace(/\%20/g, ' ');
 				}
 				value = value.replace(/</g, '&lt;').replace(/>/g, '&gt;');
 				if (window.location.href.match(/demo/)) {
-					value += "<div style='color:orange;font-size:50%;'>DEMO SITE</div>";
+					value += "<div style='color:pink;font-size:50%;'>DEMO SITE</div>";
 				}
 				if (window.location.href.match(/local/)) {
 					value += "<div style='color:green;font-size:50%;'>DEV SITE</div>";
