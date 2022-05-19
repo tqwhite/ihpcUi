@@ -11,11 +11,11 @@ export const Register = can.Map.extend({
 		const checkValidation = (fieldName) => {
 			switch (fieldName) {
 				case 'bookNumber':
-					if (!this.attr(fieldName) || this.attr(fieldName).length!=6) {
+					if (!this.attr(fieldName)) {
 
 						errorList.push({
 							fieldName: fieldName,
-							errorText: fieldName + " must be exactly six characters long"
+							errorText: fieldName + " is required"
 						});
 					}
 					break;

@@ -103,6 +103,9 @@ let transactionCount=0;
 				minute: '2-digit',
 				second: '2-digit'
 			})} `);
+
+
+			qtools.message(`Serving serveBuildBundle=${config.system.serveBuildBundle}`);
 		});
 
 	}
