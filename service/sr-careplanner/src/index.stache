@@ -1,7 +1,7 @@
 <html>
   <head>
-    <can-import from="sr-careplanner/blaze.min.css" />
-    <can-import from="sr-careplanner/blaze.animations.min.css" />
+    <can-import from="sr-careplanner/blaze/blaze.min.css" />
+    <can-import from="sr-careplanner/blaze/blaze.animations.min.css" />
     <can-import from="sr-careplanner/font-awesome/css/font-awesome.css" />
     <can-import from="sr-careplanner/styles.less!" />
     <can-import from="sr-careplanner/app" export-as="viewModel" />
@@ -15,7 +15,7 @@
 	
     <title>{{title}}</title>
   </head>
-  <body> HELLO
+  <body> 
   <!-- div style='height:50vh;width:100vw;background:white;
   display: flex;
   flex-direction: column;

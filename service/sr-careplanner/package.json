@@ -46,7 +46,6 @@
     }
   },
   "dependencies": {
-    "blaze": "^2.8.0",
     "can": "^2.3.16",
     "can-connect": "^0.5.0",
     "can-zone": "^0.5.0",
@@ -62,7 +61,6 @@
     "tinymce": "^4.4.3"
   },
   "devDependencies": {
-    "blaze": "^2.8.0",
     "can-fixture": "^0.1.2",
     "documentjs": "^0.4.2",
     "donejs-cli": "^0.9.4",
