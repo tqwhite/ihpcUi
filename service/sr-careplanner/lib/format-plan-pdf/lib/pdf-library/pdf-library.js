@@ -1,5 +1,6 @@
 'use strict';
 //START OF moduleFunction() ============================================================
+//invoked by /Users/tqwhite/Documents/webdev/ihpCreator/applications/ui/system/code/service/sr-careplanner/src/user/nurse/viewer/viewer.js
 
 var moduleFunction = function(args) {
 	const qtools = args.qtools;
@@ -140,6 +141,7 @@ var moduleFunction = function(args) {
 		if (typeof(text)=='string'){
 			text=text?text:' ';
 			text=text.replace(/\t/g, '    ');
+			text=text.replace(/([^ ]{30})/g, '$1 ');
 		}
 		
 		if (pageBreak){

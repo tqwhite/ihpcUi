@@ -7,7 +7,7 @@ import Student from 'sr-careplanner/models/student';
 import Plan from 'sr-careplanner/models/plan';
 import Boilerplate from 'sr-careplanner/models/boilerplate';
 import qtools from 'lib/qtools-minus/';
-import formatPlanPdf from 'lib/format-plan-pdf/';
+import formatPlanPdf from 'lib/format-plan-pdf/'; //this creates a global variable that is invoked in .../nurse/viewer.js 
 
 export const ViewModel = Map.extend({
 	define: {

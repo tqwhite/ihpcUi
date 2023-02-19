@@ -1,6 +1,7 @@
 'use strict';
 
 //START OF moduleFunction() ============================================================
+//invoked from /Users/tqwhite/Documents/webdev/ihpCreator/applications/ui/system/code/service/sr-careplanner/src/user/nurse/nurse.js
 
 var moduleFunction = function(args) {
 
@@ -113,6 +114,7 @@ var moduleFunction = function(args) {
 		defaultStyle: {
 			fontSize: 10
 		},
+		 pageSize: 'LETTER',
 		content: assembleContent(),
 		images: {},
 		styles: pdfLibrary.namedStyleDefinitions(),

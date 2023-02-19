@@ -59,7 +59,8 @@ export const ViewModel = Map.extend({
 
 	getPdfDataUrl: function() {
 		var planFormatter = new formatPlanPdf({
-			qtools: qtools,pdfLibrary:pdfLibrary,
+			qtools: qtools,
+			pdfLibrary:pdfLibrary,
 			buildHeaderSection:buildHeaderSection,
 			buildStudentSection:buildStudentSection,
 			
