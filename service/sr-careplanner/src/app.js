@@ -2,6 +2,7 @@ import Map from 'can/map/';
 import Session from 'sr-careplanner/models/session';
 import qtools from 'lib/qtools-minus/'; //I do not understand why I have to put node_modules here but not on can/map
 
+import District from 'sr-careplanner/models/district';
 import User from 'sr-careplanner/models/user';
 import ConfirmEmail from 'sr-careplanner/models/confirm-email';
 import ResendEmail from 'sr-careplanner/models/resend-email';
@@ -640,6 +641,75 @@ can.stache.registerHelper('simpleRoute', function(options) {
 			break;
 	}
 });
+
+
+
+
+
+
+
+
+
+
+
+
+can.stache.registerHelper('districtIntercept', function(options) {
+	if (!process.browser) {
+		return;
+	}
+	
+	const routingBits = window.location.pathname.match(
+		/^\/(\w+)\/*(\w*)\/*#*!*$/
+	);
+	
+	if (!routingBits || typeof routingBits[1] == 'undefined') {
+		return;
+	}
+	
+	const signal=routingBits[1];
+	const districtId=routingBits[2];
+
+console.log(`signal=${signal}`);
+console.log(`districtId=${districtId}`);
+
+console.log(`\n=-=============   process  ========================= [app.js.[ anonymous ]]\n`);
+
+
+console.dir(process);
+console.log(`\n=-=============   process  ========================= [app.js.[ anonymous ]]\n`);
+
+
+steal
+	.import('sr-careplanner/models/district')
+	.then(function(module) {
+		console.log(
+			`\n=-=============   Restaurant  ========================= [Scratchpad.]\n`
+		);
+		
+		let Restaurant = module['default'];
+		return Restaurant.getList({});
+	})
+	.then(function(restaurants) {
+		console.log(
+			`\n=-=============   restaurants  ========================= [Scratchpad.]\n`
+		);
+		
+		console.log(restaurants);
+	});
+
+
+});
+
+
+
+
+
+
+
+
+
+
+
 
 let alreadyConfirmedEmail = false;
 can.stache.registerHelper('confirmEmail', function(options) {

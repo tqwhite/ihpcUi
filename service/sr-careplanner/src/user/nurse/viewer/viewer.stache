@@ -10,8 +10,8 @@
 
 		<div style='margin-left:5px;' class='c-button  c-button--xsmall c-button--primary' ($click)='runPrintFunction()'>Print</div>
 	</div>
-	<div class='downloadWarning'>Do not use the download function in the viewer. Only use this button.</div>
-	<div class='printWarning'>Printing: If the Blue Print Button makes a bad PDF. <i><b>TRY</b></i> the print icon in the browser native view below.</div>
+		<div class='downloadWarning'>If the PDF that results from clicking the Blue Print and Download buttons doesn't look nice.<br>Use the tools in the PDF widget below.</div>
+
 	{{/downloadReady}}
 	
 	{{#if dataUrl}}
