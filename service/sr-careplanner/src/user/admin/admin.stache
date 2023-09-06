@@ -2,12 +2,19 @@
 <div class='rightHorizontal'>
 	<div>
 		<ul id='adminNav' class='c-nav c-nav--inline'>
-		  <li style='width:75px;display:inline-block;'>&nbsp;</li>
 			<li class='c-nav__item' ($click)='setSubsection("users")'>Manage Users</a></li>
+
+			<li class='c-nav__item' ($click)='setSubsection("districts")'>Manage Districts</a></li>
 		</ul>
 	</div>
 </div>
 {{#switch subsection}}
+{{#case "districts"}}
+		<can-import from="sr-careplanner/user/admin/districts/" />
+			  <user-admin-districts
+						($inserted)="collectChildComponents('user-admin-districts', %viewModel))"	
+				/>
+	{{/case}}
 {{#case "users"}}
 		<can-import from="sr-careplanner/user/admin/users/" />
 			  <user-admin-users

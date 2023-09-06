@@ -1,0 +1,25 @@
+{{message}}
+
+<button ($click)='applyUndo("x")' style='margin-left:20px;' tabindex='-1'>REVERT</button>
+{{#errorList}}
+	<div class="c-toast notificationToast save error ">
+		{{#each errorList.district}}
+			{{errorText}}<br/>
+		{{/each}}
+	</div>
+{{/errorList}}
+
+{{#saveNotification}}
+	<div class="c-toast notificationToast save success ">
+		Saving...
+	</div>
+{{/saveNotification}}
+
+<div class='container'>
+
+{{#showEditor}}
+<div><input class="c-field" placeholder="District Name" {($value)}="workingDistrict.displayName" fieldName='displayName'/> </div>
+<div><input class="c-field" placeholder="District ID (for access URL)" {($value)}="workingDistrict.districtId" fieldName='districtId'/> </div>
+<div><input class="c-field" placeholder="ssoParameters.redirectUrl" {($value)}="workingDistrict.ssoParameters.redirectUrl" fieldName='ssoParameters.redirectUrl'/> </div>
+
+{{/showEditor}}

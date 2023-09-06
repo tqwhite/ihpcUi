@@ -28,7 +28,6 @@
 
 {{districtIntercept}}
 {{simpleRoute}}
-
 {{confirmEmail}}
 {{#confirmEmailMessage}}
 <div class='tokenProcessStatusContainer {{confirmEmailStatus}}'> <div class='tokenProcessMessage'>{{confirmEmailMessage}}</div></div>

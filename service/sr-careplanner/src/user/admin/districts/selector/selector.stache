@@ -1,0 +1,12 @@
+{{message}}
+
+<div class='container'>
+
+{{#each districts.value}}
+<div class='districtItem' ($click)='chooseDistrict({.})'>
+{{#if displayName}}
+	{{displayName}}
+{{/if}}
+
+</div>
+{{/each}}

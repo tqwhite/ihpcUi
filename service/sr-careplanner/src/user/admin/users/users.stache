@@ -8,6 +8,7 @@
 		<can-import from="sr-careplanner/user/admin/users/selector/" />
 			  <user-admin-users-selector
 				users='{users}' 
+				districts='{districts}' 
 				users-root-vm='{.}'
 				($inserted)="collectChildComponents('user-admin-users-selector', %viewModel))"
 			  />

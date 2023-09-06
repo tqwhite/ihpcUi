@@ -4,6 +4,7 @@ import 'can/map/define/';
 import './users.less!';
 import template from './users.stache!';
 import User from "sr-careplanner/models/user";
+import District from "sr-careplanner/models/district";
 
 export const ViewModel = Map.extend({
 	define: {
@@ -32,7 +33,13 @@ export const ViewModel = Map.extend({
 		},
 		showEditor:{
 			value:false
-		}
+		},
+		districts: {
+			get: function() {
+				const list = District.getList();
+				return list;
+			}
+		},
 	},
 	
 	createNew:function(){

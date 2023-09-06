@@ -85,8 +85,6 @@ this.attr('student', new Student(testStudent));
 
 		var student=this.attr('student'); //this should probably be renamed workingStudent to match the pattern elsewhere
 		
-console.dir({['student']:student}, { showHidden: false, depth: 2, colors: true });
-
 		//validation goes here, with a return;
 		
 		this.attr('saveNotification', true);

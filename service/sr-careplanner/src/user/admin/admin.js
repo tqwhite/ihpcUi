@@ -4,13 +4,15 @@ import 'can/map/define/';
 import './admin.less!';
 import template from './admin.stache!';
 
+console.dir({['template']:template}, { showHidden: false, depth: 2, colors: true });
+
 export const ViewModel = Map.extend({
 	define: {
 		message: {
 			value: 'This is the user-admin component'
 		},
 		subsection: {
-			value: 'users'
+			value: 'districts'
 		}
 	},
 	setSubsection: function(subsection) {

@@ -4,8 +4,6 @@ import 'can/map/define/';
 import './permissionMaster.less!';
 import template from './permissionMaster.stache!';
 import $ from 'jquery';
-
-
 export const ViewModel = Map.extend({
 	define: {
 		message: {
@@ -32,9 +30,10 @@ export const ViewModel = Map.extend({
 		$.ajaxSetup({
 			dataFilter: (data, type, c) => {
 				//strip token from inbound and save
-				const incoming = JSON.parse(data);
-console.dir({['incoming']:incoming}, { showHidden: false, depth: 2, colors: true });
+console.log(`\n=-=============   dataFilter  ========================= [permissionMaster.js.initAjaxSessionWrapper]\n`);
 
+
+				const incoming = JSON.parse(data);
 				
 				if (incoming.data.configuration){
 					this.attr('%root').attr('configuration', incoming.data.configuration);

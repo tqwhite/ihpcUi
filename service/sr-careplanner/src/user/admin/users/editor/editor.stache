@@ -43,8 +43,33 @@
 <label class="c-choice">
 	<input type='radio' can-value='workingUser.role' value='admin'/> Admin
 </label>
+<label class="c-choice">
+	<input type='radio' can-value='workingUser.role' value='districtAdmin'/> District Admin
+</label>
 </div>
- 
+
+<div class='editorRow'>
+<select can-value='workingUser.districtRefId'>
+
+ {{#each districts.value}}
+
+ <option
+	value=''
+	>
+	none
+	</option>
+{{#if displayName}}
+ <option
+	value='{{refId}}'
+	>
+	{{displayName}}
+	</option>
+{{/if}}
+{{/each}}
+
+</select>
+</div>
+
 <div class='editorRow'>
 	<label>Last Day in Subscription</label>
 	<input class="c-field" placeholder="Last Day of Subscription" {($value)}="workingUser.lastDayInSubscription" fieldName='lastDayInSubscription'/> 

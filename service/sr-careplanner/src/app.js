@@ -2,7 +2,6 @@ import Map from 'can/map/';
 import Session from 'sr-careplanner/models/session';
 import qtools from 'lib/qtools-minus/'; //I do not understand why I have to put node_modules here but not on can/map
 
-import District from 'sr-careplanner/models/district';
 import User from 'sr-careplanner/models/user';
 import ConfirmEmail from 'sr-careplanner/models/confirm-email';
 import ResendEmail from 'sr-careplanner/models/resend-email';
@@ -10,7 +9,6 @@ import FeedBackSupport from 'sr-careplanner/models/feedback-support';
 import KeepAlive from 'sr-careplanner/models/sessionKeepAlive';
 
 //NOTE: CSS override (!important) in styles.less for input elements
-
 const AppViewModel = Map.extend({
 	define: {
 		loginUser: {
@@ -32,18 +30,31 @@ const AppViewModel = Map.extend({
 						add these transfer things to the inbound user data. That
 						would screw up donejs auto cache stuff but I don't use it.
 						Sorry, tqii, 1/2019
-						
+
 						ps, to be clear, transfersRecipient means loginUser receives students,
 						sender means that he or she initiated the offer of students
 					*/
-					userExpanded['transfersRecipient'] = session.attr('0').attr('transfersRecipient');
-					userExpanded['transfersSender'] = session.attr('0').attr('transfersSender');
-					userExpanded['transfersRecipient']=userExpanded['transfersRecipient']?userExpanded['transfersRecipient']:[];
-					userExpanded['transfersSender']=userExpanded['transfersSender']?userExpanded['transfersSender']:[];
-					
+					userExpanded['transfersRecipient'] = session
+						.attr('0')
+						.attr('transfersRecipient');
+					userExpanded['transfersSender'] = session
+						.attr('0')
+						.attr('transfersSender');
+					userExpanded['transfersRecipient'] = userExpanded[
+						'transfersRecipient'
+					]
+						? userExpanded['transfersRecipient']
+						: [];
+					userExpanded['transfersSender'] = userExpanded['transfersSender']
+						? userExpanded['transfersSender']
+						: [];
+
 					this.attr('loginUserWorkingData', userExpanded);
-					this.attr('transfersRecipientCount', userExpanded['transfersRecipient'].length);
-					
+					this.attr(
+						'transfersRecipientCount',
+						userExpanded['transfersRecipient'].length
+					);
+
 					const dictionary = item.attr('dictionary');
 					let newItemsFlag = false;
 
@@ -83,6 +94,10 @@ const AppViewModel = Map.extend({
 			},
 			serialize: false //or, function(val, type){ return f(val); }
 		},
+		districtName: {
+			value: '',
+			serialize: false
+		},
 		firstLogin: {
 			value: '',
 			serialize: false
@@ -105,7 +120,7 @@ const AppViewModel = Map.extend({
 			serialize: false,
 			type: '*',
 			set: function(value) {
-				if (false && value && value.claims && value.claims.expiration) {
+				if (value && value.claims && value.claims.expiration) {
 					const expirationTime = value.claims.expiration;
 					const interval = value.claims.expiration - new Date();
 					this.attr('sessionInterval', interval);
@@ -126,20 +141,36 @@ const AppViewModel = Map.extend({
 		},
 		welcomeMessage: {
 			get: function(value = 'WELCOME') {
-				if (window && window.location && window.location.search && window.location.search) {
+				let queryMessage = '';
+				if (
+					window &&
+					window.location &&
+					window.location.search &&
+					window.location.search
+				) {
 					// Feb 23 06:30:10 IHPC startProdServer[745]: TypeError: Cannot read properties of null (reading '1')
 					// Feb 23 06:30:10 IHPC startProdServer[745]:     at a.get (file:/home/ui/prod/system/code/service/sr-careplanner/dist/bundles/sr-careplanner/index.js:247:1890)
-					const tmp = window.location.search.match(/^\?welcomeMessage=(.*)\&*$/);
-					value = tmp?window.location.search.match(/^\?welcomeMessage=(.*)\&*$/)[1]:'';
-					value = value.replace(/\%20/g, ' ');
+					const tmp = window.location.search.match(
+						/^\?welcomeMessage=(.*)\&*$/
+					);
+					queryMessage = tmp
+						? window.location.search.match(/^\?welcomeMessage=(.*)\&*$/)[1]
+						: '';
+					queryMessage = queryMessage.replace(/\%20/g, ' ');
 				}
-				value = value.replace(/</g, '&lt;').replace(/>/g, '&gt;');
-				if (window.location.href.match(/demo/)) {
-					value += "<div style='color:pink;font-size:50%;'>DEMO SITE</div>";
+
+				const districtName = this.attr('districtName');
+				if (districtName || queryMessage) {
+					const smallQueryMessage = queryMessage
+						? `<span style='font-size:75%;'>${queryMessage}</span>`
+						: '';
+					value = `
+						${districtName}
+						${districtName && queryMessage ? '<br>' : ''}
+						${districtName ? smallQueryMessage : queryMessage}
+					`.replace(/\t/g, '');
 				}
-				if (window.location.href.match(/local/)) {
-					value += "<div style='color:green;font-size:50%;'>DEV SITE</div>";
-				}
+
 				return value;
 			},
 			set: function(value) {
@@ -311,11 +342,11 @@ const AppViewModel = Map.extend({
 			value: false,
 			serialize: false
 		},
-		transferResultStatus:{
+		transferResultStatus: {
 			value: '',
 			serialize: false
 		},
-		transfersRecipientCount:{
+		transfersRecipientCount: {
 			value: 0,
 			serialize: false
 		},
@@ -324,7 +355,8 @@ const AppViewModel = Map.extend({
 			serialize: false
 		}
 	},
-	
+
+	// ---------------------------
 	setNewPage: function(page, slug, subsection) {
 		this.attr('welcomeMessage', '');
 		this.attr('page', page);
@@ -332,13 +364,17 @@ const AppViewModel = Map.extend({
 		this.attr('subsection', subsection);
 		$(window).trigger('app.setNewPage');
 	},
+	
+	// ---------------------------
 	logout: function(queryString = '') {
 		window.location.href = '/' + queryString;
 	},
+	// ---------------------------
 	clearConsole: function() {
 		console.clear();
 	},
-	
+
+	// ---------------------------
 	activateModal: function(callback) {
 		const clearModal = () => {
 			$('.modalBackground').hide();
@@ -347,6 +383,7 @@ const AppViewModel = Map.extend({
 		$('body').one('click', callback);
 	},
 
+	// ---------------------------
 	resendConfirmation: function() {
 		const resend = new ResendEmail({
 			username: this.session.attr(0).username
@@ -373,10 +410,12 @@ const AppViewModel = Map.extend({
 		);
 	},
 
+	// ---------------------------
 	cancelSendFeedback: function() {
 		this.attr('showSendFeedback', '');
 	},
 
+	// ---------------------------
 	findErrorsSpecial: function(saveObj, domObj) {
 		let errorList = saveObj.validate();
 		if (errorList.length) {
@@ -390,6 +429,7 @@ const AppViewModel = Map.extend({
 		return false;
 	},
 
+	// ---------------------------
 	sendFeedbackMessage: function() {
 		var userData = this.attr('loginUserWorkingData');
 		var saveObj = new FeedBackSupport({
@@ -439,6 +479,7 @@ const AppViewModel = Map.extend({
 		return false;
 	},
 
+	// ---------------------------
 	activateSendFeedback: function() {
 		this.attr('showSendFeedback', true);
 		this.attr('hideFeedbackText', '');
@@ -448,6 +489,7 @@ const AppViewModel = Map.extend({
 		}, 10);
 	},
 
+	// ---------------------------
 	messageOfTheDay: function() {
 		if (!this.attr('browserLoaded')) {
 			return;
@@ -559,14 +601,13 @@ const AppViewModel = Map.extend({
 			outString += `<div class='accountNotification ${subClass}'>${messageOfTheDay}</div>`;
 		}
 
-
 		if (this.attr('transfersRecipientCount')) {
 			const button = `<div class='c-button c-button--primary c-button--small' style='display:inline-block;' id='receivetransfers'>REVIEW TRANSFERS</div>`;
 			//this button's click event is set at the end of this function in setTimeout()
 
-			outString += `<div class='accountNotification ${subClass}'>You have ${
-				this.attr('transfersRecipientCount')
-			} pending transfer requests. Click ${button} to act on them.</div>`;
+			outString += `<div class='accountNotification ${subClass}'>You have ${this.attr(
+				'transfersRecipientCount'
+			)} pending transfer requests. Click ${button} to act on them.</div>`;
 		}
 
 		if (outString) {
@@ -587,22 +628,25 @@ const AppViewModel = Map.extend({
 		return outString;
 	},
 
+	// ---------------------------
 	receiveTransfer: function(event) {
 		this.attr('showReceiveTransferTool', true);
 		this.activateModal(() => {
 			this.attr('showReceiveTransferTool', false);
 		});
-		
 	},
 
+	// ---------------------------
 	renewSession: function() {
 		KeepAlive.getList();
 	},
-	
-	browserIsInternetExplorer: function(){
+
+	// ---------------------------
+	browserIsInternetExplorer: function() {
 		return window.navigator.userAgent.match(/Trident/i);
 	},
-
+	
+	// ---------------------------
 	testElement: function() {
 		window['AppViewModel'] = this;
 		console.log('added: window[' + "'" + 'AppViewModel' + "'" + ']');
@@ -611,6 +655,9 @@ const AppViewModel = Map.extend({
 		});
 	}
 });
+
+// ----------------------------------------------------------------------
+// SIMPLE ROUTER (also see, district interception)
 
 can.stache.registerHelper('simpleRoute', function(options) {
 	if (!process.browser) {
@@ -623,14 +670,17 @@ can.stache.registerHelper('simpleRoute', function(options) {
 	if (!routingBits || typeof routingBits[1] == 'undefined') {
 		return;
 	}
-	if (this.attr('browserLoaded') && this.attr('loginUserWorkingData').isActive) {
+	if (
+		this.attr('browserLoaded') &&
+		this.attr('loginUserWorkingData').isActive
+	) {
 		switch (routingBits[1]) {
 			case 'renew':
 				this.setNewPage('setup', '', 'store');
 				break;
 		}
 	}
-	
+
 	switch (routingBits[1]) {
 		case 'forgotPassword':
 			this.setNewPage('', 'forgot-password');
@@ -642,74 +692,8 @@ can.stache.registerHelper('simpleRoute', function(options) {
 	}
 });
 
-
-
-
-
-
-
-
-
-
-
-
-can.stache.registerHelper('districtIntercept', function(options) {
-	if (!process.browser) {
-		return;
-	}
-	
-	const routingBits = window.location.pathname.match(
-		/^\/(\w+)\/*(\w*)\/*#*!*$/
-	);
-	
-	if (!routingBits || typeof routingBits[1] == 'undefined') {
-		return;
-	}
-	
-	const signal=routingBits[1];
-	const districtId=routingBits[2];
-
-console.log(`signal=${signal}`);
-console.log(`districtId=${districtId}`);
-
-console.log(`\n=-=============   process  ========================= [app.js.[ anonymous ]]\n`);
-
-
-console.dir(process);
-console.log(`\n=-=============   process  ========================= [app.js.[ anonymous ]]\n`);
-
-
-steal
-	.import('sr-careplanner/models/district')
-	.then(function(module) {
-		console.log(
-			`\n=-=============   Restaurant  ========================= [Scratchpad.]\n`
-		);
-		
-		let Restaurant = module['default'];
-		return Restaurant.getList({});
-	})
-	.then(function(restaurants) {
-		console.log(
-			`\n=-=============   restaurants  ========================= [Scratchpad.]\n`
-		);
-		
-		console.log(restaurants);
-	});
-
-
-});
-
-
-
-
-
-
-
-
-
-
-
+// ----------------------------------------------------------------------
+// CONFIRM EMAIL
 
 let alreadyConfirmedEmail = false;
 can.stache.registerHelper('confirmEmail', function(options) {
@@ -753,6 +737,9 @@ can.stache.registerHelper('confirmEmail', function(options) {
 	}
 });
 
+// ----------------------------------------------------------------------
+// UPDATE SUBSCRIPTION
+
 let alreadyUpdatedSubscription = false;
 can.stache.registerHelper('updateSubscription', function(options) {
 	if (!process.browser || alreadyUpdatedSubscription) {
@@ -780,6 +767,51 @@ can.stache.registerHelper('updateSubscription', function(options) {
 			}
 		}
 	}
-});
+}); 
+
+
+// ----------------------------------------------------------------------
+// DISTRICT INTERCEPT
+
+ can.stache.registerHelper('districtIntercept', function(options) {
+	const routingBits = window.location.pathname.match(/^\/(\w+)\/*(\w*)\/*#*!*$/);
+
+	if (!routingBits || typeof routingBits[1] == 'undefined') {
+		return;
+	}
+
+	const signal = routingBits[1];
+	const districtId = routingBits[2];
+
+	const self = this;
+	steal
+		.import('sr-careplanner/models/district-sso')
+		.then(function(module) {
+			let District = module['default'];
+			return District.getList({ districtId });
+		})
+		.then(function(districts) {
+			districts.forEach(district => {
+				const name = district.attr('displayName');
+				const loginUrl = district.attr('loginUrl');
+				const ssoParameters = district.attr('ssoParameters');
+				const redirectUrl = ssoParameters.attr('redirectUrl');
+
+				const redirectAllowed = false; //I need to be able to turn off redirect for debugging. This can go away if you don't like it
+				const districtNameString=`${name}<br><span style='font-size:50%;'>${redirectUrl}</span>`;
+				console.log(`districtNameString=${districtNameString}`);
+				if (redirectAllowed && redirectUrl) {
+					window.location.href = redirectUrl;
+				} else {
+					self.attr('districtName', districtNameString);
+				}
+			});
+		});
+
+	});
+
+          
+
 
 export default AppViewModel;
+

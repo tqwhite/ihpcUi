@@ -4,8 +4,16 @@
 		<div>{{{message}}}</div>
 	{{/message}}
 	{{^message}}
-		<div class='welcomeMessage'>{{{welcomeMessage}}}</div>
+		<div class='welcomeMessage {{demoOrDev}}'>
+		<div>{{{welcomeMessage}}}</div>
+		<div class='siteAnnotation'>{{#demoOrDev}} Ysite {{/demoOrDev}}</div>
+		
+		</div>
 	{{/message}}
+	
+
+	
+	
 </div>
 <div id='controlsWrapper'>
 	<div class='fieldContainer'>

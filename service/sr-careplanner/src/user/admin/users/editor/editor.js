@@ -145,7 +145,8 @@ export default Component.extend({
   viewModel: ViewModel,
 	events: {
 		'input change': changeHandler,
-		'textarea change': changeHandler
+		'textarea change': changeHandler,
+		'select change': changeHandler
 
 	},
   template

@@ -19,6 +19,7 @@ export const ViewModel = Map.extend({
 		}
 	},
 	
+	
 	isLocal:function(){
 		return window.location.href.match(/local/);
 	
@@ -73,6 +74,23 @@ export const ViewModel = Map.extend({
 		//this.attr("sessionPromise", sessionPromise); //can't figure out why this was in the example
 	}
 });
+
+
+
+
+can.stache.registerHelper('demoOrDev', function(options) {
+	
+
+				if (window.location.href.match(/demo/)) {
+					return 'demo';
+				}
+				if (window.location.href.match(/local/)) {
+					return 'dev';
+				}
+	
+	});
+
+
 
 export default Component.extend({
 	tag: 'account-login',
