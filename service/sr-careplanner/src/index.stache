@@ -265,8 +265,8 @@
 
 {{#is session.get('username') 'tqwhite'}}
  	<div style='position:static;bottom:15px;left:50px;'>
-		<div style='font-size:8pt;color:#aaf;margin-top:30px;'>These controls are only seen when the login name is tqwhite.</div>
-		<button ($click)='clearConsole()' style='margin-left:20px;' tabindex='-1'>clearConsole</button>
+		<div style='font-size:8pt;color:#7645ab;margin:30px 10px;'><button ($click)='clearConsole()' style='margin-left:20px;' tabindex='-1'>clearConsole</button>&nbsp;&nbsp;&nbsp;&nbsp;{{!-- These controls are only seen when the login name is tqwhite. }} SSO Version</div>
+		
 	</div> 
 {{/is}}	
 
