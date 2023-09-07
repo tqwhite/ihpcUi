@@ -6,7 +6,7 @@ import 'can/map/define/define';
 export const District = can.Map.extend({
 	define: {},
 	validate: function(fieldName) {
-console.log(`\n=-=============   validate  ========================= [district.js.validate]\n`);
+console.log(`\n=-=============   validate Xxsss ========================= [district.js.validate]\n`);
 
 
 		let name;

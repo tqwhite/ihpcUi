@@ -1,5 +1,7 @@
 
 <div class='controls'>
+<div style='color:#666;font-size:80%;margin-left:50px;'>(note: To see/edit newly created districts, reload the page. If we get enough districts that this is a problem, I will fix it. tqii)</div>
+
 <button class="c-button c-button--ghost c-button--xsmall c-button--primary deleteButton showConditionButton" ($click)='createNew(%event)' tabindex='-1'>
 	Add District
 </button>

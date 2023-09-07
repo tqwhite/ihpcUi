@@ -4,7 +4,7 @@
 		<ul id='adminNav' class='c-nav c-nav--inline'>
 			<li class='c-nav__item' ($click)='setSubsection("users")'>Manage Users</a></li>
 
-			<li class='c-nav__item' ($click)='setSubsection("districts")'>Manage Districts</a></li>
+			<li class='c-nav__item' ($click)='setSubsection("districts")'>Manage Districts!</a></li>
 		</ul>
 	</div>
 </div>
