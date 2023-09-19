@@ -104,9 +104,6 @@ can.stache.registerHelper('districtIntercept', function(options) {
 	
 	const isSSO = window.location.pathname.match(/SSO\/(.*?)$/);
 	const ssoToken = getCookie('ihpcToken');
-	
-console.dir({['isSSO']:isSSO}, { showHidden: false, depth: 4, colors: true });
-
 
 	if (!ssoToken){
 	options.scope.attr('message', 'Single Sign On Cookie is empty or missing');
@@ -116,8 +113,8 @@ console.dir({['isSSO']:isSSO}, { showHidden: false, depth: 4, colors: true });
 	// prettier-ignore
 	if (isSSO) {
 
- 		options.scope .attr('tmpFormSession') .attr('districtId', isSSO[1]);
-		options.scope.attr('tmpFormSession').attr('ssoToken', ssoToken);
+ 		options.scope .attr('tmpFormSession').attr('user') .attr('districtId', isSSO[1]);
+		options.scope.attr('tmpFormSession').attr('user').attr('ssoToken', ssoToken);
 
 		createSession('', options.scope);
 		return options.scope.attr('message');
@@ -127,7 +124,8 @@ console.dir({['isSSO']:isSSO}, { showHidden: false, depth: 4, colors: true });
 
 	return false;
 });
-
+/Users/tqwhite/Documents/webdev/ihpCreator/applications/ui/system/code
+/Users/tqwhite/Documents/webdev/ihpCreator/applications/ui/system/code/service/sr-careplanner/src/account/login/login.js
 can.stache.registerHelper('demoOrDev', function(options) {
 	
 
