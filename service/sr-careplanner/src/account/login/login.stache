@@ -16,6 +16,8 @@
 	
 </div>
 <div id='controlsWrapper'>
+
+{{districtIntercept}}
 	<div class='fieldContainer'>
 		<div class="c-form-element">
 			<div class="c-field-group">

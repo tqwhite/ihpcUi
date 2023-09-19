@@ -4,8 +4,6 @@ import 'can/map/define/';
 import './admin.less!';
 import template from './admin.stache!';
 
-console.dir({['template']:template}, { showHidden: false, depth: 2, colors: true });
-
 export const ViewModel = Map.extend({
 	define: {
 		message: {

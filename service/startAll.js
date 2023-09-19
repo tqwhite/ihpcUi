@@ -67,13 +67,31 @@ var moduleFunction = function() {
 		};
 		var system = {
 			config: path.join(program.path, 'package.json') + '!npm',
-			liveReload: true
+			liveReload: false
 		};
 let transactionCount=0;
 	app.use((req, res, next) => {
 		transactionCount++;
 		console.log("transaction# " + transactionCount + " =======================\n");
 		next();
+	});
+	
+	app.get(/\/msal\/(.*)$/, (req, res, next)=>{
+		//this gets all the components for index.html
+		res.sendFile(`/Users/tqwhite/Documents/webdev/ihpCreator/applications/ui/system/code/service/staticLib/msal/public/${req.params[0]}`);
+
+	});
+	
+	app.get(/\/d\/signout/, (req, res, next)=>{
+
+		res.sendFile(path.join('/Users/tqwhite/Documents/webdev/ihpCreator/applications/ui/system/code/service/staticLib/msal/public/signout.html'));
+
+	});
+	
+	app.get(/\/d\//, (req, res, next)=>{
+
+		res.sendFile(path.join('/Users/tqwhite/Documents/webdev/ihpCreator/applications/ui/system/code/service/staticLib/msal/public/index.html'));
+
 	});
 		
 		app.use(ssrMiddleware(system, options));

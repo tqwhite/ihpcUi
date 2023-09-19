@@ -194,7 +194,7 @@ const AppViewModel = Map.extend({
 			serialize: false
 		},
 		page: {
-			value: '',
+			value: 'XXX',
 			serialize: false
 		},
 		slug: {
@@ -768,49 +768,6 @@ can.stache.registerHelper('updateSubscription', function(options) {
 		}
 	}
 }); 
-
-
-// ----------------------------------------------------------------------
-// DISTRICT INTERCEPT
-
- can.stache.registerHelper('districtIntercept', function(options) {
-	const routingBits = window.location.pathname.match(/^\/(\w+)\/*(\w*)\/*#*!*$/);
-
-	if (!routingBits || typeof routingBits[1] == 'undefined') {
-		return;
-	}
-
-	const signal = routingBits[1];
-	const districtId = routingBits[2];
-
-	const self = this;
-	steal
-		.import('sr-careplanner/models/district-sso')
-		.then(function(module) {
-			let District = module['default'];
-			return District.getList({ districtId });
-		})
-		.then(function(districts) {
-			districts.forEach(district => {
-				const name = district.attr('displayName');
-				const loginUrl = district.attr('loginUrl');
-				const ssoParameters = district.attr('ssoParameters');
-				const redirectUrl = ssoParameters.attr('redirectUrl');
-
-				const redirectAllowed = false; //I need to be able to turn off redirect for debugging. This can go away if you don't like it
-				const districtNameString=`${name}<br><span style='font-size:50%;'>${redirectUrl}</span>`;
-				console.log(`districtNameString=${districtNameString}`);
-				if (redirectAllowed && redirectUrl) {
-					window.location.href = redirectUrl;
-				} else {
-					self.attr('districtName', districtNameString);
-				}
-			});
-		});
-
-	});
-
-          
 
 
 export default AppViewModel;

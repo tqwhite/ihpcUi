@@ -26,7 +26,6 @@
   IHP Creator has a problem. We know about it and are working to fix it. Back soon.
   </div -->
 
-{{districtIntercept}}
 {{simpleRoute}}
 {{confirmEmail}}
 {{#confirmEmailMessage}}
@@ -233,7 +232,7 @@
 			<p>Here are a couple of things that we think you would like to know to start.</p>
 			<ul>
 <li><b>Getting Started and Help.</b> The word Help in the top right corner leads to helpful information. That includes a short video demonstration on how to use the software and a button to ask questions.</li>
-<li><b>Autosave.</b> The system saves every time you change anything; when you leave an entry field or when you type, tab, or click on something else. You will see a green indicator at the upper right when saving.</li>
+<li><b>Autosave.</b> <u>The system saves every time you change anything;</u> when you <u>leave an entry field</u> or when you <u>type, tab, or click</u> on something else. You will see a green indicator at the upper right when saving.</li>
 <li><b>Email Confirmation.</b> If you see a red bar at the top of the page, you have not confirmed your email address. It is very important that you confirm your email address. It is the only way we can communicate with you. If you cannot find the email message that was sent when you registered, there is a link in the red bar that will send it again.</li>
 <li><b>Feedback and Questions.</b> There is a button at the bottom of the left of every page. Please use it a lot! This application is new and we are sure there are still plenty of improvements needed, but we are waiting for you to find them. Please help us make it perfect for your needs.</li>
 			

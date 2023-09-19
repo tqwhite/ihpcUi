@@ -5,8 +5,14 @@ import tag from 'can-connect/can/tag/';
 export const Session = can.Map.extend({
   define: {
   },
+	validate: function(fieldName) {
+	},
+	
     get:function(name){
     	//this is mine, not an auto access system function
+console.log(`\n=-=============   session model.get()  ========================= [session.js.[ anonymous ]]\n`);
+
+
 	  const user=this.attr('0');
   	if (user){
   		return user[name];
