@@ -1,4 +1,4 @@
-{{districtIntercept}}<img class='outsideLogo' src='/src/images/ihpLogo.png'>
+<img class='outsideLogo' src='/src/images/ihpLogo.png'>
 <div  class="c-alerts__alert c-alerts__alert--primary c-heading c-heading--medium c-heading--medium--center messageBlock">
 	{{#message}}
 		<div>{{{message}}}</div>
@@ -37,22 +37,24 @@
 			</div>
 		</div>
 	</div>
+{{/noSso_ShowLoginForm}}
 	<div class='buttonContainer'>
 		{{#browserLoaded}}
 				<div class='loginButtonContainer'>
-					<button type='submit' class="c-button c-button--primary c-button--small"($click)='createSession(%event)'>Login</button>
+					<button id='loginButton' type='submit' class="c-button c-button--primary c-button--small"($click)='createSession(%event)'>Login</button>
 				</div>
+{{#noSsoShowLoginForm}}
 				<div>
 					<p/>
 					<button class="c-button c-button--primary c-button--xsmall" ($click)='setNewPage("account", "register")'>Register</button>
 					<button class="c-button c-button--primary c-button--xsmall" ($click)='setNewPage("account", "forgot-password")'>Forgot Password/User Name</button>
 				</div>
 
+{{/noSso_ShowLoginForm}}
 		{{/browserLoaded}}
 		{{^browserLoaded}}
 		<span class="fa fa-spinner fa-spin basicBlue"/>
 		{{/if}}
 	</div>
-{{/noSso_ShowLoginForm}}
 </div>
-	  		
+	 {{districtIntercept}} 		

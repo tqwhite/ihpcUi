@@ -6,11 +6,62 @@ import template from './login.stache!';
 import Session from 'sr-careplanner/models/session';
 import User from 'sr-careplanner/models/user';
 
-function createSession(ev, options) {
-	if (ev) {
-		ev.preventDefault();
+
+function ssoProcess(scope){
+
+	
+	function getCookie(cookieName) {
+		let cookieIdentifier = cookieName + '=';
+		let decodedCookieString = decodeURIComponent(document.cookie);
+		let cookieArray = decodedCookieString.split(';');
+
+		for (let i = 0; i < cookieArray.length; i++) {
+			let singleCookie = cookieArray[i];
+			while (singleCookie.charAt(0) == ' ') {
+				singleCookie = singleCookie.substring(1);
+			}
+			if (singleCookie.indexOf(cookieIdentifier) == 0) {
+				return singleCookie.substring(cookieIdentifier.length);
+			}
+		}
+		return '';
 	}
+	
+	const isSSO = window.location.pathname.match(/SSO\/(.*?)$/);
+
+	// prettier-ignore
+	if (isSSO) {
+		scope.attr('noSsoShowLoginForm', true);
+		scope.attr('message', "Accessing District SSO System");
+		
+		const ssoToken = getCookie('ihpcToken');
+
+		if (!ssoToken){
+		scope.attr('message', 'Single Sign On Cookie is empty or missing');
+		return;
+		}
+
+ 		scope .attr('tmpFormSession').attr('user') .attr('districtId', isSSO[1]);
+		scope.attr('tmpFormSession').attr('user').attr('ssoToken', ssoToken);
+
+		return typeof(isSSO)!=undefined;
+	} else {
+		//return 'found routing bits';
+	}
+
+	return false;
+
+}
+
+function createSession(ev, options) {
+// 	if (ev) {
+// 		ev.preventDefault();
+// 	}
+
+	
 	options = options ? options : this;
+	
+	const isSso=ssoProcess(options); //mutates tmpFormSession.user, ssoToken
 
 	const tmpFormSession = options.attr('tmpFormSession');
 
@@ -19,6 +70,7 @@ function createSession(ev, options) {
 		options.attr('%root').attr('session', result);
 		options.attr('%root').attr('confirmEmailMessage', '');
 	};
+	
 	const errorFunc = err => {
 		if (!err.responseJSON) {
 			return;
@@ -97,48 +149,16 @@ function createSession(ev, options) {
 // DISTRICT INTERCEPT
 
 can.stache.registerHelper('districtIntercept', function(options) {
-	
-	function getCookie(cookieName) {
-		let cookieIdentifier = cookieName + '=';
-		let decodedCookieString = decodeURIComponent(document.cookie);
-		let cookieArray = decodedCookieString.split(';');
-
-		for (let i = 0; i < cookieArray.length; i++) {
-			let singleCookie = cookieArray[i];
-			while (singleCookie.charAt(0) == ' ') {
-				singleCookie = singleCookie.substring(1);
-			}
-			if (singleCookie.indexOf(cookieIdentifier) == 0) {
-				return singleCookie.substring(cookieIdentifier.length);
-			}
-		}
-		return '';
-	}
-	
+	const scope=options.scope;
 	const isSSO = window.location.pathname.match(/SSO\/(.*?)$/);
 
 	// prettier-ignore
 	if (isSSO) {
-		options.scope.attr('noSsoShowLoginForm', false);
-		options.scope.attr('message', "Accessing District SSO System");
-		
-		const ssoToken = getCookie('ihpcToken');
+		scope.attr('noSsoShowLoginForm', false);
+		scope.attr('message', "Accessing District SSO System");
+	} 
+//return createSession('', options.scope);
 
-		if (!ssoToken){
-		options.scope.attr('message', 'Single Sign On Cookie is empty or missing');
-		return;
-		}
-
- 		options.scope .attr('tmpFormSession').attr('user') .attr('districtId', isSSO[1]);
-		options.scope.attr('tmpFormSession').attr('user').attr('ssoToken', ssoToken);
-
-		createSession('', options.scope);
-		return options.scope.attr('message');
-	} else {
-		return 'found routing bits';
-	}
-
-	return false;
 });
 
 can.stache.registerHelper('demoOrDev', function(options) {
