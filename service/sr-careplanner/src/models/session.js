@@ -10,11 +10,9 @@ export const Session = can.Map.extend({
 	
     get:function(name){
     	//this is mine, not an auto access system function
-console.log(`\n=-=============   session model.get()  ========================= [session.js.[ anonymous ]]\n`);
-
-
 	  const user=this.attr('0');
   	if (user){
+console.log(`user[${name}]=${user[name]}  [session.js.[ anonymous ]]`);
   		return user[name];
   	}
   	else{

@@ -60,6 +60,16 @@ function createSession(ev, options) {
 
 	//options.attr("sessionPromise", sessionPromise); //can't figure out why options was in the example
 } 
+
+
+
+
+
+
+
+
+
+
  export const ViewModel = Map.extend({
 	define: {
 		tmpFormSession: {
@@ -70,6 +80,9 @@ function createSession(ev, options) {
 		},
 		message: {
 			value: ''
+		},
+		noSsoShowLoginForm:{
+			value:true
 		}
 	},
 	
@@ -103,15 +116,18 @@ can.stache.registerHelper('districtIntercept', function(options) {
 	}
 	
 	const isSSO = window.location.pathname.match(/SSO\/(.*?)$/);
-	const ssoToken = getCookie('ihpcToken');
-
-	if (!ssoToken){
-	options.scope.attr('message', 'Single Sign On Cookie is empty or missing');
-	return;
-	}
 
 	// prettier-ignore
 	if (isSSO) {
+		options.scope.attr('noSsoShowLoginForm', false);
+		options.scope.attr('message', "Accessing District SSO System");
+		
+		const ssoToken = getCookie('ihpcToken');
+
+		if (!ssoToken){
+		options.scope.attr('message', 'Single Sign On Cookie is empty or missing');
+		return;
+		}
 
  		options.scope .attr('tmpFormSession').attr('user') .attr('districtId', isSSO[1]);
 		options.scope.attr('tmpFormSession').attr('user').attr('ssoToken', ssoToken);
@@ -124,8 +140,7 @@ can.stache.registerHelper('districtIntercept', function(options) {
 
 	return false;
 });
-/Users/tqwhite/Documents/webdev/ihpCreator/applications/ui/system/code
-/Users/tqwhite/Documents/webdev/ihpCreator/applications/ui/system/code/service/sr-careplanner/src/account/login/login.js
+
 can.stache.registerHelper('demoOrDev', function(options) {
 	
 
