@@ -77,9 +77,9 @@ async function setIhpcTokenCookie(){
 		date.setTime(date.getTime() + (110 * 60 * 1000)); // Calculate one minute in the future, this is only to let IHPC login once
 		const expires = "expires=" + date.toUTCString(); // Convert the Date object to a string
 
-		document.cookie = `ihpcToken=${accessToken}; ${expires}; path=/`;
+		document.cookie = `ihpcToken_1=${accessToken}; ${expires}; path=/`; //note: this cookie format is also mention in SAML processing
 		
-		console.log(`cookie set: ihpcToken  [fetch.js.setIhpcTokenCookie]`);
+		console.log(`cookie set: 'ihpcToken_1=${accessToken}; ${expires}; path=/'  [fetch.js.setIhpcTokenCookie]`);
 		
 		}
 
@@ -112,10 +112,16 @@ async function getToken() {
     let tokenResponse;
 
     if (typeof getTokenPopup === 'function') {
+console.log(`\n=-=============   getTokenPopup  ========================= [fetch.js.getToken]\n`);
+
+
         tokenResponse = await getTokenPopup({
             scopes: [...protectedResources.todolistApi.scopes.read],
-            redirectUri: '/redirectUNUSED'
+            redirectUri: '/'
         });
+console.log(`\n=-=============   getTokenPopup 2 ========================= [fetch.js.getToken]\n`);
+
+
     } else {
         tokenResponse = await getTokenRedirect({
             scopes: [...protectedResources.todolistApi.scopes.read],

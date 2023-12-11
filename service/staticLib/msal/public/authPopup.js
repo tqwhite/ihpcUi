@@ -28,37 +28,6 @@ function selectAccount() {
 
 
 
-
-
-
-
-
-/*
-
-
-
-Next:
-
-add cookie to carry the login info (first user, pw)
-then find the token and send that to the UI 
-then add the token to the flow into the API
-then add msal to the API (did I add @azure crap previously that needs removing?)
-
-
-
-
-
-
-
-
-*/
-
-
-
-
-
-
-
 async function handleResponse(response) {
     /**
      * To see the full list of response object properties, visit:
@@ -68,12 +37,18 @@ async function handleResponse(response) {
     if (response !== null) {
         username = response.account.username;
         
-        
-        
-		await setIhpcTokenCookie()
+        const districtId=window.location.pathname.match(/\/([^\/]*?)$/)[1];
 
-        console.log('redirect B'); //tqii
-        window.location.href=`/SSO/ssoApi`; //tqii
+
+        
+		await setIhpcTokenCookie(); // accesses msal for data, .../ui/system/code/service/staticLib/msal/public/fetch.js
+
+        console.log(`redirect BC /SSO/${districtId}`); //tqii
+        
+        window.open(`/SSO/${districtId}`);
+        
+        
+ //       window.location.href=`/SSO/${districtId}`; //ssoApi is tanant's application name in Entra, eventually needs to be goot from Mongo
 //         welcomeUser(username);
 //         updateTable(response.account);
     } else {
@@ -90,7 +65,7 @@ function signIn() {
     myMSALObj
         .loginPopup({
             ...loginRequest,
-            redirectUri: '/SSO',
+            redirectUri: '/SSO/dmschools.org',
         })
         .then(handleResponse)
         .catch((error) => {

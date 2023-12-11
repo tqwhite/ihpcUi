@@ -12,7 +12,7 @@
 const msalConfig = {
     auth: {
         // 'Application (client) ID' of app registration in Azure portal - this value is a GUID
-        clientId: "83a034b2-5ef8-4ef8-9ded-84704123fd56",
+        clientId: "1c3b4392-c123-4f88-b1ba-b32255b18141",
         // Full directory URL, in the form of https://login.microsoftonline.com/<tenant-id>
         authority: "https://login.microsoftonline.com/bba67e09-06e0-4d07-9123-acdb7a262a91/",
         redirectUri: "https://xxx.comSSO/spaApi",
@@ -56,8 +56,8 @@ const msalConfig = {
 const protectedResources = {
     todolistApi: {
         scopes: {
-            read: ['api://303941c0-c24e-44f9-9b3c-d9b2366f22e3/Todolist.Read'],
-            write: ['api://303941c0-c24e-44f9-9b3c-d9b2366f22e3/Todolist.ReadWrite'],
+            read: ['https://graph.microsoft.com/User.Read'],
+            write: ['https://graph.microsoft.com/User.Read.All'],
         },
     },
 };

@@ -18,8 +18,37 @@
 <div class='container'>
 
 {{#showEditor}}
-<div><input class="c-field" placeholder="District Name" {($value)}="workingDistrict.displayName" fieldName='displayName'/> </div>
-<div><input class="c-field" placeholder="District ID (for access URL)" {($value)}="workingDistrict.districtId" fieldName='districtId'/> </div>
-<div><input class="c-field" placeholder="ssoParameters.redirectUrl" {($value)}="workingDistrict.ssoParameters.redirectUrl" fieldName='ssoParameters.redirectUrl'/> </div>
+<div class='inputBlock'>
+<b>District Name</b>
+</div>
+<input class="c-field" placeholder="District Name" {($value)}="workingDistrict.displayName" fieldName='displayName'/> </div>
+<div>
+
+<div class='inputBlock'>
+<b>Identity provider type login page selection code</b><br>
+<b>/o</b> for MSAL openID; <b>/s</b> for MSAL SAML; Nothing else is allowed.
+</div>
+<input class="c-field" placeholder="ssoParameters.redirectUrl" {($value)}="workingDistrict.ssoParameters.redirectUrl" fieldName='ssoParameters.redirectUrl'/> </div>
+
+<div class='inputBlock'>
+<b>District ID used for redirect to SSO login page</b><br>
+Usually this is the main district web URL.
+</div>
+<input class="c-field" placeholder="District ID (for access URL)" {($value)}="workingDistrict.districtId" fieldName='districtId'/> </div>
+<div>
+
+<div class='inputBlock'>
+Notes:<br>
+The back end processing is determined by the districtID in the SSO login page URL.<br>
+This URL can be constructed/bookmarked manually (https://ihpcreator.com/s/someDistrict.edu).<br>
+If a user has a districtID specified, they will be redirected to that page based on the<br>
+entry above.<br>
+If the user does not have a districtID specified, they can access SSO with a manual/bookmark<br>
+URL <u>and</u> they can login using a local username and password.<br><br>
+
+The back end processing has a big parameter block that specifies the identity processing.<br>
+The districtID <i>in the login URL</i> is used to select the correct block and must be<br>
+accurate. This stuff will eventually entered into this form instead.
+</div>
 
 {{/showEditor}}
