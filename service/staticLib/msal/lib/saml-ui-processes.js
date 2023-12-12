@@ -19,9 +19,7 @@ const moduleFunction = ({ moduleName }) => () => {
 		//this gets all the components for index.html
 		//https://ihpc.qbook.work/SSO/dmschools.org
 
-		console.log(`req.body.SAMLResponse=${req.body.SAMLResponse}`);
-
-		console.log(`req.body.SAMLResponse.length=${req.body.SAMLResponse.length}`);
+console.dir(Object.keys(req.body));
 
 		splitString(req.body.SAMLResponse).forEach((segment, inx) => {
 			console.log(`inx=${inx}`);

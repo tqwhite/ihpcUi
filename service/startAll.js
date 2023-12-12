@@ -87,8 +87,11 @@ var moduleFunction = function() {
 		console.log(
 			`\n=-=============   saml  ========================= [startAll.js.startDonejs]\n`
 		);
-		
-		app.post(/\/SSO\/saml(.*)$/, require('./staticLib/msal/lib/saml-ui-processes')().receiveAndRedirect);
+
+		app.post(
+			/\/SSO\/saml(.*)$/,
+			require('./staticLib/msal/lib/saml-ui-processes')().receiveAndRedirect
+		);
 
 		app.get(/\/msal\/(.*)$/, (req, res, next) => {
 			//this gets all the components for index.html
