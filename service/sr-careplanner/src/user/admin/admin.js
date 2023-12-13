@@ -10,7 +10,7 @@ export const ViewModel = Map.extend({
 			value: 'This is the user-admin component'
 		},
 		subsection: {
-			value: 'districts'
+			value: 'users'
 		}
 	},
 	setSubsection: function(subsection) {

@@ -2,9 +2,11 @@
 
 <div class='container'>
 
+<div><input class="c-field" placeholder="Type to Filter Users (all properties, including invisible ones))" {($value)}="userFilterString" fieldName='userFilterString'/> </div>
+<BR>
 {{#each users.value}}
 <div class='userItem' ($click)='chooseUser({.})'>
-{{#if first}}
+{{#if userMatchFilterString}}
 	{{first}} {{last}} role: {{role}}
 {{/if}}
 
