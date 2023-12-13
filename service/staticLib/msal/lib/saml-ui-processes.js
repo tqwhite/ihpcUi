@@ -21,6 +21,8 @@ const moduleFunction = ({ moduleName }) => () => {
 
 console.dir(Object.keys(req.body));
 
+const districtSegment=req.path.match(/\/SSO\/saml\/(.*)$/)[1]
+
 		splitString(req.body.SAMLResponse).forEach((segment, inx) => {
 			console.log(`inx=${inx}`);
 
@@ -30,10 +32,7 @@ console.dir(Object.keys(req.body));
 			});
 		});
 
-console.log(`\n=-=============   dmschoolsSAML  ========================= [saml-ui-processes.js.]\n`);
-
-
-		res.redirect(`/SSO/dmschoolsSAML.org?cookieName=ihpcToken`);
+		res.redirect(`/SSO/${districtSegment}?cookieName=ihpcToken`);
 	};
 
 	return { receiveAndRedirect };
