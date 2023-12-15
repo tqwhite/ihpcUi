@@ -84,10 +84,6 @@ var moduleFunction = function() {
 
 		// SSO Paths ========================================================
 
-		console.log(
-			`\n=-=============   saml  ========================= [startAll.js.startDonejs]\n`
-		);
-
 		app.post(
 			/\/SSO\/saml(.*)$/,
 			require('./staticLib/msal/lib/saml-ui-processes')().receiveAndRedirect

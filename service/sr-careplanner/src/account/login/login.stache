@@ -1,3 +1,6 @@
+
+{{districtIntercept}} 	
+
 <img class='outsideLogo' src='/src/images/ihpLogo.png'>
 <div  class="c-alerts__alert c-alerts__alert--primary c-heading c-heading--medium c-heading--medium--center messageBlock">
 	{{#message}}
@@ -56,5 +59,4 @@
 		<span class="fa fa-spinner fa-spin basicBlue"/>
 		{{/if}}
 	</div>
-</div>
-	 {{districtIntercept}} 		
+</div>	

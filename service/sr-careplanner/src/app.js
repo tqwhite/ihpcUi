@@ -367,7 +367,16 @@ const AppViewModel = Map.extend({
 	
 	// ---------------------------
 	logout: function(queryString = '') {
-		window.location.href = '/' + queryString;
+		const district = this.attr('session')[0].district;
+		
+		const redirectUrl = district[0].attr('ssoParameters').attr('redirectUrl');
+
+		if (redirectUrl) {
+			window.location.href = redirectUrl;
+		} else {
+			window.location.href = '/' + queryString;
+		}
+		
 	},
 	// ---------------------------
 	clearConsole: function() {
@@ -767,8 +776,7 @@ can.stache.registerHelper('updateSubscription', function(options) {
 			}
 		}
 	}
-}); 
-
+});
 
 export default AppViewModel;
 

@@ -25,25 +25,23 @@ export const ViewModel = Map.extend({
 			this.childComponentLists[childType] || [];
 		this.childComponentLists[childType].push(childVm);
 	},
-	
-	
-	
-	userMatchFilterString: function(user){
-const filterString=this.attr('userFilterString').toLowerCase();
-if (!filterString){
-	return true;
-}
-user.a=` ${user.attr('first')} ${user.attr('last')}`
-user.b=` ${user.attr('last')} ${user.attr('first')}`
-user.c=` ${user.attr('last')}, ${user.attr('first')}`
 
-const searchString=JSON.stringify(user).toLowerCase()
+	userMatchFilterString: function(user) {
+		const filterString = this.attr('userFilterString').toLowerCase();
+		if (!filterString) {
+			return true;
+		}
+		user.a = ` ${user.attr('first')} ${user.attr('last')}`;
+		user.b = ` ${user.attr('last')} ${user.attr('first')}`;
+		user.c = ` ${user.attr('last')}, ${user.attr('first')}`;
 
-const result=searchString.match(filterString)?true:false;
+		const searchString = JSON.stringify(user).toLowerCase();
 
-return result
+		const result = searchString.match(filterString) ? true : false;
+
+		return result;
 	},
-	
+
 	testElement: function() {
 		window['user-admin-users-selector'] = this;
 		console.log(
@@ -57,13 +55,9 @@ return result
 });
 
 const changeHandler = function(domObj, event) {
-
 	const fieldName = domObj.attr('fieldName');
-
 	const value = event.target.value;
-
 	this.viewModel.attr('userFilterString', value);
-
 };
 
 export default Component.extend({

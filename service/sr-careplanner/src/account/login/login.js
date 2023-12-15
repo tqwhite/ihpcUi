@@ -36,54 +36,40 @@ const sortAndStripArray = array => {
 		.map(item => item.substring(item.indexOf('=') + 1));
 };
 
-const printArray=inArray=>inArray.forEach(item=>console.log(`\n\n${item}\n`))
-
 function getCookie() {
 	let decodedCookieString = decodeURIComponent(document.cookie);
-console.log(`\n=-=============   decodedCookieString  ========================= [login.js.getCookie]\n`);
-
-
-console.log(`decodedCookieString=${decodedCookieString}`);
-
-console.log(`\n=-=============   decodedCookieString  ========================= [login.js.getCookie]\n`);
-
-
 	let cookieArray = decodedCookieString.split(';');
-	printArray(cookieArray);
 	let validCookieArray = sortAndStripArray(cookieArray); //only finds cookies of the form ihcpToken_\d+
 	const outString = validCookieArray.join('');
 	return outString; //I manually confirmed that the token is assembled correctly and received correctly by the backend.
 }
 
+function deleteCookies(){
+// console.log('bypass cookie killing for dev time [login.js]e');
+// return;
+	document.cookie.split(";").forEach(function(c) { 
+		document.cookie = c.replace(/^ +/, "").replace(/=.*/, "=;expires=" + new Date().toUTCString() + ";path=/"); 
+	});
+}
+
 // ===================================================================
 // SESSION FUNCTIONS
 
-function ssoProcess(scope) {
-	
-	const isSSO = window.location.pathname.match(/SSO\/(.*?)$/);
-	let districtId;
-	
-	// prettier-ignore
-	if (isSSO) {
-		districtId=isSSO[1];
-		scope.attr('isSSO', true);
-		scope.attr('message', "Accessing District SSO System");
-		
-		const ssoToken = getCookie('ihpcToken');
-
-console.log(`ssoToken=${ssoToken}`);
-
-		if (!ssoToken){
-		scope.attr('message', 'Single Sign On Cookie is empty or missing');
+function ssoVarsToViewModel(scope, districtId) {
+	const ssoToken = getCookie('ihpcToken');
+	if (!ssoToken) {
+		console.log('Single Sign On Cookie is empty or missing. Error# Q141220233752037520965');
 		return;
-		}
-
- 		scope .attr('tmpFormSession').attr('user') .attr('districtId', districtId);
-		scope.attr('tmpFormSession').attr('user').attr('ssoToken', ssoToken);
-
 	}
-
-	return isSSO;
+	scope
+		.attr('tmpFormSession')
+		.attr('user')
+		.attr('districtId', districtId);
+	scope
+		.attr('tmpFormSession')
+		.attr('user')
+		.attr('ssoToken', ssoToken);
+	return true;
 }
 
 
@@ -94,12 +80,40 @@ function createSession(ev, options) {
 	
 	options = options ? options : this;
 	
-	const isSso = ssoProcess(options); //MUTATES tmpFormSession.user, ssoToken
+	const isSso = window.location.pathname.match(/SSO\/(.*?)$/); //attribute set by districtIntercept is not set yet
+	if (isSso){
+	
+	
+			//document.getElementById('loginButton').style.display = 'none';
+			
+			
+			document.getElementById('loginButton').innerHTML = 'loading...';
+			document.getElementById('loginButton').style.opacity='.5';
+
+		ssoVarsToViewModel(options, isSso[1]); //MUTATES tmpFormSession.user, ssoToken
+		deleteCookies(); //avoid nasty cookie buildup
+	}
 
 	const tmpFormSession = options.attr('tmpFormSession');
 
 	const successFunc = result => {
+	
+	
+	
+	
+	setTimeout(()=>{
+	
+console.dir({['result [login.js]']:result.attr('district')});
+
+	}, 5000);
+	
+	
+	
+	
 		options.attr('tmpFormSession', new Session({ user: new User() })); //comment options to avoid clearing the login inputs
+		
+		options.attr('%root').attr('district', result[0].district);
+		
 		options.attr('%root').attr('session', result);
 		options.attr('%root').attr('confirmEmailMessage', '');
 	};
@@ -110,7 +124,11 @@ function createSession(ev, options) {
 		}
 
 		if (err.status == '302') {
-			window.location.href = err.responseJSON.errorText;
+			// SSO REDIRECT: For users that have a districtID set, API/sessions.js constructs
+			// the URL and puts in errorText (I didn't want to think through a whole new system)
+			// in the login process handling code (ie, after enter is pressed here)
+			const ssoLoginPage=err.responseJSON.errorText;
+			window.location.href = ssoLoginPage;
 			return;
 		}
 
@@ -209,7 +227,7 @@ export const ViewModel = Map.extend({
 
 can.stache.registerHelper('districtIntercept', function(options) {
 	const scope = options.scope;
-	const isSSO = window.location.pathname.match(/SSO\/(.*?)$/);
+	const isSSO = window.location.pathname.match(/SSO\/(.*?)$/); //value set in ssoVarsToViewModel() is not visible yet
 
 	// prettier-ignore
 	if (isSSO) {

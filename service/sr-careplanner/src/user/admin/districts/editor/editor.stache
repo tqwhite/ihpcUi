@@ -26,29 +26,31 @@
 
 <div class='inputBlock'>
 <b>Identity provider type login page selection code</b><br>
-<b>/o</b> for MSAL openID; <b>/s</b> for MSAL SAML; Nothing else is allowed.
+<b>/o/DISTRICTID</b> for MSAL openID; <b>the URL of the portal</b> for MSAL SAML; Nothing else is allowed.
 </div>
 <input class="c-field" placeholder="ssoParameters.redirectUrl" {($value)}="workingDistrict.ssoParameters.redirectUrl" fieldName='ssoParameters.redirectUrl'/> </div>
 
 <div class='inputBlock'>
 <b>District ID used for redirect to SSO login page</b><br>
-Usually this is the main district web URL.
+Usually this is the main district web domain., eg, districtName.edu, but can be any string that matches a name in systemParameters.ini.
 </div>
 <input class="c-field" placeholder="District ID (for access URL)" {($value)}="workingDistrict.districtId" fieldName='districtId'/> </div>
 <div>
 
 <div class='inputBlock'>
-Notes:<br>
-The back end processing is determined by the districtID in the SSO login page URL.<br>
-This URL can be constructed/bookmarked manually (https://ihpcreator.com/s/someDistrict.edu).<br>
-If a user has a districtID specified, they will be redirected to that page based on the<br>
-entry above.<br>
-If the user does not have a districtID specified, they can access SSO with a manual/bookmark<br>
-URL <u>and</u> they can login using a local username and password.<br><br>
-
-The back end processing has a big parameter block that specifies the identity processing.<br>
-The districtID <i>in the login URL</i> is used to select the correct block and must be<br>
-accurate. This stuff will eventually entered into this form instead.
+Some basic information:<br>
+<br>
+1) To use SSO, the user's user name *must* be the same in both the district's identity <br>
+system and IHP Creator.<br>
+<br>
+If a user has a district specified (in the dropdown menu), when that person tries to login,<br>
+they will be redirected to that district's redirectUrl.<br>
+<br>
+The page at the redirectUrl does whatever it wants to authenticate the user but, when it's <br>
+done, it will redirect *back* to the IHP Creator. If it's OpenID, the mechanism uses a POST <br>
+action to a special IHPC page (/o/districtId) that packs up the POST data (token) and puts it into a <br>
+cookie. If it's SAML, it opens a page on the portal. In either case, the result is to
+end up at the main IHPC application page.
 </div>
 
 {{/showEditor}}

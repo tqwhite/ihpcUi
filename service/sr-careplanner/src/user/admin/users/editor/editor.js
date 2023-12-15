@@ -120,7 +120,12 @@ const changeHandler=function(domObj, event) {
 			this.viewModel.clearEntryError();
 
 			const fieldName=domObj.attr('fieldName');
-			const saveObj=this.viewModel.attr('workingUser');
+			
+			const workingUser=this.viewModel.attr('workingUser');
+			const value=workingUser.attr(fieldName);
+			workingUser.attr(fieldName, value.trim())
+			
+			const saveObj=workingUser;
 			
 			let errorList=saveObj.validate(fieldName);
 			if (errorList.length){
