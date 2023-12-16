@@ -169,7 +169,7 @@ var moduleFunction = function() {
 			);
 
 			qtools.message(
-				`Serving serveBuildBundle=${config.system.serveBuildBundle}`
+				`Serving serveBuildBundle=${config.system.serveBuildBundle}\nserveBuildBundle parameter is in .../ui/system/configs/instanceSpecific/ini/uiprod.ini`
 			);
 		});
 	};
