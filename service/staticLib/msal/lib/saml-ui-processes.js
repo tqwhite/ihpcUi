@@ -19,20 +19,16 @@ const moduleFunction = ({ moduleName }) => () => {
 		//this gets all the components for index.html
 		//https://ihpc.qbook.work/SSO/dmschools.org
 
-console.dir(`found request body elements: ${Object.keys(req.body)}`);
-
-const districtSegment=req.path.match(/\/SSO\/saml\/(.*)$/)[1]
+		const districtSegment = req.path.match(/\/SSO\/saml\/(.*)$/)[1];
 
 		splitString(req.body.SAMLResponse).forEach((segment, inx) => {
-			console.log(`ihpcToken_${inx}`);
-
 			res.cookie(`ihpcToken_${inx}`, segment, {
 				expires: new Date(Date.now() + 10000),
 				domain: req.hostname
 			});
 		});
 
-		res.redirect(`/SSO/${districtSegment}?cookieName=ihpcToken`);
+		res.redirect(`/SSO/${districtSegment}`);
 	};
 
 	return { receiveAndRedirect };

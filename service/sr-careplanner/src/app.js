@@ -368,11 +368,13 @@ const AppViewModel = Map.extend({
 	// ---------------------------
 	logout: function(queryString = '') {
 		const district = this.attr('session')[0].district;
-		
-		const redirectUrl = district[0].attr('ssoParameters').attr('redirectUrl');
-
-		if (redirectUrl) {
-			window.location.href = redirectUrl;
+	
+		if (district) {
+			window.location.hash='';
+			window.location.href=window.location.href.replace(/SSO/, "d")
+			console.log('ignoring logoutUrl');
+			//const redirectUrl = district.attr('logoutUrl');
+			//window.location.href = redirectUrl;
 		} else {
 			window.location.href = '/' + queryString;
 		}

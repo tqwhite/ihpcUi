@@ -33,9 +33,19 @@
 				{{/isLocal}}
 				
 				{{^isLocal}}
-				<input class="c-field" placeholder="User Name" {($value)}="tmpFormSession.user.username" value='{{newlyRegisteredUserName}}'>
-				<input class="c-field" placeholder="Password" type="password" {($value)}="tmpFormSession.user.password">
 				
+				{{^ssoLoginStart}}
+				<input class="c-field" placeholder="User Name" {($value)}="tmpFormSession.user.username" value='{{newlyRegisteredUserName}}'>
+				{{/ssoLoginStart}}
+				
+				{{#ssoLoginStart}}
+				<input class="c-field" placeholder="District User Name" {($value)}="tmpFormSession.user.username" value='{{newlyRegisteredUserName}}'>
+				{{/ssoLoginStart}}
+				
+				
+				{{^ssoLoginStart}}
+				<input class="c-field" placeholder="Password" type="password" {($value)}="tmpFormSession.user.password">
+				{{/ssoLoginStart}}
 				{{/isLocal}}
 			</div>
 		</div>

@@ -25,17 +25,44 @@
 <div>
 
 <div class='inputBlock'>
-<b>Identity provider type login page selection code</b><br>
-<b>/o/DISTRICTID</b> for MSAL openID; <b>the URL of the portal</b> for MSAL SAML; Nothing else is allowed.
-</div>
-<input class="c-field" placeholder="ssoParameters.redirectUrl" {($value)}="workingDistrict.ssoParameters.redirectUrl" fieldName='ssoParameters.redirectUrl'/> </div>
-
-<div class='inputBlock'>
-<b>District ID used for redirect to SSO login page</b><br>
-Usually this is the main district web domain., eg, districtName.edu, but can be any string that matches a name in systemParameters.ini.
+<b>IHP Creator District Identifier</b><br>
+Usually this is the main district web domain., eg, districtName.edu. We make this up. Tell them reply URL: https://ihpc.qbook.work/SSO/saml/THISVALUE
 </div>
 <input class="c-field" placeholder="District ID (for access URL)" {($value)}="workingDistrict.districtId" fieldName='districtId'/> </div>
 <div>
+
+<div class='inputBlock'>
+<b>SSO Module Name</b><br>
+Presently, only <b>azure-msal-saml</b> is supported.
+</div>
+<input class="c-field" placeholder="ssoParameters.ssoModuleName" {($value)}="workingDistrict.ssoParameters.ssoModuleName" fieldName='ssoParameters.ssoModuleName'/> </div>
+
+<div class='inputBlock'>
+<b>Identity Provider Application Entity ID (Usually, we make this up. Use "IHPCREATOR.COM" and tell them.)</b>
+</div>
+<input class="c-field" placeholder="ssoParameters.entityId" {($value)}="workingDistrict.ssoParameters.entityId" fieldName='ssoParameters.entityId'/> </div>
+
+<!-- /o/DISTRICTID</b> for MSAL openID; -->
+<div class='inputBlock'>
+<b>Identity provider Login Page URL (from Entra setup)</b>
+</div>
+<input class="c-field" placeholder="ssoParameters.redirectUrl" {($value)}="workingDistrict.ssoParameters.redirectUrl" fieldName='ssoParameters.redirectUrl'/> </div>
+
+
+<div class='inputBlock'>
+<b>App Federation Metadata Url (from Entra setup)</b>
+</div>
+<input class="c-field" placeholder="ssoParameters.xmlUrl" {($value)}="workingDistrict.ssoParameters.xmlUrl" fieldName='ssoParameters.xmlUrl'/> </div>
+
+
+
+<div class='inputBlock'>
+<b>Identity Provider Logout Page URL (from Entra setup)</b>
+</div>
+<input class="c-field" placeholder="ssoParameters.logoutUrl" {($value)}="workingDistrict.ssoParameters.logoutUrl" fieldName='ssoParameters.logoutUrl'/> </div>
+
+
+
 
 <div class='inputBlock'>
 Some basic information:<br>

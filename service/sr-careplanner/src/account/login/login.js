@@ -44,11 +44,13 @@ function getCookie() {
 	return outString; //I manually confirmed that the token is assembled correctly and received correctly by the backend.
 }
 
-function deleteCookies(){
-// console.log('bypass cookie killing for dev time [login.js]e');
-// return;
-	document.cookie.split(";").forEach(function(c) { 
-		document.cookie = c.replace(/^ +/, "").replace(/=.*/, "=;expires=" + new Date().toUTCString() + ";path=/"); 
+function deleteCookies() {
+	// console.log('bypass cookie killing for dev time [login.js]e');
+	// return;
+	document.cookie.split(';').forEach(function(c) {
+		document.cookie = c
+			.replace(/^ +/, '')
+			.replace(/=.*/, '=;expires=' + new Date().toUTCString() + ';path=/');
 	});
 }
 
@@ -58,7 +60,9 @@ function deleteCookies(){
 function ssoVarsToViewModel(scope, districtId) {
 	const ssoToken = getCookie('ihpcToken');
 	if (!ssoToken) {
-		console.log('Single Sign On Cookie is empty or missing. Error# Q141220233752037520965');
+		console.log(
+			'Single Sign On Cookie is empty or missing. Error# Q141220233752037520965'
+		);
 		return;
 	}
 	scope
@@ -72,7 +76,6 @@ function ssoVarsToViewModel(scope, districtId) {
 	return true;
 }
 
-
 function createSession(ev, options) {
 	// 	if (ev) {
 	// 		ev.preventDefault();
@@ -81,14 +84,13 @@ function createSession(ev, options) {
 	options = options ? options : this;
 	
 	const isSso = window.location.pathname.match(/SSO\/(.*?)$/); //attribute set by districtIntercept is not set yet
-	if (isSso){
-	
-	
-			//document.getElementById('loginButton').style.display = 'none';
-			
-			
-			document.getElementById('loginButton').innerHTML = 'loading...';
-			document.getElementById('loginButton').style.opacity='.5';
+	if (isSso) {
+		
+		
+		//document.getElementById('loginButton').style.display = 'none';
+
+		document.getElementById('loginButton').innerHTML = 'loading...';
+		document.getElementById('loginButton').style.opacity = '.5';
 
 		ssoVarsToViewModel(options, isSso[1]); //MUTATES tmpFormSession.user, ssoToken
 		deleteCookies(); //avoid nasty cookie buildup
@@ -97,23 +99,10 @@ function createSession(ev, options) {
 	const tmpFormSession = options.attr('tmpFormSession');
 
 	const successFunc = result => {
-	
-	
-	
-	
-	setTimeout(()=>{
-	
-console.dir({['result [login.js]']:result.attr('district')});
-
-	}, 5000);
-	
-	
-	
-	
 		options.attr('tmpFormSession', new Session({ user: new User() })); //comment options to avoid clearing the login inputs
-		
+
 		options.attr('%root').attr('district', result[0].district);
-		
+
 		options.attr('%root').attr('session', result);
 		options.attr('%root').attr('confirmEmailMessage', '');
 	};
@@ -127,7 +116,7 @@ console.dir({['result [login.js]']:result.attr('district')});
 			// SSO REDIRECT: For users that have a districtID set, API/sessions.js constructs
 			// the URL and puts in errorText (I didn't want to think through a whole new system)
 			// in the login process handling code (ie, after enter is pressed here)
-			const ssoLoginPage=err.responseJSON.errorText;
+			const ssoLoginPage = err.responseJSON.errorText;
 			window.location.href = ssoLoginPage;
 			return;
 		}
@@ -158,7 +147,6 @@ console.dir({['result [login.js]']:result.attr('district')});
 			);
 			setTimeout(() => {
 				const parms = getQueryStringParameters();
-				console.dir({ 'parms [login.js.createSession]': parms });
 				if (parms.source) {
 					const parms = getQueryStringParameters();
 
@@ -191,8 +179,8 @@ console.dir({['result [login.js]']:result.attr('district')});
 		.fail(errorFunc);
 
 	//options.attr("sessionPromise", sessionPromise); //can't figure out why options was in the example
-}  
- // ===================================================================
+}
+// ===================================================================
 // VIEW MODEL
 
 export const ViewModel = Map.extend({
@@ -207,6 +195,9 @@ export const ViewModel = Map.extend({
 			value: ''
 		},
 		isSSO: {
+			value: false
+		},
+		ssoLoginStart: {
 			value: false
 		},
 		buttonLabel: {
@@ -227,27 +218,27 @@ export const ViewModel = Map.extend({
 
 can.stache.registerHelper('districtIntercept', function(options) {
 	const scope = options.scope;
-	const isSSO = window.location.pathname.match(/SSO\/(.*?)$/); //value set in ssoVarsToViewModel() is not visible yet
+	const ssoRedirect = window.location.pathname.match(/SSO\/(.*?)$/); //value set in ssoVarsToViewModel() is not visible yet
 
 	// prettier-ignore
-	if (isSSO) {
-		console.log('Click Enter to see createSession() Stuff');
+	if (ssoRedirect) {
 		setTimeout(()=>{
 			scope.attr('isSSO', true);
 			scope.attr('buttonLabel', 'ENTER');
 			scope.attr('message', "<div style='width:100%;text-align:center;'><span style='font-size:80%;'>District SSO Detected</span><br>Click Enter</div>");
 		}, 200);
-
-// 		if(!process.platform){
-// 			setTimeout(()=>{
-// 			createSession('', scope)
-// 			}, 1); //this appears to work perfectlyg correctly except that it doesn't switch to the working view
-// 		}
-// 		else{
-// 			console.log('in SSR');
-// 		}
+		return
 	}
-	//return createSession('', options.scope);
+
+		
+	const isSsoLogin = window.location.pathname.match(
+		/d\/(.*?)$/
+	);   //value set in ssoVarsToViewModel() is not visible yet
+	 if (isSsoLogin) {
+		scope.attr('ssoLoginStart', true);
+
+		this.attr('%root').attr('districtName', `IHPC for ${isSsoLogin[1]}`);
+	}
 });
 
 can.stache.registerHelper('demoOrDev', function(options) {
