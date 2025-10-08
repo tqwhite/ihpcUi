@@ -309,7 +309,7 @@ const AppViewModel = Map.extend({
 			serialize: false
 		},
 		supportEmail: {
-			value: 'tqwhite@erdc.k12.mn.us',
+			value: 'tqwhite@justkidding.com',
 			serialize: false
 		},
 

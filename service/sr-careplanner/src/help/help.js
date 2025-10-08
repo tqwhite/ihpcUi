@@ -11,6 +11,7 @@ export const ViewModel = Map.extend({
     }
   },
   showContents: function(itemName) {
+  	// The location of these files is specified in the API instanceSpecific config file under the key htmlFilePath
     const videoString=`<video style='height:65vh;' controls='true' autoplay='true' src='/api/training/${itemName}'/>`;
     $(`#videoContainer`).html(videoString);
 

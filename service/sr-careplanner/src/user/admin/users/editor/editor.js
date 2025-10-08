@@ -123,7 +123,9 @@ const changeHandler=function(domObj, event) {
 			
 			const workingUser=this.viewModel.attr('workingUser');
 			const value=workingUser.attr(fieldName);
-			workingUser.attr(fieldName, value.trim())
+			if (value!=undefined){
+				workingUser.attr(fieldName, value.trim())
+			}
 			
 			const saveObj=workingUser;
 			
