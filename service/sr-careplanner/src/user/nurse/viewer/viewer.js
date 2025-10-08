@@ -58,25 +58,33 @@ export const ViewModel = Map.extend({
 	},
 
 	getPdfDataUrl: function() {
+		// Clean up previous blob URL to prevent memory leaks
+		if (this._currentBlobUrl) {
+			URL.revokeObjectURL(this._currentBlobUrl);
+			this._currentBlobUrl = null;
+		}
+
 		var planFormatter = new formatPlanPdf({
 			qtools: qtools,
 			pdfLibrary:pdfLibrary,
 			buildHeaderSection:buildHeaderSection,
 			buildStudentSection:buildStudentSection,
-			
+
 			buildHealthcareProviderSection,
 			buildGuardianSection,
 			buildInfoNoteSection,
 			buildPlanSection:buildPlanSection,
-			
+
 			pdfMake: pdfMake,
 			student: this.attr('currentStudent').attr(),
 			plan: this.attr('plan').attr(),
 			dictionary:this.attr('%root').attr('loginUserWorkingData').dictionary
 		});
 
-		planFormatter.getPdfComponents((dataUrl, downloadFunction, printFunction) => {
-			this.attr('dataUrl', dataUrl);
+		planFormatter.getPdfComponents((blobUrl, downloadFunction, printFunction) => {
+			// Store blob URL for cleanup
+			this._currentBlobUrl = blobUrl;
+			this.attr('dataUrl', blobUrl);
 			this.attr('downloadReady', true);
 			this.downloadFunction=downloadFunction;
 

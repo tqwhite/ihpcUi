@@ -178,10 +178,12 @@ var moduleFunction = function(args) {
 			pdfDocGenerator.print()
 		}
 
-		const localCallback = function(dataUrl) {
-			callback(dataUrl, downloadFunction, printFunction);
-		}
-		pdfDocGenerator.getDataUrl(localCallback);
+		// CHANGED: Use getBlob() instead of getDataUrl() to prevent memory exhaustion
+		// Blob URLs are more efficient and don't have the ~2MB Chrome limit
+		pdfDocGenerator.getBlob((blob) => {
+			const blobUrl = URL.createObjectURL(blob);
+			callback(blobUrl, downloadFunction, printFunction);
+		});
 
 	}
 
