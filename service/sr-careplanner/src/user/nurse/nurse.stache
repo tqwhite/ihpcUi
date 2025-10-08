@@ -17,11 +17,11 @@
 			{{#openStudentRefId}}
 				{{#is currentTool 'viewer'}}
 					<div class='c-button  c-button--xsmall c-button--primary modeButton' ($click)='setTool("editor")'>Editor</div>
-					<div class='c-button  c-button--xsmall c-button--primary modeButton inactive'>PDF Viewer!</div>
+					<div class='c-button  c-button--xsmall c-button--primary modeButton inactive'>VIEW PDF</div>
 				{{/is}}
 				{{#is currentTool 'editor'}}
 					<div class='c-button  c-button--xsmall c-button--primary modeButton inactive' >Editor</div>
-					<div class='c-button  c-button--xsmall c-button--primary modeButton'($click)='setTool("viewer")'>PDF Viewer!</div>
+					<div class='c-button  c-button--xsmall c-button--primary modeButton'($click)='setTool("viewer")'>VIEW PDF</div>
 				{{/is}}
 			{{/openStudentRefId}}
 		</div>
